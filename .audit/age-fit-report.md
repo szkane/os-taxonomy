@@ -1,5 +1,5 @@
 # Age-fit audit — 304 courses, 66 domains
-Generated 2026-10-25T14:12:44.749Z
+Generated 2026-10-25T14:52:24.241Z
 
 Flag counts: {}
 
@@ -639,7 +639,7 @@ Flag key:
 - LAB 4-digit place value blocks → scene=placevalue2 (maxRep=10000) dials=th:0..9@1 h:0..9@2 t:0..9@0 o:0..9@5
     · Age 10: build 6,425 = 4,100 + 2,325 across all four place columns.
     · Build 8,050 (9,550 − 1,500).
-- arcade Age 10 sprint — which matches “Adding & subtracting tricks”? / Age 10 sprint — which matches “Adding & subtracting”? / 184 + 660 = ? (16)
+- arcade Age 10 sprint — which matches “Adding & subtracting tricks”? / Age 10 sprint — which matches “Adding & subtracting”? / 863 + 948 = ? (16)
 - mission 4 · flashcards 4
 
 ## Mathematics|Counting & Cardinality
@@ -651,7 +651,7 @@ Flag key:
 - LAB Skip-count line to 100 → scene=numberlineXL (maxRep=70) dials=start:0..70@10 step:5..25@15
     · Skip-count by 10s starting at 20 (20, 30, 40, 50).
     · Skip-count by 5s starting at 15 (15, 20, 25, 30).
-- arcade Age 6: which fits Counting big collections in groups? / Age 6: which fits Count up and down? / Count: 🍎🍎🍎🍎🍎🍎🍎🍎 — how many? (12)
+- arcade Age 6: which fits Counting big collections in groups? / Age 6: which fits Count up and down? / Count: 🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎 — how many? (12)
 - mission 4 · flashcards 4
 ### band mid (ages 7,8) — 3 topics, ceiling num 1000 (seen: 4, 6, 8, 50, 100, 1000)
 - LAB Skip-count highway → scene=numberlineXL (maxRep=900) dials=start:0..900@100 step:1..500@25
@@ -662,7 +662,7 @@ Flag key:
     · Age 8 (Counting in 6s): Hop in 8s from 8: 8, 16, 24, 32 — say them loud!
     · Hop in 6s from 6 — the 4th landing is 24.
     · Hop in 4s from 4 — how high after four hops?
-- arcade Age 8 sprint — which matches “Counting in 6s”? / 12, 16, 20, 24, … what comes next? / 12, 18, 24, 30, … what comes next? (11)
+- arcade Age 8 sprint — which matches “Counting in 6s”? / 4, 8, 12, 16, … what comes next? / 12, 18, 24, 30, … what comes next? (11)
 - mission 3 · flashcards 4
 
 ## Mathematics|Data & Statistics
