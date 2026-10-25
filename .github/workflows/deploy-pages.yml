@@ -22,10 +22,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
+      # enablement: true provisions the Pages site on the first run (build
+      # type: workflow) — no manual Settings → Pages step required.
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       # src/ is the committed, pre-built static site — no build step needed.
       # Regenerating it here would require the taxonomy data only, which is
