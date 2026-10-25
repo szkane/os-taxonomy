@@ -1,0 +1,4 @@
+/*!
+ * lottie-web v5.12.2 — MIT License — github.com/airbnb/lottie-web
+ * Bundled locally (no CDN at runtime).
+ */

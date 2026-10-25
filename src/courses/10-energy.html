@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energy · Age 10 · PYP Marble Courses</title>
+  <meta name="description" content="Your child is learning how electricity works in circuits — understanding how batteries power different components like bulbs and buzzers, and how to draw circuit diagrams using proper symbols." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%220.9em%22%20font-size%3D%2290%22%3E%F0%9F%94%8B%3C%2Ftext%3E%3C%2Fsvg%3E" />
+  <link rel="stylesheet" href="../assets/css/pyp.css" />
+  <link rel="stylesheet" href="../assets/css/stage.css" />
+</head>
+<body>
+  <div class="container pyp-chrome">
+    <nav class="nav-bar">
+      <div class="nav-left">
+        <a class="pyp-map-link" href="../index.html">← All courses</a>
+        <span class="unit-tag unit-tag--subject-science">🔋 Science</span>
+        <span class="unit-tag unit-tag--theme">Age 10</span>
+      </div>
+      <div class="nav-right">
+
+      <!-- TTS accent control (top right) -->
+      <div class="tts-dropdown-wrap" id="ttsDropdownWrap">
+        <button type="button" class="tts-trigger" id="ttsTrigger" aria-haspopup="menu" aria-expanded="false" title="Select voice accent">
+          <span class="tts-trigger-flag" id="ttsFlag">🇬🇧</span>
+          <span class="tts-trigger-label" id="ttsLabel">Voice</span>
+          <span class="tts-arrow">▾</span>
+        </button>
+        <div class="tts-menu" id="ttsMenu" role="menu">
+          <div class="tts-menu-header">Select voice accent</div>
+          <div class="tts-radio-group" id="ttsRadioList" role="radiogroup"></div>
+        </div>
+      </div>
+        <button type="button" class="btn btn--white grownups-toggle" id="adultToggle" aria-expanded="false" aria-controls="adultPanel">👩‍🏫 Grown-ups</button>
+      </div>
+    </nav>
+
+    <main class="child-zone" aria-label="Play Energy">
+      <section class="marble-learning" id="marbleStage" data-band="upper" aria-label="Interactive course stage"></section>
+    </main>
+
+    <section class="adult-panel" id="adultPanel" hidden>
+      <div class="adult-panel-head">
+        <h2>👩‍🏫 For grown-ups</h2>
+        <p class="adult-panel-sub">Unit framing, learning goals and teaching notes — kept out of the child’s play space by default. <button type="button" class="btn-speaker" id="btnSpeakSummary" aria-label="Read the course summary aloud">🔊</button></p>
+      </div>
+
+      <section class="card uoi-card" aria-label="Unit of inquiry">
+        <div class="uoi-grid">
+          <div class="uoi-cell">
+            <h3>🌐 Transdisciplinary theme</h3>
+            <p>How the world works</p>
+          </div>
+          <div class="uoi-cell">
+            <h3>💡 Central idea (suggested)</h3>
+            <p>Energy flows through a complete circuit; more sources or fewer users change how bright it shines.</p>
+          </div>
+          <div class="uoi-cell">
+            <h3>🧭 Lines of inquiry (suggested)</h3>
+            <ul>
+              <li>What exactly is energy?</li>
+            <li>How do “Drawing circuits with proper symbols” and “More batteries, brighter bulb” connect?</li>
+            <li>How can we use energy in our own lives?</li>
+            </ul>
+          </div>
+          <div class="uoi-cell">
+            <h3>🔑 Key concepts</h3>
+            <div class="chip-row"><span class="chip">Causation</span><span class="chip">Function</span><span class="chip">Change</span></div>
+          </div>
+          <div class="uoi-cell">
+            <h3>🌱 Learner profile</h3>
+            <div class="chip-row"><span class="chip">Inquirers</span><span class="chip">Thinkers</span></div>
+          </div>
+          <div class="uoi-cell">
+            <h3>🛠️ ATL skills</h3>
+            <div class="chip-row"><span class="chip">Thinking skills</span><span class="chip">Research skills</span></div>
+          </div>
+        </div>
+        <p class="uoi-note">PYP framing is a suggested mapping from the subject and domain — align it with your school’s programme of inquiry. Learning goals come from the Marble Skill Taxonomy.</p>
+      </section>
+
+      <section class="card learn-card" aria-label="What you will learn">
+        <h2>🎯 What you’ll learn</h2>
+        <ul class="learn-list">
+<li><span class="learn-emoji" aria-hidden="true">🔋</span><span><strong>Drawing circuits with proper symbols</strong> — Use recognised symbols when representing a simple circuit in a diagram, including cell, wire, bulb, switch, buzzer, and motor</span></li>
+<li><span class="learn-emoji" aria-hidden="true">🔋</span><span><strong>More batteries, brighter bulb</strong> — Associate the brightness of a lamp or volume of a buzzer with the number and voltage of cells used in a series circuit</span></li>
+<li><span class="learn-emoji" aria-hidden="true">🔋</span><span><strong>Why circuit components behave differently</strong> — Compare and give reasons for variations in how circuit components function, including brightness of bulbs, loudness of buzzers, and switch positions</span></li>
+        </ul>
+      </section>
+
+      <details class="grownups" open>
+        <summary>📖 Goals, common misconceptions &amp; printable ideas</summary>
+        <div class="grownups-body">
+          <h3>Learning goal</h3>
+          <p>Your child is learning how electricity works in circuits — understanding how batteries power different components like bulbs and buzzers, and how to draw circuit diagrams using proper symbols.</p>
+          <h3>Common misconceptions (from teaching research)</h3>
+          <div class="misconception"><strong>Drawing circuits with proper symbols</strong>Doesn't know the less common symbols (motor, buzzer) and invents or omits them ('I'll just write M in a box').<em>Next step: Supply the standard symbol key for motor and buzzer; match each and redraw.</em></div>
+<div class="misconception"><strong>More batteries, brighter bulb</strong>The first bulb was dim because the single cell was running low, and the second cell tops up the electricity it used ('refills the current').<em>Next step: Current isn't consumed — the same current flows into and out of the bulb; the extra cell adds energy/push (voltage), not a refill.</em></div>
+<div class="misconception"><strong>Why circuit components behave differently</strong>Sequential / local reasoning: 'the bulb nearest the battery is brighter because it gets the current first, before the other bulb takes its share'.<em>Next step: Show the two bulbs glow equally, then reverse the battery to show it still doesn't matter which is 'first'; establish current is equal everywhere in a series loop.</em></div>
+          <h3>Try at home (predict–observe–explain)</h3><p>Set up a bright two-cell series circuit, then ask the child to predict what happens to the brightness if you turn the second cell around to face the opposite way, AND why. …</p>
+          <h3>Activity ideas</h3><ul><li>Draw it with the object in hand, then build a shared symbol key</li><li>Produce a clean schematic from a real circuit</li><li>Two-way translation and the 'can someone else build it?' test</li><li>Interpret a diagram: read the switch and the loop before deciding what runs</li></ul>
+          
+          <h3>How this course works</h3>
+          <p>3 learning goals, 3 with research digests. Evidence of understanding comes from the child’s committed answers inside the games (the “Mission check” mode) — described for this session, not as a lasting grade. Research digests are assistive summaries and were generated with AI assistance; review before classroom use.</p>
+        </div>
+      </details>
+    </section>
+
+      <footer class="site-footer">
+        <div class="footer-credits">
+          <span><strong>Course data</strong> <a href="https://github.com/withmarbleapp/os-taxonomy" rel="noopener">Marble Skill Taxonomy</a> · ODbL-1.0 / CC-BY-SA-4.0</span>
+          <span><strong>Inquiry game patterns</strong> adapted from <a href="https://github.com/szkane/ib-pyp-html5-generator" rel="noopener">ib-pyp-html5-generator</a> and the Marble builder guidelines</span>
+          <span><strong>Type &amp; 3D</strong> <a href="../assets/fonts/OFL.txt" rel="noopener">Baloo 2 (SIL OFL)</a> · three.js (MIT)</span>
+        </div>
+        <div class="footer-note">Built for IB PYP inquiry · No accounts, no tracking · Child-facing pages stay offline-first</div>
+      </footer>
+  </div>
+
+  <script id="course-data" type="application/json">{"slug":"10-energy","title":"Energy","shortTitle":"Energy","subject":"Science","domain":"Energy","age":10,"grade":"G5","gradeLabel":"Grade 5","band":"upper","ageLabel":"Ages 10–12","draft":false,"homeReading":null,"summary":"Your child is learning how electricity works in circuits — understanding how batteries power different components like bulbs and buzzers, and how to draw circuit diagrams using proper symbols.","theme":"How the world works","centralIdea":"Energy flows through a complete circuit; more sources or fewer users change how bright it shines.","linesOfInquiry":["What exactly is energy?","How do “Drawing circuits with proper symbols” and “More batteries, brighter bulb” connect?","How can we use energy in our own lives?"],"keyConcepts":["Causation","Function","Change"],"learnerProfile":["Inquirers","Thinkers"],"atl":["Thinking skills","Research skills"],"emoji":"🔋","coverArt":["🔋","💡⚡"],"artPalette":["#FFE156","#FFB347","#4ECDC4","#FF6584"],"dark":false,"question":"Where does the light in a bulb come from?","kicker":"Energy · Science · Age 10","vocab":{"share":"Split into parts so everyone gets some.","equal":"Exactly the same in size or amount.","pattern":"A design or rule that repeats — like 2, 4, 6, 8.","data":"Information you collect, like counts or measurements.","predict":"Say what you think will happen before you try it.","fair":"Treating everyone or everything the same way.","compare":"Look at two or more things to see how they are alike or different.","sequence":"The order things happen in: first, next, last.","evidence":"Something you can point to that shows an idea is true.","investigate":"Look closely and try things to find answers.","circuit":"A complete loop that electricity flows around.","energy":"The power to make things happen — move, glow, heat.","battery":"A store of electrical energy."},"topics":[{"name":"Drawing circuits with proper symbols","desc":"Use recognised symbols when representing a simple circuit in a diagram, including cell, wire, bulb, switch, buzzer, and motor","evidence":["Draw a circuit diagram using standard symbols for at least five components","Interpret a circuit diagram drawn by someone else and describe what the circuit does","Convert between a physical circuit and its diagram representation"],"type":"REPRESENTATIONAL"},{"name":"More batteries, brighter bulb","desc":"Associate the brightness of a lamp or volume of a buzzer with the number and voltage of cells used in a series circuit","evidence":["Describe the pattern: more cells (or higher voltage) = brighter bulb / louder buzzer","Explain that more cells provide more energy to the circuit","Predict the effect of changing the number of cells on a component's behaviour"],"type":"CONCEPTUAL"},{"name":"Why circuit components behave differently","desc":"Compare and give reasons for variations in how circuit components function, including brightness of bulbs, loudness of buzzers, and switch positions","evidence":["Explain why adding more components in series reduces brightness/loudness (energy shared)","Compare circuits with different configurations and predict component behaviour","Give reasoned explanations for observed variations in component function"],"type":"CONCEPTUAL"}],"misconceptions":[{"topic":"Drawing circuits with proper symbols","pattern":"Doesn't know the less common symbols (motor, buzzer) and invents or omits them ('I'll just write M in a box').","nextMove":"Supply the standard symbol key for motor and buzzer; match each and redraw."},{"topic":"More batteries, brighter bulb","pattern":"The first bulb was dim because the single cell was running low, and the second cell tops up the electricity it used ('refills the current').","nextMove":"Current isn't consumed — the same current flows into and out of the bulb; the extra cell adds energy/push (voltage), not a refill."},{"topic":"Why circuit components behave differently","pattern":"Sequential / local reasoning: 'the bulb nearest the battery is brighter because it gets the current first, before the other bulb takes its share'.","nextMove":"Show the two bulbs glow equally, then reverse the battery to show it still doesn't matter which is 'first'; establish current is equal everywhere in a series loop."}],"activities":["Draw it with the object in hand, then build a shared symbol key","Produce a clean schematic from a real circuit","Two-way translation and the 'can someone else build it?' test","Interpret a diagram: read the switch and the loop before deciding what runs"],"poeTask":"Set up a bright two-cell series circuit, then ask the child to predict what happens to the brightness if you turn the second cell around to face the opposite way, AND why. …","modes":[{"engine":"concept-lab","phase":"explore","label":"Explore the lab","icon":"🔬","config":{"scene":"circuit","explorePrompt":"Add batteries and bulbs. The circuit only works as a complete loop.","cases":[{"prompt":"Give each of 3 bulbs MORE power than 1 battery each: 4 batteries, 3 bulbs.","targets":{"bat":4,"bulbs":3},"nudge":"Power per bulb: 4 ÷ 3 > 1.","support":"Batteries 4, bulbs 3.","why":"4 ÷ 3 ≈ 1.33 batteries per bulb — brighter than one each! Sharing power is a division story."},{"prompt":"Prove brightness follows the RATIO: 1 battery per bulb — 3 batteries, 3 bulbs.","targets":{"bat":3,"bulbs":3},"nudge":"Keep power per bulb equal.","support":"Both dials at 3 — same recipe as 1 and 1.","why":"1/1 and 3/3 give the same 1 battery per bulb — proportional brightness!"},{"prompt":"Find the setup where adding one MORE battery changes brightness the most.","rule":{"op":"diff","a":"bat","b":"bulbs","value":3,"minFirst":4},"nudge":"Biggest gap between batteries and bulbs!","support":"4 batteries, 1 bulb.","why":"4 − 1 = 3: the biggest surplus pushes the most energy through one bulb!"}]}},{"engine":"decision","phase":"understand","label":"Choice quest","icon":"🧭","config":{"meters":[{"id":"safe","label":"Safety","emoji":"🛡️","start":55},{"id":"energy","label":"Smart energy use","emoji":"⚡","start":50},{"id":"mood","label":"Engineering","emoji":"🔧","start":60}],"scenes":[{"text":"You are building a solar-powered fan for the greenhouse. 🔆","choices":[{"label":"Match the panel voltage to the motor, test in stages","meters":[["energy",30],["mood",15]],"reflect":"Energy conversion needs matching: source, load, and the losses between.","profile":"Thinker"},{"label":"Stack every battery you can find on it","meters":[["safe",-20],["energy",-15]],"reflect":"More power is not more design — motors burn when overfed."},{"label":"Wire it randomly until something spins","meters":[["safe",-25]],"reflect":"Trial and error without safety is a fire drill."}]},{"text":"One bulb with a resistor glows dim; the same bulb alone glows bright. 💡","choices":[{"label":"Investigate resistance — where is the energy going?","meters":[["energy",25],["mood",20]],"reflect":"The resistor eats energy as heat. That is not a bug — it is a feature with uses.","profile":"Inquirer"},{"label":"Decide the dim bulb is broken","meters":[["energy",-20]],"reflect":"Broken? It is behaving exactly as the circuit says."},{"label":"Never use resistors again","meters":[["energy",-15]],"reflect":"Resistors protect circuits — banning them breaks more than it fixes."}]}]}},{"engine":"flashcards","phase":"cards","label":"Word cards","icon":"🗂️","config":{"explorePrompt":"Walk the deck: tap a card to flip it, press Next word to keep going.","deck":[{"front":"Circuit symbols","back":"Use recognised symbols when representing a simple circuit in a diagram, including cell, wire, bulb, switch, buzzer, and motor","tryIt":"Draw a circuit diagram using standard symbols for at least five components","emoji":"💡"},{"front":"More batteries, brighter bulb","back":"Associate the brightness of a lamp or volume of a buzzer with the number and voltage of cells used in a series circuit","tryIt":"Describe the pattern: more cells (or higher voltage) = brighter bulb / louder buzzer","emoji":"⭐"},{"front":"Why parts act differently","back":"Compare and give reasons for variations in how circuit components function, including brightness of bulbs, loudness of buzzers, and switch positions","tryIt":"Explain why adding more components in series reduces brightness/loudness (energy shared)","emoji":"🌱"}]}},{"engine":"mission","phase":"consolidate","label":"Show what you know","icon":"🎯","config":{"bank":[{"concept":"Circuit symbols","prompt":"Draw a circuit diagram using standard symbols for at least five components","choices":[{"text":"Draw a circuit diagram using standard symbols for at least five components","correct":true,"why":"Yes! That is exactly what “Drawing circuits with proper symbols” is about."},{"text":"Describe the pattern: more cells (or higher voltage) = brighter bulb / louder buzzer","why":"That one belongs to “More batteries, brighter bulb”. Supply the standard symbol key for motor and buzzer; match each and redraw."},{"text":"Design a structure intended to reduce the warming effect of sunlight on an area","why":"That one belongs to “Building shade from the sun”. Supply the standard symbol key for motor and buzzer; match each and redraw."}]},{"concept":"More batteries, brighter bulb","prompt":"Describe the pattern: more cells (or higher voltage) = brighter bulb / louder buzzer","choices":[{"text":"Describe the pattern: more cells (or higher voltage) = brighter bulb / louder buzzer","correct":true,"why":"Yes! That is exactly what “More batteries, brighter bulb” is about."},{"text":"Draw a circuit diagram using standard symbols for at least five components","why":"That one belongs to “Drawing circuits with proper symbols”. Current isn't consumed — the same current flows into and out of the bulb; the extra cell adds energy/push (voltage), not a refill."},{"text":"Design a structure intended to reduce the warming effect of sunlight on an area","why":"That one belongs to “Building shade from the sun”. Current isn't consumed — the same current flows into and out of the bulb; the extra cell adds energy/push (voltage), not a refill."}]},{"concept":"Why parts act differently","prompt":"Explain why adding more components in series reduces brightness/loudness (energy shared)","choices":[{"text":"Explain why adding more components in series reduces brightness/loudness (energy shared)","correct":true,"why":"Yes! That is exactly what “Why circuit components behave differently” is about."},{"text":"Design a structure intended to reduce the warming effect of sunlight on an area","why":"That one belongs to “Building shade from the sun”. Show the two bulbs glow equally, then reverse the battery to show it still doesn't matter which is 'first'; establish current is equal everywhere in a series loop."},{"text":"Observe that surfaces in sunlight feel warmer than those in shade","why":"That one belongs to “Sunlight warms things up”. Show the two bulbs glow equally, then reverse the battery to show it still doesn't matter which is 'first'; establish current is equal everywhere in a series loop."}]}]}}],"stats":{"topicCount":3,"researchCount":3}}</script>
+<script src="../assets/vendor/rough.js"></script>
+<script src="../assets/js/story-actors.js"></script>
+<script src="../assets/js/cover-art.js"></script>
+<script src="../assets/js/scenes.js"></script>
+<script src="../assets/vendor/konva.min.js"></script>
+<script src="../assets/vendor/lottie.min.js"></script>
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/engines/concept-lab.js"></script>
+<script src="../assets/js/engines/decision.js"></script>
+<script src="../assets/js/engines/flashcards.js"></script>
+<script src="../assets/js/engines/mission.js"></script>
+  <script>
+    // Adult panel toggle — collapsed by default; the child never needs it.
+    (function () {
+      var toggle = document.getElementById('adultToggle');
+      var panel = document.getElementById('adultPanel');
+      toggle.addEventListener('click', function () {
+        var open = panel.hasAttribute('hidden');
+        if (open) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      var speakBtn = document.getElementById('btnSpeakSummary');
+      speakBtn.addEventListener('click', function () {
+        var data = JSON.parse(document.getElementById('course-data').textContent);
+        speakBtn.classList.add('speaking');
+        PYP.TTS_MANAGER.speak(data.title + '. ' + data.summary, function () { speakBtn.classList.remove('speaking'); }, speakBtn);
+      });
+    })();
+  </script>
+</body>
+</html>

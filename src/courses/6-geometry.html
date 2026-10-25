@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geometry · Age 6 · PYP Marble Courses</title>
+  <meta name="description" content="Your child is discovering the world of shapes — identifying properties of 2D and 3D shapes, learning how to combine shapes to make new ones, and describing positions and movements using mathematical language." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%220.9em%22%20font-size%3D%2290%22%3E%E2%AC%A1%3C%2Ftext%3E%3C%2Fsvg%3E" />
+  <link rel="stylesheet" href="../assets/css/pyp.css" />
+  <link rel="stylesheet" href="../assets/css/stage.css" />
+</head>
+<body>
+  <div class="container pyp-chrome">
+    <nav class="nav-bar">
+      <div class="nav-left">
+        <a class="pyp-map-link" href="../index.html">← All courses</a>
+        <span class="unit-tag unit-tag--subject-mathematics">⬡ Mathematics</span>
+        <span class="unit-tag unit-tag--theme">Age 6</span>
+      </div>
+      <div class="nav-right">
+
+      <!-- TTS accent control (top right) -->
+      <div class="tts-dropdown-wrap" id="ttsDropdownWrap">
+        <button type="button" class="tts-trigger" id="ttsTrigger" aria-haspopup="menu" aria-expanded="false" title="Select voice accent">
+          <span class="tts-trigger-flag" id="ttsFlag">🇬🇧</span>
+          <span class="tts-trigger-label" id="ttsLabel">Voice</span>
+          <span class="tts-arrow">▾</span>
+        </button>
+        <div class="tts-menu" id="ttsMenu" role="menu">
+          <div class="tts-menu-header">Select voice accent</div>
+          <div class="tts-radio-group" id="ttsRadioList" role="radiogroup"></div>
+        </div>
+      </div>
+        <button type="button" class="btn btn--white grownups-toggle" id="adultToggle" aria-expanded="false" aria-controls="adultPanel">👩‍🏫 Grown-ups</button>
+      </div>
+    </nav>
+
+    <main class="child-zone" aria-label="Play Geometry">
+      <section class="marble-learning" id="marbleStage" data-band="early" aria-label="Interactive course stage"></section>
+    </main>
+
+    <section class="adult-panel" id="adultPanel" hidden>
+      <div class="adult-panel-head">
+        <h2>👩‍🏫 For grown-ups</h2>
+        <p class="adult-panel-sub">Unit framing, learning goals and teaching notes — kept out of the child’s play space by default. <button type="button" class="btn-speaker" id="btnSpeakSummary" aria-label="Read the course summary aloud">🔊</button></p>
+      </div>
+
+      <section class="card uoi-card" aria-label="Unit of inquiry">
+        <div class="uoi-grid">
+          <div class="uoi-cell">
+            <h3>🌐 Transdisciplinary theme</h3>
+            <p>How the world works</p>
+          </div>
+          <div class="uoi-cell">
+            <h3>💡 Central idea (suggested)</h3>
+            <p>Shapes are defined by their sides and corners — count them and you can name any shape.</p>
+          </div>
+          <div class="uoi-cell">
+            <h3>🧭 Lines of inquiry (suggested)</h3>
+            <ul>
+              <li>What exactly is geometry?</li>
+            <li>How do “Position, direction, and movement” and “2-D shapes (age 6+)” connect?</li>
+            <li>How can we use geometry in our own lives?</li>
+            </ul>
+          </div>
+          <div class="uoi-cell">
+            <h3>🔑 Key concepts</h3>
+            <div class="chip-row"><span class="chip">Form</span><span class="chip">Function</span><span class="chip">Connection</span></div>
+          </div>
+          <div class="uoi-cell">
+            <h3>🌱 Learner profile</h3>
+            <div class="chip-row"><span class="chip">Knowledgeable</span><span class="chip">Thinkers</span></div>
+          </div>
+          <div class="uoi-cell">
+            <h3>🛠️ ATL skills</h3>
+            <div class="chip-row"><span class="chip">Thinking skills</span><span class="chip">Self-management skills</span></div>
+          </div>
+        </div>
+        <p class="uoi-note">PYP framing is a suggested mapping from the subject and domain — align it with your school’s programme of inquiry. Learning goals come from the Marble Skill Taxonomy.</p>
+      </section>
+
+      <section class="card learn-card" aria-label="What you will learn">
+        <h2>🎯 What you’ll learn</h2>
+        <ul class="learn-list">
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Position, direction, and movement</strong> — Use mathematical vocabulary to describe position, direction, and movement, including straight lines and distinguishing rotation as a turn in terms of right angles …</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>2-D shapes (age 6+)</strong> — Identify and describe properties of 2-D shapes including the number of sides and line symmetry in a vertical line</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Defining attributes of shapes</strong> — Distinguish defining attributes of shapes (e.g. triangles are closed and three-sided) from non-defining attributes (e.g. colour, orientation, overall size)</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Understanding angles</strong> — Recognise angles as a property of shape or a description of a turn</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Edges, vertices, and faces</strong> — Identify and describe properties of 3-D shapes including the number of edges, vertices, and faces</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Sorting 2-D and 3-D shapes</strong> — Compare and sort common 2-D and 3-D shapes and everyday objects by their properties</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Lines of symmetry</strong> — Complete a simple symmetric figure with respect to a specific line of symmetry</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Building with 3-D Shapes</strong> — Compose three-dimensional shapes (cubes, right rectangular prisms, right circular cones, right circular cylinders) and create composite shapes; build new shapes from …</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Composing Shapes</strong> — Compose two-dimensional shapes (rectangles, squares, trapezoids, triangles, half-circles, quarter-circles) to create composite shapes, and compose new shapes from the …</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>2-D faces on 3-D shapes</strong> — Identify 2-D shapes on the surface of 3-D shapes (e.g. a circle on a cylinder, a triangle on a pyramid)</span></li>
+        </ul>
+      </section>
+
+      <details class="grownups" open>
+        <summary>📖 Goals, common misconceptions &amp; printable ideas</summary>
+        <div class="grownups-body">
+          <h3>Learning goal</h3>
+          <p>Your child is discovering the world of shapes — identifying properties of 2D and 3D shapes, learning how to combine shapes to make new ones, and describing positions and movements using mathematical language.</p>
+          <h3>Common misconceptions (from teaching research)</h3>
+          <div class="misconception"><strong>Position, direction, and movement</strong>Turns anti-clockwise when told clockwise (or treats the two as the same) — the new convention not yet stable ('clockwise... this way?')<em>Next step: Return to a real clock's hand direction as the anchor and label both ways explicitly each time.</em></div>
+<div class="misconception"><strong>2-D shapes (age 6+)</strong>Believes any line that divides a shape into two equal/congruent parts is a line of symmetry — accepts the rectangle's diagonal 'because it makes two triangles the same'.<em>Next step: Cut out the rectangle and fold along the diagonal — the halves do not land on each other, a corner overhangs; contrast with folding along the vertical midline where they coincide exactly. Establish: a line of symmetry is a fold where the halves MATCH, not just where the pieces are the same size.</em></div>
+<div class="misconception"><strong>Defining attributes of shapes</strong>Treats orientation as defining (an 'imposed attribute'): a rotated square is a 'diamond'; a triangle 'must' sit on a horizontal base<em>Next step: Rotate the SAME cut-out slowly — 'is it still a square now? and now?' — so the child sees the four equal sides and square corners do not change as it turns; name orientation as a 'doesn't-matter'.</em></div>
+<div class="misconception"><strong>Understanding angles</strong>The angle with the longer lines is bigger ('these lines are longer, so it's a bigger angle')<em>Next step: Overlay the two angles vertex-on-vertex with one arm aligned so the openings coincide; show the arms differ in length but the opening is identical. Return to the hinge model, lengthening the arms with the opening held fixed.</em></div>
+<div class="misconception"><strong>Edges, vertices, and faces</strong>Blurs the three properties, using 'side' or 'corner' loosely so face, edge and vertex run together when counting.<em>Next step: Count by touch in a fixed order — colour each face, trace each edge, dot each vertex — naming the property each time, so the three stay distinct.</em></div>
+<div class="misconception"><strong>Sorting 2-D and 3-D shapes</strong>Sorts by a non-defining feature — colour, size or 'the pretty ones' — rather than a geometric property.<em>Next step: Restrict the collection to a single colour and size so appearance cannot be the criterion, forcing attention to a property; model a property rule aloud ('I'm putting all the ones with a curved surface here').</em></div>
+          <h3>Try at home (predict–observe–explain)</h3><p>Hold up a cut-out non-square rectangle. 'Predict: if we fold this rectangle exactly along its diagonal, corner to corner, will the two halves land exactly on top of each other? Say yes or no before we fold.' A child who equates congruence with symmetry predicts YES (two identical triangles). …</p>
+          <h3>Activity ideas</h3><ul><li>Clockwise, anti-clockwise and the right angle a quarter turn leaves</li><li>Give and follow a multi-step route that someone else can act on</li><li>Check and sort turn and route language</li><li>Fold test: does each half land on the other?</li></ul>
+          
+          <h3>How this course works</h3>
+          <p>10 learning goals, 10 with research digests. Evidence of understanding comes from the child’s committed answers inside the games (the “Mission check” mode) — described for this session, not as a lasting grade. Research digests are assistive summaries and were generated with AI assistance; review before classroom use.</p>
+        </div>
+      </details>
+    </section>
+
+      <footer class="site-footer">
+        <div class="footer-credits">
+          <span><strong>Course data</strong> <a href="https://github.com/withmarbleapp/os-taxonomy" rel="noopener">Marble Skill Taxonomy</a> · ODbL-1.0 / CC-BY-SA-4.0</span>
+          <span><strong>Inquiry game patterns</strong> adapted from <a href="https://github.com/szkane/ib-pyp-html5-generator" rel="noopener">ib-pyp-html5-generator</a> and the Marble builder guidelines</span>
+          <span><strong>Type &amp; 3D</strong> <a href="../assets/fonts/OFL.txt" rel="noopener">Baloo 2 (SIL OFL)</a> · three.js (MIT)</span>
+        </div>
+        <div class="footer-note">Built for IB PYP inquiry · No accounts, no tracking · Child-facing pages stay offline-first</div>
+      </footer>
+  </div>
+
+  <script id="course-data" type="application/json">{"slug":"6-geometry","title":"Geometry","shortTitle":"Geometry","subject":"Mathematics","domain":"Geometry","age":6,"grade":"G1","gradeLabel":"Grade 1","band":"early","ageLabel":"Ages 6–10","draft":false,"homeReading":null,"summary":"Your child is discovering the world of shapes — identifying properties of 2D and 3D shapes, learning how to combine shapes to make new ones, and describing positions and movements using mathematical language.","theme":"How the world works","centralIdea":"Shapes are defined by their sides and corners — count them and you can name any shape.","linesOfInquiry":["What exactly is geometry?","How do “Position, direction, and movement” and “2-D shapes (age 6+)” connect?","How can we use geometry in our own lives?"],"keyConcepts":["Form","Function","Connection"],"learnerProfile":["Knowledgeable","Thinkers"],"atl":["Thinking skills","Self-management skills"],"emoji":"⬡","coverArt":["⬡","🔺🟦"],"artPalette":["#4ECDC4","#B388FF","#FFE156","#FF6584"],"dark":false,"question":"What makes a shape a shape?","kicker":"Geometry · Mathematics · Age 6","vocab":{"share":"Split into parts so everyone gets some.","equal":"Exactly the same in size or amount.","pattern":"A design or rule that repeats — like 2, 4, 6, 8.","data":"Information you collect, like counts or measurements.","predict":"Say what you think will happen before you try it.","fair":"Treating everyone or everything the same way.","compare":"Look at two or more things to see how they are alike or different.","sequence":"The order things happen in: first, next, last.","evidence":"Something you can point to that shows an idea is true.","investigate":"Look closely and try things to find answers.","side":"A straight edge of a shape.","corner":"The point where two sides meet.","hexagon":"A shape with 6 sides.","triangle":"A shape with 3 sides."},"topics":[{"name":"Position, direction, and movement","desc":"Use mathematical vocabulary to describe position, direction, and movement, including straight lines and distinguishing rotation as a turn in terms of right angles …","evidence":["Use terms such as clockwise, anti-clockwise, quarter turn, half turn, three-quarter turn","Describe a right angle as a quarter turn","Give and follow directions involving straight-line movement and turns"],"type":"LANGUAGE"},{"name":"2-D shapes (age 6+)","desc":"Identify and describe properties of 2-D shapes including the number of sides and line symmetry in a vertical line","evidence":["Count the number of sides of a given 2-D shape","Identify whether a 2-D shape has a vertical line of symmetry","Use properties (number of sides, symmetry) to describe and distinguish between shapes"],"type":"CONCEPTUAL"},{"name":"Defining attributes of shapes","desc":"Distinguish defining attributes of shapes (e.g. triangles are closed and three-sided) from non-defining attributes (e.g. colour, orientation, overall size)","evidence":["Build and draw shapes that possess defining attributes","Identify that a shape remains a triangle regardless of its size, colour, or orientation","Explain why a given shape is or is not a particular type based on its defining properties"],"type":"CONCEPTUAL"},{"name":"Understanding angles","desc":"Recognise angles as a property of shape or a description of a turn","evidence":["Identify angles at the corners of 2-D shapes","Describe a turn (e.g. quarter turn, half turn) in terms of the angle made","Explain that an angle measures the amount of turn between two lines meeting at a point"],"type":"CONCEPTUAL"},{"name":"Edges, vertices, and faces","desc":"Identify and describe properties of 3-D shapes including the number of edges, vertices, and faces","evidence":["Count the edges, vertices, and faces of common 3-D shapes","Use the terms edge, vertex (vertices), and face correctly","Describe a 3-D shape by its properties (e.g. a cube has 6 faces, 12 edges, 8 vertices)"],"type":"CONCEPTUAL"},{"name":"Sorting 2-D and 3-D shapes","desc":"Compare and sort common 2-D and 3-D shapes and everyday objects by their properties","evidence":["Sort a collection of 2-D shapes by number of sides","Sort 3-D shapes by number of faces or whether faces are flat/curved","Explain criteria used to sort a group of shapes"],"type":"PROCEDURAL"},{"name":"Lines of symmetry","desc":"Complete a simple symmetric figure with respect to a specific line of symmetry","evidence":["Given half a butterfly shape and a mirror line, complete the other half on a grid","Complete a symmetric pattern on squared paper with a vertical line of symmetry","Check a completed figure by folding along the mirror line"],"type":"PROCEDURAL"},{"name":"Building with 3-D Shapes","desc":"Compose three-dimensional shapes (cubes, right rectangular prisms, right circular cones, right circular cylinders) and create composite shapes; build new shapes from …","evidence":["Stack cubes and prisms, or combine 3-D shapes (e.g. a cone on top of a cylinder), to build towers, structures and new solids","Describe a composite 3-D shape in terms of its component shapes","Build a structure whose two halves match and show where it divides into the matching halves"],"type":"PROCEDURAL"},{"name":"Composing Shapes","desc":"Compose two-dimensional shapes (rectangles, squares, trapezoids, triangles, half-circles, quarter-circles) to create composite shapes, and compose new shapes from the …","evidence":["Combine two triangles to form a rectangle or larger triangle","Put together half-circles and quarter-circles to form circles or new shapes","Decompose a composite shape and describe which simpler shapes make it up"],"type":"PROCEDURAL"},{"name":"2-D faces on 3-D shapes","desc":"Identify 2-D shapes on the surface of 3-D shapes (e.g. a circle on a cylinder, a triangle on a pyramid)","evidence":["Point out a circular face on a cylinder or cone","Identify triangular faces on a pyramid","Recognise that the faces of 3-D shapes are 2-D shapes"],"type":"CONCEPTUAL"}],"misconceptions":[{"topic":"Position, direction, and movement","pattern":"Turns anti-clockwise when told clockwise (or treats the two as the same) — the new convention not yet stable ('clockwise... this way?')","nextMove":"Return to a real clock's hand direction as the anchor and label both ways explicitly each time."},{"topic":"2-D shapes (age 6+)","pattern":"Believes any line that divides a shape into two equal/congruent parts is a line of symmetry — accepts the rectangle's diagonal 'because it makes two triangles the same'.","nextMove":"Cut out the rectangle and fold along the diagonal — the halves do not land on each other, a corner overhangs; contrast with folding along the vertical midline where they coincide exactly. Establish: a line of symmetry is a fold where the halves MATCH, not just where the pieces are the same size."},{"topic":"Defining attributes of shapes","pattern":"Treats orientation as defining (an 'imposed attribute'): a rotated square is a 'diamond'; a triangle 'must' sit on a horizontal base","nextMove":"Rotate the SAME cut-out slowly — 'is it still a square now? and now?' — so the child sees the four equal sides and square corners do not change as it turns; name orientation as a 'doesn't-matter'."},{"topic":"Understanding angles","pattern":"The angle with the longer lines is bigger ('these lines are longer, so it's a bigger angle')","nextMove":"Overlay the two angles vertex-on-vertex with one arm aligned so the openings coincide; show the arms differ in length but the opening is identical. Return to the hinge model, lengthening the arms with the opening held fixed."},{"topic":"Edges, vertices, and faces","pattern":"Blurs the three properties, using 'side' or 'corner' loosely so face, edge and vertex run together when counting.","nextMove":"Count by touch in a fixed order — colour each face, trace each edge, dot each vertex — naming the property each time, so the three stay distinct."},{"topic":"Sorting 2-D and 3-D shapes","pattern":"Sorts by a non-defining feature — colour, size or 'the pretty ones' — rather than a geometric property.","nextMove":"Restrict the collection to a single colour and size so appearance cannot be the criterion, forcing attention to a property; model a property rule aloud ('I'm putting all the ones with a curved surface here')."}],"activities":["Clockwise, anti-clockwise and the right angle a quarter turn leaves","Give and follow a multi-step route that someone else can act on","Check and sort turn and route language","Fold test: does each half land on the other?"],"poeTask":"Hold up a cut-out non-square rectangle. 'Predict: if we fold this rectangle exactly along its diagonal, corner to corner, will the two halves land exactly on top of each other? Say yes or no before we fold.' A child who equates congruence with symmetry predicts YES (two identical triangles). …","modes":[{"engine":"concept-lab","phase":"explore","label":"Explore the lab","icon":"🔬","config":{"scene":"shape","explorePrompt":"Turn the dial to grow the shape. Watch sides and corners appear together.","cases":[{"prompt":"Make a triangle.","targets":{"sides":3},"nudge":"Tri means three!","support":"Set sides to 3.","why":"3 sides, 3 corners — a triangle. The smallest shape a line can build!"},{"prompt":"Make a shape with 4 sides.","targets":{"sides":4},"nudge":"Count the sides as they appear.","support":"Set sides to 4.","why":"4 sides and 4 corners — any 4-sided shape is a quadrilateral!"},{"prompt":"Make the shape that looks the most like a circle.","targets":{"sides":10},"nudge":"More sides = rounder!","support":"Push the dial to 10.","why":"10 sides already looks round. A circle is like a shape with endless sides!"}]}},{"engine":"flashcards","phase":"cards","label":"Word cards","icon":"🗂️","config":{"explorePrompt":"We will meet every word one by one. Tap the card to flip it!","deck":[{"front":"Where? Which way?","back":"Use terms such as clockwise, anti-clockwise, quarter turn, half turn, three-quarter turn","tryIt":"","emoji":"💡"},{"front":"2-D shapes","back":"Count the number of sides of a given 2-D shape","tryIt":"","emoji":"⭐"},{"front":"Defining attributes of shapes","back":"Build and draw shapes that possess defining attributes","tryIt":"","emoji":"🌱"},{"front":"Understanding angles","back":"Identify angles at the corners of 2-D shapes","tryIt":"","emoji":"🎯"},{"front":"Edges, vertices, and faces","back":"Count the edges, vertices, and faces of common 3-D shapes","tryIt":"","emoji":"🧩"},{"front":"Sorting 2-D and 3-D shapes","back":"Sort a collection of 2-D shapes by number of sides","tryIt":"","emoji":"🔧"},{"front":"Lines of symmetry","back":"Given half a butterfly shape and a mirror line, complete the other half on a grid","tryIt":"","emoji":"🌈"},{"front":"Building with 3-D Shapes","back":"Stack cubes and prisms, or combine 3-D shapes (e.g.","tryIt":"","emoji":"🔍"}]}},{"engine":"arcade","phase":"practice","label":"Speed sprint","icon":"⚡","config":{"items":[{"prompt":"How many sides does a triangle have?","choices":[{"text":"3","correct":true},{"text":"4"}],"why":"Tri means three!"},{"prompt":"How many sides does a square have?","choices":[{"text":"4","correct":true},{"text":"3"}],"why":"Four equal sides."},{"prompt":"How many sides does a pentagon have?","choices":[{"text":"5","correct":true},{"text":"6"}],"why":"Pent = five, like the Pentagon building."},{"prompt":"How many sides does a hexagon have?","choices":[{"text":"6","correct":true},{"text":"5"}],"why":"Hex = six — honeycomb cells are hexagons."},{"prompt":"How many sides does an octagon have?","choices":[{"text":"8","correct":true},{"text":"6"}],"why":"Oct = eight, like an octopus."},{"prompt":"How many corners does a square have?","choices":[{"text":"4","correct":true},{"text":"2"}],"why":"Sides and corners always match."},{"prompt":"Which shape has 3 corners?","choices":[{"text":"Triangle","correct":true},{"text":"Square"}],"why":"Triangle: 3 sides, 3 corners."},{"prompt":"Which shape is round with no corners?","choices":[{"text":"Circle","correct":true},{"text":"Triangle"}],"why":"A circle is one curved line."}],"seconds":60,"emoji":"⬡"}},{"engine":"mission","phase":"consolidate","label":"Show what you know","icon":"🎯","config":{"bank":[{"concept":"Where? Which way?","prompt":"Use terms such as clockwise, anti-clockwise, quarter turn, half turn, three-quarter turn","choices":[{"text":"Use terms such as clockwise, anti-clockwise, quarter turn, half turn, three-quarter turn","correct":true,"why":"Yes! That is exactly what “Position, direction, and movement” is about."},{"text":"Count the number of sides of a given 2-D shape","why":"That one belongs to “2-D shapes (age 6+)”. Return to a real clock's hand direction as the anchor and label both ways explicitly each time."},{"text":"Build and draw shapes that possess defining attributes","why":"That one belongs to “Defining attributes of shapes”. Return to a real clock's hand direction as the anchor and label both ways explicitly each time."}]},{"concept":"2-D shapes","prompt":"Count the number of sides of a given 2-D shape","choices":[{"text":"Count the number of sides of a given 2-D shape","correct":true,"why":"Yes! That is exactly what “2-D shapes (age 6+)” is about."},{"text":"Use terms such as clockwise, anti-clockwise, quarter turn, half turn, three-quarter turn","why":"That one belongs to “Position, direction, and movement”. Cut out the rectangle and fold along the diagonal — the halves do not land on each other, a corner overhangs; contrast with folding along the vertical midline where they coincide exactly. Establish: a line of symmetry is a fold where the halves MATCH, not just where the pieces are the same size."},{"text":"Identify angles at the corners of 2-D shapes","why":"That one belongs to “Understanding angles”. Cut out the rectangle and fold along the diagonal — the halves do not land on each other, a corner overhangs; contrast with folding along the vertical midline where they coincide exactly. Establish: a line of symmetry is a fold where the halves MATCH, not just where the pieces are the same size."}]},{"concept":"Defining attributes of shapes","prompt":"Build and draw shapes that possess defining attributes","choices":[{"text":"Build and draw shapes that possess defining attributes","correct":true,"why":"Yes! That is exactly what “Defining attributes of shapes” is about."},{"text":"Use terms such as clockwise, anti-clockwise, quarter turn, half turn, three-quarter turn","why":"That one belongs to “Position, direction, and movement”. Rotate the SAME cut-out slowly — 'is it still a square now? and now?' — so the child sees the four equal sides and square corners do not change as it turns; name orientation as a 'doesn't-matter'."},{"text":"Given half a butterfly shape and a mirror line, complete the other half on a grid","why":"That one belongs to “Lines of symmetry”. Rotate the SAME cut-out slowly — 'is it still a square now? and now?' — so the child sees the four equal sides and square corners do not change as it turns; name orientation as a 'doesn't-matter'."}]},{"concept":"Understanding angles","prompt":"Identify angles at the corners of 2-D shapes","choices":[{"text":"Identify angles at the corners of 2-D shapes","correct":true,"why":"Yes! That is exactly what “Understanding angles” is about."},{"text":"Use terms such as clockwise, anti-clockwise, quarter turn, half turn, three-quarter turn","why":"That one belongs to “Position, direction, and movement”. Overlay the two angles vertex-on-vertex with one arm aligned so the openings coincide; show the arms differ in length but the opening is identical. Return to the hinge model, lengthening the arms with the opening held fixed."},{"text":"Count the number of sides of a given 2-D shape","why":"That one belongs to “2-D shapes (age 6+)”. Overlay the two angles vertex-on-vertex with one arm aligned so the openings coincide; show the arms differ in length but the opening is identical. Return to the hinge model, lengthening the arms with the opening held fixed."}]}]}}],"stats":{"topicCount":10,"researchCount":10}}</script>
+<script src="../assets/vendor/rough.js"></script>
+<script src="../assets/js/story-actors.js"></script>
+<script src="../assets/js/cover-art.js"></script>
+<script src="../assets/js/scenes.js"></script>
+<script src="../assets/vendor/konva.min.js"></script>
+<script src="../assets/vendor/lottie.min.js"></script>
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/engines/concept-lab.js"></script>
+<script src="../assets/js/engines/flashcards.js"></script>
+<script src="../assets/js/engines/arcade.js"></script>
+<script src="../assets/js/engines/mission.js"></script>
+  <script>
+    // Adult panel toggle — collapsed by default; the child never needs it.
+    (function () {
+      var toggle = document.getElementById('adultToggle');
+      var panel = document.getElementById('adultPanel');
+      toggle.addEventListener('click', function () {
+        var open = panel.hasAttribute('hidden');
+        if (open) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      var speakBtn = document.getElementById('btnSpeakSummary');
+      speakBtn.addEventListener('click', function () {
+        var data = JSON.parse(document.getElementById('course-data').textContent);
+        speakBtn.classList.add('speaking');
+        PYP.TTS_MANAGER.speak(data.title + '. ' + data.summary, function () { speakBtn.classList.remove('speaking'); }, speakBtn);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Algebra · Age 10 · PYP Marble Courses</title>
+  <meta name="description" content="Your child is beginning to work with algebra — using letters to represent unknown numbers, creating and following rules for number patterns, and translating word problems into mathematical equations." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%220.9em%22%20font-size%3D%2290%22%3E%F0%9F%94%BA%3C%2Ftext%3E%3C%2Fsvg%3E" />
+  <link rel="stylesheet" href="../assets/css/pyp.css" />
+  <link rel="stylesheet" href="../assets/css/stage.css" />
+</head>
+<body>
+  <div class="container pyp-chrome">
+    <nav class="nav-bar">
+      <div class="nav-left">
+        <a class="pyp-map-link" href="../index.html">← All courses</a>
+        <span class="unit-tag unit-tag--subject-mathematics">🔺 Mathematics</span>
+        <span class="unit-tag unit-tag--theme">Age 10</span>
+      </div>
+      <div class="nav-right">
+
+      <!-- TTS accent control (top right) -->
+      <div class="tts-dropdown-wrap" id="ttsDropdownWrap">
+        <button type="button" class="tts-trigger" id="ttsTrigger" aria-haspopup="menu" aria-expanded="false" title="Select voice accent">
+          <span class="tts-trigger-flag" id="ttsFlag">🇬🇧</span>
+          <span class="tts-trigger-label" id="ttsLabel">Voice</span>
+          <span class="tts-arrow">▾</span>
+        </button>
+        <div class="tts-menu" id="ttsMenu" role="menu">
+          <div class="tts-menu-header">Select voice accent</div>
+          <div class="tts-radio-group" id="ttsRadioList" role="radiogroup"></div>
+        </div>
+      </div>
+        <button type="button" class="btn btn--white grownups-toggle" id="adultToggle" aria-expanded="false" aria-controls="adultPanel">👩‍🏫 Grown-ups</button>
+      </div>
+    </nav>
+
+    <main class="child-zone" aria-label="Play Algebra">
+      <section class="marble-learning" id="marbleStage" data-band="upper" aria-label="Interactive course stage"></section>
+    </main>
+
+    <section class="adult-panel" id="adultPanel" hidden>
+      <div class="adult-panel-head">
+        <h2>👩‍🏫 For grown-ups</h2>
+        <p class="adult-panel-sub">Unit framing, learning goals and teaching notes — kept out of the child’s play space by default. <button type="button" class="btn-speaker" id="btnSpeakSummary" aria-label="Read the course summary aloud">🔊</button></p>
+      </div>
+
+      <section class="card uoi-card" aria-label="Unit of inquiry">
+        <div class="uoi-grid">
+          <div class="uoi-cell">
+            <h3>🌐 Transdisciplinary theme</h3>
+            <p>How the world works</p>
+          </div>
+          <div class="uoi-cell">
+            <h3>💡 Central idea (suggested)</h3>
+            <p>Patterns follow rules; finding the rule lets you predict what comes next.</p>
+          </div>
+          <div class="uoi-cell">
+            <h3>🧭 Lines of inquiry (suggested)</h3>
+            <ul>
+              <li>What exactly is algebra?</li>
+            <li>How do “Using Simple Formulae” and “Writing Algebraic Equations” connect?</li>
+            <li>How can we use algebra in our own lives?</li>
+            </ul>
+          </div>
+          <div class="uoi-cell">
+            <h3>🔑 Key concepts</h3>
+            <div class="chip-row"><span class="chip">Form</span><span class="chip">Function</span><span class="chip">Connection</span></div>
+          </div>
+          <div class="uoi-cell">
+            <h3>🌱 Learner profile</h3>
+            <div class="chip-row"><span class="chip">Knowledgeable</span><span class="chip">Thinkers</span></div>
+          </div>
+          <div class="uoi-cell">
+            <h3>🛠️ ATL skills</h3>
+            <div class="chip-row"><span class="chip">Thinking skills</span><span class="chip">Self-management skills</span></div>
+          </div>
+        </div>
+        <p class="uoi-note">PYP framing is a suggested mapping from the subject and domain — align it with your school’s programme of inquiry. Learning goals come from the Marble Skill Taxonomy.</p>
+      </section>
+
+      <section class="card learn-card" aria-label="What you will learn">
+        <h2>🎯 What you’ll learn</h2>
+        <ul class="learn-list">
+<li><span class="learn-emoji" aria-hidden="true">🔺</span><span><strong>Using Simple Formulae</strong> — Use simple formulae expressed in words or symbols to calculate values (e.g. perimeter = 2 × (length + width))</span></li>
+<li><span class="learn-emoji" aria-hidden="true">🔺</span><span><strong>Writing Algebraic Equations</strong> — Express missing number problems algebraically using letters for unknowns; translate word problems into equations</span></li>
+<li><span class="learn-emoji" aria-hidden="true">🔺</span><span><strong>Number Pattern Relationships</strong> — Generate two numerical patterns using two given rules; identify relationships between corresponding terms; form ordered pairs and graph them on a coordinate plane</span></li>
+<li><span class="learn-emoji" aria-hidden="true">🔺</span><span><strong>Equations with Two Unknowns</strong> — Find pairs of numbers that satisfy an equation with two unknowns (e.g. find pairs (a, b) where a + b = 10 or 2a + b = 15)</span></li>
+<li><span class="learn-emoji" aria-hidden="true">🔺</span><span><strong>Linear number sequences</strong> — Generate and describe constant-step (linear) number sequences whose terms include negative values (counting through and past zero) or whose step is a decimal, using …</span></li>
+<li><span class="learn-emoji" aria-hidden="true">🔺</span><span><strong>Systematic Listing</strong> — Enumerate possibilities of combinations of two variables systematically (e.g. all ways to choose from a set of options)</span></li>
+<li><span class="learn-emoji" aria-hidden="true">🔺</span><span><strong>Designing number algorithms</strong> — Design and use algorithms with a sequence of steps, decisions with several alternatives (if / else-if / else) and repetition that apply rules to generate sets of …</span></li>
+        </ul>
+      </section>
+
+      <details class="grownups" open>
+        <summary>📖 Goals, common misconceptions &amp; printable ideas</summary>
+        <div class="grownups-body">
+          <h3>Learning goal</h3>
+          <p>Your child is beginning to work with algebra — using letters to represent unknown numbers, creating and following rules for number patterns, and translating word problems into mathematical equations.</p>
+          <h3>Common misconceptions (from teaching research)</h3>
+          <div class="misconception"><strong>Using Simple Formulae</strong>Omits the ½ in a triangle's area — computes base × height and stops, giving the rectangle's area.<em>Next step: Show the triangle as exactly half its enclosing rectangle by cutting/folding; stress that every operation written in the formula must be carried out.</em></div>
+<div class="misconception"><strong>Writing Algebraic Equations</strong>Reversal error by word-order matching — writes 4c = d for '4 times as many cats as dogs', mapping the words straight onto symbols left-to-right.<em>Next step: Anchor to quantities: 'if there are 3 dogs, how many cats?' (12). Does 4c = d give that? Build a small table of values BEFORE writing the equation, then read the equation aloud to check it matches.</em></div>
+<div class="misconception"><strong>Number Pattern Relationships</strong>Compares the two sequences additively — 'Rule B is 6 more than Rule A' — instead of multiplicatively ('twice')<em>Next step: Line up several corresponding pairs and ask 'is the gap the same or growing?'; the ×2 ratio is constant while the difference grows — compare 'how many times' not 'how many more', supported by a tape diagram</em></div>
+<div class="misconception"><strong>Equations with Two Unknowns</strong>Treats it like a single-answer equation — finds ONE pair and stops, as if a and b are unique unknowns to be solved for<em>Next step: Show it is a whole family of solutions — 'is there another pair? and another?'; fix a and step it through its values to reveal them all</em></div>
+<div class="misconception"><strong>Linear number sequences</strong>Thinks the sequence 'stops' at zero — that you cannot go below zero or that negative numbers are not real, so 5, 3, 1 halts or ends at 0<em>Next step: Confront with a temperature scale / number line with zero central and keep the equal hop going; below-zero numbers are real positions to the left of zero</em></div>
+<div class="misconception"><strong>Systematic Listing</strong>Lists haphazardly — random pairings, so meals are missed or duplicated and completeness cannot be judged<em>Next step: Hold one category fixed and run through the other in order; record in a grid so gaps show — 'found them all because I worked systematically'</em></div>
+          
+          <h3>Activity ideas</h3><ul><li>Formula-on-a-shape: watch the bracket do its work</li><li>Substitute and compute with feedback</li><li>Label the shape and reveal the steps</li><li>Bar-model translator with a numerical reality check</li></ul>
+          
+          <h3>How this course works</h3>
+          <p>7 learning goals, 6 with research digests. Evidence of understanding comes from the child’s committed answers inside the games (the “Mission check” mode) — described for this session, not as a lasting grade. Research digests are assistive summaries and were generated with AI assistance; review before classroom use.</p>
+        </div>
+      </details>
+    </section>
+
+      <footer class="site-footer">
+        <div class="footer-credits">
+          <span><strong>Course data</strong> <a href="https://github.com/withmarbleapp/os-taxonomy" rel="noopener">Marble Skill Taxonomy</a> · ODbL-1.0 / CC-BY-SA-4.0</span>
+          <span><strong>Inquiry game patterns</strong> adapted from <a href="https://github.com/szkane/ib-pyp-html5-generator" rel="noopener">ib-pyp-html5-generator</a> and the Marble builder guidelines</span>
+          <span><strong>Type &amp; 3D</strong> <a href="../assets/fonts/OFL.txt" rel="noopener">Baloo 2 (SIL OFL)</a> · three.js (MIT)</span>
+        </div>
+        <div class="footer-note">Built for IB PYP inquiry · No accounts, no tracking · Child-facing pages stay offline-first</div>
+      </footer>
+  </div>
+
+  <script id="course-data" type="application/json">{"slug":"10-algebra","title":"Algebra","shortTitle":"Algebra","subject":"Mathematics","domain":"Algebra","age":10,"grade":"G5","gradeLabel":"Grade 5","band":"upper","ageLabel":"Ages 10–12","draft":false,"homeReading":null,"summary":"Your child is beginning to work with algebra — using letters to represent unknown numbers, creating and following rules for number patterns, and translating word problems into mathematical equations.","theme":"How the world works","centralIdea":"Patterns follow rules; finding the rule lets you predict what comes next.","linesOfInquiry":["What exactly is algebra?","How do “Using Simple Formulae” and “Writing Algebraic Equations” connect?","How can we use algebra in our own lives?"],"keyConcepts":["Form","Function","Connection"],"learnerProfile":["Knowledgeable","Thinkers"],"atl":["Thinking skills","Self-management skills"],"emoji":"🔺","coverArt":["🔺","🔮"],"artPalette":["#B388FF","#4ECDC4","#FFE156","#FF6584"],"dark":false,"question":"What is the secret rule of this number machine?","kicker":"Algebra · Mathematics · Age 10","vocab":{"share":"Split into parts so everyone gets some.","equal":"Exactly the same in size or amount.","pattern":"A design or rule that repeats — like 2, 4, 6, 8.","data":"Information you collect, like counts or measurements.","predict":"Say what you think will happen before you try it.","fair":"Treating everyone or everything the same way.","compare":"Look at two or more things to see how they are alike or different.","sequence":"The order things happen in: first, next, last.","evidence":"Something you can point to that shows an idea is true.","investigate":"Look closely and try things to find answers.","rule":"The instruction a pattern follows every time.","jump":"How far the pattern moves each step."},"topics":[{"name":"Using Simple Formulae","desc":"Use simple formulae expressed in words or symbols to calculate values (e.g. perimeter = 2 × (length + width))","evidence":["Substitute values into P = 2(l + w) to find the perimeter of a rectangle","Use the formula for area of a triangle (A = 1/2 × b × h) given base and height values","Interpret a formula expressed in words and use it to compute an output"],"type":"PROCEDURAL"},{"name":"Writing Algebraic Equations","desc":"Express missing number problems algebraically using letters for unknowns; translate word problems into equations","evidence":["Write 'I think of a number, double it, and add 5 to get 17' as 2n + 5 = 17","Solve a one-step equation such as 3x = 24 and explain the reasoning","Express a word problem as an algebraic equation and find the unknown value"],"type":"REPRESENTATIONAL"},{"name":"Number Pattern Relationships","desc":"Generate two numerical patterns using two given rules; identify relationships between corresponding terms; form ordered pairs and graph them on a coordinate plane","evidence":["Generate sequences starting at 0 with rules 'add 3' and 'add 6'; observe terms in one are twice the other","Form ordered pairs from corresponding terms and plot them on a coordinate grid","Explain informally why the relationship between the two sequences holds"],"type":"PROCEDURAL"},{"name":"Equations with Two Unknowns","desc":"Find pairs of numbers that satisfy an equation with two unknowns (e.g. find pairs (a, b) where a + b = 10 or 2a + b = 15)","evidence":["List all whole-number pairs (a, b) where a + b = 12 with a, b > 0","Find three pairs that satisfy 2x + y = 20","Explain systematically how to generate all integer solutions to a two-variable equation within a given range"],"type":"PROCEDURAL"},{"name":"Linear number sequences","desc":"Generate and describe constant-step (linear) number sequences whose terms include negative values (counting through and past zero) or whose step is a decimal, using …","evidence":["Continue the sequence 2.5, 4.0, 5.5, ... and state the rule as 'add 1.5', calculating each decimal term","Continue the sequence 5, 2, −1, −4, ... past zero into negative values and state its rule as 'subtract 3'","Use the rule to find a later term of a sequence with negative values or a decimal step, e.g. the 6th term of 4, 1.5, −1, −3.5, ..."],"type":"PROCEDURAL"},{"name":"Systematic Listing","desc":"Enumerate possibilities of combinations of two variables systematically (e.g. all ways to choose from a set of options)","evidence":["List all possible meal combinations from 3 starters and 4 mains","Organise combinations into a systematic table to ensure none are missed","Explain why the total number of combinations equals the product of the options in each category"],"type":"PROCEDURAL"},{"name":"Designing number algorithms","desc":"Design and use algorithms with a sequence of steps, decisions with several alternatives (if / else-if / else) and repetition that apply rules to generate sets of …","evidence":["Design a flowchart that classifies each number from 1 to 30 as 'multiple of 3', 'multiple of 5', 'both' or 'neither' and repeats for every number","Implement 'start at 1; repeat 10 times: multiply by 2 and add 1' in a spreadsheet or block program and list the numbers made","Explain why every number generated by the 'multiply by 2 and add 1' algorithm is odd"],"type":"PROCEDURAL"}],"misconceptions":[{"topic":"Using Simple Formulae","pattern":"Omits the ½ in a triangle's area — computes base × height and stops, giving the rectangle's area.","nextMove":"Show the triangle as exactly half its enclosing rectangle by cutting/folding; stress that every operation written in the formula must be carried out."},{"topic":"Writing Algebraic Equations","pattern":"Reversal error by word-order matching — writes 4c = d for '4 times as many cats as dogs', mapping the words straight onto symbols left-to-right.","nextMove":"Anchor to quantities: 'if there are 3 dogs, how many cats?' (12). Does 4c = d give that? Build a small table of values BEFORE writing the equation, then read the equation aloud to check it matches."},{"topic":"Number Pattern Relationships","pattern":"Compares the two sequences additively — 'Rule B is 6 more than Rule A' — instead of multiplicatively ('twice')","nextMove":"Line up several corresponding pairs and ask 'is the gap the same or growing?'; the ×2 ratio is constant while the difference grows — compare 'how many times' not 'how many more', supported by a tape diagram"},{"topic":"Equations with Two Unknowns","pattern":"Treats it like a single-answer equation — finds ONE pair and stops, as if a and b are unique unknowns to be solved for","nextMove":"Show it is a whole family of solutions — 'is there another pair? and another?'; fix a and step it through its values to reveal them all"},{"topic":"Linear number sequences","pattern":"Thinks the sequence 'stops' at zero — that you cannot go below zero or that negative numbers are not real, so 5, 3, 1 halts or ends at 0","nextMove":"Confront with a temperature scale / number line with zero central and keep the equal hop going; below-zero numbers are real positions to the left of zero"},{"topic":"Systematic Listing","pattern":"Lists haphazardly — random pairings, so meals are missed or duplicated and completeness cannot be judged","nextMove":"Hold one category fixed and run through the other in order; record in a grid so gaps show — 'found them all because I worked systematically'"}],"activities":["Formula-on-a-shape: watch the bracket do its work","Substitute and compute with feedback","Label the shape and reveal the steps","Bar-model translator with a numerical reality check"],"poeTask":"","modes":[{"engine":"concept-lab","phase":"explore","label":"Explore the lab","icon":"🔬","config":{"scene":"pattern","explorePrompt":"Linear sequences with bigger numbers — find the rule, name the formula.","cases":[{"prompt":"Land on exactly 50 two jumps in: start + 2 × jump = 50.","rule":{"op":"affine","cStart":1,"cStep":2,"value":50},"nudge":"Find start and jump that both work.","support":"Try start 26, jump 12 — or start 38, jump 6.","why":"Many rules hit 50 — an equation can have several solutions. Finding them ALL is algebra!"},{"prompt":"Grow by 6 each time from a start YOU pick — then name the 4th bead.","targets":{"start":6,"step":6},"nudge":"Any start; jump must be 6.","support":"Start 6: 6, 12, 18, 24.","why":"The 4th bead is start + 3 × jump. A formula predicts without counting!"},{"prompt":"Make a pattern that NEVER lands on an odd number — prove it with the rule.","rule":{"op":"affine","cStart":1,"cStep":2,"value":10},"nudge":"Even starts with even jumps stay even!","support":"Start 2, jump 2 — or start 8, jump 1.","why":"Even + even = even, always. The rule is the PROOF, not just the pattern!"}],"initials":{"start":3,"step":7},"dialOverrides":{"start":{"min":0,"max":60},"step":{"min":1,"max":12}}}},{"engine":"flashcards","phase":"cards","label":"Word cards","icon":"🗂️","config":{"explorePrompt":"Walk the deck: tap a card to flip it, press Next word to keep going.","deck":[{"front":"Using Simple Formulae","back":"Use simple formulae expressed in words or symbols to calculate values (e.g. perimeter = 2 × (length + width))","tryIt":"Substitute values into P = 2(l + w) to find the perimeter of a rectangle","emoji":"💡"},{"front":"Writing Algebraic Equations","back":"Express missing number problems algebraically using letters for unknowns; translate word problems into equations","tryIt":"Write 'I think of a number, double it, and add 5 to get 17' as 2n + 5 = 17","emoji":"⭐"},{"front":"Number Pattern Relationships","back":"Generate two numerical patterns using two given rules; identify relationships between corresponding terms; form ordered pairs and graph them on a coordinate plane","tryIt":"Generate sequences starting at 0 with rules 'add 3' and 'add 6'; observe terms in one are twice the other","emoji":"🌱"},{"front":"Equations with Two Unknowns","back":"Find pairs of numbers that satisfy an equation with two unknowns (e.g. find pairs (a, b) where a + b = 10 or 2a + b = 15)","tryIt":"List all whole-number pairs (a, b) where a + b = 12 with a, b > 0","emoji":"🎯"},{"front":"Linear number sequences","back":"Continue the sequence 2.5, 4.0, 5.5, ... and state the rule as 'add 1.5', calculating each decimal term","tryIt":"Continue the sequence 2.5, 4.0, 5.5, ... and state the rule as 'add 1.5', calculating each decimal term","emoji":"🧩"},{"front":"Systematic Listing","back":"Enumerate possibilities of combinations of two variables systematically (e.g. all ways to choose from a set of options)","tryIt":"List all possible meal combinations from 3 starters and 4 mains","emoji":"🔧"},{"front":"Designing number algorithms","back":"Design and use algorithms with a sequence of steps, decisions with several alternatives (if / else-if / else) and repetition that apply rules to generate sets of numbers, implementing them in a flowchart, spreadsheet or visual program, and explain the patterns produced","tryIt":"Design a flowchart that classifies each number from 1 to 30 as 'multiple of 3', 'multiple of 5', 'both' or 'neither' and repeats for every number","emoji":"🌈"}]}},{"engine":"mission","phase":"consolidate","label":"Show what you know","icon":"🎯","config":{"bank":[{"concept":"Using Simple Formulae","prompt":"Substitute values into P = 2(l + w) to find the perimeter of a rectangle","choices":[{"text":"Substitute values into P = 2(l + w) to find the perimeter of a rectangle","correct":true,"why":"Yes! That is exactly what “Using Simple Formulae” is about."},{"text":"Write 'I think of a number, double it, and add 5 to get 17' as 2n + 5 = 17","why":"That one belongs to “Writing Algebraic Equations”. Show the triangle as exactly half its enclosing rectangle by cutting/folding; stress that every operation written in the formula must be carried out."},{"text":"Generate sequences starting at 0 with rules 'add 3' and 'add 6'; observe terms in one are twice the other","why":"That one belongs to “Number Pattern Relationships”. Show the triangle as exactly half its enclosing rectangle by cutting/folding; stress that every operation written in the formula must be carried out."}]},{"concept":"Writing Algebraic Equations","prompt":"Write 'I think of a number, double it, and add 5 to get 17' as 2n + 5 = 17","choices":[{"text":"Write 'I think of a number, double it, and add 5 to get 17' as 2n + 5 = 17","correct":true,"why":"Yes! That is exactly what “Writing Algebraic Equations” is about."},{"text":"Substitute values into P = 2(l + w) to find the perimeter of a rectangle","why":"That one belongs to “Using Simple Formulae”. Anchor to quantities: 'if there are 3 dogs, how many cats?' (12). Does 4c = d give that? Build a small table of values BEFORE writing the equation, then read the equation aloud to check it matches."},{"text":"Generate sequences starting at 0 with rules 'add 3' and 'add 6'; observe terms in one are twice the other","why":"That one belongs to “Number Pattern Relationships”. Anchor to quantities: 'if there are 3 dogs, how many cats?' (12). Does 4c = d give that? Build a small table of values BEFORE writing the equation, then read the equation aloud to check it matches."}]},{"concept":"Number Pattern Relationships","prompt":"Generate sequences starting at 0 with rules 'add 3' and 'add 6'; observe terms in one are twice the other","choices":[{"text":"Generate sequences starting at 0 with rules 'add 3' and 'add 6'; observe terms in one are twice the other","correct":true,"why":"Yes! That is exactly what “Number Pattern Relationships” is about."},{"text":"Substitute values into P = 2(l + w) to find the perimeter of a rectangle","why":"That one belongs to “Using Simple Formulae”. Line up several corresponding pairs and ask 'is the gap the same or growing?'; the ×2 ratio is constant while the difference grows — compare 'how many times' not 'how many more', supported by a tape diagram"},{"text":"Write 'I think of a number, double it, and add 5 to get 17' as 2n + 5 = 17","why":"That one belongs to “Writing Algebraic Equations”. Line up several corresponding pairs and ask 'is the gap the same or growing?'; the ×2 ratio is constant while the difference grows — compare 'how many times' not 'how many more', supported by a tape diagram"}]},{"concept":"Equations with Two Unknowns","prompt":"List all whole-number pairs (a, b) where a + b = 12 with a, b > 0","choices":[{"text":"List all whole-number pairs (a, b) where a + b = 12 with a, b > 0","correct":true,"why":"Yes! That is exactly what “Equations with Two Unknowns” is about."},{"text":"Substitute values into P = 2(l + w) to find the perimeter of a rectangle","why":"That one belongs to “Using Simple Formulae”. Show it is a whole family of solutions — 'is there another pair? and another?'; fix a and step it through its values to reveal them all"},{"text":"Continue the sequence 2.5, 4.0, 5.5, ... and state the rule as 'add 1.5', calculating each decimal term","why":"That one belongs to “Linear number sequences”. Show it is a whole family of solutions — 'is there another pair? and another?'; fix a and step it through its values to reveal them all"}]},{"concept":"Linear number sequences","prompt":"Continue the sequence 2.5, 4.0, 5.5, ... and state the rule as 'add 1.5', calculating each decimal term","choices":[{"text":"Continue the sequence 2.5, 4.0, 5.5, ... and state the rule as 'add 1.5', calculating each decimal term","correct":true,"why":"Yes! That is exactly what “Linear number sequences” is about."},{"text":"Substitute values into P = 2(l + w) to find the perimeter of a rectangle","why":"That one belongs to “Using Simple Formulae”. Confront with a temperature scale / number line with zero central and keep the equal hop going; below-zero numbers are real positions to the left of zero"},{"text":"Write 'I think of a number, double it, and add 5 to get 17' as 2n + 5 = 17","why":"That one belongs to “Writing Algebraic Equations”. Confront with a temperature scale / number line with zero central and keep the equal hop going; below-zero numbers are real positions to the left of zero"}]}]}}],"stats":{"topicCount":7,"researchCount":6}}</script>
+<script src="../assets/vendor/rough.js"></script>
+<script src="../assets/js/story-actors.js"></script>
+<script src="../assets/js/cover-art.js"></script>
+<script src="../assets/js/scenes.js"></script>
+<script src="../assets/vendor/konva.min.js"></script>
+<script src="../assets/vendor/lottie.min.js"></script>
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/engines/concept-lab.js"></script>
+<script src="../assets/js/engines/flashcards.js"></script>
+<script src="../assets/js/engines/mission.js"></script>
+  <script>
+    // Adult panel toggle — collapsed by default; the child never needs it.
+    (function () {
+      var toggle = document.getElementById('adultToggle');
+      var panel = document.getElementById('adultPanel');
+      toggle.addEventListener('click', function () {
+        var open = panel.hasAttribute('hidden');
+        if (open) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      var speakBtn = document.getElementById('btnSpeakSummary');
+      speakBtn.addEventListener('click', function () {
+        var data = JSON.parse(document.getElementById('course-data').textContent);
+        speakBtn.classList.add('speaking');
+        PYP.TTS_MANAGER.speak(data.title + '. ' + data.summary, function () { speakBtn.classList.remove('speaking'); }, speakBtn);
+      });
+    })();
+  </script>
+</body>
+</html>

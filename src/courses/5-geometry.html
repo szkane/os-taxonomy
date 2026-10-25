@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geometry · Age 5 · PYP Marble Courses</title>
+  <meta name="description" content="Your child is exploring shapes and space — recognising circles, triangles, and squares, building with 3D shapes like cubes and spheres, and describing where things are using words like above, below, and beside." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%220.9em%22%20font-size%3D%2290%22%3E%E2%AC%A1%3C%2Ftext%3E%3C%2Fsvg%3E" />
+  <link rel="stylesheet" href="../assets/css/pyp.css" />
+  <link rel="stylesheet" href="../assets/css/stage.css" />
+</head>
+<body>
+  <div class="container pyp-chrome">
+    <nav class="nav-bar">
+      <div class="nav-left">
+        <a class="pyp-map-link" href="../index.html">← All courses</a>
+        <span class="unit-tag unit-tag--subject-mathematics">⬡ Mathematics</span>
+        <span class="unit-tag unit-tag--theme">Age 5</span>
+      </div>
+      <div class="nav-right">
+
+      <!-- TTS accent control (top right) -->
+      <div class="tts-dropdown-wrap" id="ttsDropdownWrap">
+        <button type="button" class="tts-trigger" id="ttsTrigger" aria-haspopup="menu" aria-expanded="false" title="Select voice accent">
+          <span class="tts-trigger-flag" id="ttsFlag">🇬🇧</span>
+          <span class="tts-trigger-label" id="ttsLabel">Voice</span>
+          <span class="tts-arrow">▾</span>
+        </button>
+        <div class="tts-menu" id="ttsMenu" role="menu">
+          <div class="tts-menu-header">Select voice accent</div>
+          <div class="tts-radio-group" id="ttsRadioList" role="radiogroup"></div>
+        </div>
+      </div>
+        <button type="button" class="btn btn--white grownups-toggle" id="adultToggle" aria-expanded="false" aria-controls="adultPanel">👩‍🏫 Grown-ups</button>
+      </div>
+    </nav>
+
+    <main class="child-zone" aria-label="Play Geometry">
+      <section class="marble-learning" id="marbleStage" data-band="early" aria-label="Interactive course stage"></section>
+    </main>
+
+    <section class="adult-panel" id="adultPanel" hidden>
+      <div class="adult-panel-head">
+        <h2>👩‍🏫 For grown-ups</h2>
+        <p class="adult-panel-sub">Unit framing, learning goals and teaching notes — kept out of the child’s play space by default. <button type="button" class="btn-speaker" id="btnSpeakSummary" aria-label="Read the course summary aloud">🔊</button></p>
+      </div>
+
+      <section class="card uoi-card" aria-label="Unit of inquiry">
+        <div class="uoi-grid">
+          <div class="uoi-cell">
+            <h3>🌐 Transdisciplinary theme</h3>
+            <p>How the world works</p>
+          </div>
+          <div class="uoi-cell">
+            <h3>💡 Central idea (suggested)</h3>
+            <p>Shapes are defined by their sides and corners — count them and you can name any shape.</p>
+          </div>
+          <div class="uoi-cell">
+            <h3>🧭 Lines of inquiry (suggested)</h3>
+            <ul>
+              <li>What exactly is geometry?</li>
+            <li>How do “Turns &amp; Directions” and “Patterns &amp; Sequences” connect?</li>
+            <li>How can we use geometry in our own lives?</li>
+            </ul>
+          </div>
+          <div class="uoi-cell">
+            <h3>🔑 Key concepts</h3>
+            <div class="chip-row"><span class="chip">Form</span><span class="chip">Function</span><span class="chip">Connection</span></div>
+          </div>
+          <div class="uoi-cell">
+            <h3>🌱 Learner profile</h3>
+            <div class="chip-row"><span class="chip">Knowledgeable</span><span class="chip">Thinkers</span></div>
+          </div>
+          <div class="uoi-cell">
+            <h3>🛠️ ATL skills</h3>
+            <div class="chip-row"><span class="chip">Thinking skills</span><span class="chip">Self-management skills</span></div>
+          </div>
+        </div>
+        <p class="uoi-note">PYP framing is a suggested mapping from the subject and domain — align it with your school’s programme of inquiry. Learning goals come from the Marble Skill Taxonomy.</p>
+      </section>
+
+      <section class="card learn-card" aria-label="What you will learn">
+        <h2>🎯 What you’ll learn</h2>
+        <ul class="learn-list">
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Turns &amp; Directions</strong> — Describe movement and direction, including whole, half, quarter, and three-quarter turns</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Patterns &amp; Sequences</strong> — Order and arrange combinations of mathematical objects in patterns and sequences</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Building &amp; Drawing Shapes</strong> — Model shapes by building from components (e.g. sticks and clay balls) and by drawing</span></li>
+<li><span class="learn-emoji" aria-hidden="true">⬡</span><span><strong>Flat vs Solid Shapes</strong> — Distinguish two-dimensional (flat) shapes from three-dimensional (solid) shapes</span></li>
+        </ul>
+      </section>
+
+      <details class="grownups" open>
+        <summary>📖 Goals, common misconceptions &amp; printable ideas</summary>
+        <div class="grownups-body">
+          <h3>Learning goal</h3>
+          <p>Your child is exploring shapes and space — recognising circles, triangles, and squares, building with 3D shapes like cubes and spheres, and describing where things are using words like above, below, and beside.</p>
+          <h3>Common misconceptions (from teaching research)</h3>
+          <div class="misconception"><strong>Turns &amp; Directions</strong>'Turns' by walking forward in a curve or stepping sideways instead of rotating on the spot<em>Next step: Mark the spot with a hoop or footprints and require both feet to stay put, turning to face a named target.</em></div>
+<div class="misconception"><strong>Patterns &amp; Sequences</strong>Extends by visually matching and appending the last item, without grasping there is a repeating unit<em>Next step: Label the model 'same, same, different' and box the repeating chunk; rebuild from that unit before extending</em></div>
+<div class="misconception"><strong>Building &amp; Drawing Shapes</strong>Uses the wrong number of components — grabs four sticks for a triangle, or the wrong count of straws/connectors for a cube — not matching parts to the shape's attributes.<em>Next step: Name the attributes first ('a triangle has 3 sides and 3 corners → 3 sticks, 3 balls') and count the parts before building; compare the finished model against a real shape.</em></div>
+<div class="misconception"><strong>Flat vs Solid Shapes</strong>Applies a flat (2-D) name to a solid object — shown a real ball or cube, calls it 'a circle' or 'a square' and sorts it with the flat shapes<em>Next step: Hand the child the object to hold and turn: 'a circle is flat on the paper; the ball is round every way and you can pick it up — that is a sphere'; teach the twin-pair names</em></div>
+          
+          <h3>Activity ideas</h3><ul><li>Turn your whole body on the spot</li><li>Give and follow a route</li><li>Program a robot along a floor grid (companion)</li><li>Build, extend, and name the unit of repeat</li></ul>
+          
+          <h3>How this course works</h3>
+          <p>4 learning goals, 4 with research digests. Evidence of understanding comes from the child’s committed answers inside the games (the “Mission check” mode) — described for this session, not as a lasting grade. Research digests are assistive summaries and were generated with AI assistance; review before classroom use.</p>
+        </div>
+      </details>
+    </section>
+
+      <footer class="site-footer">
+        <div class="footer-credits">
+          <span><strong>Course data</strong> <a href="https://github.com/withmarbleapp/os-taxonomy" rel="noopener">Marble Skill Taxonomy</a> · ODbL-1.0 / CC-BY-SA-4.0</span>
+          <span><strong>Inquiry game patterns</strong> adapted from <a href="https://github.com/szkane/ib-pyp-html5-generator" rel="noopener">ib-pyp-html5-generator</a> and the Marble builder guidelines</span>
+          <span><strong>Type &amp; 3D</strong> <a href="../assets/fonts/OFL.txt" rel="noopener">Baloo 2 (SIL OFL)</a> · three.js (MIT)</span>
+        </div>
+        <div class="footer-note">Built for IB PYP inquiry · No accounts, no tracking · Child-facing pages stay offline-first</div>
+      </footer>
+  </div>
+
+  <script id="course-data" type="application/json">{"slug":"5-geometry","title":"Geometry","shortTitle":"Geometry","subject":"Mathematics","domain":"Geometry","age":5,"grade":"K","gradeLabel":"Kindergarten","band":"early","ageLabel":"Ages 5–8","draft":false,"homeReading":null,"summary":"Your child is exploring shapes and space — recognising circles, triangles, and squares, building with 3D shapes like cubes and spheres, and describing where things are using words like above, below, and beside.","theme":"How the world works","centralIdea":"Shapes are defined by their sides and corners — count them and you can name any shape.","linesOfInquiry":["What exactly is geometry?","How do “Turns & Directions” and “Patterns & Sequences” connect?","How can we use geometry in our own lives?"],"keyConcepts":["Form","Function","Connection"],"learnerProfile":["Knowledgeable","Thinkers"],"atl":["Thinking skills","Self-management skills"],"emoji":"⬡","coverArt":["⬡","🔺🟦"],"artPalette":["#4ECDC4","#B388FF","#FFE156","#FF6584"],"dark":false,"question":"What makes a shape a shape?","kicker":"Geometry · Mathematics · Age 5","vocab":{"share":"Split into parts so everyone gets some.","equal":"Exactly the same in size or amount.","pattern":"A design or rule that repeats — like 2, 4, 6, 8.","data":"Information you collect, like counts or measurements.","predict":"Say what you think will happen before you try it.","fair":"Treating everyone or everything the same way.","compare":"Look at two or more things to see how they are alike or different.","sequence":"The order things happen in: first, next, last.","evidence":"Something you can point to that shows an idea is true.","investigate":"Look closely and try things to find answers.","side":"A straight edge of a shape.","corner":"The point where two sides meet.","hexagon":"A shape with 6 sides.","triangle":"A shape with 3 sides."},"topics":[{"name":"Turns & Directions","desc":"Describe movement and direction, including whole, half, quarter, and three-quarter turns","evidence":["Follow instructions to move forward, backward, turn left/right","Demonstrate a whole turn, half turn, and quarter turn with their body","Describe a route using directional language"],"type":"PROCEDURAL"},{"name":"Patterns & Sequences","desc":"Order and arrange combinations of mathematical objects in patterns and sequences","evidence":["Continue a repeating pattern of shapes or colours","Describe the rule for a given sequence of objects","Create own patterns and sequences using mathematical objects"],"type":"PROCEDURAL"},{"name":"Building & Drawing Shapes","desc":"Model shapes by building from components (e.g. sticks and clay balls) and by drawing","evidence":["Build a triangle from three sticks and three clay balls","Draw a recognisable rectangle","Construct a cube from straws and connectors"],"type":"PROCEDURAL"},{"name":"Flat vs Solid Shapes","desc":"Distinguish two-dimensional (flat) shapes from three-dimensional (solid) shapes","evidence":["Sort shapes into 'flat' and 'solid' groups","Explain that a circle is flat but a sphere is solid","Identify whether a given shape is 2-D or 3-D"],"type":"CONCEPTUAL"}],"misconceptions":[{"topic":"Turns & Directions","pattern":"'Turns' by walking forward in a curve or stepping sideways instead of rotating on the spot","nextMove":"Mark the spot with a hoop or footprints and require both feet to stay put, turning to face a named target."},{"topic":"Patterns & Sequences","pattern":"Extends by visually matching and appending the last item, without grasping there is a repeating unit","nextMove":"Label the model 'same, same, different' and box the repeating chunk; rebuild from that unit before extending"},{"topic":"Building & Drawing Shapes","pattern":"Uses the wrong number of components — grabs four sticks for a triangle, or the wrong count of straws/connectors for a cube — not matching parts to the shape's attributes.","nextMove":"Name the attributes first ('a triangle has 3 sides and 3 corners → 3 sticks, 3 balls') and count the parts before building; compare the finished model against a real shape."},{"topic":"Flat vs Solid Shapes","pattern":"Applies a flat (2-D) name to a solid object — shown a real ball or cube, calls it 'a circle' or 'a square' and sorts it with the flat shapes","nextMove":"Hand the child the object to hold and turn: 'a circle is flat on the paper; the ball is round every way and you can pick it up — that is a sphere'; teach the twin-pair names"}],"activities":["Turn your whole body on the spot","Give and follow a route","Program a robot along a floor grid (companion)","Build, extend, and name the unit of repeat"],"poeTask":"","modes":[{"engine":"concept-lab","phase":"explore","label":"Explore the lab","icon":"🔬","config":{"scene":"shape","explorePrompt":"Turn the dial to grow the shape. Watch sides and corners appear together.","cases":[{"prompt":"Make a triangle.","targets":{"sides":3},"nudge":"Tri means three!","support":"Set sides to 3.","why":"3 sides, 3 corners — a triangle. The smallest shape a line can build!"},{"prompt":"Make a shape with 4 sides.","targets":{"sides":4},"nudge":"Count the sides as they appear.","support":"Set sides to 4.","why":"4 sides and 4 corners — any 4-sided shape is a quadrilateral!"},{"prompt":"Make the shape that looks the most like a circle.","targets":{"sides":10},"nudge":"More sides = rounder!","support":"Push the dial to 10.","why":"10 sides already looks round. A circle is like a shape with endless sides!"}]}},{"engine":"flashcards","phase":"cards","label":"Word cards","icon":"🗂️","config":{"explorePrompt":"We will meet every word one by one. Tap the card to flip it!","deck":[{"front":"Turns & Directions","back":"Follow instructions to move forward, backward, turn left/right","tryIt":"","emoji":"💡"},{"front":"Patterns & Sequences","back":"Continue a repeating pattern of shapes or colours","tryIt":"","emoji":"⭐"},{"front":"Building & Drawing Shapes","back":"Build a triangle from three sticks and three clay balls","tryIt":"","emoji":"🌱"},{"front":"Flat vs Solid Shapes","back":"Sort shapes into 'flat' and 'solid' groups","tryIt":"","emoji":"🎯"}]}},{"engine":"arcade","phase":"practice","label":"Speed sprint","icon":"⚡","config":{"items":[{"prompt":"How many sides does a triangle have?","choices":[{"text":"3","correct":true},{"text":"4"}],"why":"Tri means three!"},{"prompt":"How many sides does a square have?","choices":[{"text":"4","correct":true},{"text":"3"}],"why":"Four equal sides."},{"prompt":"How many sides does a pentagon have?","choices":[{"text":"5","correct":true},{"text":"6"}],"why":"Pent = five, like the Pentagon building."},{"prompt":"How many sides does a hexagon have?","choices":[{"text":"6","correct":true},{"text":"5"}],"why":"Hex = six — honeycomb cells are hexagons."},{"prompt":"How many sides does an octagon have?","choices":[{"text":"8","correct":true},{"text":"6"}],"why":"Oct = eight, like an octopus."},{"prompt":"How many corners does a square have?","choices":[{"text":"4","correct":true},{"text":"2"}],"why":"Sides and corners always match."},{"prompt":"Which shape has 3 corners?","choices":[{"text":"Triangle","correct":true},{"text":"Square"}],"why":"Triangle: 3 sides, 3 corners."},{"prompt":"Which shape is round with no corners?","choices":[{"text":"Circle","correct":true},{"text":"Triangle"}],"why":"A circle is one curved line."}],"seconds":60,"emoji":"⬡"}},{"engine":"mission","phase":"consolidate","label":"Show what you know","icon":"🎯","config":{"bank":[{"concept":"Turns & Directions","prompt":"Follow instructions to move forward, backward, turn left/right","choices":[{"text":"Follow instructions to move forward, backward, turn left/right","correct":true,"why":"Yes! That is exactly what “Turns & Directions” is about."},{"text":"Continue a repeating pattern of shapes or colours","why":"That one belongs to “Patterns & Sequences”. Mark the spot with a hoop or footprints and require both feet to stay put, turning to face a named target."},{"text":"Build a triangle from three sticks and three clay balls","why":"That one belongs to “Building & Drawing Shapes”. Mark the spot with a hoop or footprints and require both feet to stay put, turning to face a named target."}]},{"concept":"Patterns & Sequences","prompt":"Continue a repeating pattern of shapes or colours","choices":[{"text":"Continue a repeating pattern of shapes or colours","correct":true,"why":"Yes! That is exactly what “Patterns & Sequences” is about."},{"text":"Follow instructions to move forward, backward, turn left/right","why":"That one belongs to “Turns & Directions”. Label the model 'same, same, different' and box the repeating chunk; rebuild from that unit before extending"},{"text":"Build a triangle from three sticks and three clay balls","why":"That one belongs to “Building & Drawing Shapes”. Label the model 'same, same, different' and box the repeating chunk; rebuild from that unit before extending"}]},{"concept":"Building & Drawing Shapes","prompt":"Build a triangle from three sticks and three clay balls","choices":[{"text":"Build a triangle from three sticks and three clay balls","correct":true,"why":"Yes! That is exactly what “Building & Drawing Shapes” is about."},{"text":"Follow instructions to move forward, backward, turn left/right","why":"That one belongs to “Turns & Directions”. Name the attributes first ('a triangle has 3 sides and 3 corners → 3 sticks, 3 balls') and count the parts before building; compare the finished model against a real shape."},{"text":"Continue a repeating pattern of shapes or colours","why":"That one belongs to “Patterns & Sequences”. Name the attributes first ('a triangle has 3 sides and 3 corners → 3 sticks, 3 balls') and count the parts before building; compare the finished model against a real shape."}]},{"concept":"Flat vs Solid Shapes","prompt":"Sort shapes into 'flat' and 'solid' groups","choices":[{"text":"Sort shapes into 'flat' and 'solid' groups","correct":true,"why":"Yes! That is exactly what “Flat vs Solid Shapes” is about."},{"text":"Follow instructions to move forward, backward, turn left/right","why":"That one belongs to “Turns & Directions”. Hand the child the object to hold and turn: 'a circle is flat on the paper; the ball is round every way and you can pick it up — that is a sphere'; teach the twin-pair names"},{"text":"Describe a toy as being 'on top of' the table","why":"That one belongs to “Positional Language”. Hand the child the object to hold and turn: 'a circle is flat on the paper; the ball is round every way and you can pick it up — that is a sphere'; teach the twin-pair names"}]}]}}],"stats":{"topicCount":4,"researchCount":4}}</script>
+<script src="../assets/vendor/rough.js"></script>
+<script src="../assets/js/story-actors.js"></script>
+<script src="../assets/js/cover-art.js"></script>
+<script src="../assets/js/scenes.js"></script>
+<script src="../assets/vendor/konva.min.js"></script>
+<script src="../assets/vendor/lottie.min.js"></script>
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/engines/concept-lab.js"></script>
+<script src="../assets/js/engines/flashcards.js"></script>
+<script src="../assets/js/engines/arcade.js"></script>
+<script src="../assets/js/engines/mission.js"></script>
+  <script>
+    // Adult panel toggle — collapsed by default; the child never needs it.
+    (function () {
+      var toggle = document.getElementById('adultToggle');
+      var panel = document.getElementById('adultPanel');
+      toggle.addEventListener('click', function () {
+        var open = panel.hasAttribute('hidden');
+        if (open) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      var speakBtn = document.getElementById('btnSpeakSummary');
+      speakBtn.addEventListener('click', function () {
+        var data = JSON.parse(document.getElementById('course-data').textContent);
+        speakBtn.classList.add('speaking');
+        PYP.TTS_MANAGER.speak(data.title + '. ' + data.summary, function () { speakBtn.classList.remove('speaking'); }, speakBtn);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+konva.min.js — Konva.js v9.3.6, MIT License, Copyright (c) Lavr Dimakov
+rough.js — Rough.js v4.6.6, MIT License, Copyright (c) Preet Shihn
+Both bundled locally (no CDN at runtime). Full license texts:
+https://github.com/konvajs/konva/blob/master/LICENSE
+https://github.com/rough-stuff/rough/blob/master/LICENSE

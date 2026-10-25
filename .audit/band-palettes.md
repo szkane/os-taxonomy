@@ -1,0 +1,3382 @@
+# Band authoring palettes
+
+Every band set in `tools/lib/band-modes.mjs` must draw its content from
+the band's own topics below. `✓ gloss` = child-facing label already exists;
+`✗` = add a CHILD_GLOSS entry (or use your own child wording in the set).
+
+## Computing|Algorithms & Programming
+### early (4 topics)
+- Step-by-Step Instructions — ✗ no gloss
+  - evidence: Write or describe step-by-step instructions for a simple everyday task
+- Decisions and repeats in algorithms — ✓ gloss: “If… then… repeat!”
+  - evidence: Follow movement instructions that include a repeat (e.g. 'repeat 3 times: step forward, clap') and describe which part was repeate
+- My first visual program — ✗ no gloss
+  - evidence: Drag blocks into a sequence so a character moves, speaks and changes costume when the green flag is clicked, then run it and check
+- Testing and debugging programs — ✗ no gloss
+  - evidence: Predict what a short program should do for given inputs, including unusual ones (e.g. a wrong or blank answer), run it and record 
+### mid (3 topics)
+- Concurrent events in code — ✓ gloss: “Two things at once”
+  - evidence: Write two scripts that start on the same event so two characters move at the same time, run the program and check that both happen
+- Decisions and input in programs — ✓ gloss: “Programs that choose”
+  - evidence: Program a character to move left and right when the arrow keys are pressed
+- Loops in programs — ✗ no gloss
+  - evidence: Rewrite a program that repeats 'move 10 steps' four times so that it uses one repeat block
+### upper (1 topics)
+- Variables in programs — ✗ no gloss
+  - evidence: Create a 'score' variable in a game that starts at 0 and increases by 1 each time the player catches an object
+
+## Computing|Artificial Intelligence
+### early (5 topics)
+- AI in Daily Life — ✗ no gloss
+  - evidence: Identify at least five examples of AI in their daily life
+- Real-World Robots — ✓ gloss: “Robots around us”
+  - evidence: Describe what a robot is (a machine that follows instructions to do a task)
+- Smart Versus Not-Smart Devices — ✓ gloss: “Smart vs not-smart things”
+  - evidence: Sort a set of objects into 'smart' (responds to input) and 'not smart' (does the same thing every time)
+- Voice Assistants and How They Work — ✓ gloss: “How a speaker hears you”
+  - evidence: Describe the steps that happen when you ask a voice assistant a question (it listens, processes words, finds an answer, speaks bac
+- Recommendation Systems and Filter Bubbles — ✓ gloss: “Why the app shows those videos”
+  - evidence: Explain how YouTube or Netflix decides what to suggest next
+### mid (7 topics)
+- AI in Computer Games — ✗ no gloss
+  - evidence: Explain how a computer opponent in a game decides its moves
+- AI Mistakes and Limitations — ✗ no gloss
+  - evidence: Give an example of AI making a mistake (voice assistant mishearing, auto-correct error, wrong recommendation)
+- Humans Versus Machines — ✗ no gloss
+  - evidence: Name at least three things humans are better at than computers (creativity, empathy, common sense)
+- Machine Learning Basics — ✗ no gloss
+  - evidence: Describe the three steps of machine learning in simple terms (give examples, find patterns, make predictions)
+- Patterns and Classification — ✗ no gloss
+  - evidence: Sort a set of items into categories and explain the rules they used
+- AI Data Collection and Privacy — ✗ no gloss
+  - evidence: Name at least three types of personal data that AI systems collect
+- Deepfakes and AI-Generated Content — ✓ gloss: “Fake pictures: real or AI?”
+  - evidence: Explain what a deepfake is and give an example of AI-generated content
+### upper (6 topics)
+- AI and Fairness in Decisions — ✗ no gloss
+  - evidence: Give an example of an important decision that AI might help make (hiring, medical diagnosis, loan approval)
+- AI and the Environment — ✗ no gloss
+  - evidence: Explain that training AI models uses a lot of electricity and water
+- AI and the Future of Work — ✗ no gloss
+  - evidence: Name at least two jobs that AI is changing or replacing and two new jobs AI has created
+- Bias in AI Systems — ✓ gloss: “When AI is unfair”
+  - evidence: Explain what bias in AI means using a real-world example
+- Designing Fair AI Rules — ✗ no gloss
+  - evidence: Propose at least three rules for a hypothetical AI system they are designing
+- The Future of AI — ✗ no gloss
+  - evidence: Describe at least two ways AI might be used in the future that don't exist yet
+
+## Computing|Data Representation
+### early (1 topics)
+- Data and Information for Computers — ✓ gloss: “How computers remember things”
+  - evidence: Define data as information stored in a computer (numbers, text, images, sounds)
+### upper (2 topics)
+- All data as numbers — ✗ no gloss
+  - evidence: Colour a pixel grid from a list of numbers (e.g. 0 = white, 1 = black) to reveal a hidden picture
+- Binary on and off — ✓ gloss: “On and off: 1s and 0s”
+  - evidence: Show every number from 0 to 31 using five binary cards (16, 8, 4, 2, 1) turned face up for 1 and face down for 0
+
+## Computing|Designing Digital Solutions
+### mid (3 topics)
+- Checking solutions against criteria — ✓ gloss: “Does it pass the test?”
+  - evidence: Explore an existing app or device with a known user's needs in mind (e.g. a younger sibling needs big buttons and sounds) and poin
+- Storyboarding a digital solution — ✓ gloss: “Draw your app plan”
+  - evidence: Sketch a storyboard for a simple game, app or animation showing each screen, what the user does and what happens
+- Writing user stories — ✗ no gloss
+  - evidence: Write at least two user stories for a planned digital solution (e.g. 'As a Year 1 student, I want to hear each word read aloud, so
+### upper (2 topics)
+- Community impact of digital solutions — ✓ gloss: “Does your app help the town?”
+  - evidence: Explain who benefits from a digital solution (e.g. a school app or community website) and who might be left out (e.g. families wit
+- Designing a user interface — ✗ no gloss
+  - evidence: Draw wireframes for at least three connected screens of an app or game, showing buttons, menus and how the user moves between scre
+
+## Computing|Digital Systems
+### early (3 topics)
+- Computers in Everyday Life — ✗ no gloss
+  - evidence: Point out at least five everyday objects that contain computers
+- Hardware and software — ✗ no gloss
+  - evidence: Point to two hardware parts of a tablet or computer (e.g. the screen and the camera) and name an app on it as software
+- Parts of a computer — ✗ no gloss
+  - evidence: Label the screen, keyboard, mouse or trackpad, speaker, microphone and camera on a picture of a laptop or tablet
+### upper (3 topics)
+- Computer networks — ✗ no gloss
+  - evidence: Send a photo from a tablet to a printer or another device (by cable or wirelessly) and describe the path the data took
+- How the internet sends data — ✗ no gloss
+  - evidence: Explain that the internet connects millions of smaller networks around the world
+- Inside a computer — ✗ no gloss
+  - evidence: Identify the processor, memory, storage and battery in a photo or teardown of a computer, tablet or phone
+
+## Computing|Digital Tools & Collaboration
+### mid (2 topics)
+- Collaborating in shared documents — ✓ gloss: “Write together in one doc”
+  - evidence: Add their own page or section to a shared class book, document or slideshow without changing anyone else's work
+- Saving and organising files — ✗ no gloss
+  - evidence: Save a piece of work with a meaningful file name following the class convention (e.g. 'Mia_Y4_Frogs_Report')
+### upper (1 topics)
+- Choosing the right digital tool — ✗ no gloss
+  - evidence: Choose the best tool for three tasks (e.g. a budget, a poster, a how-to video) and justify each choice
+
+## Computing|Privacy & Security
+### early (3 topics)
+- Data that is about me — ✗ no gloss
+  - evidence: Sort picture cards into 'about me' (name, birthday, address, a photo of me) and 'not about me' (the weather, a picture of a tree)
+- Apps store my data online — ✗ no gloss
+  - evidence: Name personal data a familiar app or game asks for or keeps (e.g. a username, a photo, a score, a location)
+- Logging in to my account — ✗ no gloss
+  - evidence: Log in to their school or learning account using a login card or from memory, including when they have more than one account
+### mid (2 topics)
+- Strong, memorable passwords — ✗ no gloss
+  - evidence: Sort example passwords into weak (e.g. 'password', 'ben2015', '1234') and strong (e.g. 'purple-kangaroo-jumps') and explain what m
+- What my accounts store — ✗ no gloss
+  - evidence: Explore the profile and settings of a school or game account with a teacher and list the personal data it stores
+### upper (3 topics)
+- A different password per account — ✓ gloss: “One password for each account”
+  - evidence: Set up or use at least two different accounts (e.g. a school account and a learning app), each with its own password
+- My digital footprint — ✓ gloss: “Your footprint online”
+  - evidence: List the parts of their digital footprint from one day (e.g. a search, a game score, a comment, a photo a family member uploaded)
+- Privacy when collecting data — ✗ no gloss
+  - evidence: Review a draft class survey and remove questions that collect unnecessary personal data (e.g. full name, address)
+
+## English|English Thinking
+### early (2 topics)
+- Reading for Meaning — ✓ gloss: “Reading is about the meaning”
+  - evidence: Simple View of Reading (Gough & Tunmer)
+- Monitoring Comprehension — ✓ gloss: “Check you understand as you read”
+  - evidence: comprehension monitoring research
+### mid (4 topics)
+- Author's word choices — ✗ no gloss
+  - evidence: authorial awareness research
+- Inference vs Explicit Meaning — ✓ gloss: “Clues vs said-out-loud”
+  - evidence: inference vs literal comprehension development research
+- Knowing What You Don't Know — ✗ no gloss
+  - evidence: Noticing Unfamiliar Words Assessment research (grade 2+)
+- Reviewing Own Writing — ✓ gloss: “Read your writing like a reader”
+  - evidence: writing self-evaluation research grades 3-5
+### upper (1 topics)
+- Reflecting on Your Language Use — ✓ gloss: “How did my words work?”
+  - evidence: metalinguistic awareness development
+
+## English|Grammar & Punctuation
+### early (21 topics)
+- Building sentences — ✗ no gloss
+  - evidence: Distinguish between complete sentences and fragments
+- Spaces Between Words — ✗ no gloss
+  - evidence: Leave clear finger-spaces between words when writing
+- Basic Nouns & Verbs — ✗ no gloss
+  - evidence: Use common nouns accurately in sentences (e.g. 'dog', 'school', 'book')
+- Capitals for Names, Days and I — ✗ no gloss
+  - evidence: Capitalise names of people and places consistently in writing
+- Grammar words: letter, word, sentence — ✓ gloss: “Word jobs: letter, word, sentence”
+  - evidence: Name punctuation marks correctly when pointed out in text
+- Joining Words with 'And' — ✗ no gloss
+  - evidence: Combine two simple sentences using 'and' (e.g. 'I like cats and dogs')
+- Prepositions — ✗ no gloss
+  - evidence: Use prepositions correctly in sentences (e.g. 'on the table', 'under the bed')
+- Question Words — ✗ no gloss
+  - evidence: Ask questions using appropriate question words
+- Regular Plural Nouns — ✗ no gloss
+  - evidence: Say and write correct plural forms (e.g. 'one cat, two cats'; 'one wish, two wishes')
+- Starting and Ending Sentences — ✗ no gloss
+  - evidence: Write sentences beginning with a capital letter
+- Apostrophes: Contraction and Possession — ✓ gloss: “Apostrophes: don't and Sam's”
+  - evidence: Use apostrophes correctly in both 'don't' and 'Sam's bag' within the same piece of writing
+- Commas in lists — ✗ no gloss
+  - evidence: Write a sentence containing a list of 3+ items separated by commas: 'I bought apples, bananas, and oranges'
+- Determiners and articles — ✗ no gloss
+  - evidence: Use 'a' before consonant sounds and 'an' before vowel sounds correctly: 'a ball', 'an apple'
+- Expanded noun phrases — ✓ gloss: “Describe the noun: red, shiny apple”
+  - evidence: Expand 'the cat' into 'the fluffy black cat' by adding adjectives
+- Four Types of Sentences — ✗ no gloss
+  - evidence: Write or identify a statement, question, exclamation, and command from a set of sentences
+- Grammar Terms: Nouns, Verbs and Tense — ✓ gloss: “Word jobs: naming, doing, when”
+  - evidence: Use the term 'noun phrase' when discussing expanded noun phrases in own writing
+- Past, Present and Progressive Tense — ✓ gloss: “Happened, happening, keeps happening”
+  - evidence: Write a passage consistently in past tense without switching to present
+- Pronouns — ✗ no gloss
+  - evidence: Replace a repeated noun with a pronoun: 'The dog was happy. He wagged his tail.'
+- Simple sentences: one idea — ✗ no gloss
+  - evidence: Say or write a simple sentence about one event (e.g. 'The cat slept.') and point to its verb
+- Subject-verb agreement — ✗ no gloss
+  - evidence: Write 'The dog runs' (singular) and 'The dogs run' (plural) with correct verb agreement
+- Subordinate clauses — ✓ gloss: “Extra part: when the bell rang…”
+  - evidence: Write 'I stayed inside because it was raining' using a subordinating conjunction
+### mid (22 topics)
+- Adjectives vs adverbs — ✗ no gloss
+  - evidence: Choose the correct form: 'The dog is (slow/slowly)' vs 'The dog walks (slow/slowly)'
+- Capital letters in titles — ✗ no gloss
+  - evidence: Write the title of a favourite book starting with a capital letter and with capitals on its main words (e.g. 'Where the Wild Thing
+- Choosing A or An — ✗ no gloss
+  - evidence: Choose 'a' or 'an' correctly before nouns beginning with consonant or vowel sounds (e.g., 'a ball', 'an egg', 'an umbrella')
+- Expressing Time, Place and Cause — ✓ gloss: “When? Where? Why? words”
+  - evidence: Use time conjunctions to connect clauses (e.g., 'We went inside because it was raining', 'After the bell rang, we lined up')
+- Grammar Terms: Clauses and Conjunctions — ✓ gloss: “Joining words: and, but, because”
+  - evidence: Use the terms 'clause' and 'subordinate clause' to identify parts of a multi-clause sentence (e.g., point to the subordinate claus
+- Irregular past tense verbs — ✓ gloss: “Tricky past words: go → went”
+  - evidence: Supply the correct past tense of common irregular verbs: go→went, see→saw, run→ran, tell→told
+- Irregular Plural Nouns — ✗ no gloss
+  - evidence: Form and use irregular plural nouns correctly (e.g. child→children, tooth→teeth, mouse→mice, goose→geese)
+- Leaving out words readers know — ✓ gloss: “Skip words readers can guess”
+  - evidence: Explain which word is left out in 'Mia ate an apple and Sam a banana' ('ate') and how the reader knows it
+- Pronouns for clarity — ✓ gloss: “Stand-in words: he, she, it”
+  - evidence: Replace repeated nouns with pronouns to improve cohesion: rewrite 'Sam picked up Sam's bag' as 'Sam picked up his bag'
+- Punctuating Direct Speech — ✓ gloss: “Speech marks: “Stop!” she said”
+  - evidence: Place inverted commas around the spoken words in a sentence (e.g., "Let's go!" shouted Tom.)
+- The Present Perfect Tense — ✓ gloss: “I have done it already”
+  - evidence: Form the present perfect using 'has/have' + past participle (e.g., 'She has eaten', 'They have finished')
+- Abstract nouns — ✗ no gloss
+  - evidence: Sort words like 'freedom', 'table', 'courage', 'pencil', 'childhood' into abstract and concrete noun categories
+- Agreement in sentences — ✗ no gloss
+  - evidence: Correct 'The group of children were laughing' to 'The group of children was laughing' and explain the singular subject
+- Comparatives & Superlatives — ✓ gloss: “Bigger, biggest!”
+  - evidence: Form comparatives and superlatives for 'big' (bigger/biggest), 'beautiful' (more/most beautiful), and 'good' (better/best)
+- Doing, thinking and saying verbs — ✓ gloss: “Doing, thinking, saying words”
+  - evidence: Sort verbs from a story into doing (ran, built), feeling/thinking (loved, wondered), saying (whispered, asked) and relating (is, h
+- Expanded noun phrases (age 8+) — ✓ gloss: “Describe the noun: red, shiny apple”
+  - evidence: Expand 'the teacher' to 'the strict maths teacher with curly hair' using adjective, noun, and preposition phrase
+- Fronted Adverbials and Commas — ✓ gloss: “Start with When? Where? How?”
+  - evidence: Write a sentence beginning with a time adverbial, e.g. 'Later that day, the children ran home'
+- Grammar Terms: Pronouns and Determiners — ✓ gloss: “Word jobs: she, her, quickly”
+  - evidence: Label the determiner, pronoun, and adverbial in 'She quickly opened her present on the table'
+- Modal Verbs and Possibility — ✗ no gloss
+  - evidence: Select a modal verb to express certainty, probability, or possibility in a sentence, e.g. 'It will rain' vs 'It might rain' vs 'It
+- Plural vs Possessive in Nouns — ✓ gloss: “dogs, dog's or dogs'?”
+  - evidence: Sort words like 'dogs', 'dog's', and 'dogs'' into plural, singular possessive, and plural possessive categories
+- Simple Past, Present and Future — ✓ gloss: “Was, is, will be”
+  - evidence: Rewrite 'I walk to school' in past tense ('I walked') and future tense ('I will walk')
+- Standard English Verbs — ✗ no gloss
+  - evidence: Correct 'we was playing' to 'we were playing' and explain why the standard form is needed in writing
+### upper (31 topics)
+- Adjective Order in Sentences — ✗ no gloss
+  - evidence: Arrange multiple adjectives before a noun in conventional order, e.g. 'a lovely little old rectangular green French silver whittli
+- Brackets and dashes for parenthesis — ✓ gloss: “Brackets add a whisper”
+  - evidence: Insert a parenthetical phrase using paired brackets, e.g. 'The oldest building (built in 1642) stands in the town square'
+- Cohesion within paragraphs — ✗ no gloss
+  - evidence: Replace repeated nouns with pronouns or synonyms to maintain cohesion without ambiguity, e.g. 'The explorer found a cave. She exam
+- Commas Before Joining Words — ✗ no gloss
+  - evidence: Place a comma before the coordinating conjunction in a compound sentence, e.g. 'I wanted to go outside, but it was raining'
+- Commas to avoid ambiguity — ✗ no gloss
+  - evidence: Insert a comma to prevent ambiguity, e.g. 'Let's eat, Grandma' vs 'Let's eat Grandma' or 'Most of the time, travellers worry about
+- Converting Words into Verbs — ✗ no gloss
+  - evidence: Add -ate, -ise, or -ify to nouns or adjectives to form verbs, e.g. pollen → pollinate, advert → advertise, simple → simplify
+- Expanded noun phrases (age 9+) — ✓ gloss: “Describe the noun: red, shiny apple”
+  - evidence: Identify the preposition and noun phrase within a prepositional phrase, e.g. in 'under the old bridge', 'under' is the preposition
+- Fixing Fragments & Run-Ons — ✗ no gloss
+  - evidence: Identify a sentence fragment by checking whether it has both a subject and a predicate, e.g. recognise 'Running through the park' 
+- Grammar Terms: Modal Verbs and Clauses — ✓ gloss: “Might, must, could — choosing power”
+  - evidence: Label a relative clause in a sentence and identify the relative pronoun that introduces it, using correct terminology
+- Linking paragraphs with adverbials — ✓ gloss: “Link ideas: Later, Meanwhile, Next”
+  - evidence: Begin a new paragraph with an adverbial of time to signal a shift in time or sequence, e.g. 'Meanwhile, back at the castle...' or 
+- Progressive and Continuous Tenses — ✓ gloss: “Keeps going: is running”
+  - evidence: Write sentences using past progressive to describe an action that was ongoing at a particular time, e.g. 'She was reading when the
+- Quoted and reported speech — ✗ no gloss
+  - evidence: Change '"I am tired," said Mia' into reported speech ('Mia said that she was tired')
+- Relative Clauses — ✗ no gloss
+  - evidence: Combine a main clause with a relative clause using 'who' or 'which' to add information about a noun, e.g. 'The dog, which had a re
+- Verb Prefixes and Meaning — ✗ no gloss
+  - evidence: Add verb prefixes to change meaning, e.g. dis- (disagree, disappear), de- (decompose, defrost), mis- (misunderstand, misbehave), o
+- Active and passive voice — ✗ no gloss
+  - evidence: Convert active sentences to passive voice and explain the change in emphasis
+- Apostrophes for shared ownership — ✓ gloss: “Sam and Ali's house”
+  - evidence: Write 'Sam and Ali's house' for one house they share and 'Sam's and Ali's bikes' for their separate bikes
+- Bullet Point Punctuation — ✗ no gloss
+  - evidence: Create bullet point lists with consistent capitalisation and punctuation throughout
+- Choosing Tenses for Precise Meaning — ✓ gloss: “Pick the exact tense”
+  - evidence: Write a paragraph using multiple tenses to show the sequence of past, present, and future events
+- Colons and Semicolons in Lists — ✗ no gloss
+  - evidence: Introduce a list with a colon after an independent clause such as 'You will need the following items:'
+- Commas After Introductory Elements — ✓ gloss: “Comma after the opener”
+  - evidence: Place commas after introductory adverbs such as 'However' or 'Therefore' at the start of sentences
+- Commas with yes, no, and names — ✗ no gloss
+  - evidence: Write sentences using commas with yes and no at the beginning such as 'Yes, I understand'
+- Conjunctions, Prepositions and Interjections — ✗ no gloss
+  - evidence: Identify conjunctions, prepositions, and interjections in sentences and explain their function
+- Consistent verb tense — ✓ gloss: “Keep tenses the same”
+  - evidence: Identify and correct unnecessary tense shifts in a given paragraph
+- Correlative Conjunctions — ✗ no gloss
+  - evidence: Write sentences using each pair of correlative conjunctions correctly
+- Grammar Terms: Voice and Punctuation — ✓ gloss: “Who is speaking? Punctuation shows”
+  - evidence: Define and give examples of subject and object in sentences
+- Hyphens in Prefixed Words — ✗ no gloss
+  - evidence: Distinguish between 'man eating shark' and 'man-eating shark' by adding or removing hyphens
+- Paragraph Cohesion — ✗ no gloss
+  - evidence: Use adverbials such as 'on the other hand' and 'as a consequence' to connect paragraphs
+- Punctuating Clauses — ✓ gloss: “Commas between ideas”
+  - evidence: Join two related independent clauses using a semi-colon in place of a conjunction
+- Punctuating Titles of Works — ✓ gloss: “Book titles: capitals or quotes”
+  - evidence: Use italics or underlining for titles of books, films, and albums
+- The subjunctive mood — ✗ no gloss
+  - evidence: Write sentences using 'If I were' to express hypothetical conditions
+- Varying Sentence Structure — ✗ no gloss
+  - evidence: Combine two simple sentences into one complex sentence using subordination
+
+## English|Handwriting & Transcription
+### early (5 topics)
+- Sitting and holding a pencil — ✗ no gloss
+  - evidence: Hold a pencil with a comfortable tripod or near-tripod grip
+- Writing digits 0-9 — ✗ no gloss
+  - evidence: Write all digits 0-9 clearly with correct starting points
+- Forming Capital Letters — ✗ no gloss
+  - evidence: Write all 26 capital letters with correct formation
+- Letter Formation Families — ✗ no gloss
+  - evidence: Group letters by similar strokes (e.g. c, a, d, g, o family — all start with a curve)
+- Joining Letters — ✗ no gloss
+  - evidence: Join 'in', 'un', 'it' with a diagonal stroke connecting the letters
+### mid (1 topics)
+- Writing neatly at speed — ✗ no gloss
+  - evidence: Copy a familiar two-line sentence legibly within two minutes, keeping letters correctly formed
+
+## English|Phonics & Word Reading
+### early (26 topics)
+- Blending Sounds to Read Words — ✗ no gloss
+  - evidence: Sound out and blend unfamiliar phonically regular words (e.g. /sh/-/o/-/p/ → 'shop')
+- Consonant Digraphs — ✗ no gloss
+  - evidence: Read words with consonant digraphs (e.g. 'shop', 'chip', 'that')
+- Knowing all letters — ✗ no gloss
+  - evidence: Name all 26 letters in both cases when shown in random order
+- Onsets & Rimes — ✗ no gloss
+  - evidence: Blend onset and rime to say a word (e.g. /c/ + /at/ → 'cat')
+- Rhyming words — ✗ no gloss
+  - evidence: Identify which words rhyme from a set (e.g. cat, bat, dog)
+- Single Letter Sounds — ✗ no gloss
+  - evidence: Say the most common sound for each consonant when shown the letter
+- Understanding print — ✗ no gloss
+  - evidence: Track words with a finger moving left to right across the page
+- Vowel Digraphs — ✗ no gloss
+  - evidence: Read words with vowel digraphs (e.g. 'tree', 'boat', 'rain', 'coin')
+- Compound Words — ✗ no gloss
+  - evidence: Identify the two words in a compound (e.g. 'sunshine' = 'sun' + 'shine')
+- Counting words in spoken sentences — ✗ no gloss
+  - evidence: Clap once for each word in the spoken sentence 'The big dog ran' and say there are 4 words
+- Diphthongs and complex vowels — ✗ no gloss
+  - evidence: Read words with variable vowel sounds (e.g. 'ow' in 'cow' vs 'snow')
+- R-Controlled Vowel Sounds — ✗ no gloss
+  - evidence: Read words with r-controlled vowels (e.g. 'car', 'bird', 'fork', 'her')
+- Reading Contractions — ✗ no gloss
+  - evidence: Read common contractions in text (e.g. 'I'm', 'we'll', 'don't')
+- Reading fluently — ✗ no gloss
+  - evidence: Read a phonically appropriate text with 90%+ accuracy
+- Reading High-Frequency Words by Sight — ✓ gloss: “Words you know by sight”
+  - evidence: Read common exception words instantly without sounding out (e.g. 'the', 'said', 'was', 'you')
+- Reading Inflectional Endings — ✗ no gloss
+  - evidence: Read suffixed words fluently (e.g. 'jumping', 'wanted', 'faster')
+- Split Digraphs and Magic E — ✗ no gloss
+  - evidence: Read words with split digraphs (e.g. 'cake', 'bike', 'home', 'cube')
+- Spotting and making alliteration — ✗ no gloss
+  - evidence: Say whether all the words in 'silly Sam sat' start with the same sound
+- Syllables — ✗ no gloss
+  - evidence: Clap out syllables in spoken words (e.g. 'butterfly' = 3 claps)
+- Trigraphs — ✗ no gloss
+  - evidence: Read words with trigraphs (e.g. 'night', 'chair', 'near')
+- Adding, deleting and swapping sounds — ✓ gloss: “Play with sounds: add, swap, drop”
+  - evidence: Add a sound at the start or end of a word: /s/ + 'top' makes 'stop'; 'ten' + /t/ makes 'tent'
+- Alternative Spellings for Known Sounds — ✓ gloss: “Same sound, different spellings”
+  - evidence: Read words with less common spellings for familiar sounds: 'badge', 'giraffe', 'city', 'knock', 'gnaw', 'write', 'treasure'
+- Reading and spelling consonant blends — ✓ gloss: “Blend sounds: st, bl, tr”
+  - evidence: Read words with initial blends (e.g. 'clap', 'frog', 'step', 'string') and final blends (e.g. 'hand', 'milk', 'jump')
+- Reading with Expression and Accuracy — ✗ no gloss
+  - evidence: Read a grade-level passage aloud with expression and appropriate pacing
+- Segmenting consonant clusters — ✗ no gloss
+  - evidence: Segment 'stop' into four sounds /s/-/t/-/o/-/p/ using fingers or sound buttons
+- Syllables (age 6+) — ✗ no gloss
+  - evidence: Read 'rabbit', 'thunder', 'fantastic' by breaking into syllable chunks and blending
+### mid (2 topics)
+- Decoding unfamiliar words — ✓ gloss: “Crack new words”
+  - evidence: Read exception words from the Y3-4 statutory word list accurately (e.g. 'business', 'caught', 'knowledge', 'different')
+- Prefixes and suffixes — ✗ no gloss
+  - evidence: Read words with common prefixes (dis-, mis-, re-, pre-) and suffixes (-ation, -ous, -ly) by identifying the root word first
+
+## English|Reading Comprehension
+### early (24 topics)
+- Predicting what happens next — ✗ no gloss
+  - evidence: Make a prediction before turning the page and explain reasoning
+- Book Features and Author's Reasons — ✗ no gloss
+  - evidence: Point to and name parts of a book (front cover, back cover, title page)
+- Characters, settings, and events — ✓ gloss: “Who, where, what happens”
+  - evidence: Name the main characters in a story
+- Comparing Characters Across Stories — ✓ gloss: “Compare characters”
+  - evidence: Identify what two stories have in common (e.g. 'Both have a bear character')
+- Connecting reading to experience — ✗ no gloss
+  - evidence: Make text-to-self connections (e.g. 'This reminds me of when I...')
+- Different Types of Texts — ✗ no gloss
+  - evidence: Distinguish between a story, a poem, and a non-fiction book
+- Discussing Texts as a Group — ✗ no gloss
+  - evidence: Share ideas about a book in a group discussion
+- Listening to Texts Read Aloud — ✗ no gloss
+  - evidence: Answer questions about a story or non-fiction text read aloud by the teacher
+- Main Topic of Informational Texts — ✓ gloss: “Find the main idea”
+  - evidence: State what a non-fiction text is mostly about in one sentence
+- Making pictures in your head — ✗ no gloss
+  - evidence: Sketch the picture they formed from a descriptive passage without illustrations, or from a process described in an information tex
+- Navigating print and screen texts — ✗ no gloss
+  - evidence: Swipe or tap to move through a digital picture book, scroll a screen text and use the home or back icon to return to the start
+- Pictures and Text Working Together — ✗ no gloss
+  - evidence: Use pictures to predict or confirm story events
+- Reading between the lines — ✗ no gloss
+  - evidence: Answer 'who', 'what', 'where' questions about a text using evidence
+- Retelling Stories with Structure — ✓ gloss: “Retell: first, then, last”
+  - evidence: Retell a familiar story in order, including at least three key details from beginning, middle, and end
+- Rhythm in rhymes and songs — ✗ no gloss
+  - evidence: Clap the steady beat while saying a nursery rhyme such as 'Hickory Dickory Dock'
+- Self-Correcting While Reading — ✗ no gloss
+  - evidence: Notice when reading does not make sense and stop to re-read
+- What is this text for? — ✗ no gloss
+  - evidence: Say that a storybook is for enjoying a story, an animal fact book is for finding out facts, and a recipe or shopping list tells us
+- Characters' Viewpoints and Responses — ✗ no gloss
+  - evidence: Identify who is telling a story and explain how you know (e.g. 'The wolf is telling the story because he says I')
+- Expressive and Sensory Language — ✓ gloss: “Words that show feelings and senses”
+  - evidence: Spot recurring story language such as 'Once upon a time' and 'happily ever after'
+- How texts in subjects differ — ✗ no gloss
+  - evidence: Point out the stages of a familiar text type and their language features, e.g. a recount's orientation, events in order and closin
+- Main Topic & Key Details — ✗ no gloss
+  - evidence: Identify the main topic of a multi-paragraph informational text and state the focus of individual paragraphs
+- Non-Fiction Text Features — ✗ no gloss
+  - evidence: Use a contents page to find information on a specific topic in a non-fiction book
+- Story Sequence and Central Message — ✓ gloss: “Story order and its big idea”
+  - evidence: Retell a story in correct sequence with beginning, middle, and end
+- What holds a poem together — ✗ no gloss
+  - evidence: Point to the line that repeats in a chant (e.g. 'We're going on a bear hunt') and say how it ties the verses together
+### mid (23 topics)
+- Forms of Poetry and Performance — ✓ gloss: “Poems you can perform”
+  - evidence: Name at least two different forms of poetry and describe a feature of each (e.g., 'narrative poetry tells a story', 'free verse do
+- How characters and places connect — ✗ no gloss
+  - evidence: Explain how Country and the characters are connected in a First Nations Australian picture book (e.g. 'Somebody's Land' by Adam Go
+- Identifying a text’s intended audience — ✓ gloss: “Who is this written for?”
+  - evidence: Say who a text is mainly for (e.g. a toddler's board book, a school newsletter for parents, a cereal ad for children) and point to
+- Inferring Characters' Feelings and Motives — ✗ no gloss
+  - evidence: Infer a character's feelings or motives from their actions and dialogue (e.g. 'She slammed the door — how is she feeling?')
+- Main Ideas & Note-Taking — ✗ no gloss
+  - evidence: Read a multi-paragraph non-fiction text and state the main idea of each paragraph in one sentence
+- Same topic, different texts — ✗ no gloss
+  - evidence: Compare a poem about the ocean with an information report about the ocean and say what each tells and how
+- Story Lessons and Morals — ✗ no gloss
+  - evidence: State the lesson or moral of a fable in one sentence (e.g. 'The Tortoise and the Hare teaches that slow and steady wins the race')
+- Text Features & Presentation — ✗ no gloss
+  - evidence: Explain how an author's word choices create a particular effect (e.g., 'The author uses "crept" instead of "walked" to make it fee
+- Themes and messages — ✗ no gloss
+  - evidence: Identify a common theme across two different stories (e.g., 'Both "Jack and the Beanstalk" and "The Three Billy Goats Gruff" are a
+- Why the author wrote it — ✗ no gloss
+  - evidence: Read an opinion article and state the author's point of view, then state one's own and explain how they differ
+- Words that show characters — ✗ no gloss
+  - evidence: Find the words that show a character is grumpy in one story and cheerful in another (e.g. 'stomped', 'grumbled' vs 'skipped', 'gig
+- Character Traits and Motivation — ✓ gloss: “Why characters do things”
+  - evidence: Identify two character traits from a story and cite the specific actions or dialogue that reveal each trait
+- Combining information from texts — ✗ no gloss
+  - evidence: Read two informational texts on the same topic and identify information that appears in both, information unique to each, and any 
+- Connecting Ideas in Texts — ✗ no gloss
+  - evidence: Read a science text and identify three cause-and-effect relationships using signal words like 'because', 'as a result'
+- In-Depth Character and Setting Analysis — ✓ gloss: “Look closer at characters & places”
+  - evidence: Write a detailed character description drawing on evidence from multiple points in the text, including what the character says, do
+- Interpreting visual information in texts — ✓ gloss: “Read the pictures too”
+  - evidence: Read and interpret data from a chart, graph, or table included in an informational text and explain how it supports or extends the
+- Morals in Fables, Folktales and Myths — ✗ no gloss
+  - evidence: Retell a fable and identify the moral, citing three key details that convey it
+- Same purpose, different audience — ✗ no gloss
+  - evidence: Compare two information texts about volcanoes, one for young children and one for adults, and list the differences in words and pi
+- Sound and meaning in poems — ✗ no gloss
+  - evidence: Explain how the rhythm and rhyme of a poem (e.g. Banjo Paterson's ballad 'The Man from Snowy River') create a feeling such as gall
+- Stories from other places, times — ✗ no gloss
+  - evidence: Discuss how the setting and events of a First Nations Australian story (e.g. 'Shake a Leg' by Boori Monty Pryor and Jan Ormerod) c
+- Structural terminology — ✓ gloss: “Story parts: opening, build-up, ending”
+  - evidence: Identify chapters, scenes, or stanzas in a given text and use the correct term for each
+- Structure of information texts — ✗ no gloss
+  - evidence: Identify which organisational structure an informational text uses (chronological order, compare/contrast, cause/effect, or proble
+- Themes Across Cultures and Traditions — ✓ gloss: “Same big ideas, different places”
+  - evidence: Compare how two myths or folk tales from different cultures treat a similar theme (e.g., creation, heroism, the importance of hone
+### upper (31 topics)
+- Cultural Allusions and Word Meaning — ✗ no gloss
+  - evidence: Explain the meaning of an allusion drawn from mythology when encountered in a text, e.g. identify that 'Herculean task' means an e
+- Explaining Events & Ideas — ✗ no gloss
+  - evidence: Explain a historical event described in an informational text by identifying both what happened and the causes leading to it, usin
+- Fact vs opinion — ✗ no gloss
+  - evidence: Identify and label statements as fact or opinion in a newspaper article
+- Finding Theme and Summarising — ✗ no gloss
+  - evidence: Identify the theme of a story (e.g. courage, friendship, overcoming adversity) by examining what characters learn, how they change
+- Firsthand and Secondhand Accounts — ✓ gloss: “Saw it myself vs heard about it”
+  - evidence: Explain the difference between a firsthand account (written by someone who experienced the event) and a secondhand account (writte
+- How authors support their points — ✗ no gloss
+  - evidence: Identify the key points an author makes in an informational text and list the specific reasons and evidence provided to support ea
+- How images are framed — ✗ no gloss
+  - evidence: Compare a close-up and a long shot of the same character in a picture book or film and explain how each makes the viewer feel
+- How Language Choices Affect the Reader — ✓ gloss: “Word choices move readers”
+  - evidence: Explain how a specific metaphor or simile affects the reader's understanding or emotions
+- How Parts Build a Whole Text — ✗ no gloss
+  - evidence: Map the structure of a novel showing how each chapter advances plot or character development
+- Justifying Views About Texts — ✗ no gloss
+  - evidence: State an opinion about a character's motivations and support it with three pieces of textual evidence
+- Multiple Accounts of Events — ✗ no gloss
+  - evidence: Compare two news articles about the same event and identify differences in perspective
+- Narrator's Point of View — ✗ no gloss
+  - evidence: Identify whether a story is told in first person (I/we) or third person (he/she/they) and explain how this affects what the reader
+- Poems, Drama & Prose — ✗ no gloss
+  - evidence: Compare a poem, a play script, and a prose passage on a similar theme, identifying the structural features unique to each form (e.
+- Puns and playing with words — ✗ no gloss
+  - evidence: Explain the double meaning in a pun (e.g. 'The bicycle couldn't stand up because it was two-tired')
+- Recommending Books — ✗ no gloss
+  - evidence: Recommend a book to a peer by explaining its genre, theme, and what makes it engaging, comparing it to other books the peer has en
+- Text & Media Connections — ✗ no gloss
+  - evidence: Compare a passage from a book with a film or audio adaptation, identifying specific moments where the visual or oral version match
+- Texts as clues to time — ✗ no gloss
+  - evidence: Identify words, references and attitudes in an older Australian story or poem (e.g. a Banjo Paterson ballad) that show when and wh
+- Comparing Books — ✗ no gloss
+  - evidence: Compare how two authors develop similar themes using different narrative techniques
+- Comparing Characters, Settings and Events — ✓ gloss: “Compare stories side by side”
+  - evidence: Create a Venn diagram comparing two characters' traits using textual evidence
+- Comparing Structure in Information Texts — ✗ no gloss
+  - evidence: Identify the organisational structure of two texts on the same topic
+- Different viewpoints in texts — ✗ no gloss
+  - evidence: Identify whether a story uses first-person or third-person narration and explain the effect
+- Explaining Relationships in Texts — ✗ no gloss
+  - evidence: Explain the cause-and-effect relationship between events in a historical text
+- How Authors Treat Similar Themes — ✓ gloss: “Two authors, one big idea”
+  - evidence: Compare how two mystery stories create suspense using different techniques
+- How image order shapes meaning — ✗ no gloss
+  - evidence: Rearrange the panels of a short comic strip and explain how the new order changes the story or joke
+- Multimedia elements in texts — ✓ gloss: “Pictures, sound and video in texts”
+  - evidence: Explain how illustrations in a graphic novel convey emotion or advance the story
+- Quoting Accurately from Texts — ✗ no gloss
+  - evidence: Select and copy exact words from a text to support an inference about character motivation
+- Skimming, scanning and checking — ✓ gloss: “Skim, scan, check”
+  - evidence: Skim an article for 30 seconds using its headings and first sentences, then state its main idea
+- Summarising Non-Fiction Main Ideas — ✓ gloss: “Say the main idea in one line”
+  - evidence: Identify the main ideas in each section of an informational article
+- Supporting ideas with evidence — ✗ no gloss
+  - evidence: Match each of an author's main points with the evidence used to support it
+- Synthesising across multiple texts — ✓ gloss: “Put two texts together”
+  - evidence: Combine information from three sources into a coherent paragraph using own words
+- Using Multiple Sources — ✗ no gloss
+  - evidence: Use search features, indexes, and headings to locate specific information across sources
+
+## English|Speaking & Listening
+### early (9 topics)
+- Asking Questions — ✗ no gloss
+  - evidence: Ask a question when something is unclear or more information is needed
+- Describing Aloud — ✗ no gloss
+  - evidence: Describe a familiar person or place using several details
+- Exploring Ideas Through Talk — ✗ no gloss
+  - evidence: Wonder aloud about possibilities (e.g. 'What if...' or 'I think it might be because...')
+- Expressing & Justifying Opinions — ✓ gloss: “I think… because…”
+  - evidence: State an opinion and give a reason (e.g. 'I think ... because ...')
+- Group discussions — ✗ no gloss
+  - evidence: Stay on topic during a conversation for multiple turns
+- Listening and responding — ✗ no gloss
+  - evidence: Demonstrate attentive listening by making eye contact and responding relevantly
+- Language for different roles — ✗ no gloss
+  - evidence: Role-play being the group leader and then a helper in the same task and say how their words changed (e.g. 'Let's start with...' vs
+- Asking, offering and requesting — ✗ no gloss
+  - evidence: Make a polite request with matching words and gesture (e.g. 'May I please have the glue?' with an open hand)
+- Reciting Poetry — ✗ no gloss
+  - evidence: Recite a poem from memory with expression and clear enunciation
+### mid (5 topics)
+- Engaging Listeners and Valuing Viewpoints — ✓ gloss: “Be a great listener”
+  - evidence: Use strategies to engage listeners during a presentation (e.g., make eye contact, vary tone and pace, ask the audience a question)
+- Giving and following instructions — ✗ no gloss
+  - evidence: Follow four spoken instructions in order (e.g. to make a paper aeroplane) and ask a question if a step is unclear
+- Reporting & Recounting — ✗ no gloss
+  - evidence: Deliver a one-minute oral report on a chosen topic, including at least three organised facts
+- Precise words in presentations — ✗ no gloss
+  - evidence: Plan a two-minute talk on a science topic (e.g. a frog's life cycle) that uses at least four topic words such as 'tadpole' and 'me
+- Preparing for and Explaining in Discussions — ✓ gloss: “Explain your ideas clearly”
+  - evidence: Read assigned material and prepare three discussion points or questions before a group conversation
+### upper (10 topics)
+- Building on Others in Discussions — ✓ gloss: “Add to friends’ ideas”
+  - evidence: Ask follow-up questions that build on another speaker's comment
+- Identifying Reasons Behind a Speaker's Points — ✗ no gloss
+  - evidence: Listen to a speaker's argument or presentation and list the specific reasons and evidence provided to support each main point
+- Language that builds relationships — ✓ gloss: “Words that make friends”
+  - evidence: Use inclusive and encouraging language in group work (e.g. 'Let's try your idea', 'Great thinking!') and say how it helps the grou
+- Paraphrasing What You Hear — ✗ no gloss
+  - evidence: Listen to a passage read aloud and restate the main idea and key details in own words without looking at the original text
+- Presenting an argument — ✗ no gloss
+  - evidence: Plan and present a two-minute argument (e.g. 'Should our school have a longer lunch break?') with a position, two reasons with evi
+- Adapting Speech to Context — ✗ no gloss
+  - evidence: Present the same information formally to a panel and informally to peers
+- Drawing Conclusions from Discussion — ✓ gloss: “What did we decide?”
+  - evidence: Summarise the main points made by different speakers in a group discussion
+- Evaluating a Speaker's Argument — ✗ no gloss
+  - evidence: Identify the main claim in a spoken presentation and the evidence used to support it
+- Multimedia Presentations — ✓ gloss: “Shows with sound & pictures”
+  - evidence: Select graphics, images, or sound that support and clarify main ideas in a presentation
+- Summarising Spoken and Media Presentations — ✓ gloss: “Sum up what you heard”
+  - evidence: Summarise the main points of a video or audio presentation in own words
+
+## English|Spelling & Word Study
+### early (10 topics)
+- Phonics Vocabulary — ✗ no gloss
+  - evidence: Say the sounds for common graphemes (e.g. 'sh', 'ch', 'th', 'ee', 'igh') and use 'phoneme' and 'grapheme' correctly when explainin
+- Segmenting words into sounds — ✗ no gloss
+  - evidence: Write CVC words from dictation (e.g. 'cat', 'bed', 'hot')
+- Spelling from Dictation — ✗ no gloss
+  - evidence: Write a dictated sentence using phonically plausible spellings
+- Spelling Verb Endings — ✗ no gloss
+  - evidence: Add -s or -es correctly to make plurals (e.g. 'cats', 'boxes')
+- The Prefix un- — ✗ no gloss
+  - evidence: Spell words with un- prefix correctly (e.g. 'unhappy', 'unfair', 'undo')
+- Tricky words — ✗ no gloss
+  - evidence: Correctly spell high-frequency irregular words (e.g. 'said', 'the', 'was')
+- Alternative Spellings for Sounds — ✓ gloss: “Same sound, different spellings”
+  - evidence: Spell 'ball', 'call', 'walk' using alternative grapheme /ɔ:/ as 'a' before ll
+- Apostrophes for possession — ✓ gloss: “Whose is it? the cat's tail”
+  - evidence: Write 'the cat's tail' to show the tail belongs to the cat
+- Spelling Contracted Forms — ✗ no gloss
+  - evidence: Write 'can't' for 'cannot', 'didn't' for 'did not' with apostrophe correctly placed
+- Suffixes — ✗ no gloss
+  - evidence: Spell 'hoping' (drop e), 'cried' (y to i), 'running' (double consonant) applying the correct rule
+### mid (7 topics)
+- Apostrophes for possession (age 7+) — ✓ gloss: “Whose is it? the dogs' kennel”
+  - evidence: Place the apostrophe correctly in plural possessives: 'the dogs' kennel' vs 'the dog's kennel'
+- Homophones — ✗ no gloss
+  - evidence: Spell pairs of homophones correctly in context (e.g., 'there/their/they're', 'brake/break', 'grate/great')
+- Prefixes (age 7+) — ✗ no gloss
+  - evidence: Spell words with prefixes dis-, mis-, re- correctly without altering the root (e.g., disappoint, misspell, return)
+- Spelling Word Lists (age 7+) — ✗ no gloss
+  - evidence: Spell at least 20 words from the Y3-4 statutory list correctly (e.g., accident, believe, different, favourite, imagine)
+- Suffixes (age 7+) — ✗ no gloss
+  - evidence: Spell words with suffixes -ation (e.g., information, sensation), -ly (e.g., sadly, gently, happily), and -ous (e.g., famous, enorm
+- Using a Dictionary to Check Spellings — ✗ no gloss
+  - evidence: Locate a word in a dictionary using its first two or three letters (e.g., find 'beautiful' by looking up 'be-')
+- Spellings from Greek, French and Latin — ✓ gloss: “Word families from old languages”
+  - evidence: Spell words with Greek ch such as 'scheme', 'chorus', 'chemist', 'echo' and explain the /k/ sound pattern
+### upper (6 topics)
+- Advanced Spelling Conventions — ✓ gloss: “Tricky spelling rules”
+  - evidence: Apply the -fer doubling rule: double the r when the syllable is stressed (referring, preferred, transferred) but not when stress s
+- Homophones (age 9+) — ✗ no gloss
+  - evidence: Select the correct spelling from a pair of homophones by analysing meaning in context, e.g. 'The doctor's advice (noun) was to pra
+- Silent Letters in Words — ✗ no gloss
+  - evidence: Identify and spell words with silent initial consonants: knight, know, write, wrap, gnaw, psalm, applying knowledge that these let
+- Spelling -able & -ible — ✗ no gloss
+  - evidence: Apply the guideline that -able is typically used with complete root words (enjoyable, comfortable) while -ible is used with incomp
+- Spelling Word Lists (age 9+) — ✗ no gloss
+  - evidence: Spell high-frequency words from the Y5-6 list accurately in dictated sentences, e.g. accommodate, committee, correspond, exaggerat
+- Suffixes (age 9+) — ✗ no gloss
+  - evidence: Apply the pattern that -cious follows a vowel (spacious, gracious) while -tious follows a consonant (cautious, ambitious), noting 
+
+## English|Vocabulary
+### early (7 topics)
+- Discussing and Questioning New Words — ✗ no gloss
+  - evidence: Ask 'What does ___ mean?' when meeting unfamiliar words during reading
+- Shades of Meaning — ✗ no gloss
+  - evidence: Compare similar verbs by acting them out (e.g. 'walk', 'march', 'strut', 'prance')
+- Sorting & Categorising Words — ✗ no gloss
+  - evidence: Group words or objects by category (e.g. animals, foods, colours)
+- Using New Vocabulary — ✗ no gloss
+  - evidence: Incorporate new vocabulary from read-alouds into conversations
+- Word Parts as Clues — ✗ no gloss
+  - evidence: Recognise that -ed signals past tense (e.g. 'jumped' = already happened)
+- Defining Words — ✗ no gloss
+  - evidence: Define 'tiger' as 'a large cat with stripes' — naming category and key attribute
+- Root Words & Inflections — ✗ no gloss
+  - evidence: Identify 'play' as the root in 'played', 'playing', 'player'
+### mid (5 topics)
+- Formal and Informal English — ✗ no gloss
+  - evidence: Identify whether a spoken or written example uses formal or informal language (e.g., 'Dear Sir' vs 'Hey mate')
+- Word Families and Root Words — ✗ no gloss
+  - evidence: Generate at least 4 words in a word family from a given root (e.g., from 'play': player, playful, replay, playground)
+- Domain Vocabulary Across Subject Areas — ✓ gloss: “Subject words: science words, maths words”
+  - evidence: Identify and define academic vocabulary (e.g., compare, contrast, summarise, evidence, interpret) used across multiple subject are
+- Literal vs Figurative Language — ✓ gloss: “Real words or picture words”
+  - evidence: Identify whether 'It's raining cats and dogs' is literal or nonliteral and explain what it means
+- Words with several meanings — ✗ no gloss
+  - evidence: Explain the meaning of 'table' at dinner and in maths, and 'volume' on a TV and in science
+### upper (7 topics)
+- Antonyms & Synonyms — ✗ no gloss
+  - evidence: Generate synonyms and antonyms for given words and explain subtle differences between synonyms, e.g. happy/joyful/ecstatic differ 
+- Greek and Latin Roots for Word Meaning — ✓ gloss: “Word roots: tele, bio”
+  - evidence: Identify common Greek and Latin roots in unfamiliar words and use root meaning to infer word meaning, e.g. 'aqua' (water) in aquar
+- Idioms & Proverbs — ✗ no gloss
+  - evidence: Explain the figurative meaning of common idioms encountered in texts, e.g. 'let the cat out of the bag' means to reveal a secret, 
+- Similes & Metaphors — ✗ no gloss
+  - evidence: Identify similes in a text by locating comparisons using 'like' or 'as' and explain what two things are being compared and what qu
+- Using a Thesaurus to Choose Words — ✗ no gloss
+  - evidence: Use a thesaurus to find three alternatives for overused words in own writing
+- Choosing Formal Vocabulary — ✗ no gloss
+  - evidence: Replace informal words with formal equivalents in a given text
+- Dialects & Registers — ✗ no gloss
+  - evidence: Identify dialect features in character dialogue and explain their effect
+
+## English|Writing Composition
+### early (15 topics)
+- Changing a familiar story — ✗ no gloss
+  - evidence: Act out 'The Three Little Pigs' with puppets but change the wolf into a different animal
+- Responding to Writing Feedback — ✗ no gloss
+  - evidence: Reread own writing and spot a missing word or unclear sentence
+- Saying Sentences Before Writing Them — ✓ gloss: “Say it, then write it”
+  - evidence: Say a complete sentence aloud before attempting to write it
+- Shared Research Projects — ✗ no gloss
+  - evidence: Contribute ideas and information to a class writing project
+- Sharing and Publishing Your Writing — ✗ no gloss
+  - evidence: Read own sentences aloud with clear voice and appropriate expression
+- Simple Stories with Beginning and Ending — ✓ gloss: “Stories with a start and a finish”
+  - evidence: Write a short story with at least three sequenced sentences
+- Writing opinions — ✗ no gloss
+  - evidence: State an opinion clearly (e.g. 'My favourite animal is a dog because...')
+- Writing Process Vocabulary — ✓ gloss: “Writing words: plan, draft, check”
+  - evidence: Use 'compose', 'revise', and 'edit' correctly when describing the stages of writing
+- Writing to inform — ✗ no gloss
+  - evidence: Write or dictate two or three facts about a familiar topic
+- Basic Informational Writing — ✗ no gloss
+  - evidence: Write an informative text that introduces a topic clearly and groups related information together
+- Building Writing Stamina — ✗ no gloss
+  - evidence: Write a recount of a school trip using temporal connectives (first, then, after that)
+- Planning Ideas Before Writing — ✗ no gloss
+  - evidence: Verbally rehearse sentences before writing them down
+- Revising and editing — ✗ no gloss
+  - evidence: Re-read own writing and spot a missing full stop or capital letter
+- Structured Opinion Writing — ✗ no gloss
+  - evidence: Write an opinion piece that introduces the topic, states a clear opinion, and provides at least two reasons
+- Writing Poetry — ✗ no gloss
+  - evidence: Write a simple poem or new verse using rhyming couplets, a repeated pattern or alliteration (e.g. 'Wiggly worms wriggle')
+### mid (12 topics)
+- Borrowing from books you've read — ✗ no gloss
+  - evidence: Write a new version of a familiar story that follows its plot or repeated pattern (e.g. a problem–attempts–resolution plot, or the
+- Narrative Writing — ✗ no gloss
+  - evidence: Write a narrative that includes a described setting, at least one developed character, and a clear plot with a problem and resolut
+- Organising Writing into Paragraphs — ✓ gloss: “Group ideas into paragraphs”
+  - evidence: Divide a piece of writing into paragraphs, each focused on one main idea or aspect of the topic
+- Rehearsing and Varying Sentences — ✓ gloss: “Try sentences out loud”
+  - evidence: Rehearse a sentence containing dialogue aloud before writing it (e.g. 'Let's go!' shouted Tom)
+- Revising and editing (age 7+) — ✗ no gloss
+  - evidence: Read own or a peer's writing aloud and suggest specific improvements to vocabulary or sentence structure
+- Choosing Form and Tone for Your Audience — ✓ gloss: “Match your writing to your reader”
+  - evidence: Determine the audience (e.g., peers, teacher, younger children, a public audience) and purpose (to persuade, inform, entertain, or
+- Making multimodal texts — ✗ no gloss
+  - evidence: Create a digital slide, poster or e-book page that combines a short informative paragraph with a labelled diagram and a caption
+- Revising and editing (age 8+) — ✗ no gloss
+  - evidence: Reread a paragraph silently and independently identify at least one place where meaning could be clearer or a word choice improved
+- Short Research Projects — ✗ no gloss
+  - evidence: Generate three research questions about an assigned topic and identify two sources for each
+- Vivid Word Choices — ✗ no gloss
+  - evidence: Replace vague words in 'The nice man went to the big house' with more precise alternatives and explain the effect
+- Writing Craft Vocabulary — ✗ no gloss
+  - evidence: Explain the difference between 'formal register' and 'informal register' and give an example of when each is appropriate
+- Writing for an audience — ✗ no gloss
+  - evidence: Identify the task, purpose, and audience before writing and make deliberate choices about structure, tone, and vocabulary to suit 
+### upper (7 topics)
+- Evidence-Based Writing — ✗ no gloss
+  - evidence: Write a research-based paragraph or short report that cites specific facts, details, and evidence from informational texts to supp
+- Literary Evidence in Writing — ✗ no gloss
+  - evidence: Write a response to a literary text that includes direct quotations and specific details from the text as evidence to support a cl
+- Research & Note-Taking — ✗ no gloss
+  - evidence: Take organised notes from multiple sources using own words rather than copying
+- Layout and Formatting in Informational Writing — ✓ gloss: “Headings that guide readers”
+  - evidence: Organise an informational text using headings and sub-headings to separate sections
+- Planning Narratives — ✗ no gloss
+  - evidence: Identify specific authorial techniques for character development from a mentor text
+- Trying figurative language in writing — ✓ gloss: “Try comparing words”
+  - evidence: Write a setting description that uses at least one simile, one metaphor and one personification (e.g. 'The old house groaned in th
+- Writing a Précis — ✗ no gloss
+  - evidence: Reduce a three-paragraph text to a single paragraph capturing all main points
+
+## Geography|Maps & Spatial Skills
+### early (1 topics)
+- Finding places on a plan — ✗ no gloss
+  - evidence: Point to or place picture markers for the teacher's desk and the door on a pictorial map, plan or block model of the classroom
+### mid (3 topics)
+- Local, regional and state scales — ✓ gloss: “Near, farther, far away”
+  - evidence: Locate their suburb or town, its region and their state or territory on a set of maps at different scales
+- Reading and drawing maps — ✗ no gloss
+  - evidence: Draw a labelled map of the classroom from above with a key for desks, door and windows
+- Locating neighbouring countries — ✗ no gloss
+  - evidence: Locate their own country's neighbouring countries and regions on a world map or globe (e.g. for Australia: New Zealand, Papua New 
+### upper (1 topics)
+- Grid references and directions — ✗ no gloss
+  - evidence: Name the grid square that contains the playground on a map as C4
+
+## Geography|Places & Environments
+### early (5 topics)
+- Our school's Country — ✗ no gloss
+  - evidence: Name the First Nations Australian people on whose Country/Place the school stands, using information the school has confirmed (e.g
+- Special places I belong to — ✗ no gloss
+  - evidence: Draw a familiar place they belong to and label two features (e.g. the swings, the big tree, the front door)
+- Changing and caring for places — ✗ no gloss
+  - evidence: Compare an old and a recent photo of a local place and describe two changes
+- Natural, managed and built features — ✓ gloss: “Wild, cared-for, built”
+  - evidence: Sort photos of local features into natural (creek, hill), managed (park, farm, garden) and constructed (road, school, shops)
+- Raising farm animals — ✗ no gloss
+  - evidence: Describe how a farmer looks after an animal such as a chicken, cow or sheep (food, water, shelter, health checks)
+### mid (5 topics)
+- First Nations and local Country — ✓ gloss: “Whose Country are we on?”
+  - evidence: Name the First Nations people of the local area and, where the school has confirmed it, a local-language name for a place, river o
+- Food and fibre production — ✗ no gloss
+  - evidence: Match plants and animals to the products they give and the production system they come from (e.g. wheat → bread → cropping, cotton
+- Australia's states and territories — ✗ no gloss
+  - evidence: Label Australia's six states and its two self-governing territories, the Australian Capital Territory and the Northern Territory, 
+- Comparing places in different countries — ✗ no gloss
+  - evidence: Compare photos of an Australian place and a place in a neighbouring country (e.g. a Queensland coastal town and a village in Papua
+- First Nations Countries of Australia — ✓ gloss: “Many Countries, one Australia”
+  - evidence: Use an indicative map of First Nations Australia (e.g. the AIATSIS Map of Indigenous Australia) to explain that there were hundred
+### upper (5 topics)
+- Caring for Country — ✗ no gloss
+  - evidence: Explain what custodial responsibility for Country/Place means and give an example of how First Nations Australians practise it (e.
+- Why environments matter — ✗ no gloss
+  - evidence: Explain how a native vegetation type (e.g. eucalypt forest, mangroves or grasslands) provides food, shelter and other needs for an
+- Managed environments for food — ✗ no gloss
+  - evidence: Describe how a managed environment controls conditions (e.g. a greenhouse controls temperature and water; irrigation supplies wate
+- Managing natural hazards — ✗ no gloss
+  - evidence: Explain how bushfire risk is managed (e.g. hazard reduction burns, cultural burning, fire danger ratings and bushfire plans) and t
+- People shaping places — ✗ no gloss
+  - evidence: Explain how First Nations Australians shaped places through practices such as cultural burning and building fish or eel traps (e.g
+
+## History|Ancient Egypt
+### early (8 topics)
+- Discovering Tutankhamun's Tomb — ✗ no gloss
+  - evidence: Explain that archaeologists find and study old objects to learn about people who lived long ago
+- Egyptian Gods and the Afterlife — ✗ no gloss
+  - evidence: Explain that ancient Egyptians worshipped many different gods and goddesses
+- Egypt, the Nile, and the Desert — ✓ gloss: “Egypt: river and desert”
+  - evidence: Point to Egypt on a map and identify the River Nile running through it
+- Everyday Life in Ancient Egypt — ✗ no gloss
+  - evidence: Describe at least two things ordinary Egyptian families did in their daily lives
+- Hieroglyphs and Papyrus — ✗ no gloss
+  - evidence: Describe hieroglyphs as a writing system that uses pictures and symbols
+- Pharaohs and Tutankhamun — ✗ no gloss
+  - evidence: Explain that a pharaoh was the ruler of ancient Egypt, like a king or queen
+- Pyramids and the Great Sphinx — ✗ no gloss
+  - evidence: Explain that pyramids were built as tombs to protect the pharaoh's body for the afterlife
+- Vocabulary: ancient egypt — ✓ gloss: “Egypt words: pharaoh, pyramid”
+  - evidence: Use 'pharaoh', 'pyramid', and 'hieroglyphs' correctly and naturally in a spoken or written account of ancient Egypt
+### mid (8 topics)
+- Ancient Egypt on the Timeline — ✗ no gloss
+  - evidence: Place ancient Egypt on a timeline showing it lasted over 3,000 years
+- Building the Pyramids — ✗ no gloss
+  - evidence: Describe at least two methods used to move and raise heavy stone blocks
+- Egyptian Gods and Goddesses — ✗ no gloss
+  - evidence: Name at least four Egyptian gods/goddesses and describe their roles
+- Egyptian Social Hierarchy — ✗ no gloss
+  - evidence: Draw or describe the social pyramid with at least four levels correctly ordered
+- Egyptian Tomb Paintings and Artefacts — ✓ gloss: “Tomb wall pictures”
+  - evidence: Describe what can be learned about Egyptian life by studying a tomb painting or artefact
+- Mummification Step by Step — ✗ no gloss
+  - evidence: List the main steps of mummification in the correct order
+- Scribes and the Rosetta Stone — ✗ no gloss
+  - evidence: Explain the importance of scribes as the only people who could read and write
+- Upper and Lower Egypt — ✗ no gloss
+  - evidence: Identify Upper and Lower Egypt on a map and explain why they had different landscapes
+### upper (8 topics)
+- Ancient Egypt's Lasting Legacy — ✗ no gloss
+  - evidence: Name at least two Egyptian achievements that influenced later civilisations
+- Cleopatra and the End of Egypt — ✗ no gloss
+  - evidence: Name Cleopatra VII as the last pharaoh of ancient Egypt
+- Egyptian Art and Architecture — ✗ no gloss
+  - evidence: Identify at least two conventions used in Egyptian painting and explain their purpose
+- Egyptian Trade and Economy — ✗ no gloss
+  - evidence: Explain how agricultural surplus along the Nile allowed people to specialise in non-farming jobs
+- Judgement of the Dead — ✗ no gloss
+  - evidence: Describe the weighing of the heart ceremony and name the gods involved
+- Maps of ancient Egypt — ✗ no gloss
+  - evidence: Read a map of ancient Egypt and identify the Nile, Memphis, Thebes and the Valley of the Kings
+- The Pharaoh as Living God — ✗ no gloss
+  - evidence: Explain the pharaoh's dual role as both political ruler and divine figure
+- Modern Archaeology and Egyptian Ethics — ✓ gloss: “Digging up Egypt today”
+  - evidence: Name at least two modern technologies used in Egyptology and explain what they reveal
+
+## History|Ancient Greece & Rome
+### early (7 topics)
+- Ancient Greece and Rome on the Map — ✓ gloss: “Find Greece & Rome”
+  - evidence: Point to Greece and Italy on a world map or globe
+- Ancient life vs today — ✗ no gloss
+  - evidence: Name two ways a child's life in ancient Greece or Rome was different from today
+- Greek gods & Mount Olympus — ✗ no gloss
+  - evidence: Name at least three Greek gods and say what each one was god of
+- Greek Myths and Heroes — ✗ no gloss
+  - evidence: Retell a Greek myth naming the hero, the monster, and what happened
+- Roman soldiers & builders — ✗ no gloss
+  - evidence: Describe Roman soldiers as part of a powerful army that marched across an empire
+- Romulus & Remus — ✗ no gloss
+  - evidence: Retell the story of Romulus and Remus being raised by a wolf
+- The first Olympics — ✗ no gloss
+  - evidence: Say that the Olympic Games started in ancient Greece at Olympia
+### mid (10 topics)
+- Athenian Democracy — ✗ no gloss
+  - evidence: Explain what democracy meant in Athens: citizens voted on decisions together
+- Athens Versus Sparta — ✗ no gloss
+  - evidence: Name at least two differences between life in Athens and life in Sparta
+- Boudicca's Revolt Against Rome — ✗ no gloss
+  - evidence: Retell the story of Boudicca: who she was, why she revolted, what happened
+- Daily Life in a Roman Town — ✗ no gloss
+  - evidence: Describe at least three features of a Roman town such as forum, baths, or amphitheatre
+- Gladiators & Pompeii — ✗ no gloss
+  - evidence: Describe what gladiators were and where they fought
+- Gods & the Parthenon — ✗ no gloss
+  - evidence: Name at least five Greek gods and say what each was responsible for
+- Greek Gods with Roman Names — ✗ no gloss
+  - evidence: Match at least four Greek gods to their Roman names
+- Greek theatre — ✗ no gloss
+  - evidence: Explain that the Greeks invented theatre with two types of plays: tragedies and comedies
+- Marathon and Thermopylae — ✗ no gloss
+  - evidence: Retell the story of the Battle of Marathon and the runner Pheidippides
+- Roman Army and Conquest of Britain — ✓ gloss: “Rome invades Britain”
+  - evidence: Describe a Roman legion as a large unit of highly trained, disciplined soldiers
+### upper (8 topics)
+- Alexander the Great's Empire — ✗ no gloss
+  - evidence: Describe the extent of Alexander's empire on a map (Greece to Egypt to India)
+- Evidence for Greek and Roman Life — ✓ gloss: “Clues from Greece & Rome”
+  - evidence: Name at least three types of evidence historians use to learn about ancient Greece and Rome
+- Fall of the Western Roman Empire — ✓ gloss: “Rome falls”
+  - evidence: Name at least two reasons why the Western Roman Empire declined and fell
+- Greek and Roman Architecture — ✗ no gloss
+  - evidence: Identify the three Greek column orders (Doric, Ionic, Corinthian) from pictures
+- Greek and Roman Legacy Today — ✗ no gloss
+  - evidence: List at least five ways ancient Greece and Rome still influence modern life
+- Greek Philosophers and Medicine — ✓ gloss: “Greek thinkers & doctors”
+  - evidence: Describe what Socrates, Plato, and Aristotle each contributed to thinking and learning
+- Roman Law, Latin, and Christianity — ✓ gloss: “Roman laws & words”
+  - evidence: Give examples of English words that come from Latin
+- Roman Republic and Empire — ✗ no gloss
+  - evidence: Describe the Roman Republic's structure: consuls, Senate, patricians, and plebeians
+
+## History|Family & Community History
+### early (3 topics)
+- Celebrations we share — ✗ no gloss
+  - evidence: Describe how their family celebrates a special event (e.g. a birthday, Christmas, Diwali, Eid or Lunar New Year) using a photo or 
+- My family and where we're from — ✗ no gloss
+  - evidence: Name the people in their family and say how each is related to them (e.g. 'Nan is Mum's mum')
+- Childhood then and now — ✗ no gloss
+  - evidence: Interview a parent or grandparent with prepared questions about school, toys or chores when they were young
+### mid (4 topics)
+- Important local people and places — ✗ no gloss
+  - evidence: Find out about a local place or building (e.g. a war memorial, place of worship, old school or community hall) using photos, a pla
+- Technology changes how we live — ✗ no gloss
+  - evidence: Compare how a household job was done in the past and today (e.g. washing clothes with a copper and washboard vs a washing machine)
+- How our community changed — ✗ no gloss
+  - evidence: Identify one change in the local community and explain a cause and an effect (e.g. a new train line led to more houses being built
+- National days and commemorations — ✗ no gloss
+  - evidence: Explain what is commemorated on Anzac Day (25 April) and on National Sorry Day (26 May), and how people mark each
+
+## History|Historical Thinking
+### early (5 topics)
+- Timelines of past events — ✗ no gloss
+  - evidence: Place photos or drawings of themselves as a baby, a toddler and now, or labels for five events from their own life, in order on an
+- Different perspectives and accounts — ✓ gloss: “Two sides of the story”
+  - evidence: Explain how a child and a grandparent might feel differently about the same old toy, photo or place
+- Evidence from the Past — ✗ no gloss
+  - evidence: Explain that we know about the past from evidence that has survived, such as objects, photos, buildings, documents and stories
+- Questions about the past — ✗ no gloss
+  - evidence: Write or say three questions to ask a grandparent about their childhood (e.g. 'What games did you play?')
+- Vocabulary: historical thinking — ✓ gloss: “History words: old, older, oldest”
+  - evidence: Correctly use BC/BCE and AD/CE to place events in time and explain what the letters stand for
+### mid (4 topics)
+- Checking Sources Against Each Other — ✓ gloss: “Do two sources agree?”
+  - evidence: Compare two accounts of the same event (e.g. two family members' stories or two short sources) and list the facts on which they ag
+- Dated timelines with notes — ✗ no gloss
+  - evidence: Create a timeline of local community history with dates and a scale (e.g. one centimetre for every ten years), placing at least fi
+- Questioning Historical Sources — ✗ no gloss
+  - evidence: Wineburg sourcing heuristic
+- Understanding People in Their Own Time — ✓ gloss: “Life was different then”
+  - evidence: Historical Empathy: A Cognitive-Affective Theory (ERIC)
+### upper (1 topics)
+- Evidence Versus Interpretation — ✗ no gloss
+  - evidence: Development of historical understanding among 9-14 year olds
+
+## History|Medieval Times
+### early (8 topics)
+- Kings & Queens — ✗ no gloss
+  - evidence: Explain what a medieval king or queen did (ruled, made laws, led armies, collected taxes)
+- Knights & Armour — ✗ no gloss
+  - evidence: Describe what a knight wore and carried (armour, helmet, shield, sword, lance)
+- Medieval Clothing — ✗ no gloss
+  - evidence: Describe what a medieval peasant would typically wear
+- Medieval Food & Feasts — ✗ no gloss
+  - evidence: Describe what ordinary people ate most days (bread, pottage, vegetables, ale)
+- Robin Hood & King Arthur — ✗ no gloss
+  - evidence: Retell the basic story of Robin Hood or King Arthur
+- The Vikings — ✗ no gloss
+  - evidence: Describe who the Vikings were and where they came from
+- Village Life — ✗ no gloss
+  - evidence: Describe what a typical medieval village looked like (thatched cottages, fields, church)
+- What Is a Castle? — ✗ no gloss
+  - evidence: Name at least four parts of a castle (tower, moat, drawbridge, walls, gatehouse)
+### mid (9 topics)
+- Anglo-Saxon Britain — ✗ no gloss
+  - evidence: Explain who the Anglo-Saxons were and when they came to Britain (after the Romans left)
+- Battle of Hastings and 1066 — ✗ no gloss
+  - evidence: Explain why there was a crisis when Edward the Confessor died in 1066
+- Castle Design Through the Ages — ✗ no gloss
+  - evidence: Describe the difference between an early motte-and-bailey castle and a later stone castle
+- Medieval Pyramid of Power — ✗ no gloss
+  - evidence: Draw or describe the feudal pyramid showing king, lords, knights, and peasants
+- Siege Warfare — ✗ no gloss
+  - evidence: Name at least three siege weapons or attack methods
+- The Black Death — ✗ no gloss
+  - evidence: Describe what the Black Death was and at least two symptoms
+- The Crusades — ✗ no gloss
+  - evidence: Explain in simple terms why European armies travelled to the Holy Land
+- The Medieval Church — ✗ no gloss
+  - evidence: Explain why the Church was so powerful in medieval times (owned land, controlled education, people feared God's punishment)
+- Vikings vs Anglo-Saxons — ✗ no gloss
+  - evidence: Describe the Viking raids on Anglo-Saxon England and their impact
+### upper (8 topics)
+- Art & Architecture — ✗ no gloss
+  - evidence: Describe what an illuminated manuscript is and who made them
+- Crime & Punishment — ✗ no gloss
+  - evidence: Describe at least two medieval methods of deciding guilt (trial by ordeal, trial by combat)
+- Magna Carta and Limiting Royal Power — ✓ gloss: “A king must follow rules too”
+  - evidence: Explain why the barons rebelled against King John
+- Medieval Legacy in Modern Life — ✗ no gloss
+  - evidence: Name at least three things from the Middle Ages that still affect our lives today
+- Medieval Worlds Beyond Europe — ✗ no gloss
+  - evidence: Name at least two achievements of the Islamic Golden Age (algebra, hospitals, architecture)
+- Printing Press & Renaissance — ✗ no gloss
+  - evidence: Explain what the printing press was and why it was revolutionary
+- Towns & Trade — ✗ no gloss
+  - evidence: Describe how medieval towns were different from villages (markets, walls, guilds, more people)
+- Women in the Middle Ages — ✗ no gloss
+  - evidence: Describe the different lives of noblewomen, peasant women, and nuns
+
+## History|Modern History
+### upper (6 topics)
+- Contact and invasion — ✗ no gloss
+  - evidence: Describe effects of contact on the Eora and neighbouring peoples, such as loss of land and food sources and the smallpox epidemic 
+- Life in the first colony — ✗ no gloss
+  - evidence: Describe the First Fleet's voyage (11 ships, reaching Botany Bay in January 1788 and then moving to Sydney Cove, where the colony 
+- Why Britain colonised in 1788 — ✗ no gloss
+  - evidence: Explain why British prisons and prison hulks were overcrowded in the 1780s and why transportation was used as a punishment
+- Impact of the colonies — ✗ no gloss
+  - evidence: Describe impacts on First Nations Australians, such as loss of land, frontier conflict, massacres and disease, using an appropriat
+- Significant people in a colony — ✗ no gloss
+  - evidence: Research the role of a significant person or group in a colony (e.g. Yagan in the Swan River Colony, Caroline Chisholm in New Sout
+- Why new colonies began — ✗ no gloss
+  - evidence: Place the founding of colonies and settlements after 1800 on an annotated timeline with dates
+
+## Learning to Learn|Learning to Learn
+### early (6 topics)
+- Asking for Help — ✗ no gloss
+  - evidence: Hattie visible learning
+- Checking Your Own Work — ✗ no gloss
+  - evidence: After finishing a piece of work, re-read or review it without being asked to
+- Persisting When It's Hard — ✗ no gloss
+  - evidence: Keep working on a difficult task for a sustained period without giving up or asking someone else to do it
+- Feeling of not understanding — ✗ no gloss
+  - evidence: comprehension monitoring research
+- Planning a Task — ✗ no gloss
+  - evidence: Before starting a task, describe what they need to do and what order to do it in
+- Thinking Before Starting — ✗ no gloss
+  - evidence: prior knowledge activation research
+### mid (8 topics)
+- Connecting New & Old Ideas — ✗ no gloss
+  - evidence: elaborative encoding
+- Spotting Patterns — ✗ no gloss
+  - evidence: Spot a pattern in a set of numbers, shapes, or facts without being told to look for one
+- Teaching It Back — ✗ no gloss
+  - evidence: Explain a concept they've learned to someone else in their own words, not just repeating what the teacher said
+- Trying a New Approach — ✗ no gloss
+  - evidence: When stuck on a problem, try a completely different approach rather than repeating the same method — e.g. drawing a picture instea
+- Describing Rules & Patterns — ✗ no gloss
+  - evidence: Describe a pattern or rule they've noticed in their own words — e.g. 'Every time you add 0 to a number, it stays the same'
+- Learning from Mistakes — ✗ no gloss
+  - evidence: error analysis research
+- Transferring Skills — ✗ no gloss
+  - evidence: transfer of learning research
+- Understanding Why — ✗ no gloss
+  - evidence: Ask 'why?' or 'how does that work?' about something they've been told, rather than just accepting it
+### upper (4 topics)
+- Choosing a Strategy — ✗ no gloss
+  - evidence: Before starting a task, name the strategy they plan to use and explain why — e.g. 'I'll make a mind map first because there's a lo
+- Reflecting After Learning — ✗ no gloss
+  - evidence: After finishing a project or piece of learning, say what helped most and what was confusing, giving a specific example
+- Finding Knowledge Gaps — ✗ no gloss
+  - evidence: metacognitive monitoring research
+- Setting Learning Goals — ✗ no gloss
+  - evidence: Set a specific, achievable learning goal for themselves — e.g. 'By Friday I want to know all my 7-times tables' rather than just '
+
+## Life Skills|Entrepreneurship
+### early (4 topics)
+- Buyers & Sellers — ✗ no gloss
+  - evidence: Explain what a buyer does and what a seller does
+- Goods & Services — ✗ no gloss
+  - evidence: Sort a set of pictures into goods (things you can touch) and services (things people do for you)
+- Making Something to Sell — ✗ no gloss
+  - evidence: Create a simple product (craft, drawing, baked item) that could be sold
+- Who Is a Customer? — ✗ no gloss
+  - evidence: Define what a customer is in their own words
+### mid (8 topics)
+- Being a Good Seller — ✗ no gloss
+  - evidence: Explain why being honest about what you're selling matters
+- Costs & Revenue — ✗ no gloss
+  - evidence: Explain what costs, revenue, and profit mean using a simple example
+- Having a Business Idea — ✗ no gloss
+  - evidence: Identify a simple everyday problem and suggest a product or service that could solve it
+- Learning from Failure — ✗ no gloss
+  - evidence: Give an example of a famous entrepreneur who failed before succeeding
+- Making a Simple Plan — ✗ no gloss
+  - evidence: Write or draw a simple business plan covering: product, customer, materials needed, and price
+- Marketing Basics — ✗ no gloss
+  - evidence: Design a simple poster or advert for a product or service
+- Teamwork in Business — ✗ no gloss
+  - evidence: Describe how they would divide tasks in a team business project (one person makes, one sells, one designs)
+- Social Enterprise — ✗ no gloss
+  - evidence: Explain what a social enterprise is in their own words (a business that helps people or the planet)
+### upper (6 topics)
+- Ethics in Business — ✗ no gloss
+  - evidence: Name at least two things that make a business ethical (fair wages, honest advertising, environmentally responsible)
+- Pitching an Idea — ✗ no gloss
+  - evidence: Deliver a 1-2 minute pitch for a business idea covering: what it is, who it helps, and why it's good
+- Real Entrepreneurs — ✗ no gloss
+  - evidence: Retell the story of at least one real entrepreneur who started as a child
+- Scaling Up — ✗ no gloss
+  - evidence: Describe what 'scaling up' means for a business
+- Supply Chains — ✗ no gloss
+  - evidence: Trace the journey of a familiar product (e.g. chocolate bar) from raw material to shop shelf
+- Natural, human and capital resources — ✗ no gloss
+  - evidence: Sort the resources used to make a product (e.g. bread) into natural (wheat, water), human (bakers' skills) and capital (ovens, del
+
+## Life Skills|Food & Cooking
+### early (2 topics)
+- Keeping food safe and clean — ✗ no gloss
+  - evidence: Wash hands with soap, tie back long hair and wipe down the bench before preparing food
+- Preparing simple healthy snacks — ✗ no gloss
+  - evidence: Choose healthy ingredients for a snack (e.g. a fruit kebab or a salad wrap) and explain why they are healthy
+### mid (2 topics)
+- Cutting food with bridge and claw grips — ✓ gloss: “Safe knife holds: bridge & claw”
+  - evidence: Set up a stable chopping board (e.g. on a damp cloth) and choose an appropriate knife for the food with an adult
+- Following a measured recipe — ✗ no gloss
+  - evidence: Read a simple recipe (e.g. fruit smoothie, overnight oats or a no-cook dip) and gather the correct ingredients and equipment
+### upper (1 topics)
+- Food characteristics and preparation — ✗ no gloss
+  - evidence: Explain how a functional property affects preparation (e.g. eggs bind a burger mix; lemon juice stops cut apple browning)
+
+## Life Skills|Money & Finance
+### early (8 topics)
+- Buying Things — ✗ no gloss
+  - evidence: Explain what happens when you buy something in a shop (choose, pay, get change)
+- Coins & Notes — ✗ no gloss
+  - evidence: Sort a handful of mixed local coins into groups by value and state the value of common coins and notes when shown them, recognisin
+- Jobs People Do — ✗ no gloss
+  - evidence: Name at least five different jobs and describe what each person does
+- Looking After Money — ✗ no gloss
+  - evidence: Describe at least two ways to keep money safe (purse, wallet, money box, giving to a grown-up)
+- Needs & Wants — ✗ no gloss
+  - evidence: Sort a set of pictures into 'need' and 'want' categories and explain their choices
+- Saving Money — ✗ no gloss
+  - evidence: Explain why someone might save money instead of spending it straight away
+- What Money Is — ✗ no gloss
+  - evidence: Explain that people use money to pay for things they need or want
+- Making Change — ✗ no gloss
+  - evidence: Calculate the change from a note when buying items, e.g. from £5 for a £2.75 comic, or from $20 for a $4 drink and a $7 sandwich
+### mid (7 topics)
+- Advertising & Spending — ✗ no gloss
+  - evidence: Spot at least two persuasion techniques in a real advert (bright colours, celebrity, special offer)
+- Banks & Saving — ✗ no gloss
+  - evidence: Explain what a bank does in simple terms (keeps money safe, lets you save)
+- Budgeting Pocket Money — ✗ no gloss
+  - evidence: Create a simple spending plan for £10 showing what they would buy and how much is left
+- Earning Money — ✗ no gloss
+  - evidence: Name at least three different ways people can earn money
+- Fair Trade & Ethics — ✗ no gloss
+  - evidence: Explain that the things we buy are made by real people, sometimes in other countries
+- Ways to Pay — ✗ no gloss
+  - evidence: Name at least four different ways people can pay for things
+- Scams & Online Safety — ✗ no gloss
+  - evidence: Identify at least two warning signs of a scam (asking for personal details, too-good-to-be-true offers, urgency)
+### upper (5 topics)
+- Borrowing & Debt — ✗ no gloss
+  - evidence: Explain what a loan is and that borrowed money must be paid back with extra (interest)
+- Financial Planning — ✗ no gloss
+  - evidence: Set a realistic savings goal and calculate how long it would take saving a fixed amount each week
+- Global Trade — ✗ no gloss
+  - evidence: Explain why countries buy goods from other countries (they can't make everything themselves)
+- How the Economy Works — ✗ no gloss
+  - evidence: Explain what 'supply and demand' means using a simple example (ice cream on a hot day)
+- Taxes & Public Services — ✗ no gloss
+  - evidence: Explain what tax is and that most working adults pay it
+
+## Mathematics|Addition & Subtraction
+### early (30 topics)
+- Addition and subtraction word problems — ✓ gloss: “Story problems: add & take away”
+  - evidence: Solve 'There are 6 apples, 2 are eaten, how many left?' using counters
+- Addition as combining or putting together two — ✓ gloss: “Putting groups together”
+  - evidence: Model 'putting together' with physical objects and say the total
+- Fluent adding and subtracting within 5 — ✓ gloss: “Quick add & subtract up to 5”
+  - evidence: Answer 2 + 3 quickly without counting on fingers
+- Number bonds to 9 — ✗ no gloss
+  - evidence: Given 7, respond '3' to make 10
+- Numbers up to 10 into pairs — ✗ no gloss
+  - evidence: Show that 5 = 1 + 4, 5 = 2 + 3, 5 = 0 + 5 etc.
+- Representing Addition and Subtraction — ✓ gloss: “Show adding with drawings”
+  - evidence: Use cubes, counters or on-screen counters to show 3 + 2
+- Subtraction as taking away or separating — ✓ gloss: “Taking away”
+  - evidence: Model 'taking away' with physical objects and say how many remain
+- Adding and subtracting — ✓ gloss: “Adding & subtracting”
+  - evidence: Calculate 14 + 5 = 19
+- Early Word Problems — ✗ no gloss
+  - evidence: Solve 'I have 12 sweets and eat 4, how many left?'
+- Number bonds — ✗ no gloss
+  - evidence: Recall addition facts within 10 and the related subtraction facts (e.g. 7 + 3 = 10, so 10 − 3 = 7)
+- Reading +, −, and = symbols — ✗ no gloss
+  - evidence: Read 3 + 2 = 5 aloud as 'three plus two equals five'
+- Adding and subtracting tens mentally — ✗ no gloss
+  - evidence: Calculate 45 + 30 = 75 mentally
+- Adding Three Small Numbers — ✗ no gloss
+  - evidence: Calculate 5 + 7 + 3 by first adding 7 + 3 = 10, then 5 + 10 = 15
+- Adding two two-digit numbers — ✗ no gloss
+  - evidence: Calculate 34 + 27 using base-ten blocks or column addition
+- Adding within 100 — ✗ no gloss
+  - evidence: Calculate 46 + 7 using place value (46 + 4 + 3 = 53)
+- Addition and subtraction strategies — ✓ gloss: “Adding & subtracting tricks”
+  - evidence: Add 8 + 3 by starting at 8 and counting on 3 (9, 10, 11)
+- Addition and subtraction within 20 — ✗ no gloss
+  - evidence: Solve 8 + 6 using making ten, e.g. on a real or on-screen double ten frame: 8 + 2 + 4 = 14
+- Addition in any order — ✗ no gloss
+  - evidence: Explain that 3 + 8 gives the same answer as 8 + 3
+- Estimating by rounding — ✗ no gloss
+  - evidence: Round numbers to the nearest 10 or 100 (or money amounts to the nearest dollar or pound) to estimate a sum or difference before ca
+- Finding a missing number in addition — ✓ gloss: “Find the missing number”
+  - evidence: Solve 10 − 8 by thinking 'what do I add to 8 to make 10?'
+- Fluent adding and subtracting within 10 — ✓ gloss: “Quick add & subtract up to 10”
+  - evidence: Answer any addition fact within 10 quickly from memory
+- Fluent addition and subtraction — ✗ no gloss
+  - evidence: Rapidly recall 7 + 8 = 15 and 15 − 8 = 7
+- Grouping numbers to add — ✗ no gloss
+  - evidence: Solve 2 + 6 + 4 by first adding 6 + 4 = 10, then 2 + 10 = 12
+- Inverse: addition undoes subtraction — ✓ gloss: “Adding undoes subtracting”
+  - evidence: Check 15 + 7 = 22 by calculating 22 − 7 = 15
+- Mental addition and subtraction (age 6+) — ✓ gloss: “Adding in your head”
+  - evidence: Calculate 36 + 7 = 43 using objects or mentally
+- Mental and written addition and subtraction — ✗ no gloss
+  - evidence: Solve a two-step problem: 'I had 35p, spent 12p, then found 5p. How much now?'
+- Subtracting multiples of 10 — ✗ no gloss
+  - evidence: Calculate 70 − 30 = 40
+- Three-number word problems — ✗ no gloss
+  - evidence: Solve 'Sam has 4 red, 7 blue and 6 green pencils. How many pencils does he have?' with counters or a drawing, writing 4 + 7 + 6 = 
+- Unknown in Addition & Subtraction — ✗ no gloss
+  - evidence: Solve 8 + ? = 11 and write 3
+- What the equals sign means — ✗ no gloss
+  - evidence: Explain that 6 = 6 is true because both sides are the same
+### mid (16 topics)
+- Adding and subtracting (age 7+) — ✓ gloss: “Adding & subtracting”
+  - evidence: Set out a columnar addition correctly with digits aligned by place value
+- Adding numbers — ✗ no gloss
+  - evidence: Add three or four two-digit numbers by grouping tens and ones
+- Addition and subtraction strategies (age 7+) — ✓ gloss: “Adding & subtracting tricks”
+  - evidence: Explain why adding tens and ones separately gives the correct total
+- Addition and subtraction within 1000 — ✗ no gloss
+  - evidence: Add two three-digit numbers using base-ten blocks or drawings, composing a ten or hundred when necessary
+- Fluent adding and subtracting within 100 — ✓ gloss: “Quick add & subtract up to 100”
+  - evidence: Add two-digit numbers within 100 efficiently (e.g. 46 + 37 using place-value partitioning)
+- Fluent adding and subtracting within 20 — ✓ gloss: “Quick add & subtract up to 20”
+  - evidence: Answer any single-digit addition fact within 3 seconds
+- Mental addition and subtraction (age 7+) — ✓ gloss: “Adding in your head”
+  - evidence: Calculate 345 + 7 mentally
+- Mentally adding hundreds to 3-digit numbers — ✗ no gloss
+  - evidence: Calculate 345 + 200 mentally
+- Mentally adding tens to 3-digit numbers — ✗ no gloss
+  - evidence: Calculate 345 + 40 mentally
+- Missing number problems (age 7+) — ✓ gloss: “Find the missing number”
+  - evidence: Solve a missing-number problem such as 245 + ? = 380
+- Numbers on a number line — ✗ no gloss
+  - evidence: Place whole numbers on a number line with equally spaced points
+- Two-Step Word Problems — ✗ no gloss
+  - evidence: Solve a two-step word problem involving adding to and taking from
+- Adding and subtracting (age 8+) — ✓ gloss: “Adding & subtracting”
+  - evidence: Set out and solve a columnar addition with up to four-digit numbers
+- Fluent adding and subtracting within 1000 — ✓ gloss: “Quick add & subtract up to 1000”
+  - evidence: Add two three-digit numbers fluently using an efficient method
+- Two-step addition and subtraction problems — ✓ gloss: “Two-step story problems”
+  - evidence: Identify the two steps needed to solve a contextual problem
+- Two-Step Equations — ✗ no gloss
+  - evidence: Solve a two-step problem that combines addition/subtraction with multiplication/division
+### upper (6 topics)
+- Adding and subtracting (age 9+) — ✓ gloss: “Adding & subtracting”
+  - evidence: A school collects 12,450 bottles in Week 1 and 8,372 in Week 2; their target is 25,000 — how many more do they need?
+- Checking Answers by Rounding — ✗ no gloss
+  - evidence: Check 47,832 + 23,156 ≈ 48,000 + 23,000 = 71,000 to verify the exact answer 70,988
+- Fluent addition and subtraction (age 9+) — ✗ no gloss
+  - evidence: Calculate 34,567 + 28,945 using columnar addition
+- Mental addition and subtraction (age 9+) — ✓ gloss: “Adding in your head”
+  - evidence: Mentally calculate 45,000 + 8,000
+- Adding and subtracting (age 10+) — ✓ gloss: “Adding & subtracting”
+  - evidence: Solve a two-step word problem involving addition and subtraction of numbers beyond 1,000,000
+- Addition and subtraction strategies (age 10+) — ✓ gloss: “Adding & subtracting tricks”
+  - evidence: Correctly compute 3.45 + 2.78 and explain regrouping across decimal places
+
+## Mathematics|Algebra
+### early (3 topics)
+- Changing and fixed amounts — ✗ no gloss
+  - evidence: Sort cards for one stated situation (e.g. a school bus trip: seats on the bus, passengers on board, wheels, stops still to go) int
+- Describing growing number patterns — ✓ gloss: “Growing patterns”
+  - evidence: Describe 5, 8, 11, 14 as 'start at 5 and add 3 each time'
+- Finding the repeating unit — ✗ no gloss
+  - evidence: Circle the part that repeats in red, blue, blue, red, blue, blue and describe it as an ABB pattern
+### mid (2 topics)
+- What a symbol stands for — ✗ no gloss
+  - evidence: In 7 + □ = 12, say that the box stands for a number we do not know yet
+- Following number algorithms — ✗ no gloss
+  - evidence: Follow a flowchart: start at 7; if the number is even halve it, otherwise add 1; repeat until you reach 1, and record each number
+### upper (7 topics)
+- Designing number algorithms — ✗ no gloss
+  - evidence: Design a flowchart that classifies each number from 1 to 30 as 'multiple of 3', 'multiple of 5', 'both' or 'neither' and repeats f
+- Equations with Two Unknowns — ✗ no gloss
+  - evidence: List all whole-number pairs (a, b) where a + b = 12 with a, b > 0
+- Linear number sequences — ✗ no gloss
+  - evidence: Continue the sequence 2.5, 4.0, 5.5, ... and state the rule as 'add 1.5', calculating each decimal term
+- Number Pattern Relationships — ✗ no gloss
+  - evidence: Generate sequences starting at 0 with rules 'add 3' and 'add 6'; observe terms in one are twice the other
+- Systematic Listing — ✗ no gloss
+  - evidence: List all possible meal combinations from 3 starters and 4 mains
+- Using Simple Formulae — ✗ no gloss
+  - evidence: Substitute values into P = 2(l + w) to find the perimeter of a rectangle
+- Writing Algebraic Equations — ✗ no gloss
+  - evidence: Write 'I think of a number, double it, and add 5 to get 17' as 2n + 5 = 17
+
+## Mathematics|Counting & Cardinality
+### early (14 topics)
+- Comparing groups: more or fewer — ✓ gloss: “More or fewer?”
+  - evidence: Use one-to-one matching to compare two groups
+- How Many in Total? — ✗ no gloss
+  - evidence: After counting a set, answer 'how many?' with the last number stated
+- One More Each Time — ✗ no gloss
+  - evidence: Given a set of 5, know that adding one object makes 6
+- One-to-one counting — ✗ no gloss
+  - evidence: Point to or touch each object exactly once while saying number names
+- Representing numbers with objects — ✓ gloss: “Show numbers with things”
+  - evidence: Show a given number using counters, cubes, or fingers
+- Two written numerals between 1 and 10 — ✓ gloss: “Writing numbers 1 to 10”
+  - evidence: Given two written numerals (e.g. 4 and 7), identify which is greater
+- Counting in 2s — ✗ no gloss
+  - evidence: Count 2, 4, 6, 8 … up to at least 20
+- Counting objects to 20 — ✗ no gloss
+  - evidence: Accurately count up to 20 objects in a line
+- Rote counting to 100 — ✗ no gloss
+  - evidence: Recite the number sequence 1–100 without skipping or repeating
+- Seeing parts within 10 — ✗ no gloss
+  - evidence: Look at a ten frame showing 7 and say 'five and two more makes seven' without counting every dot
+- Subitising to 5 — ✓ gloss: “See how many in a flash”
+  - evidence: Say how many dots are on a dice face showing 4 after a one-second glimpse, without counting
+- Counting big collections in groups — ✗ no gloss
+  - evidence: Count 85 pegs by sorting them into groups of ten and counting on 10, 20, ... 80, 85
+- Counting forwards and backwards — ✓ gloss: “Count up and down”
+  - evidence: Count 3, 6, 9, 12, 15 … up to at least 30
+- Counting forwards and backwards (age 6+) — ✓ gloss: “Count up and down”
+  - evidence: Count 7, 17, 27, 37 … from a non-multiple starting point
+### mid (3 topics)
+- Counting Within 1,000 — ✗ no gloss
+  - evidence: Count forwards and backwards within 1000 from any starting number
+- Skip Counting (4s, 8s, 50s, 100s) — ✗ no gloss
+  - evidence: Recite the multiples of 4 from 0 to at least 48
+- Counting in 6s — ✗ no gloss
+  - evidence: Recite the multiples of 6 from 0 to at least 72
+
+## Mathematics|Data & Statistics
+### early (9 topics)
+- Pictograms and tally charts — ✗ no gloss
+  - evidence: Read a pictogram where each symbol represents one item
+- Sorting into categories — ✗ no gloss
+  - evidence: Sort a set of shapes by colour and count how many in each group
+- Carrying out a statistical investigation — ✓ gloss: “Be a data detective”
+  - evidence: Investigate 'Which playground equipment is used most at lunch?' by tallying observations over three days or by collecting survey r
+- Collecting data for a question — ✗ no gloss
+  - evidence: Collect data on how students travel to school to answer 'What is the most common way to get to school?', e.g. by observation, a cl
+- Comparing results from two groups — ✗ no gloss
+  - evidence: Predict before collecting whether another class of the same size will choose favourite fruits in the same numbers as their own cla
+- Pictograms and tally charts (age 6+) — ✗ no gloss
+  - evidence: Correctly label the axes of a bar chart including a title, axis labels, and scale
+- Picture & Bar Graphs — ✗ no gloss
+  - evidence: Draw a picture graph with a symbol representing one unit for each data point
+- Sorting Data into Categories — ✗ no gloss
+  - evidence: Sort a set of objects into 2-3 given categories and count each group
+- Sorting into categories (age 6+) — ✗ no gloss
+  - evidence: Answer 'how many?' for each category in a data set
+### mid (5 topics)
+- Choosing displays for a purpose — ✓ gloss: “Pick the best chart”
+  - evidence: Show the same pet survey as a tally chart and as a picture graph and say what is the same in both and what each makes easier to se
+- Finding the mode — ✗ no gloss
+  - evidence: Point to the mode on a pictograph or bar graph of favourite fruits and on a line plot of shoe sizes, and say it is the most common
+- Sorting data by two attributes — ✗ no gloss
+  - evidence: Sort a set of pictures or shapes into a Venn diagram for two attributes (e.g. 'has stripes' and 'has four legs'), placing items wi
+- Bar graphs — ✗ no gloss
+  - evidence: Read a time graph showing temperature changes over a day
+- Scaled picture and bar graphs — ✗ no gloss
+  - evidence: Draw a bar graph where each square represents 5 pets
+### upper (10 topics)
+- Comparing displays and distributions — ✗ no gloss
+  - evidence: Compare a column graph and a pictograph of the same data and explain which shows the differences between categories more clearly
+- Line graph problems — ✗ no gloss
+  - evidence: Read a line graph of temperature over a week and identify the warmest day
+- Reading tables — ✗ no gloss
+  - evidence: Read a bus timetable to find the departure time for a particular stop
+- Statistical Analysis Vocabulary — ✓ gloss: “Data words: chart, data, compare”
+  - evidence: Correctly define and calculate the mean, median, mode, and range of a small data set
+- Calculating the Mean — ✗ no gloss
+  - evidence: Calculate the mean of five test scores: 72, 85, 90, 68, 95
+- Line graphs — ✗ no gloss
+  - evidence: Read values from a line graph showing temperature over a day, including estimating between plotted points
+- Line plots with fractions — ✗ no gloss
+  - evidence: Create a line plot showing lengths measured to the nearest 1/8 inch
+- Pie charts — ✗ no gloss
+  - evidence: Read a pie chart and determine what fraction or percentage of the total each sector represents
+- Planning a statistical investigation — ✓ gloss: “Plan a data question”
+  - evidence: Pose an investigation question such as 'Do Year 5 students sleep less on school nights?', refining a vague question (e.g. 'Do kids
+- Validating and describing categorical data — ✓ gloss: “Check your data”
+  - evidence: Check a spreadsheet of survey responses for missing or impossible entries and correct or remove them
+
+## Mathematics|Fractions
+### early (9 topics)
+- Finding halves and quarters (age 5+) — ✗ no gloss
+  - evidence: Fold a shape into four equal parts, identify each as 'a quarter', and say whether another shape has been divided into quarters (fo
+- What Is a Half? — ✗ no gloss
+  - evidence: Fold a shape into two equal parts and identify each as 'a half'
+- Comparing fractions — ✗ no gloss
+  - evidence: Order 1/2, 1/3, 1/4, 1/5 from largest to smallest, or with drawings order the shares when one pizza is shared among 2, 3, 4 and up
+- Decomposing a shape into more equal shares — ✓ gloss: “More slices, smaller slices”
+  - evidence: Explain that a quarter of a pizza is smaller than a half of the same pizza
+- Fraction Notation — ✓ gloss: “Writing fractions: 1/2”
+  - evidence: Point to and name the numerator and denominator in any given fraction and explain what each tells you
+- Fractions of amounts — ✗ no gloss
+  - evidence: Find 1/3 of 12 objects by sharing into 3 equal groups
+- Halves, quarters and eighths — ✗ no gloss
+  - evidence: Fold a paper strip in half, then half again, then half again, and label the halves, quarters and eighths
+- Halves & Quarters of Shapes — ✗ no gloss
+  - evidence: Divide a circle into two equal halves and a rectangle into four equal quarters
+- Understanding fractions — ✓ gloss: “What fractions mean”
+  - evidence: Write 1/2 of 10 = 5
+### mid (24 topics)
+- Comparing fractions (age 7+) — ✗ no gloss
+  - evidence: Solve a word problem requiring finding a fraction of a quantity
+- Equivalent fractions — ✗ no gloss
+  - evidence: Show that 1/2 = 2/4 using a diagram of equal parts
+- Fractions on a number line — ✓ gloss: “Fractions on a number line”
+  - evidence: Place 1/2, 1/4, 3/4 on a number line from 0 to 1
+- Simple Fraction Sums — ✗ no gloss
+  - evidence: Calculate 2/5 + 2/5 = 4/5
+- Splitting shapes into equal parts (age 7+) — ✓ gloss: “Split shapes into equal parts”
+  - evidence: Partition a circle into 3 equal parts and label each 'a third'
+- Tenths — ✗ no gloss
+  - evidence: Count: one tenth, two tenths, three tenths … up to ten tenths (one whole)
+- Unit fractions — ✗ no gloss
+  - evidence: Find 1/4 of 12 objects by dividing into 4 equal groups
+- Adding Fractions (Same Denominator) — ✗ no gloss
+  - evidence: Calculate 3/5 + 4/5 = 7/5 and explain it equals 1 2/5
+- Comparing fractions (age 8+) — ✗ no gloss
+  - evidence: Compare 3/8 and 3/4: same numerator, larger denominator means smaller pieces so 3/8 < 3/4
+- Decimal equivalents of tenths and hundredths — ✓ gloss: “Tenths & hundredths as decimals”
+  - evidence: Write 7/10 as 0.7 and vice versa
+- Decimal & Percent Notation — ✓ gloss: “Decimals & percents”
+  - evidence: Read and write decimal numbers correctly, identifying the value of each digit (ones, tenths, hundredths)
+- Decimal place value — ✗ no gloss
+  - evidence: Round 3.7 to 4 and 3.2 to 3
+- Decimal place value (age 8+) — ✗ no gloss
+  - evidence: Order 0.45, 0.54, 0.39 from smallest to largest
+- Decimals and fractions — ✗ no gloss
+  - evidence: Calculate 1/4 of £3.20
+- Dividing by 10 and 100 — ✗ no gloss
+  - evidence: Calculate 37 ÷ 10 = 3.7 and identify 3 as ones and 7 as tenths
+- Equivalent fractions (age 8+) — ✗ no gloss
+  - evidence: Given 1/3, generate 2/6 as equivalent and show with area model
+- Equivalent fractions on a number line — ✓ gloss: “Same amount, different names”
+  - evidence: Use fraction strips to show 1/2 = 2/4 = 3/6
+- Fraction-Decimal Equivalents — ✓ gloss: “Fraction twins in decimals”
+  - evidence: State that 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75
+- Fractions as parts of shapes — ✗ no gloss
+  - evidence: Partition a rectangle into 6 equal-area parts and label each 1/6
+- Fractions of amounts (harder) — ✗ no gloss
+  - evidence: Find 3/5 of 20
+- Fractions of a whole — ✗ no gloss
+  - evidence: Given a shape divided into 5 equal parts, identify one shaded part as 1/5
+- Fractions of a whole (age 8+) — ✗ no gloss
+  - evidence: Write 5 as 5/1 and explain why
+- Fractions on a number line (age 8+) — ✓ gloss: “Fractions on a number line”
+  - evidence: Partition a 0-to-1 number line into 4 equal parts and mark 1/4
+- Tenths (age 8+) — ✗ no gloss
+  - evidence: Count from 3/100 to 12/100 in hundredths
+### upper (31 topics)
+- Adding and subtracting mixed numbers — ✗ no gloss
+  - evidence: Calculate 2 3/5 + 1 4/5 and express as a mixed number
+- Adding fractions (different denominators) — ✓ gloss: “Adding unlike fractions”
+  - evidence: Calculate 1/3 + 1/6 by converting to sixths: 2/6 + 1/6 = 3/6 = 1/2
+- Addition and subtraction word problems — ✓ gloss: “Story problems: add & take away”
+  - evidence: A jug contains 3/4 litre of juice; 2/4 litre is poured out — how much remains?
+- Comparing Decimals — ✗ no gloss
+  - evidence: Compare 0.45 and 0.405 and explain which is greater
+- Comparing fractions (age 9+) — ✗ no gloss
+  - evidence: Compare 3/8 and 5/12 by finding a common denominator of 24
+- Converting tenths to hundredths — ✓ gloss: “Tenths into hundredths”
+  - evidence: Rewrite 7/10 as 70/100
+- Decimal place value (age 9+) — ✗ no gloss
+  - evidence: Round 3.47 to the nearest whole number (3) and to 1 d.p. (3.5)
+- Decimals for Tenths & Hundredths — ✓ gloss: “Tenths & hundredths”
+  - evidence: Rewrite 0.62 as 62/100
+- Decimals to three places — ✗ no gloss
+  - evidence: Calculate the total of three measurements: 1.234 m + 0.567 m + 2.199 m
+- Equivalent fractions (age 9+) — ✗ no gloss
+  - evidence: Use a fraction strip to show 2/3 = 4/6 = 6/9
+- Fraction Addition Concepts — ✗ no gloss
+  - evidence: Show that 3/8 = 1/8 + 1/8 + 1/8 and also 3/8 = 1/8 + 2/8
+- Fractions of a whole (age 9+) — ✗ no gloss
+  - evidence: Each person eats 3/8 of a pizza and there are 5 people — how many pizzas are needed?
+- Mixed numbers and improper fractions — ✓ gloss: “Mixed numbers like 1½”
+  - evidence: Convert 11/4 to 2 3/4
+- Multiplying fractions — ✓ gloss: “Fractions of fractions”
+  - evidence: Calculate 4 × 3/8 using repeated addition or the rule n × a/b = (n×a)/b
+- Percentage and decimal equivalents — ✓ gloss: “Percents & decimals match”
+  - evidence: State that 1/5 = 20% = 0.2 and use this to find 20% of 60
+- Tenths (age 9+) — ✗ no gloss
+  - evidence: Write 0.025 as 25/1000
+- Understanding fractions (age 9+) — ✓ gloss: “What fractions mean”
+  - evidence: Express 5/8 as a sum of five copies of 1/8
+- Understanding Percentages — ✗ no gloss
+  - evidence: Write 35% as 35/100 and as 0.35
+- Adding Fractions (Unlike Denominators) — ✓ gloss: “Adding unlike fractions”
+  - evidence: Compute 2/3 + 5/4 by converting to twelfths: 8/12 + 15/12 = 23/12
+- Area with Fractions — ✗ no gloss
+  - evidence: Tile a 2/3 × 3/4 rectangle with 1/12 squares and count to find area = 6/12 = 1/2
+- Comparing fractions (age 10+) — ✗ no gloss
+  - evidence: Order 3/4, 7/8, 5/6, and 11/12 from smallest to largest
+- Decimals and fractions (age 10+) — ✗ no gloss
+  - evidence: Convert 3/8 to 0.375 by dividing 3 ÷ 8
+- Dividing by Fractions — ✗ no gloss
+  - evidence: Compute 4 ÷ (1/5) = 20 and explain: 'How many fifths fit in 4 wholes?'
+- Dividing fractions (unit fractions) — ✓ gloss: “Sharing fractions”
+  - evidence: Compute (1/3) ÷ 4 = 1/12 and explain using a visual model of splitting 1/3 into 4 equal parts
+- Dividing unit fractions and whole numbers — ✓ gloss: “Sharing fractions”
+  - evidence: Solve: '3 people share 1/2 lb of chocolate equally — how much each?' (1/6 lb)
+- Fractions of a whole (age 10+) — ✗ no gloss
+  - evidence: Explain that 3/4 means 3 ÷ 4 and verify by showing 3/4 × 4 = 3
+- Fraction Word Problems — ✗ no gloss
+  - evidence: Solve: 'Tara ate 2/5 of a pizza and Sam ate 1/3. How much did they eat together?'
+- Multiplication as scaling — ✗ no gloss
+  - evidence: Predict without calculating whether 3/4 × 7 is greater or less than 7
+- Multiplying fractions (age 10+) — ✓ gloss: “Fractions of fractions”
+  - evidence: Compute (2/3) × (4/5) = 8/15 and show with an area model
+- Real-world fraction multiplication — ✓ gloss: “Fractions of real things”
+  - evidence: Solve: 'A recipe needs 2 1/3 cups of flour; you want to make 1 1/2 batches. How much flour?'
+- Simplifying Fractions — ✗ no gloss
+  - evidence: Simplify 18/24 to 3/4 by identifying the HCF of 18 and 24
+
+## Mathematics|Geometry
+### early (19 topics)
+- 2-D shapes — ✗ no gloss
+  - evidence: Name a triangle, circle, rectangle, and square when shown them
+- 3-D shapes — ✗ no gloss
+  - evidence: Name a cube, sphere, cylinder, and cone when shown them
+- 3-D shapes (age 5+) — ✗ no gloss
+  - evidence: Count the sides and corners of a shape
+- Combining Simple Shapes — ✗ no gloss
+  - evidence: Join two triangles to make a rectangle or larger triangle
+- Positional Language — ✗ no gloss
+  - evidence: Describe a toy as being 'on top of' the table
+- Building & Drawing Shapes — ✗ no gloss
+  - evidence: Build a triangle from three sticks and three clay balls
+- Flat vs Solid Shapes — ✗ no gloss
+  - evidence: Sort shapes into 'flat' and 'solid' groups
+- Patterns & Sequences — ✗ no gloss
+  - evidence: Continue a repeating pattern of shapes or colours
+- Turns & Directions — ✗ no gloss
+  - evidence: Follow instructions to move forward, backward, turn left/right
+- 2-D faces on 3-D shapes — ✗ no gloss
+  - evidence: Point out a circular face on a cylinder or cone
+- 2-D shapes (age 6+) — ✗ no gloss
+  - evidence: Count the number of sides of a given 2-D shape
+- Building with 3-D Shapes — ✗ no gloss
+  - evidence: Stack cubes and prisms, or combine 3-D shapes (e.g. a cone on top of a cylinder), to build towers, structures and new solids
+- Composing Shapes — ✗ no gloss
+  - evidence: Combine two triangles to form a rectangle or larger triangle
+- Defining attributes of shapes — ✗ no gloss
+  - evidence: Build and draw shapes that possess defining attributes
+- Edges, vertices, and faces — ✗ no gloss
+  - evidence: Count the edges, vertices, and faces of common 3-D shapes
+- Lines of symmetry — ✗ no gloss
+  - evidence: Given half a butterfly shape and a mirror line, complete the other half on a grid
+- Position, direction, and movement — ✓ gloss: “Where? Which way?”
+  - evidence: Use terms such as clockwise, anti-clockwise, quarter turn, half turn, three-quarter turn
+- Sorting 2-D and 3-D shapes — ✗ no gloss
+  - evidence: Sort a collection of 2-D shapes by number of sides
+- Understanding angles — ✗ no gloss
+  - evidence: Identify angles at the corners of 2-D shapes
+### mid (15 topics)
+- 2-D shapes (age 7+) — ✗ no gloss
+  - evidence: Draw a triangle, rectangle, pentagon, or hexagon accurately
+- 2-D shapes (age 8+) — ✗ no gloss
+  - evidence: Find all lines of symmetry in a rectangle, a square, an equilateral triangle and a regular hexagon
+- Congruent shapes by matching — ✗ no gloss
+  - evidence: Trace one shape and lay the tracing on another to decide whether every side length and every angle matches, so the shapes are cong
+- Parallel and perpendicular lines — ✗ no gloss
+  - evidence: Point out horizontal and vertical lines in shapes and real-world contexts
+- Recognising and drawing shapes by attributes — ✗ no gloss
+  - evidence: Draw a shape with exactly 5 sides (pentagon)
+- Right Angles & Turns — ✗ no gloss
+  - evidence: Use a right-angle checker to identify right angles in shapes and the environment
+- Classifying quadrilaterals — ✗ no gloss
+  - evidence: Explain that a square is a special rectangle and also a special rhombus
+- Coordinates (age 8+) — ✗ no gloss
+  - evidence: Plot points (1,1), (1,4), (5,4), (5,1) and join to make a rectangle
+- Describing Movements — ✗ no gloss
+  - evidence: Describe moving from (2,3) to (5,3) as 3 units to the right
+- First Quadrant Coordinates — ✗ no gloss
+  - evidence: Read the coordinates of a point on a grid as (3, 5)
+- Nets of 3-D Shapes — ✗ no gloss
+  - evidence: Draw the net of a cube, cuboid, or triangular prism and fold it mentally to identify which faces connect
+- Transformations on a grid — ✗ no gloss
+  - evidence: Reflect a shape in a given mirror line on a grid and label the new coordinates
+- Types of angles — ✗ no gloss
+  - evidence: Classify given angles as acute, right, or obtuse
+- Types of angles (age 8+) — ✗ no gloss
+  - evidence: Mark a right angle with a small square symbol in a diagram and explain what it means
+- Why objects suit their uses — ✗ no gloss
+  - evidence: Explain why cans are cylinders: the curved face lets them roll and the flat ends let them stand and stack
+### upper (25 topics)
+- 3-D shapes (age 9+) — ✗ no gloss
+  - evidence: Identify a cuboid from its net
+- Angle Sum Rules — ✗ no gloss
+  - evidence: State that two angles on a straight line add to 180°
+- Approximating objects with shapes — ✗ no gloss
+  - evidence: Describe a house as a rectangular prism with a triangular prism roof
+- Classifying shapes by line properties — ✓ gloss: “Sort shapes by their rules”
+  - evidence: Sort a set of quadrilaterals into those with parallel sides and those without
+- Degrees and turns — ✗ no gloss
+  - evidence: Explain that a full turn is 360° and a right angle is 90°
+- Estimating Angles — ✗ no gloss
+  - evidence: Estimate an angle as approximately 130° and classify it as obtuse
+- Lines, Rays & Angles — ✗ no gloss
+  - evidence: Draw a pair of perpendicular lines and a pair of parallel lines
+- Measuring angles — ✗ no gloss
+  - evidence: Measure an angle with a protractor and read 47°
+- Measuring angles (age 9+) — ✗ no gloss
+  - evidence: Two angles on a straight line are 65° and x°; find x = 115°
+- Regular and irregular polygons — ✗ no gloss
+  - evidence: Classify a set of polygons as regular or irregular
+- Rotational symmetry — ✗ no gloss
+  - evidence: Turn a square tracing and show it fits onto itself 4 times in a full turn
+- Straight, reflex and revolution angles — ✓ gloss: “Straight, reflex & full-turn angles”
+  - evidence: Identify a straight angle as two right angles and a revolution as four right angles
+- Transformations on a Grid — ✗ no gloss
+  - evidence: Reflect a triangle in a vertical mirror line on a coordinate grid and state the new coordinates
+- Understanding angles (age 9+) — ✗ no gloss
+  - evidence: Given one side of a rectangle is 8 cm and the perimeter is 28 cm, find the other side
+- What Is an Angle? — ✗ no gloss
+  - evidence: Identify the vertex and arms of an angle in a diagram
+- 2-D shapes (age 10+) — ✗ no gloss
+  - evidence: Draw a triangle with sides 5 cm, 7 cm and an included angle of 60°
+- 3-D shapes (age 10+) — ✗ no gloss
+  - evidence: Identify which net will fold into a given 3-D shape
+- Angles in triangles (age 10+) — ✗ no gloss
+  - evidence: Find a missing angle in a triangle given two angles (using angle sum = 180°)
+- Classifying shapes by properties — ✓ gloss: “Sort shapes by their rules”
+  - evidence: Explain why all squares are rectangles but not all rectangles are squares
+- Coordinates (age 10+) — ✗ no gloss
+  - evidence: Plot points with negative coordinates such as (−3, 4) and (2, −5) on a four-quadrant grid
+- Parts of a circle — ✗ no gloss
+  - evidence: Label the radius, diameter, and circumference on a circle diagram
+- Plotting points in the first quadrant — ✓ gloss: “Find the point (x, y)”
+  - evidence: Plot the point (4, 7) accurately on a first-quadrant grid
+- The coordinate grid — ✗ no gloss
+  - evidence: Identify the x-axis, y-axis, and origin on a coordinate grid
+- Translating and reflecting shapes — ✓ gloss: “Slide & flip shapes”
+  - evidence: Translate a triangle 3 units right and 2 units down on a coordinate grid and state the new coordinates
+- Understanding angles (age 10+) — ✗ no gloss
+  - evidence: Find a missing angle at a point given the other angles (total 360°)
+
+## Mathematics|Mathematical Thinking
+### early (17 topics)
+- Early Maths Vocabulary — ✗ no gloss
+  - evidence: Use 'more than', 'fewer than', and 'the same as' correctly when comparing groups
+- Showing Your Working — ✗ no gloss
+  - evidence: Use objects or drawings to demonstrate how an addition or subtraction was solved
+- Finding efficient methods — ✗ no gloss
+  - evidence: Notice that skip counting by 2s follows a repeating odd/even pattern
+- Hands-On Problem Solving — ✗ no gloss
+  - evidence: Choose cubes, counters, or fingers to help solve an addition or subtraction problem
+- Making Sense of Problems — ✗ no gloss
+  - evidence: When given a word problem within 10, explain what the problem is asking before attempting to solve
+- Real-World to Maths Connections — ✓ gloss: “Maths all around us”
+  - evidence: Given a story about combining groups, represent it with counters or cubes and find the total
+- Spotting mathematical patterns — ✗ no gloss
+  - evidence: Notice that 3 + 2 gives the same answer as 2 + 3 (early commutativity)
+- Using objects to model real problems — ✓ gloss: “Show it with objects”
+  - evidence: Draw a picture or use objects to represent a simple real-world situation involving counting or comparing
+- Connecting maths to real life — ✗ no gloss
+  - evidence: Choose and write a number sentence, bar model or diagram for a measurement, money, two-step or comparison word problem
+- Connecting Representations — ✓ gloss: “Match the picture to the number”
+  - evidence: Write a number sentence (e.g. 14 + 5 = 19) to match a word problem and explain the connection
+- Explaining Mathematical Reasoning — ✓ gloss: “Explain your thinking”
+  - evidence: Explain a solution strategy using a drawing or number sentence (e.g. 'I made ten first, then added the rest')
+- Generalising Patterns — ✗ no gloss
+  - evidence: Use a known doubles fact to derive a near-doubles answer (e.g. 6 + 7 = 6 + 6 + 1 = 13)
+- Guided Multi-Step Problem Solving — ✓ gloss: “Step-by-step problems”
+  - evidence: When given a word problem within 20 or 100, identify the known information and what needs to be found
+- Numbers on a number line — ✗ no gloss
+  - evidence: Choose a number line or hundred square to support adding or subtracting two-digit numbers
+- Precise Maths Communication — ✗ no gloss
+  - evidence: Use the = sign correctly to mean 'is the same as' rather than 'the answer is'
+- Shape patterns — ✗ no gloss
+  - evidence: Use the commutative property deliberately (e.g. reorder 3 + 9 as 9 + 3 to count on from the larger number)
+- Working with money — ✗ no gloss
+  - evidence: Choose whether to use a bar model, number line, or equation for a measurement problem
+### mid (16 topics)
+- Choosing the right strategy — ✗ no gloss
+  - evidence: Choose a mental method for 345 + 200 but a written method for 345 + 278
+- Extending Table Patterns — ✗ no gloss
+  - evidence: Notice that all multiples of 4 are even and use this to check answers
+- Justifying mathematical reasoning — ✓ gloss: “Prove your answer”
+  - evidence: Explain step by step why a columnar addition method gives the correct answer
+- Multi-Step Problem Solving — ✗ no gloss
+  - evidence: Break a two-step word problem within 1000 into sub-problems and solve each part
+- Shape patterns (age 7+) — ✗ no gloss
+  - evidence: Use the structure of place value to explain why adding hundreds only changes the hundreds digit
+- Understanding fractions — ✓ gloss: “What fractions mean”
+  - evidence: Write an equation with three-digit numbers to match a measurement or money word problem
+- Understanding fractions (age 7+) — ✓ gloss: “What fractions mean”
+  - evidence: Consistently specify units in measurement answers (e.g. '35 cm' not '35')
+- Choosing mathematical tools — ✗ no gloss
+  - evidence: Decide to use mental multiplication for 25×4 but a written method for 167×3
+- Fractions on a number line — ✓ gloss: “Fractions on a number line”
+  - evidence: Represent a sharing problem as both a fraction diagram and a division equation
+- Justifying mathematical reasoning (age 8+) — ✓ gloss: “Prove your answer”
+  - evidence: Explain why 1/3 > 1/5 using the idea that more parts means smaller pieces
+- Mathematical Precision — ✗ no gloss
+  - evidence: Distinguish between 'three fourths' and 'three quarters' and use both correctly
+- Modelling with multiplication and fractions — ✓ gloss: “× with fractions”
+  - evidence: Model a tiling/area problem with an array and write the corresponding multiplication
+- Multi-Step Problem Solving — ✗ no gloss
+  - evidence: Break a two-step word problem into parts and explain a plan before calculating
+- Times tables (age 8+) — ✗ no gloss
+  - evidence: Notice that all fractions equivalent to 1/2 have a numerator that is half the denominator
+- Using a calculator well — ✗ no gloss
+  - evidence: Use a calculator to total 1468 + 2975 + 813, or a shopping list such as $4.85 + $12.30 + $7.95 (reading the display as dollars and
+- Using Mathematical Structure — ✗ no gloss
+  - evidence: Decompose 7×13 into 7×10 + 7×3 using the distributive property
+### upper (16 topics)
+- Choosing representations strategically — ✓ gloss: “Pick the best picture”
+  - evidence: Choose mental multiplication for 25 × 40 but long multiplication for 347 × 26
+- Complex Multi-Step Problems — ✗ no gloss
+  - evidence: Break a three-step problem involving unit conversion and multiplication into sub-problems and solve systematically
+- Fractions, Decimals & Percentages — ✗ no gloss
+  - evidence: Use the structure 25 × 16 = 25 × 4 × 4 = 100 × 4 = 400 by exploiting factor pairs
+- Fractions on a number line (age 9+) — ✓ gloss: “Fractions on a number line”
+  - evidence: Represent a scaling problem as both a bar model and a multiplication equation
+- Precise Maths Vocabulary — ✗ no gloss
+  - evidence: Distinguish 'factor' from 'multiple' in a written explanation
+- Real-World Maths Modelling — ✗ no gloss
+  - evidence: Model a recipe-scaling problem with multiplication and fractions, then interpret the answer in grams
+- Reasoning with Equivalences — ✗ no gloss
+  - evidence: Notice that multiplying any number by 25 can be done by multiplying by 100 then dividing by 4, and explain why
+- Understanding fractions (age 9+) — ✓ gloss: “What fractions mean”
+  - evidence: Prove that 3/4 > 2/3 using a common denominator argument and a visual model
+- Advanced Maths Vocabulary — ✗ no gloss
+  - evidence: Use 'radius', 'diameter', and 'circumference' correctly when describing a circle
+- Advanced Multi-Step Problems — ✗ no gloss
+  - evidence: Break down a three-step ratio problem into sub-problems and plan a solution pathway
+- Choosing Maths Tools — ✗ no gloss
+  - evidence: Explain why long division is more appropriate than mental methods for 4,752 ÷ 13
+- Constructing mathematical arguments — ✓ gloss: “Convince a skeptic”
+  - evidence: Prove that a given angle must be 60° by chaining angle facts in a logical sequence
+- Generalising with repeated reasoning — ✓ gloss: “Spot the rule, use it again”
+  - evidence: Explain that the interior angle sum of an n-sided polygon is (n−2) × 180° based on the pattern for triangles, quadrilaterals, pent
+- Order of operations (age 10+) — ✗ no gloss
+  - evidence: Use the property that all rectangles are parallelograms to deduce missing angle facts
+- Real-World Mathematical Modelling — ✓ gloss: “Maths for real problems”
+  - evidence: Choose a bar model or double number line to represent a ratio problem and solve it
+- Understanding fractions (age 10+) — ✓ gloss: “What fractions mean”
+  - evidence: Translate a word problem into an algebraic equation and also represent it on a bar model
+
+## Mathematics|Measurement
+### early (29 topics)
+- Comparing Capacity — ✗ no gloss
+  - evidence: Compare two containers and say which holds more/less
+- Comparing durations — ✗ no gloss
+  - evidence: Compare two events and say which was quicker/slower
+- Comparing Lengths & Heights — ✗ no gloss
+  - evidence: Stand two children back-to-back and say who is taller/shorter
+- Measurable Attributes of Objects — ✓ gloss: “How long? How heavy?”
+  - evidence: Identify that a pencil has length and can be measured
+- Measuring mass and weight (age 4+) — ✓ gloss: “Weighing things”
+  - evidence: Heft two objects and say which is heavier/lighter
+- Ordering Events in Time — ✗ no gloss
+  - evidence: Order three daily events using 'first', 'next', 'last'
+- Capacity and volume — ✗ no gloss
+  - evidence: Measure capacity by counting how many cups fill a container
+- Coin Values — ✗ no gloss
+  - evidence: Identify 1p, 2p, 5p, 10p, 20p, 50p, £1 and £2 coins
+- Days, Weeks, Months & Years — ✗ no gloss
+  - evidence: Name the seven days of the week in order
+- Hours, minutes and seconds — ✗ no gloss
+  - evidence: Use a sand timer or stopwatch to time an activity
+- Measuring length and height (age 5+) — ✗ no gloss
+  - evidence: Measure the length of a table using cubes and record the result
+- Measuring mass and weight — ✓ gloss: “Weighing things”
+  - evidence: Use a balance to compare masses of two objects
+- Telling Time: Hours and Half Hours — ✓ gloss: “Telling time: o’clock & half past”
+  - evidence: Read an analogue clock showing 3 o'clock and one showing half past 7
+- Adding money and giving change — ✗ no gloss
+  - evidence: Show that 50p can be made with 2×20p + 1×10p, or 5×10p, or 1×50p
+- Area (age 8+) — ✗ no gloss
+  - evidence: Count unit squares to find the area of an L-shaped figure
+- Choosing measurement units — ✗ no gloss
+  - evidence: Measure the length of a table in centimetres using a ruler
+- Comparing and ordering measurements — ✗ no gloss
+  - evidence: Measure two objects and write 45cm > 32cm
+- Comparing mass and capacity indirectly — ✗ no gloss
+  - evidence: Use a balance to show the apple is heavier than a block and the block is heavier than the egg, so the apple is heavier than the eg
+- Estimating capacity — ✗ no gloss
+  - evidence: Estimate how many cups of water a jug holds by comparing it with a container they know, then fill it to check (informal units)
+- Estimating Lengths — ✗ no gloss
+  - evidence: Estimate the length of a classroom object before measuring it, using a known unit (e.g. 'about 8 paper clips long', or in standard
+- Measuring length — ✗ no gloss
+  - evidence: Put three ribbons in order from shortest to longest
+- Measuring length (age 6+) — ✗ no gloss
+  - evidence: Measure a book by laying paper clips end to end and counting them
+- Money Addition & Subtraction — ✗ no gloss
+  - evidence: Calculate the total cost of two items priced in pence
+- Money notation and units — ✗ no gloss
+  - evidence: Write £1.50 as 150p, or $2.70 as 270c and 450c as $4.50
+- Number of minutes in an hour — ✗ no gloss
+  - evidence: State that there are 60 minutes in an hour
+- Sequence intervals of time — ✗ no gloss
+  - evidence: Order three events by how long they took
+- Telling time to 5 minutes — ✗ no gloss
+  - evidence: Read an analogue clock showing 3:25 and write the time in digital form as 3:25
+- Understanding Area — ✗ no gloss
+  - evidence: Identify a unit square and state its area is 1 square unit
+- Using a calendar — ✗ no gloss
+  - evidence: Find 15 March on a calendar page, say which day of the week it is, and write today's date from the classroom calendar in day-month
+### mid (27 topics)
+- Addition and subtraction word problems — ✓ gloss: “Story problems: add & take away”
+  - evidence: Solve 'The rope is 45 cm long. I cut off 18 cm. How long is it now?'
+- a.m. and p.m. times — ✗ no gloss
+  - evidence: Say whether school starts at 8:45 a.m. or 8:45 p.m., and whether bedtime is 7:30 a.m. or 7:30 p.m.
+- Calculating with measurements — ✗ no gloss
+  - evidence: Measure a length in centimetres and millimetres
+- Comparing lengths by measuring — ✗ no gloss
+  - evidence: Measure two objects and calculate the difference in length
+- Comparing Time Durations — ✗ no gloss
+  - evidence: Work out that a TV show from 5:17 p.m. to 5:43 p.m. lasted 26 minutes
+- Giving Change — ✗ no gloss
+  - evidence: Calculate the total cost of two or three items priced in pounds and pence
+- Measuring length (age 7+) — ✗ no gloss
+  - evidence: Choose the most appropriate tool for measuring a given object
+- Measuring Perimeters — ✗ no gloss
+  - evidence: Measure each side of a rectangle and add the lengths to find the perimeter
+- Measuring & Plotting Lengths — ✗ no gloss
+  - evidence: Measure the lengths of several objects and record the data
+- Measuring with different units — ✗ no gloss
+  - evidence: Measure a desk in both centimetres and inches and compare the two numbers
+- Money word problems — ✗ no gloss
+  - evidence: Determine the total value of a collection of coins
+- Quarter past and quarter to — ✗ no gloss
+  - evidence: Read a clock showing 3:15 as 'quarter past three'
+- Roman numeral and 24-hour clocks — ✗ no gloss
+  - evidence: Read a Roman-numeral clock with the minute hand on IX and the hour hand between IV and V as quarter to five (4:45)
+- Smaller units for accuracy — ✗ no gloss
+  - evidence: Measure a book with pencils (about 2) and then with paperclips (about 9) and explain why the paperclip count is bigger
+- Time to the nearest minute — ✗ no gloss
+  - evidence: Read 7:43 from an analogue clock face and write it on a digital display
+- Time Units and Calendar Facts — ✗ no gloss
+  - evidence: State that there are 60 seconds in a minute
+- 12-hour and 24-hour time — ✗ no gloss
+  - evidence: Convert 3:45 pm to 15:45 in 24-hour time
+- Area and the distributive property — ✓ gloss: “Split a rectangle, add the areas”
+  - evidence: Tile a 3×(4+2) rectangle and show it decomposes into 3×4 and 3×2
+- Area by Tiling — ✗ no gloss
+  - evidence: Tile a 4×6 rectangle and count 24 squares, then verify 4×6=24
+- Area of compound shapes — ✗ no gloss
+  - evidence: Decompose an L-shape into two rectangles, find each area, and add them
+- Area of rectangles by multiplication — ✓ gloss: “Area of rectangles”
+  - evidence: Calculate the area of a 7 cm × 9 cm rectangle as 63 cm²
+- Converting measurement units — ✓ gloss: “Change units: cm → m”
+  - evidence: Convert 3 km to 3000 m
+- Elapsed time problems — ✗ no gloss
+  - evidence: A film starts at 2:15 and lasts 47 minutes — when does it end?
+- Estimating and comparing money — ✗ no gloss
+  - evidence: Estimate the length of the classroom in metres
+- Halves and quarters (age 8+) — ✗ no gloss
+  - evidence: Measure five objects to the nearest 1/4 inch
+- Measuring Liquids & Masses — ✗ no gloss
+  - evidence: Estimate the mass of a textbook in grams or kilograms
+- Perimeters of polygons — ✗ no gloss
+  - evidence: Calculate the perimeter of a rectangle with sides 8 cm and 5 cm
+### upper (18 topics)
+- Area and perimeter of rectangles — ✓ gloss: “Around (perimeter) & inside (area)”
+  - evidence: Find the width of a room given area = 48 m² and length = 8 m
+- Converting measurement units (age 9+) — ✓ gloss: “Change units: cm → m”
+  - evidence: Convert 3.5 km to 3,500 m
+- Counting Unit Cubes — ✗ no gloss
+  - evidence: Build a 3 × 2 × 2 cuboid from 1 cm³ cubes and state its volume as 12 cm³
+- Fractions on a number line — ✓ gloss: “Fractions on a number line”
+  - evidence: A 2.5 kg bag of flour is split equally into 4 portions — what does each weigh?
+- Measurement Line Plots — ✗ no gloss
+  - evidence: Create a line plot of seed growth measurements in 1/8-inch increments
+- Metric & Imperial Conversion — ✗ no gloss
+  - evidence: State that 1 inch ≈ 2.5 cm and use this to estimate length in inches
+- Perimeter of Compound Shapes — ✗ no gloss
+  - evidence: Find the perimeter of an L-shaped figure by identifying all side lengths
+- Reading between scale marks — ✗ no gloss
+  - evidence: Read 500 g on kitchen scales numbered every 200 g where the pointer sits halfway between 400 g and 600 g
+- Telling time to the minute (age 9+) — ✓ gloss: “Telling time to the minute”
+  - evidence: Convert 3 hours 25 minutes to 205 minutes
+- What volume means — ✗ no gloss
+  - evidence: Explain what 'volume' means for a 3D shape and how it differs from area
+- Area of Triangles & Parallelograms — ✗ no gloss
+  - evidence: Cut a right-angled triangle off one end of a parallelogram with base 8 cm and perpendicular height 5 cm, move it to the other end 
+- Comparing best buys — ✗ no gloss
+  - evidence: Decide whether a 2 kg bag of rice for $5.80 or a 500 g bag for $1.60 is better value and explain why
+- Decimal place value — ✗ no gloss
+  - evidence: Convert 3,250 g to 3.25 kg using decimal notation
+- Measurement Conversions — ✗ no gloss
+  - evidence: Solve: 'A recipe uses 0.75 kg of flour. How many grams are needed for 3 batches?'
+- Miles & Kilometres — ✗ no gloss
+  - evidence: Convert 40 miles to approximately 64 km
+- Perimeter (age 10+) — ✗ no gloss
+  - evidence: Draw two rectangles with area 24 cm² but different perimeters
+- Volume as additive — ✗ no gloss
+  - evidence: Decompose an L-shaped solid into two cuboids and calculate total volume
+- Volume of cuboids — ✗ no gloss
+  - evidence: Use V = l × w × h to find the volume of a cuboid 4 cm × 3 cm × 5 cm = 60 cm³
+
+## Mathematics|Multiplication & Division
+### early (8 topics)
+- Division as equal sharing — ✗ no gloss
+  - evidence: Share 10 counters (real or on-screen) equally between 2 plates
+- Arrays for multiplication — ✓ gloss: “Arrays: rows × columns”
+  - evidence: Build an array of 3 rows of 4 objects to show 3 × 4
+- Multiplication as repeated addition — ✓ gloss: “Adding again and again = ×”
+  - evidence: Explain that 3 groups of 2 is the same as 2 + 2 + 2
+- Commutative Multiplication — ✓ gloss: “Turn the array around!”
+  - evidence: Explain that 3 × 5 = 5 × 3 and show this with an array rotated
+- Multiplication as repeated addition (age 6+) — ✓ gloss: “Adding again and again = ×”
+  - evidence: Solve 'There are 5 bags with 2 apples in each. How many apples?' using repeated addition or known fact
+- Odd and even numbers — ✗ no gloss
+  - evidence: Identify whether a given number is odd or even
+- Reading ×, ÷, and = Symbols — ✗ no gloss
+  - evidence: Read 3 × 4 = 12 aloud as 'three times four equals twelve'
+- Times tables — ✗ no gloss
+  - evidence: Quickly answer 5 × 3 = 15 from memory
+### mid (19 topics)
+- Arrays for multiplication (age 7+) — ✓ gloss: “Arrays: rows × columns”
+  - evidence: Count objects in a 3×4 array and write 4 + 4 + 4 = 12
+- Multi-Step Multiply & Divide — ✗ no gloss
+  - evidence: Solve a scaling problem (e.g. 'the ribbon is 3 times as long')
+- Rows & Columns in Rectangles — ✗ no gloss
+  - evidence: Divide a rectangle into equal rows and columns of unit squares
+- Times tables (age 7+) — ✗ no gloss
+  - evidence: Recall 3 × 1 through 3 × 12 and corresponding division facts
+- Written Multiplication & Division — ✓ gloss: “Written × and ÷”
+  - evidence: Calculate 23 × 4 using partitioning (20 × 4 + 3 × 4)
+- All times tables to 12×12 — ✗ no gloss
+  - evidence: Recall any fact from the 1–12 times tables rapidly
+- Division as Unknown Factor — ✗ no gloss
+  - evidence: Explain that 32 ÷ 8 = ? is the same as 8 × ? = 32
+- Factor Pairs & Commutativity — ✗ no gloss
+  - evidence: List all factor pairs of a given number (e.g. 24: 1×24, 2×12, 3×8, 4×6)
+- Fluent multiplication and division facts — ✓ gloss: “Quick × and ÷ facts”
+  - evidence: Answer any single-digit multiplication fact within 3 seconds
+- Mental multiplication and division — ✓ gloss: “× and ÷ in your head”
+  - evidence: Calculate 40 × 6 = 240 mentally using place value
+- Multiplication and Division Word Problems — ✗ no gloss
+  - evidence: Solve an equal-groups word problem using multiplication
+- Multiply & Add Problems — ✗ no gloss
+  - evidence: Use the distributive law to solve 14 × 6 as 10 × 6 + 4 × 6
+- Multiplying by Tens — ✗ no gloss
+  - evidence: Calculate 7 × 30 = 210 by reasoning 7 × 3 tens = 21 tens = 210
+- Patterns in Times Tables — ✗ no gloss
+  - evidence: Notice that all products of 5 end in 0 or 5 and explain why
+- Properties of Operations — ✗ no gloss
+  - evidence: Use commutativity: if 6 × 4 = 24 then 4 × 6 = 24
+- Unknown in Multiplication & Division — ✗ no gloss
+  - evidence: Find the missing factor in 7 × ? = 63
+- What Division Means — ✗ no gloss
+  - evidence: Explain that 56 ÷ 8 can mean sharing 56 into 8 equal groups or making groups of 8
+- What Multiplication Means — ✗ no gloss
+  - evidence: Explain that 4 × 6 means 4 groups of 6 objects
+- Written Multiplication — ✗ no gloss
+  - evidence: Set out and solve 47 × 6 using short multiplication
+### upper (28 topics)
+- Division with remainders — ✓ gloss: “Division with leftovers”
+  - evidence: 52 children go on a trip in minibuses holding 9 each — how many minibuses are needed? (interpret the remainder, including a calcul
+- Factors, multiples, and primes — ✗ no gloss
+  - evidence: List all factor pairs of 36: (1,36), (2,18), (3,12), (4,9), (6,6)
+- Factors, multiples, and primes (age 9+) — ✗ no gloss
+  - evidence: Is 156 a multiple of 6? Explain how you know
+- Long multiplication — ✗ no gloss
+  - evidence: Calculate 2,347 × 6 using formal written layout
+- Mental multiplication and division (age 9+) — ✓ gloss: “× and ÷ in your head”
+  - evidence: Calculate 40 × 60 mentally by using 4 × 6 = 24 then appending zeros
+- Multiplicative Comparison — ✗ no gloss
+  - evidence: Explain that '4 times as many' means multiply by 4
+- Multiplicative Comparison — ✗ no gloss
+  - evidence: A blue ribbon is 3 times as long as a red ribbon of 7 cm — how long is the blue ribbon?
+- Multiplying and dividing — ✓ gloss: “Multiplying & dividing”
+  - evidence: Calculate 3.45 × 100 = 345
+- Odd and even number rules — ✗ no gloss
+  - evidence: Explain with paired counters why the sum of two odd numbers is always even
+- Prime numbers — ✗ no gloss
+  - evidence: Explain that a prime number has exactly two factors: 1 and itself
+- Shape patterns — ✗ no gloss
+  - evidence: Given 'start at 1, add 3', generate terms and notice they alternate odd/even
+- Short division with remainders — ✗ no gloss
+  - evidence: Calculate 4,932 ÷ 6 using short division
+- Square and cube numbers — ✗ no gloss
+  - evidence: Identify 49 as 7² and explain that 7 × 7 = 49
+- Understanding fractions — ✓ gloss: “What fractions mean”
+  - evidence: A recipe for 4 people needs 200 g of flour — how much for 6 people?
+- Brackets in Expressions — ✗ no gloss
+  - evidence: Evaluate 3 × (4 + 5) by computing inside the parentheses first
+- Decimal place value — ✗ no gloss
+  - evidence: Correctly compute 4.56 × 7 using a written method
+- Dividing by two-digit numbers — ✗ no gloss
+  - evidence: Use short division to compute 3,648 ÷ 16 efficiently
+- Division with Decimals — ✗ no gloss
+  - evidence: Compute 14.76 ÷ 4 using a written method to get 3.69
+- Division with remainders (age 10+) — ✓ gloss: “Division with leftovers”
+  - evidence: Compute 4,752 ÷ 13 using long division and express the remainder as a fraction
+- Estimation to check answers to calculations — ✓ gloss: “Estimate to check”
+  - evidence: Estimate 487 × 23 by rounding to 500 × 20 and use this to check a calculated answer
+- Factor algorithms and spreadsheets — ✗ no gloss
+  - evidence: Write an algorithm that tests every number from 1 to 24 and records it if 24 divided by it leaves no remainder
+- Long multiplication (age 10+) — ✗ no gloss
+  - evidence: Correctly compute 2,463 × 37 using long multiplication
+- Mental calculation strategies — ✗ no gloss
+  - evidence: Mentally compute 45 × 8 by partitioning into 40 × 8 + 5 × 8
+- Multiplying and dividing (age 10+) — ✓ gloss: “Multiplying & dividing”
+  - evidence: Compute 3.456 × 100 = 345.6 correctly
+- Multi-step problems: choosing operations — ✓ gloss: “Many-step problems”
+  - evidence: Solve a three-step word problem involving a mix of all four operations
+- Order of operations — ✗ no gloss
+  - evidence: Explain why 8 + 2 × 5 = 18 (not 50) by referencing multiplication before addition
+- Rounding Answers — ✗ no gloss
+  - evidence: Compute a division and round the result to one decimal place as specified
+- Writing Number Sentences — ✗ no gloss
+  - evidence: Write an expression for 'add 8 and 7, then multiply by 2' using parentheses
+
+## Mathematics|Number Representation & Place Value
+### early (16 topics)
+- Number Words to Twenty — ✗ no gloss
+  - evidence: Read the word 'twelve' and identify it as 12
+- Ordering numbers to 20 — ✗ no gloss
+  - evidence: Put the cards 14, 3, 19, 0 and 8 in order from smallest to largest
+- Reading and writing numbers to 100 — ✓ gloss: “Read & write numbers to 100”
+  - evidence: Read two-digit numerals up to 100 correctly
+- Reading and writing numbers to 20 — ✓ gloss: “Read & write numbers to 20”
+  - evidence: Read any numeral 0–20 when shown it
+- The teen numbers — ✗ no gloss
+  - evidence: Compose 14 as a group of ten and four ones using objects
+- 10 More or 10 Less — ✗ no gloss
+  - evidence: Given 56, quickly say 66 is 10 more and 46 is 10 less
+- A Hundred Is Ten Tens — ✗ no gloss
+  - evidence: Explain that 10 groups of 10 ones make 100
+- A Ten Is Ten Ones — ✗ no gloss
+  - evidence: Group 10 single cubes into one rod of 10 and explains why
+- Comparing and ordering numbers — ✗ no gloss
+  - evidence: Correctly place > or < between 34 and 43
+- Number Words to 100 — ✗ no gloss
+  - evidence: Read 'fifty-seven' and write the numeral 57
+- Place value understanding and number facts — ✗ no gloss
+  - evidence: Use knowledge that 34 = 30 + 4 to help add 34 + 20 = 54
+- Reading and writing numbers to 120 — ✓ gloss: “Read & write numbers to 120”
+  - evidence: Count from 47 to 120 without errors
+- Renaming two-digit numbers — ✗ no gloss
+  - evidence: Show 34 with real base-ten blocks as 3 tens and 4 ones, then trade a ten to show 2 tens and 14 ones
+- Representing numbers to 120 — ✗ no gloss
+  - evidence: Mark 47 in about the right place on a 0–100 number line marked in tens (between 40 and 50, nearer 50)
+- The multiples of 10 — ✗ no gloss
+  - evidence: Explain that 30 means 3 tens and 0 ones
+- The two digits of a two-digit number — ✓ gloss: “Tens and ones”
+  - evidence: Explain that in 47, the 4 represents 4 tens (40) and the 7 represents 7 ones
+### mid (17 topics)
+- 10 or 100 More or Less — ✗ no gloss
+  - evidence: Given a three-digit number, state what is 10 more and 10 less
+- Odd or Even — ✗ no gloss
+  - evidence: Pair objects and determine whether there is one left over (odd) or not (even)
+- Ordering Numbers to 1000 — ✗ no gloss
+  - evidence: Compare two three-digit numbers by examining hundreds first, then tens, then ones
+- Place Value to 1000 — ✗ no gloss
+  - evidence: Solve a problem that requires identifying how many hundreds, tens, or ones are in a number
+- Reading and writing numbers to 1000 — ✓ gloss: “Read & write numbers to 1000”
+  - evidence: Read a three-digit numeral aloud correctly
+- Representing numbers to 1000 — ✗ no gloss
+  - evidence: Mark 346 in about the right place on a 0–1000 number line marked in hundreds (between 300 and 400, a little before halfway), and e
+- The multiples of 100 — ✗ no gloss
+  - evidence: Identify that 300 means 3 hundreds, 0 tens, 0 ones
+- The three digits of a three-digit number — ✓ gloss: “Hundreds, tens and ones”
+  - evidence: State the value of each digit in a three-digit number (e.g. in 362, the 3 represents 3 hundreds)
+- 1000 More or Less — ✗ no gloss
+  - evidence: Given 4,562, state that 1000 more is 5,562 and 1000 less is 3,562
+- Comparing Large Numbers — ✗ no gloss
+  - evidence: Compare two four-digit numbers using >, <, and = by examining digits from the highest place value
+- Negative Numbers — ✗ no gloss
+  - evidence: Count backwards from 5 through zero: 5, 4, 3, 2, 1, 0, −1, −2 …
+- Numbers to 10,000 — ✗ no gloss
+  - evidence: Represent a four-digit number on a place-value chart or with base-ten materials
+- Place value of each digit — ✗ no gloss
+  - evidence: State the value of each digit in a four-digit number (e.g. in 7,345 the 7 represents 7 thousands)
+- Place Value Problem-Solving — ✗ no gloss
+  - evidence: Solve a problem requiring rounding, comparing, or ordering numbers beyond 1000
+- Reading and writing numbers (age 9+) — ✓ gloss: “Read & write big numbers”
+  - evidence: Write 403,072 in words and in expanded form
+- Roman numerals to 100 — ✗ no gloss
+  - evidence: Read and write Roman numerals I, V, X, L, C and combinations up to 100
+- Rounding to 10, 100, 1000 — ✗ no gloss
+  - evidence: Round 4,367 to the nearest 10 (4,370), 100 (4,400), and 1000 (4,000)
+### upper (14 topics)
+- Counting forwards and backwards (age 9+) — ✓ gloss: “Count up and down”
+  - evidence: Count on in 10,000s from 462,000
+- Negative numbers in context — ✗ no gloss
+  - evidence: Place –3, –1, 0, 2, 5 on a number line
+- Place Value × 10 Pattern — ✗ no gloss
+  - evidence: Explain that the 3 in 3,000 is ten times the 3 in 300
+- Roman numerals to 1000 — ✗ no gloss
+  - evidence: Read MCMXCIX as 1999
+- Rounding Large Numbers — ✗ no gloss
+  - evidence: Round 456,782 to the nearest 10,000 (460,000)
+- Working with Large Numbers — ✗ no gloss
+  - evidence: What is the largest six-digit number with digits summing to 15?
+- Decimal place value — ✗ no gloss
+  - evidence: Round 3.4567 to 2 decimal places (3.46)
+- Measuring temperature — ✗ no gloss
+  - evidence: The temperature falls from 3°C to −5°C — what is the drop? (8 degrees)
+- Numbers to Ten Million — ✗ no gloss
+  - evidence: A country's population is 8,274,500 — round to the nearest million for a headline
+- Patterns with Powers of Ten — ✗ no gloss
+  - evidence: Write 10⁴ = 10,000 and explain the exponent means four factors of 10
+- Place Value × 10 and ÷ 10 — ✗ no gloss
+  - evidence: Explain that the 4 in 0.04 is 1/10 of the 4 in 0.4
+- Reading and writing numbers (age 10+) — ✓ gloss: “Read & write big numbers”
+  - evidence: Write 347.392 in expanded form: 3×100 + 4×10 + 7×1 + 3×(1/10) + 9×(1/100) + 2×(1/1000)
+- Reading and writing numbers to 10,000,000 — ✓ gloss: “Read & write numbers to 10,000,000”
+  - evidence: Write 4,302,561 in words
+- Reading Decimal Places — ✗ no gloss
+  - evidence: State the value of each digit in 2.635 (2 ones, 6 tenths, 3 hundredths, 5 thousandths)
+
+## Mathematics|Probability
+### early (2 topics)
+- Likelihood Language — ✗ no gloss
+  - evidence: Place five everyday events (e.g. 'the sun will rise tomorrow', 'it will snow in July', 'I'll flip heads'; for example an event and
+- Simple Chance Experiments — ✗ no gloss
+  - evidence: Flip a coin 20 times, record heads and tails in a tally chart, and describe what they notice about the results
+### upper (8 topics)
+- Equally Likely Outcomes — ✗ no gloss
+  - evidence: Explain that a fair coin has equally likely outcomes because heads and tails each have the same chance
+- Experimental vs Theoretical — ✗ no gloss
+  - evidence: Roll a die 60 times and compare experimental frequencies with the expected 10 per number
+- Independent and dependent events — ✓ gloss: “Does one pick change the next?”
+  - evidence: Explain that getting heads on one coin flip does not change the chance of heads on the next flip
+- Ordering Likelihoods — ✗ no gloss
+  - evidence: Order four or more events from least likely to most likely and justify each placement
+- Probability as a Fraction — ✗ no gloss
+  - evidence: State that the probability of rolling a 6 on a fair die is 1/6 and explain why
+- Calculating Simple Probability — ✗ no gloss
+  - evidence: Calculate the probability of drawing a blue marble from a bag of 3 blue and 7 red as 3/10
+- Probabilities Sum to One — ✗ no gloss
+  - evidence: List all outcomes of spinning a 4-colour spinner and verify their probabilities add up to 1
+- The 0-to-1 Probability Scale — ✗ no gloss
+  - evidence: Place events on a number line from 0 (impossible) to 1 (certain), expressing positions as fractions or decimals
+
+## Mathematics|Ratio & Proportion
+### upper (6 topics)
+- Bar Models for Ratios — ✗ no gloss
+  - evidence: Draw a bar model to represent a ratio problem — e.g. sharing £20 in the ratio 3:2 by drawing 5 equal blocks
+- Percentages (age 9+) — ✗ no gloss
+  - evidence: Explain the difference between a 'ratio' and a 'proportion' using a concrete example like mixing paint
+- Calculating Percentages — ✗ no gloss
+  - evidence: Calculate 15% of 360 by finding 10% and 5% and combining
+- Ratio Problems — ✗ no gloss
+  - evidence: If the ratio of red to blue beads is 3:5 and there are 15 blue beads, find the number of red beads
+- Scale and similar shapes — ✗ no gloss
+  - evidence: Find the missing side of a similar rectangle given a scale factor of 3
+- Understanding fractions — ✓ gloss: “What fractions mean”
+  - evidence: Share 40 sweets between two children in the ratio 3:5
+
+## Personal & Social Development|Emotional Literacy
+### early (5 topics)
+- Expressing Feelings with Words — ✗ no gloss
+  - evidence: Use an 'I feel ___ when ___' statement during a disagreement
+- Feelings Change and Differ — ✗ no gloss
+  - evidence: Give an example of a time their feelings changed during a single day
+- Naming Basic Emotions — ✗ no gloss
+  - evidence: Label at least five basic emotions from pictures or real situations
+- Triggers and Causes of Feelings — ✓ gloss: “What set off the feeling?”
+  - evidence: Describe a trigger for at least three different emotions from their own experience
+- How Emotions Feel in Your Body — ✗ no gloss
+  - evidence: Name at least three body sensations and match them to the emotions they signal
+### mid (4 topics)
+- Emotion Vocabulary — ✗ no gloss
+  - evidence: Use at least five emotion words beyond the basic six in everyday conversation
+- Hidden and Masked Feelings — ✗ no gloss
+  - evidence: Give an example of a time someone might hide their feelings and explain why
+- Mild to Strong Emotions — ✗ no gloss
+  - evidence: Place three related emotion words in order from mild to strong
+- Culture and Experience Shape Emotions — ✓ gloss: “Feelings across cultures”
+  - evidence: Explain why two people might have very different emotional reactions to the same event
+### upper (3 topics)
+- Emotional Patterns Over Time — ✗ no gloss
+  - evidence: Identify a recurring emotional trigger and their typical response to it
+- Emotions and Decision-Making — ✗ no gloss
+  - evidence: Give an example of a time a strong emotion led them or someone else to a poor decision
+- Mixed and Conflicting Emotions — ✗ no gloss
+  - evidence: Describe a personal situation where they felt two emotions simultaneously
+
+## Personal & Social Development|Empathy & Social Awareness
+### early (4 topics)
+- Everyday Kindness and Care — ✗ no gloss
+  - evidence: Spontaneously offer comfort to someone who is visibly upset
+- Other People's Feelings and Thoughts — ✗ no gloss
+  - evidence: State that other people can feel differently about the same thing
+- Similarities & Differences — ✗ no gloss
+  - evidence: Name several ways people in their class or community are different from each other
+- Vocabulary: understanding others — ✓ gloss: “Words about other people”
+  - evidence: Use the word 'empathy' correctly and distinguish it from 'sympathy' — e.g. 'Empathy means I try to feel what they feel'
+### mid (10 topics)
+- Different Lives and Experiences — ✗ no gloss
+  - evidence: Describe at least two ways another child's life experience might differ significantly from their own
+- Fairness, Equality and Equity — ✗ no gloss
+  - evidence: Explain the difference between treating everyone the same and treating everyone fairly
+- Seeing Someone Else's Point of View — ✗ no gloss
+  - evidence: Describe how a character in a story feels and give reasons based on the plot
+- Vocabulary: social awareness — ✓ gloss: “Noticing others”
+  - evidence: Explain what 'stereotype' and 'prejudice' mean and give an example of each from everyday life
+- Australian national symbols — ✗ no gloss
+  - evidence: Identify the Australian flag, the Aboriginal flag and the Torres Strait Islander flag, and say where they are flown together (e.g.
+- How stereotypes shape choices — ✗ no gloss
+  - evidence: Give examples of how a stereotype might stop someone choosing an activity (e.g. 'only boys play football', 'only girls do dance')
+- Prejudice and discrimination — ✗ no gloss
+  - evidence: Define prejudice and discrimination in their own words and describe the harm discrimination causes to the person experiencing it
+- Religious and cultural festivals — ✗ no gloss
+  - evidence: Describe how one religious festival (e.g. Easter, Christmas, Eid al-Fitr or Diwali) is celebrated in their country and what it mea
+- Stereotypes and Individual Differences — ✓ gloss: “Don’t put people in boxes”
+  - evidence: Define what a stereotype is in their own words
+- The world contains many cultures, traditions — ✓ gloss: “Many cultures, one world”
+  - evidence: Describe a cultural practice different from their own and explain what they find interesting about it
+### upper (3 topics)
+- Diverse First Nations peoples — ✗ no gloss
+  - evidence: Explain that Aboriginal peoples and Torres Strait Islander peoples are distinct peoples, each made up of many groups, and that mor
+- Groups I belong to — ✗ no gloss
+  - evidence: Make an identity map showing the groups they belong to (e.g. family, cultural, religious, sporting, school and club groups)
+- Questioning Your Own Biases — ✗ no gloss
+  - evidence: Describe a time they made an assumption about someone that turned out to be wrong
+
+## Personal & Social Development|Friendship & Cooperation
+### early (10 topics)
+- Asking for Help — ✗ no gloss
+  - evidence: Approach an appropriate person and ask for help clearly
+- Asking permission — ✗ no gloss
+  - evidence: Ask 'May I borrow your pencil?' or 'Can I sit next to you?' before taking or moving close, and wait for an answer
+- Assertive Communication — ✗ no gloss
+  - evidence: Explain the difference between assertive, aggressive, and passive responses
+- Listening to Others — ✗ no gloss
+  - evidence: Face the speaker and maintain attention while someone else is talking
+- Makes someone a good friend — ✗ no gloss
+  - evidence: List at least four qualities of a good friend
+- Taking Turns and Sharing — ✗ no gloss
+  - evidence: Take turns in a game or group activity without needing adult reminders
+- Vocabulary: working with others — ✓ gloss: “Words for teamwork”
+  - evidence: Use 'cooperate' and 'compromise' correctly — e.g. 'We cooperated by taking turns choosing the game'
+- Resolving Disagreements with Friends — ✗ no gloss
+  - evidence: Explain their own point of view calmly during a disagreement
+- Roles in a Group — ✗ no gloss
+  - evidence: Name at least three different roles people can play in a group
+- Working Well in a Group — ✗ no gloss
+  - evidence: Contribute at least one idea during a group discussion
+### mid (4 topics)
+- Communication Vocabulary — ✗ no gloss
+  - evidence: Use 'assertive' correctly and distinguish it from 'aggressive' — e.g. 'Being assertive means saying what I need calmly'
+- Friendships change over time — ✗ no gloss
+  - evidence: Explain that friendships changing is normal and doesn't mean something is wrong
+- Self-Reflection in Relationships — ✓ gloss: “How am I as a friend?”
+  - evidence: Identify a pattern in their own social behaviour, such as always wanting to lead or avoiding confrontation
+- When permission is needed — ✗ no gloss
+  - evidence: Sort scenarios into 'needs permission' and 'doesn't' (e.g. borrowing a phone, posting a photo of a friend, hugging someone, openin
+### upper (3 topics)
+- Giving and Receiving Feedback — ✗ no gloss
+  - evidence: Give feedback that includes both a specific positive point and a constructive suggestion
+- Helping Others Resolve Conflicts — ✗ no gloss
+  - evidence: Listen to both sides of a conflict without taking sides initially
+- Communicating consent clearly — ✗ no gloss
+  - evidence: Describe what clear consent looks and sounds like, including that a 'yes' must be freely given and can be changed later
+
+## Personal & Social Development|Responsible Decision-Making
+### early (12 topics)
+- Actions and Their Consequences — ✗ no gloss
+  - evidence: Describe what happened as a consequence of a specific action they took
+- Early warning signs — ✗ no gloss
+  - evidence: Describe their body's early warning signs when they feel unsafe or worried (e.g. a racing heart or a funny tummy)
+- Everyday Safety Awareness — ✗ no gloss
+  - evidence: State at least three basic safety rules and explain why each matters
+- Health and safety signs — ✗ no gloss
+  - evidence: Point to a poison or hazard symbol on a household product and say 'don't touch — tell an adult'
+- My body belongs to me — ✗ no gloss
+  - evidence: Name body parts, including private parts, using the correct terms taught at school, and explain that private parts are the parts c
+- No, go, tell — ✗ no gloss
+  - evidence: Role-play saying 'no' in a strong voice with matching body language in an unsafe scenario
+- Right and Wrong Choices — ✗ no gloss
+  - evidence: Identify the right and wrong choice in a simple moral scenario
+- Rules and agreements exist — ✗ no gloss
+  - evidence: Explain the reason behind at least two rules at home or school
+- Vocabulary: making decisions and keeping safe — ✓ gloss: “Choosing safely”
+  - evidence: Explain what 'consequence' means and give an example of a positive and a negative consequence of a choice
+- Basic digital citizenship — ✓ gloss: “Being good online”
+  - evidence: State at least three rules for staying safe and being kind online
+- Bystanders and Upstanders — ✗ no gloss
+  - evidence: Explain the difference between a bystander and an upstander
+- Understanding Bullying — ✗ no gloss
+  - evidence: Define bullying and distinguish it from a one-off conflict
+### mid (8 topics)
+- Reading health messages — ✗ no gloss
+  - evidence: Compare a government health campaign (e.g. a sun-safety ad) with an ad for a sugary drink and explain the intention of each
+- Stop, Think, Then Choose — ✗ no gloss
+  - evidence: Describe at least two options when facing a decision
+- Vocabulary: ethics and citizenship — ✓ gloss: “Fair and good choices”
+  - evidence: Explain what 'ethics' means in their own words and give an example of an ethical dilemma
+- Community Rights and Responsibilities — ✓ gloss: “Rights & jobs in our community”
+  - evidence: Name at least three rights that every child has (e.g., safety, education, respect)
+- Peer Pressure and Resisting It — ✗ no gloss
+  - evidence: Define peer pressure in their own words and give a real-world example
+- Protective actions online — ✗ no gloss
+  - evidence: Show in a game or app scenario how to stop replying to and block someone asking for personal information or photos, then tell a tr
+- Who makes the rules? — ✗ no gloss
+  - evidence: Name who makes three school or community rules (e.g. the principal sets the hat rule, the student council suggests playground rule
+- Why people join in — ✗ no gloss
+  - evidence: Describe ways people participate in local communities (e.g. volunteering with the SES, Clean Up Australia Day, sporting clubs, fes
+### upper (8 topics)
+- Difficult Ethical Choices — ✗ no gloss
+  - evidence: Describe a moral dilemma where both sides have valid points
+- Ethics in Real-World Issues — ✗ no gloss
+  - evidence: Identify an ethical issue and describe at least two different perspectives on it
+- Rules and laws — ✗ no gloss
+  - evidence: Sort examples into rules (e.g. 'no hat, no play', a club uniform) and laws (e.g. road rules, wearing seatbelts) and explain that l
+- What local councils do — ✗ no gloss
+  - evidence: List services provided by the local council (e.g. rubbish collection, libraries, parks, local roads, pools) and say which ones the
+- Analysing risky situations — ✗ no gloss
+  - evidence: Analyse an online scenario (e.g. a new online 'friend' offering gifts and asking to keep chats secret) and identify the warning si
+- Australia's democracy and elections — ✗ no gloss
+  - evidence: Explain key democratic values such as freedom of speech, equality before the law and the rule of law
+- Citizens working for change — ✗ no gloss
+  - evidence: Describe how a group of citizens achieved a civic goal (e.g. a local petition for a pedestrian crossing, Clean Up Australia or a c
+- Judging reliable information — ✗ no gloss
+  - evidence: Compare health information from a health professional or government website with a social media post on the same topic and explain
+
+## Personal & Social Development|Self-Awareness
+### early (5 topics)
+- All about me — ✗ no gloss
+  - evidence: Make an 'All about me' page showing their name, likes, favourite things and something they are good at
+- Naming Your Feelings — ✗ no gloss
+  - evidence: emotional literacy research
+- Vocabulary: self — ✓ gloss: “Words about me”
+  - evidence: Use words like 'reflect', 'pattern', and 'trigger' accurately when describing their own behaviour — e.g. 'I notice a pattern: I ge
+- Feelings Versus Actions — ✗ no gloss
+  - evidence: emotion regulation development research
+- My qualities and identity — ✗ no gloss
+  - evidence: Describe three of their own personal qualities and give an example of when they showed each
+### mid (2 topics)
+- Patterns in Your Own Reactions — ✗ no gloss
+  - evidence: middle childhood self-reliance in emotion regulation
+- Your Impact on Others — ✗ no gloss
+  - evidence: Describe how something they said or did affected someone else — e.g. 'When I didn't include them, they looked upset'
+### upper (3 topics)
+- Questioning First Impressions — ✗ no gloss
+  - evidence: Pause before reacting to a classmate's behaviour and consider an alternative explanation — e.g. 'Maybe they bumped me by accident,
+- People, places and identity — ✗ no gloss
+  - evidence: Create an identity map of the people and places that have influenced who they are, and explain one influence of each
+- Personal Growth Over Time — ✗ no gloss
+  - evidence: emotion vocabulary development continues to age 11 (PMC)
+
+## Personal & Social Development|Self-Regulation & Resilience
+### early (8 topics)
+- Coping with Life Changes — ✗ no gloss
+  - evidence: Name at least two changes they have experienced and how they felt
+- Learning from Mistakes — ✗ no gloss
+  - evidence: Describe a time they made a mistake and what they learned from it
+- Patience and Delayed Gratification — ✓ gloss: “Waiting for better”
+  - evidence: Wait for their turn in a game or activity without constant complaints
+- Simple Calming Strategies — ✗ no gloss
+  - evidence: Demonstrate at least two calming strategies when prompted
+- Words for Big Feelings — ✗ no gloss
+  - evidence: Use words like 'frustrated', 'anxious', 'overwhelmed', and 'disappointed' accurately to describe how they feel in difficult moment
+- Choosing the Right Coping Strategy — ✓ gloss: “Pick your calm-down tool”
+  - evidence: Name at least two different coping strategies and explain when each one is most useful
+- Growth Mindset — ✗ no gloss
+  - evidence: Explain the difference between growth mindset and fixed mindset in their own words
+- Positive Self-Talk — ✗ no gloss
+  - evidence: Give an example of an unhelpful thought and rephrase it as a helpful one
+### mid (5 topics)
+- Breaking Tasks into Steps — ✗ no gloss
+  - evidence: Take a challenging task and list at least three smaller steps to complete it
+- Vocabulary: resilience and self — ✓ gloss: “Bouncing back”
+  - evidence: Explain what 'resilience' means in their own words and give an example of a time they kept going when something was hard
+- Personal Coping Toolkit — ✗ no gloss
+  - evidence: Describe at least three personal coping strategies and when each is most effective
+- Planning for change — ✗ no gloss
+  - evidence: Identify an upcoming change (e.g. a new class, moving house or the start of puberty) and list feelings they might have
+- Resilience and Bouncing Back — ✗ no gloss
+  - evidence: Define resilience in their own words and explain why it matters
+### upper (2 topics)
+- Personal Goal-Setting — ✗ no gloss
+  - evidence: Write or state a specific, achievable personal goal with a timeframe
+- Time and Attention Management — ✗ no gloss
+  - evidence: Create a simple plan for completing multiple tasks in a sensible order
+
+## Science|Animals of the World
+### early (7 topics)
+- Animal Camouflage — ✗ no gloss
+  - evidence: Explains that camouflage means blending in with surroundings
+- Animal Homes — ✗ no gloss
+  - evidence: Names at least 4 different types of animal homes (nest, burrow, hive, web, shell, den, lodge)
+- Animal Record-Holders — ✗ no gloss
+  - evidence: Names at least 4 animal record-holders with their record (fastest, biggest, tallest, smallest, etc.)
+- Animals Everywhere — ✗ no gloss
+  - evidence: Names at least 3 animals from different environments (e.g., forest, ocean, desert)
+- How Animals Have Babies — ✗ no gloss
+  - evidence: Gives examples of animals that lay eggs and animals that give birth to live young
+- Nocturnal Animals — ✗ no gloss
+  - evidence: Explains what 'nocturnal' means
+- Wild, Farm & Pet Animals — ✗ no gloss
+  - evidence: Sorts animals into wild, farm, and pet categories with examples
+### mid (8 topics)
+- Animal Communication — ✗ no gloss
+  - evidence: Describes at least 4 different methods of animal communication (sound, dance, light, scent, body language)
+- Animal Migration — ✗ no gloss
+  - evidence: Defines migration as a regular long journey animals make
+- Desert Animals — ✗ no gloss
+  - evidence: Names at least 4 desert animals
+- Polar Animals — ✗ no gloss
+  - evidence: Names at least 3 animals each from the Arctic and Antarctic
+- Predator Hunting Strategies — ✗ no gloss
+  - evidence: Describes at least 3 predator hunting strategies with examples
+- Rainforest Animals — ✗ no gloss
+  - evidence: Names at least 4 rainforest animals from different layers
+- Savanna & Grassland Animals — ✗ no gloss
+  - evidence: Names at least 5 grassland/savanna animals
+- The World of Minibeasts — ✗ no gloss
+  - evidence: Knows that insects/minibeasts are the most numerous animal group
+### upper (7 topics)
+- Animal Intelligence — ✗ no gloss
+  - evidence: Gives at least 4 examples of animal intelligence or complex behaviour
+- Biodiversity — ✗ no gloss
+  - evidence: Defines biodiversity as the variety of species in an ecosystem
+- Endangered & Extinct Species — ✗ no gloss
+  - evidence: Defines endangered as a species at risk of extinction
+- Invasive Species — ✗ no gloss
+  - evidence: Defines invasive species as non-native animals introduced to a new environment
+- Protecting Endangered Animals — ✗ no gloss
+  - evidence: Describes at least 3 conservation strategies with specific examples
+- Structural Adaptations — ✓ gloss: “Body tools: beaks & fur”
+  - evidence: Defines adaptation as a feature or behaviour that helps an animal survive in its environment
+- Symbiosis — ✗ no gloss
+  - evidence: Defines symbiosis as a close relationship between different species
+
+## Science|Design & Technology
+### early (2 topics)
+- Cutting, joining and shaping safely — ✗ no gloss
+  - evidence: Cut card and fabric accurately along marked lines and fold or roll card to make a shape (e.g. a tube for a tower)
+- Things people design — ✗ no gloss
+  - evidence: Choose a familiar product (e.g. a drink bottle) and point out features a designer chose and why (e.g. a lid that stops spills)
+### mid (1 topics)
+- Factors that shape designs — ✗ no gloss
+  - evidence: Identify the factors a designer considered in a familiar product or place (e.g. a playground: safety, cost, shade, accessibility)
+### upper (6 topics)
+- Cutting with a saw safely — ✗ no gloss
+  - evidence: Measure and mark a cutting line on a piece of dowel or wood to a given length
+- Drilling holes safely — ✗ no gloss
+  - evidence: Mark where a hole is needed (e.g. for an axle) and secure the work in a clamp or vice
+- How tools suit their job — ✗ no gloss
+  - evidence: Compare two cutting tools (e.g. scissors and a craft knife, or a coping saw and a hacksaw) and explain which suits each material a
+- Joining materials with adhesives — ✓ gloss: “Glue & tape: which holds?”
+  - evidence: Choose an adhesive suited to the materials being joined (e.g. PVA for wood or card, fabric glue for fabric, a low-temperature glue
+- Sewing by hand — ✗ no gloss
+  - evidence: Thread a needle and tie a knot at the end of the thread, keeping the needle in a pincushion when not in use
+- Project plans for making — ✗ no gloss
+  - evidence: Create a project plan with a timeline of tasks and deadlines for making a designed solution
+
+## Science|Dinosaurs & Paleontology
+### early (6 topics)
+- Dinosaur Sizes — ✗ no gloss
+  - evidence: Compare the size of a large dinosaur to a familiar object like a bus or house
+- Dinosaurs Were Real — ✗ no gloss
+  - evidence: State that dinosaurs were real animals, not made up
+- Famous Dinosaur Species — ✗ no gloss
+  - evidence: Name at least four common dinosaur species from pictures or models
+- Fossils & Palaeontologists — ✗ no gloss
+  - evidence: Describe a fossil as the remains of a living thing preserved in rock
+- Plant-Eaters vs Meat-Eaters — ✗ no gloss
+  - evidence: Sort a set of dinosaur pictures or models into herbivore and carnivore groups
+- Real Dinosaurs vs Fiction — ✗ no gloss
+  - evidence: State that pterosaurs could fly but were not dinosaurs
+### mid (9 topics)
+- Dinosaurs Around the World — ✗ no gloss
+  - evidence: State that dinosaur fossils have been found on every continent including Antarctica
+- Fossilised Dinosaur Dung — ✗ no gloss
+  - evidence: Define a coprolite as fossilised dung (animal droppings preserved as rock)
+- Fossils Reveal Ancient Environments — ✓ gloss: “Fossils show old worlds”
+  - evidence: Give an example of a fossil that reveals a past environment different from today's
+- How Fossils Form — ✗ no gloss
+  - evidence: Describe the basic sequence: organism dies, buried in sediment, minerals replace remains over time
+- Mary Anning, Fossil Hunter — ✗ no gloss
+  - evidence: State that Mary Anning lived in England in the early 1800s and hunted for fossils along the coast
+- Reading Dinosaur Trackways — ✗ no gloss
+  - evidence: Explain that larger footprints generally mean a larger dinosaur
+- The Mesozoic Era — ✗ no gloss
+  - evidence: List Triassic, Jurassic, and Cretaceous in the correct chronological order
+- Types of Fossils — ✗ no gloss
+  - evidence: Sort examples into body fossils (bones, teeth, shells) and trace fossils (footprints, eggs, dung)
+- Fossils as Evidence — ✗ no gloss
+  - evidence: Explain that fossils are preserved remains or traces of organisms that lived long ago
+### upper (9 topics)
+- Birds Evolved from Dinosaurs — ✗ no gloss
+  - evidence: State that birds evolved from small theropod dinosaurs
+- Changing Scientific Knowledge — ✗ no gloss
+  - evidence: Give an example of a scientific idea about dinosaurs that changed when new evidence was found
+- Dinosaur Hip Groups — ✗ no gloss
+  - evidence: Name the two major dinosaur groups: Saurischia and Ornithischia
+- How Palaeontologists Work — ✗ no gloss
+  - evidence: List the main stages: prospecting, excavation, jacketing, transport, preparation, study, display
+- Palaeoart & Speculation — ✗ no gloss
+  - evidence: Explain that bones and teeth are known from fossils but skin colour and soft tissues usually are not
+- Reading Cladograms — ✗ no gloss
+  - evidence: Explain that a cladogram shows evolutionary relationships based on shared features
+- Rock Layers & Relative Dating — ✗ no gloss
+  - evidence: Explain that sedimentary rock forms in layers with the oldest at the bottom
+- The K-Pg Extinction Event — ✗ no gloss
+  - evidence: State that the K-Pg extinction happened about 66 million years ago and wiped out non-avian dinosaurs
+- Life Changed Over Time — ✗ no gloss
+  - evidence: State that living things have changed (evolved) over millions of years
+
+## Science|Earth's Systems
+### early (4 topics)
+- How Organisms Shape Habitats — ✗ no gloss
+  - evidence: Give at least three examples of organisms changing their environment (beaver dams, bird nests, plant roots breaking rock)
+- Local weather patterns — ✗ no gloss
+  - evidence: Observe and record daily weather conditions (temperature, cloud cover, precipitation, wind)
+- Seasonal changes — ✗ no gloss
+  - evidence: Name the four seasons and describe typical weather for each
+- Shapes of land and water — ✗ no gloss
+  - evidence: Name and describe at least four types of landforms (mountain, valley, plain, hill, cliff)
+### mid (10 topics)
+- Evaporation and condensation — ✗ no gloss
+  - evidence: Describe the complete water cycle using at least four correct technical terms in the right order
+- How fossils form — ✗ no gloss
+  - evidence: Describe the basic process: organism dies, gets buried in mud/sand, layers build up, material turns to rock over millions of years
+- Preventing Erosion — ✗ no gloss
+  - evidence: Describe how wind and water can change the shape of land (erosion)
+- Properties of materials — ✗ no gloss
+  - evidence: Describe at least three observable properties of rocks: hardness, texture, colour, grain size
+- Rocks and soil — ✗ no gloss
+  - evidence: State that soil is a mixture of broken-down rock particles and decomposed organic matter (humus)
+- Where water is found on Earth — ✗ no gloss
+  - evidence: List where water is found on Earth: oceans, rivers, lakes, glaciers, underground, atmosphere
+- Finding patterns in data — ✗ no gloss
+  - evidence: Use a map to identify patterns in the location of mountains, rivers, lakes, and other features
+- Minerals and Earth resources — ✗ no gloss
+  - evidence: Compare minerals such as quartz, mica and halite by colour, lustre and a scratch test for hardness, recording results in a table
+- Seasonal changes (age 8+) — ✗ no gloss
+  - evidence: Collect and organise weather data in a table (temperature, precipitation, cloud cover)
+- Weather vs climate — ✗ no gloss
+  - evidence: Define weather as day-to-day conditions and climate as the long-term pattern of weather in an area
+### upper (5 topics)
+- Erosion and weathering — ✗ no gloss
+  - evidence: Define weathering (breaking down of rock in place) and erosion (movement of broken rock/soil, which is dropped elsewhere as deposi
+- Salt Water vs Fresh Water — ✗ no gloss
+  - evidence: State that about 97% of Earth's water is salt water in the oceans
+- Types of rocks — ✗ no gloss
+  - evidence: Correctly classify igneous, sedimentary, and metamorphic rocks and explain in one sentence how each type forms
+- Earth's atmosphere — ✗ no gloss
+  - evidence: Name the four Earth systems: geosphere (rock/land), hydrosphere (water), atmosphere (air), biosphere (living things)
+- Rock layers and Earth's history — ✗ no gloss
+  - evidence: Label the four layers of the Earth on a cross-section diagram using the correct terms
+
+## Science|Ecosystems & Habitats
+### early (7 topics)
+- Plants and animals in their habitats — ✗ no gloss
+  - evidence: Use a simple model (drawing, diagram) to show how a habitat provides what an organism needs
+- Reducing Human Impact — ✗ no gloss
+  - evidence: Identify at least three ways humans negatively impact the local environment (litter, pollution, habitat destruction)
+- Habitats & Basic Needs — ✗ no gloss
+  - evidence: Define a habitat as a place where an organism lives that provides what it needs
+- Habitat Vocabulary — ✗ no gloss
+  - evidence: Match animals to their habitats and explain the match using 'adapted to', 'conditions', or 'shelter'
+- Living, Dead & Never Alive — ✗ no gloss
+  - evidence: Sort a collection of objects into three groups: living, dead (was once alive), never alive
+- Local Plants & Animals — ✗ no gloss
+  - evidence: Name at least three animals and plants found in a specific local habitat
+- Simple Food Chains — ✗ no gloss
+  - evidence: Draw a simple food chain with at least three organisms using arrows to show energy flow
+### mid (8 topics)
+- Animal Groups & Survival — ✗ no gloss
+  - evidence: Give at least two examples of animals that live in groups (e.g. wolves, ants, fish schools)
+- Changing Environments — ✗ no gloss
+  - evidence: Give at least two examples of environmental changes (natural and human-caused)
+- Classification Keys — ✗ no gloss
+  - evidence: Follow a branching classification key to identify an unknown organism
+- Ecology Vocabulary — ✗ no gloss
+  - evidence: Construct a food chain correctly using producer, consumer, predator, and prey in the right positions
+- Food Chains & Energy Transfer — ✗ no gloss
+  - evidence: Construct a food chain with at least four organisms, labelling producer, primary consumer, predator
+- Grouping Living Things — ✗ no gloss
+  - evidence: Group a set of organisms using at least two different criteria (e.g. by habitat, by body covering, by diet)
+- Human impact on environments — ✗ no gloss
+  - evidence: Distinguish between renewable and non-renewable energy sources using the correct terms and give examples of each
+- Reading Food Web Diagrams — ✗ no gloss
+  - evidence: Identify the producer, herbivore, and carnivore in a food web from a diagram
+### upper (6 topics)
+- Animal Life Cycles — ✗ no gloss
+  - evidence: Describe the life cycle of a mammal, amphibian, insect, and bird with key stages for each
+- Communities Protecting Resources — ✓ gloss: “Towns protect nature”
+  - evidence: Describe at least three real-world examples of communities protecting resources or the environment
+- Plant & Animal Reproduction — ✗ no gloss
+  - evidence: Describe sexual reproduction in plants: pollination, fertilisation, seed production
+- Classifying Organisms — ✗ no gloss
+  - evidence: Name the broad classification groups: micro-organisms, plants, animals (and fungi if known)
+- Evidence-Based Classification — ✗ no gloss
+  - evidence: Classify an unfamiliar organism using specific observable characteristics with reasoning
+- Matter Cycling in Ecosystems — ✓ gloss: “Nature recycles everything”
+  - evidence: Describe the role of decomposers (fungi, bacteria, worms) in breaking down dead matter
+
+## Science|Energy
+### early (2 topics)
+- Building shade from the sun — ✗ no gloss
+  - evidence: Design a structure intended to reduce the warming effect of sunlight on an area
+- Sunlight warms things up — ✗ no gloss
+  - evidence: Observe that surfaces in sunlight feel warmer than those in shade
+### mid (9 topics)
+- Naming types of energy — ✗ no gloss
+  - evidence: Name the type of energy stored in a battery, a stretched spring, and a moving ball
+- Building a simple circuit — ✗ no gloss
+  - evidence: Build a complete series circuit that lights a bulb or sounds a buzzer
+- Conductors and insulators — ✗ no gloss
+  - evidence: Define conductors (allow electricity to flow through) and insulators (block electricity)
+- Heat sources and temperature change — ✗ no gloss
+  - evidence: List heat sources around school and home, including rubbing hands together (friction) and body heat
+- How energy travels around — ✗ no gloss
+  - evidence: Give at least one example of energy transfer by each: sound, light, heat, electric current
+- How switches work — ✗ no gloss
+  - evidence: Explain that a closed switch completes the circuit (current flows) and an open switch breaks it (current stops)
+- Reading and drawing circuit diagrams — ✓ gloss: “Circuit drawings”
+  - evidence: Draw a circuit diagram for a cell, switch, and bulb using standard symbols
+- What uses electricity at home — ✗ no gloss
+  - evidence: Name at least ten common appliances that run on electricity
+- Will the bulb light up? — ✗ no gloss
+  - evidence: Predict whether a lamp will light by tracing the circuit for a complete loop
+### upper (7 topics)
+- Building an energy-converting device — ✓ gloss: “Build an energy machine”
+  - evidence: Design a device that converts one form of energy to another (e.g. electrical to light, kinetic to sound)
+- Circuit vocabulary — ✗ no gloss
+  - evidence: Use 'series' and 'parallel' correctly to describe two different circuit configurations and explain the key difference
+- Speed and energy — ✗ no gloss
+  - evidence: Explain that a moving object has energy, and the faster it moves the more energy it has
+- What happens when things collide — ✗ no gloss
+  - evidence: Predict the outcome of a collision based on the speeds and sizes of the objects
+- Drawing circuits with proper symbols — ✓ gloss: “Circuit symbols”
+  - evidence: Draw a circuit diagram using standard symbols for at least five components
+- More batteries, brighter bulb — ✗ no gloss
+  - evidence: Describe the pattern: more cells (or higher voltage) = brighter bulb / louder buzzer
+- Why circuit components behave differently — ✓ gloss: “Why parts act differently”
+  - evidence: Explain why adding more components in series reduces brightness/loudness (energy shared)
+
+## Science|Forces & Motion
+### early (5 topics)
+- Forces Vocabulary — ✗ no gloss
+  - evidence: Correctly name the force acting in at least five given scenarios (e.g. 'friction slows the sledge', 'gravity pulls the apple')
+- Pushes & Pulls — ✗ no gloss
+  - evidence: Describe a push and a pull as types of force that make objects move, speed up, slow down, or change direction
+- Shape and material change movement — ✓ gloss: “How shape changes motion”
+  - evidence: Roll a ball and a block down the same ramp and explain that the round shape rolls while the flat-sided block slides or stops
+- Testing Push & Pull Designs — ✗ no gloss
+  - evidence: Test a simple design (e.g. ramp, launcher) and collect data on whether it meets the goal
+- Friction & Surfaces — ✗ no gloss
+  - evidence: Observe and compare how the same object moves on at least three different surfaces
+### mid (8 topics)
+- Contact & Non-Contact Forces — ✗ no gloss
+  - evidence: Define contact forces as those needing objects to touch (e.g. push, pull, friction)
+- Magnetic Materials — ✗ no gloss
+  - evidence: Demonstrate that magnets attract some materials (iron, steel, nickel) but not others (wood, plastic, copper)
+- Magnetic Poles — ✗ no gloss
+  - evidence: Identify and label the north and south poles of a magnet
+- Air Resistance & Friction — ✗ no gloss
+  - evidence: Define air resistance, water resistance, and friction as forces that oppose motion
+- Balanced & Unbalanced Forces — ✗ no gloss
+  - evidence: Define balanced forces (equal in size, opposite in direction — no change in motion) and unbalanced forces (cause motion to change)
+- Drawing Force Diagrams — ✗ no gloss
+  - evidence: Draw a force diagram with labelled arrows showing direction and relative size for at least two forces acting on an object
+- Levers, Pulleys & Gears — ✗ no gloss
+  - evidence: Describe how a lever works: effort at one end moves a load at the other, with a pivot in between
+- Predicting Motion Patterns — ✗ no gloss
+  - evidence: Measure an object's motion (distance, speed, direction) under different conditions
+### upper (3 topics)
+- Force & Motion Vocabulary — ✗ no gloss
+  - evidence: Distinguish between balanced and unbalanced forces and describe the effect of each on an object's motion
+- Gravity & Falling Objects — ✗ no gloss
+  - evidence: Define gravity as a force of attraction between the Earth and objects
+- Reading Distance-Time Graphs — ✗ no gloss
+  - evidence: Read a distance-time graph and describe what is happening at each stage — moving, stopped, returning
+
+## Science|Insects & Minibeasts
+### early (7 topics)
+- Caring for minibeasts — ✗ no gloss
+  - evidence: Demonstrate careful handling of a minibeast such as letting a woodlouse walk onto a hand rather than grabbing it
+- Caterpillar to butterfly — ✗ no gloss
+  - evidence: Describe the four stages of a butterfly's life in order: egg, caterpillar, chrysalis, butterfly
+- Common minibeasts: naming and recognising — ✗ no gloss
+  - evidence: Name and identify at least six common minibeasts from pictures or real encounters
+- How minibeasts move — ✗ no gloss
+  - evidence: Describe at least three different ways minibeasts move such as crawling, flying, and slithering
+- Minibeast Habitats — ✗ no gloss
+  - evidence: Name at least two micro-habitats where minibeasts live such as under logs, in soil, or on leaves
+- Minibeasts in the food chain — ✗ no gloss
+  - evidence: Describe a simple food chain such as leaf → caterpillar → bird
+- What is a minibeast? — ✗ no gloss
+  - evidence: Explain that minibeasts are small animals without a backbone found in gardens and parks
+### mid (8 topics)
+- Bees and pollination — ✗ no gloss
+  - evidence: Describe how pollen moves from one flower to another when a bee visits to collect nectar
+- Camouflage, warning colours, and mimicry — ✓ gloss: “Animal tricks: hide & warn”
+  - evidence: Give at least two examples of insect camouflage such as stick insects resembling twigs or leaf insects resembling leaves
+- Incredible insects: record-breakers — ✗ no gloss
+  - evidence: Name at least three insect record-breakers and their extreme abilities such as dung beetle strength or flea jumping
+- Insect life cycles: complete metamorphosis — ✓ gloss: “The big butterfly change”
+  - evidence: Name the four stages of complete metamorphosis using the correct terms: egg, larva, pupa, adult
+- Not all minibeasts are insects — ✗ no gloss
+  - evidence: Sort a set of minibeasts into 'insect' and 'not insect' groups using the six-legs rule
+- Social insects: ants and bees — ✗ no gloss
+  - evidence: Describe at least two different roles within an ant colony or bee hive such as queen, worker, or guard
+- Sorting and Identifying Minibeasts — ✗ no gloss
+  - evidence: Follow a simple branching key to correctly identify at least four different minibeasts
+- The insect body plan — ✗ no gloss
+  - evidence: Label the three body parts of an insect — head, thorax, and abdomen — on a diagram or real specimen
+### upper (7 topics)
+- Insect Adaptations — ✗ no gloss
+  - evidence: Retell the peppered moth story and explain how the environment changed which colour moth survived best
+- Insect anatomy in depth — ✗ no gloss
+  - evidence: Describe at least two specialised insect structures such as compound eyes or spiracles and explain their function
+- Insect communication and behaviour — ✓ gloss: “How insects talk”
+  - evidence: Describe at least three ways insects communicate such as the bee waggle dance, ant pheromone trails, and firefly light signals
+- Insects in ecosystems — ✓ gloss: “Insects’ big jobs”
+  - evidence: Name at least three different ecological roles that insects play such as pollinator, decomposer, and food source
+- The most successful animals on Earth — ✗ no gloss
+  - evidence: State that insects are the most species-rich group of animals with about one million known species
+- Threats to insects and conservation — ✓ gloss: “Helping insects survive”
+  - evidence: Name at least three threats to insect populations such as habitat loss, pesticides, and light pollution
+- Types of Metamorphosis — ✗ no gloss
+  - evidence: Compare complete and incomplete metamorphosis by describing the stages of each on a diagram
+
+## Science|Matter & Materials
+### early (7 topics)
+- Choosing the Right Material — ✗ no gloss
+  - evidence: Explain why a specific material is chosen for a purpose based on its properties (e.g. glass for windows because it's transparent)
+- Describing Material Properties — ✗ no gloss
+  - evidence: Use at least five property words correctly: hard, soft, stretchy, shiny, rough, smooth, transparent, waterproof
+- Grouping Materials — ✗ no gloss
+  - evidence: Sort a set of materials into groups based on a chosen property (e.g. transparent vs opaque)
+- Naming Everyday Materials — ✗ no gloss
+  - evidence: Name at least six everyday materials: wood, plastic, glass, metal, water, rock
+- Objects vs Materials — ✗ no gloss
+  - evidence: Explain the difference between an object (e.g. a chair) and the material it is made from (e.g. wood)
+- States of Matter Vocabulary — ✗ no gloss
+  - evidence: Correctly sort a set of everyday materials as solid, liquid, or gas and give a reason for each
+- Changing Shapes of Solids — ✗ no gloss
+  - evidence: Demonstrate four ways to change the shape of a solid: squashing, bending, twisting, stretching
+### mid (8 topics)
+- Changes & Separation Vocabulary — ✓ gloss: “Words for mixing & changing”
+  - evidence: Distinguish 'dissolve' from 'melt' correctly in context and explain the difference
+- Classifying Materials — ✗ no gloss
+  - evidence: Design a simple test to compare one property across several materials
+- Drawing Particle Diagrams — ✗ no gloss
+  - evidence: Draw labelled particle diagrams for solids, liquids, and gases showing the correct arrangement and spacing of particles
+- Heating & Cooling Changes — ✗ no gloss
+  - evidence: Describe melting (solid to liquid) and freezing (liquid to solid) with everyday examples
+- Taking Apart & Rebuilding — ✗ no gloss
+  - evidence: Explain that taking apart an object and rebuilding it uses the same pieces in a new arrangement
+- Testing Materials for Uses — ✗ no gloss
+  - evidence: Design a fair test to compare a specific property of two or more materials
+- Evaporation & the Water Cycle — ✗ no gloss
+  - evidence: Describe evaporation as liquid turning to gas and condensation as gas turning to liquid
+- Solids, Liquids & Gases — ✗ no gloss
+  - evidence: Define solids (fixed shape, hard to compress), liquids (flow, take shape of container), gases (spread out, fill space)
+### upper (9 topics)
+- Advanced Material Properties — ✗ no gloss
+  - evidence: Define and test for at least four properties: hardness, solubility, conductivity, magnetism
+- Dissolving & Solutions — ✗ no gloss
+  - evidence: Explain that dissolving means a solid mixes completely into a liquid to form a solution
+- Irreversible Changes — ✗ no gloss
+  - evidence: Define an irreversible change as one that creates new materials that cannot be changed back
+- Material Properties Vocabulary — ✗ no gloss
+  - evidence: Classify a set of materials as electrical conductors or insulators and explain why using the correct terms
+- Natural and made materials — ✗ no gloss
+  - evidence: Sort materials and fibres into natural (wool, cotton, silk, wood) and made (nylon, polyester, plastic, glass) and explain the diff
+- Reversible Changes — ✗ no gloss
+  - evidence: Define a reversible change as one where the original materials can be recovered
+- Separating Mixtures — ✗ no gloss
+  - evidence: Choose the correct separation method for a given mixture (sieving for large particles, filtering for small, evaporating for dissol
+- Conservation of Mass — ✗ no gloss
+  - evidence: State the principle that matter is neither created nor destroyed during physical or chemical changes
+- Matter Is Made of Particles — ✗ no gloss
+  - evidence: Describe matter as made of particles too small to see with the naked eye
+
+## Science|Ocean Life
+### early (7 topics)
+- Coasts & Beaches — ✗ no gloss
+  - evidence: Define a coast as where land meets the ocean
+- Ocean Animal Variety — ✗ no gloss
+  - evidence: Name at least five different ocean animals
+- Ocean Food Chains — ✗ no gloss
+  - evidence: Describe a food chain with at least three levels
+- Rock Pool Habitats — ✗ no gloss
+  - evidence: Name at least three creatures found in rock pools
+- Whales & Dolphins Are Mammals — ✗ no gloss
+  - evidence: State that whales and dolphins are mammals, not fish
+- What Is the Ocean? — ✗ no gloss
+  - evidence: State that oceans cover more of Earth than land does
+- What Ocean Animals Need — ✗ no gloss
+  - evidence: List basic needs of ocean animals: food, shelter, suitable water conditions
+### mid (8 topics)
+- Classifying Ocean Animals — ✗ no gloss
+  - evidence: Sort ocean animals into fish, marine mammals, and invertebrates
+- Coral Reefs — ✗ no gloss
+  - evidence: State that coral is built by tiny living animals called polyps, not made of rock
+- Ocean Animal Adaptations — ✗ no gloss
+  - evidence: Name at least three different ocean animal adaptations
+- Ocean Depth Zones — ✗ no gloss
+  - evidence: Name the three main ocean zones: sunlight, twilight, and midnight
+- Ocean Food Webs — ✗ no gloss
+  - evidence: Distinguish a food web from a simple food chain
+- The Five Oceans — ✗ no gloss
+  - evidence: Name all five oceans: Pacific, Atlantic, Indian, Southern, Arctic
+- The Ocean Floor — ✗ no gloss
+  - evidence: State that the ocean floor has varied terrain including mountains, ridges, and trenches
+- Tides, Waves & Currents — ✗ no gloss
+  - evidence: Describe tides as the regular rise and fall of water level, caused by the Moon's gravity
+### upper (7 topics)
+- Deep-Sea Creatures — ✗ no gloss
+  - evidence: Define bioluminescence as the ability of some deep-sea creatures to produce their own light
+- Exploring the Ocean — ✗ no gloss
+  - evidence: Name at least two tools scientists use to explore the ocean: submarines, ROVs, satellites
+- Ocean Animal Migrations — ✗ no gloss
+  - evidence: Describe at least one example of marine animal migration in detail
+- Ocean Ecosystems — ✗ no gloss
+  - evidence: Describe an ocean ecosystem as a system of living and non-living parts that interact
+- Ocean Pollution & Harm — ✗ no gloss
+  - evidence: Name at least three ways humans harm the ocean
+- Oceans & Climate — ✗ no gloss
+  - evidence: Explain that the ocean absorbs a large amount of the Sun's heat and atmospheric carbon dioxide
+- Protecting the Ocean — ✗ no gloss
+  - evidence: Explain what a marine protected area is and why it helps
+
+## Science|Organisms & Life Processes
+### early (12 topics)
+- Animal Body Groups — ✗ no gloss
+  - evidence: Describe key structural features of at least three animal groups (e.g. scales, feathers, fur)
+- Body Parts & Senses — ✗ no gloss
+  - evidence: Label eyes, ears, nose, mouth, and skin on a body outline
+- Common Plants & Trees — ✗ no gloss
+  - evidence: Name at least five common wild or garden plants from direct observation
+- Herbivores, Carnivores & Omnivores — ✗ no gloss
+  - evidence: Define carnivore, herbivore, and omnivore in own words
+- Living Things Vocabulary — ✗ no gloss
+  - evidence: Correctly classify objects as living, dead, or never been alive and give a reason using one of the life process terms
+- Naming Common Animals — ✗ no gloss
+  - evidence: Name at least two animals from each group: fish, amphibians, reptiles, birds, mammals
+- Parts of a Plant — ✗ no gloss
+  - evidence: Label roots, stem, leaves, and flowers on a diagram of a flowering plant
+- What Living Things Need — ✗ no gloss
+  - evidence: List the basic needs of animals: water, food, air, shelter
+- Animal Life Stages — ✗ no gloss
+  - evidence: Describe the basic life stages of a human: baby, child, teenager, adult
+- Offspring resemble parents — ✗ no gloss
+  - evidence: Describe at least three features that offspring inherit from parents (e.g. eye colour, petal colour, fur type)
+- Seeds & Plant Growth — ✗ no gloss
+  - evidence: Describe the stages: seed absorbs water → root appears → shoot pushes up → leaves open
+- What Plants Need to Grow — ✗ no gloss
+  - evidence: Name three things plants need to grow: water, light, suitable temperature
+### mid (16 topics)
+- Animal Classification Vocabulary — ✓ gloss: “Animal group words”
+  - evidence: Correctly classify a set of animals as vertebrates or invertebrates, then into more specific groups
+- Animal Nutrition — ✗ no gloss
+  - evidence: Name the main nutrients in food (carbohydrates, proteins, fats, vitamins, minerals, fibre) plus water, and explain that these are 
+- Drawing Life Cycle Diagrams — ✗ no gloss
+  - evidence: Draw a labelled life cycle diagram for a flowering plant including seed, seedling, mature plant, and flower/fruit
+- How Plant Parts Work — ✗ no gloss
+  - evidence: Describe the function of roots (absorb water and minerals from soil)
+- Life Cycles of Organisms — ✗ no gloss
+  - evidence: Describe the life cycle of at least two different organisms (e.g. butterfly, frog, plant)
+- Pollination & Seed Dispersal — ✗ no gloss
+  - evidence: Describe the stages: pollination → fertilisation → seed formation → seed dispersal
+- Skeletons & Muscles — ✗ no gloss
+  - evidence: Name the three functions of the skeleton: support, protection, movement
+- Water Transport in Plants — ✗ no gloss
+  - evidence: Describe an investigation using coloured water to track water movement in a plant
+- What Plants Need to Thrive — ✗ no gloss
+  - evidence: List five requirements for plant growth: air, light, water, nutrients, space
+- How animals adapt to environments — ✗ no gloss
+  - evidence: Define adaptation as a feature that helps an organism survive in its environment
+- Inheritance Vocabulary — ✓ gloss: “Passed down or picked up?”
+  - evidence: Distinguish between inherited and acquired characteristics with a correct example of each
+- Inherited characteristics — ✗ no gloss
+  - evidence: Define inherited traits as characteristics passed from parents to offspring
+- The Digestive System — ✗ no gloss
+  - evidence: Name the main organs in order: mouth, oesophagus, stomach, small intestine, large intestine
+- Traits: inherited and environmental — ✓ gloss: “Born with it or learned?”
+  - evidence: Explain that traits result from both inheritance and environmental factors
+- Types of Teeth — ✗ no gloss
+  - evidence: Name three types of teeth: incisors, canines, molars
+- Variation & Survival Advantage — ✗ no gloss
+  - evidence: Explain that variation within a species means some individuals have traits better suited to their environment
+### upper (10 topics)
+- Human Life Stages — ✗ no gloss
+  - evidence: Name the main stages of human development: baby, toddler, child, teenager, adult, elderly
+- Organ Systems Vocabulary — ✓ gloss: “Body team words”
+  - evidence: Name the main organs in at least two body systems and state their functions using the correct vocabulary
+- Senses, Brain & Responses — ✗ no gloss
+  - evidence: Describe the pathway: sense organ detects stimulus → brain processes information → body responds
+- Structures for Survival — ✗ no gloss
+  - evidence: Give examples of external structures and their survival functions (e.g. thorns for protection, claws for catching prey)
+- Diet, Exercise & Lifestyle — ✗ no gloss
+  - evidence: Describe how a balanced diet provides energy and nutrients the body needs
+- Energy from Food & the Sun — ✗ no gloss
+  - evidence: Explain that plants capture energy from sunlight to make food (photosynthesis)
+- Evolution vocabulary — ✗ no gloss
+  - evidence: Use 'adaptation' correctly to describe a feature that helps an organism survive in its environment
+- Nutrient Transport in Animals — ✗ no gloss
+  - evidence: Describe how nutrients from digested food pass through the wall of the small intestine into the blood
+- Plants Grow from Air & Water — ✗ no gloss
+  - evidence: Explain that plants take in carbon dioxide from air and water from soil to make food (photosynthesis)
+- The Circulatory System — ✗ no gloss
+  - evidence: Name the main components: heart, arteries, veins, capillaries, blood
+
+## Science|Polar Regions
+### early (8 topics)
+- Arctic vs Antarctic — ✗ no gloss
+  - evidence: State that the Arctic is a frozen ocean surrounded by land, while the Antarctic is a continent covered in ice surrounded by ocean
+- Brave Polar Explorers — ✗ no gloss
+  - evidence: Name at least two polar explorers: Scott, Amundsen, or Shackleton
+- Ice & Snow — ✗ no gloss
+  - evidence: Explain that ice and snow are frozen water (solid) and that water can change between solid and liquid
+- Midnight Sun & Polar Night — ✗ no gloss
+  - evidence: Describe midnight sun: in polar summer, the Sun stays above the horizon all day and night
+- Penguins — ✗ no gloss
+  - evidence: State at least three facts about penguins: they can't fly, they're excellent swimmers, and Emperor penguins are the biggest
+- Polar Animals — ✗ no gloss
+  - evidence: Name at least four polar animals beyond penguins and polar bears, such as seals, walruses, Arctic foxes, snowy owls, or narwhals
+- Polar Bears — ✗ no gloss
+  - evidence: State that polar bears live in the Arctic, not the Antarctic
+- Where Are the Poles? — ✗ no gloss
+  - evidence: Point to the North Pole and South Pole on a globe or world map
+### mid (8 topics)
+- Cold-Weather Adaptations — ✗ no gloss
+  - evidence: Describe at least three cold-weather adaptations: blubber, hollow fur, counter-current heat exchange, white winter coats, or migra
+- Comparing Arctic & Antarctic — ✗ no gloss
+  - evidence: State that the Arctic is a frozen ocean surrounded by land (name at least two bordering countries), while Antarctica is a continen
+- Ice & States of Matter — ✗ no gloss
+  - evidence: Distinguish between sea ice (frozen ocean, salty, thin) and glacial ice (compacted snow, fresh water, thick)
+- Inuit & Sami Peoples — ✗ no gloss
+  - evidence: Name the Inuit (Canada, Alaska, Greenland) and Sami (northern Scandinavia) as Arctic indigenous peoples
+- Polar Food Chains — ✗ no gloss
+  - evidence: Construct an Antarctic food chain: phytoplankton → krill → penguin → leopard seal or orca
+- The Arctic Tundra — ✗ no gloss
+  - evidence: Describe the tundra as a treeless landscape with permafrost (permanently frozen ground) beneath the surface
+- The Race to the South Pole — ✗ no gloss
+  - evidence: Describe the Scott vs Amundsen race: Amundsen arrived 14 December 1911 using dog sleds; Scott arrived 34 days later and died on th
+- Why Polar Seasons Are Extreme — ✗ no gloss
+  - evidence: Explain that Earth's axis is tilted at about 23.5° and this tilt causes the extreme polar seasons
+### upper (9 topics)
+- Antarctic Treaty & Research — ✗ no gloss
+  - evidence: State that the Antarctic Treaty (1959) sets Antarctica aside for peace and science, banning military activity and mining
+- Climate Change at the Poles — ✗ no gloss
+  - evidence: State that Arctic sea ice has been declining at roughly 13% per decade since 1979
+- Earth's Frozen Water — ✗ no gloss
+  - evidence: Define the cryosphere as all frozen water on Earth and name its components: ice sheets, glaciers, sea ice, permafrost, snow
+- Glaciers & Ice Sheets — ✗ no gloss
+  - evidence: Describe how glaciers form: snow accumulates, compresses, and becomes dense ice that flows slowly under its own weight
+- Polar Climate Zone — ✗ no gloss
+  - evidence: Name the five main climate zones and place polar regions correctly within them
+- Polar Conservation & Future — ✗ no gloss
+  - evidence: Describe at least two conservation measures: marine protected areas in the Southern Ocean and the Antarctic Treaty
+- Polar Ecosystems Compared — ✗ no gloss
+  - evidence: Compare Arctic (terrestrial + marine, land mammals, human communities) with Antarctic (almost entirely marine, no land mammals)
+- Polar Exploration Then & Now — ✗ no gloss
+  - evidence: Compare Heroic Age exploration (dog sleds, man-hauling, many deaths) with modern science (GPS, satellites, icebreakers, heated sta
+- Polar Oceans and World Climate — ✗ no gloss
+  - evidence: Explain that cold, dense polar water sinks and drives global ocean circulation (thermohaline circulation)
+
+## Science|Rainforests
+### early (9 topics)
+- Everyday Foods from Rainforests — ✗ no gloss
+  - evidence: Name at least three foods that come from rainforests, such as chocolate (cacao), bananas, and Brazil nuts
+- Indigenous Rainforest Peoples — ✗ no gloss
+  - evidence: Explain that indigenous peoples like the Yanomami have lived in rainforests for thousands of years
+- Inside a Rainforest — ✗ no gloss
+  - evidence: Describe the air inside a rainforest as hot and sticky (humid)
+- Rainforest Animals — ✗ no gloss
+  - evidence: Name at least five iconic rainforest animals such as jaguars, toucans, sloths, poison dart frogs, and howler monkeys
+- Rainforest Insects — ✗ no gloss
+  - evidence: Name at least three types of insect or minibeast found in the rainforest, such as leaf-cutter ants, morpho butterflies, and giant 
+- Rainforest Layers — ✗ no gloss
+  - evidence: Name the four rainforest layers in order from ground to sky: forest floor, understory, canopy, emergent
+- Rainforest Plants — ✗ no gloss
+  - evidence: Name at least three types of rainforest plant, such as kapok trees, lianas (climbing vines), and orchids
+- What Is a Rainforest? — ✗ no gloss
+  - evidence: Describe a rainforest as a forest that is hot and wet, located near the Equator
+- Where Rainforests Are — ✗ no gloss
+  - evidence: Point to the Amazon, Congo, and Southeast Asian rainforest regions on a world map
+### mid (8 topics)
+- Classifying Rainforest Organisms — ✓ gloss: “Sort rainforest life”
+  - evidence: Sort at least eight rainforest organisms into correct groups: mammals, birds, reptiles, amphibians, insects, or plants
+- Indigenous Ecological Knowledge — ✓ gloss: “First Nations plant & animal wisdom”
+  - evidence: Give at least two examples of indigenous knowledge, such as using specific plants as medicine or practising sustainable farming
+- Rainforest Animal Survival Tricks — ✗ no gloss
+  - evidence: Describe at least three animal adaptations such as camouflage, warning colours, and prehensile tails
+- Rainforest Food Webs — ✗ no gloss
+  - evidence: Construct a simple rainforest food chain with at least three levels: producer → herbivore → predator
+- Rainforest Plant Adaptations — ✗ no gloss
+  - evidence: Describe at least three plant adaptations: drip-tip leaves, buttress roots, and epiphytes
+- Rainforest Water Cycle — ✗ no gloss
+  - evidence: Describe the sequence: trees absorb water → release it through leaves (transpiration) → moisture rises → clouds form → rain falls
+- The Amazon Rainforest — ✗ no gloss
+  - evidence: Locate the Amazon rainforest on a map of South America and name at least two countries it spans
+- Tropical Rainforest Climate — ✗ no gloss
+  - evidence: State that tropical rainforests are hot (25–30°C) and wet (over 2000 mm rain per year) all year round
+### upper (8 topics)
+- Deforestation Causes & Scale — ✗ no gloss
+  - evidence: Name at least three major causes of deforestation: cattle ranching, palm oil, soy, logging, and mining
+- Nutrient Cycling in Thin Soil — ✗ no gloss
+  - evidence: Explain that rainforest soil is thin and nutrient-poor despite the lush growth above
+- Rainforest Biodiversity — ✗ no gloss
+  - evidence: State that rainforests cover about 6% of Earth's land but hold over 50% of all species
+- Rainforest Conservation — ✗ no gloss
+  - evidence: Name at least three conservation approaches: protected areas, reforestation, sustainable certification, and indigenous land rights
+- Rainforest Futures & Trade-Offs — ✓ gloss: “Rainforest: use or save?”
+  - evidence: Name at least three competing interests: economic development, indigenous rights, biodiversity, and climate stability
+- Rainforest Products in Daily Life — ✗ no gloss
+  - evidence: Name at least four products linked to rainforests: palm oil, soy, cocoa, rubber, timber, and medicines
+- Rainforests & Global Climate — ✗ no gloss
+  - evidence: Explain that rainforests absorb CO₂ and store carbon in their trees, acting as a carbon sink
+- Temperate Rainforests — ✗ no gloss
+  - evidence: Name at least two locations of temperate rainforests, such as the Pacific Northwest, western Scotland, or southern Chile
+
+## Science|Scientific Inquiry
+### early (13 topics)
+- Asking scientific questions — ✗ no gloss
+  - evidence: Ask at least three 'how' or 'why' questions about the natural world
+- Did it happen as predicted? — ✗ no gloss
+  - evidence: Predict whether each of five objects will float or sink, test them in a tub of water, and tick or cross each prediction on a provi
+- Observing with simple equipment — ✓ gloss: “Look with tools”
+  - evidence: Use a hand lens or other simple equipment to make detailed observations
+- Simple tests and experiments — ✗ no gloss
+  - evidence: Carry out a simple test with one thing changing at a time
+- Comparing Design Solutions — ✗ no gloss
+  - evidence: Test two designs that address the same problem and collect data on their performance
+- Modelling with Sketches — ✗ no gloss
+  - evidence: Create a sketch, drawing, or physical model of a design solution
+- Recording Data — ✗ no gloss
+  - evidence: Record observations and measurements in a simple table or tally chart
+- Safe steps in science tests — ✗ no gloss
+  - evidence: Follow science safety rules when exploring a collection: never taste, smell only when the adult says it is safe, tell an adult abo
+- Changing Your Mind with Evidence — ✗ no gloss
+  - evidence: belief revision in children research (PMC 2020)
+- Comparing findings with other groups — ✓ gloss: “Compare with other teams”
+  - evidence: Put each group's results for the same test into a class table and say which results agree and which do not
+- Drawing conclusions from evidence — ✓ gloss: “What does the evidence say?”
+  - evidence: Write or present a clear report of findings from an investigation
+- Gathering, recording, classifying and presenting data — ✓ gloss: “Collect & show what you found”
+  - evidence: Organise data into a clear table with appropriate headings
+- Observation vs Interpretation — ✗ no gloss
+  - evidence: observation vs interpretation in primary science
+### mid (11 topics)
+- Could there be another explanation? — ✗ no gloss
+  - evidence: prompts to consider alternative possible worlds research (6-7 year olds)
+- Fair testing — ✗ no gloss
+  - evidence: Explain what makes a test 'fair' (only one variable changes, everything else stays the same)
+- Judging designs against criteria — ✓ gloss: “Test designs fairly”
+  - evidence: Judge their own finished design by saying what they like about it, whether it works for its purpose and whether it used materials 
+- Measuring accurately — ✗ no gloss
+  - evidence: Use at least three types of measuring equipment correctly (ruler, thermometer, measuring jug, scales)
+- Simple Design Problems — ✗ no gloss
+  - evidence: Define a design problem by describing the need or want it addresses (e.g. one identified by asking intended users)
+- Using evidence to answer questions — ✗ no gloss
+  - evidence: Identify at least one pattern (similarity, difference, or trend) in a set of scientific data
+- Annotated design drawings — ✗ no gloss
+  - evidence: Produce an annotated design drawing showing materials, measurements and how parts join, using technical terms (e.g. axle, hinge, p
+- Comparing Possible Solutions — ✗ no gloss
+  - evidence: Generate at least three possible solutions to a defined design problem
+- Correlation vs Causation — ✗ no gloss
+  - evidence: developmental changes in children's recognition of evidence relevance to causal explanations
+- Fair testing (age 8+) — ✗ no gloss
+  - evidence: Plan a fair test of a prototype with clearly identified variables to control
+- How data builds explanations — ✗ no gloss
+  - evidence: Explain that a citizen-science count showing fewer frogs in a creek shows that numbers changed but not why, and suggest other data
+### upper (12 topics)
+- Accurate Measurement — ✗ no gloss
+  - evidence: Use scientific equipment (scales, thermometers, measuring cylinders, stopwatches) with increasing precision
+- Controlling variables — ✗ no gloss
+  - evidence: Independently plan an investigation identifying the independent, dependent, and controlled variables
+- Drawing conclusions from evidence (age 9+) — ✓ gloss: “What does the evidence say?”
+  - evidence: Present findings clearly in written and oral form with appropriate scientific vocabulary
+- Evidence Supporting Ideas — ✗ no gloss
+  - evidence: Distinguish between a claim and the evidence supporting it
+- Fair testing (age 9+) — ✗ no gloss
+  - evidence: Use results from an investigation to make a specific, testable prediction
+- Recording data and results — ✗ no gloss
+  - evidence: Choose and create an appropriate graph type for the data (bar chart, line graph, scatter graph)
+- Science Can Be Revised — ✗ no gloss
+  - evidence: Give an example of a scientific idea that changed when new evidence was found — e.g. people once thought the Sun orbited the Earth
+- Negotiating design criteria — ✗ no gloss
+  - evidence: Negotiate a set of design criteria with a group or client, including at least one sustainability criterion, reaching agreement whe
+- Permission to investigate on Country — ✓ gloss: “Ask before studying Country”
+  - evidence: With the teacher, find out whose Country the school or field-trip site is on and which local organisation (e.g. a Land Council or 
+- Risks and safety plans — ✗ no gloss
+  - evidence: Complete a simple risk table for an investigation (hazard, what could happen, how to reduce it), e.g. heating water or using a ket
+- Science as teamwork — ✗ no gloss
+  - evidence: Describe an Australian scientific advance that came from teamwork (e.g. the CSIRO team behind fast Wi-Fi, or Barry Marshall and Ro
+- Technical design drawings — ✗ no gloss
+  - evidence: Produce front, side and top views of a design, labelled with technical terms and measurements
+
+## Science|Space Exploration
+### early (5 topics)
+- Moon Phases — ✗ no gloss
+  - evidence: Describe that the Moon appears to change shape over about a month
+- Our Solar System — ✗ no gloss
+  - evidence: State that Earth is a planet and there are other planets too
+- Spotting Constellations — ✗ no gloss
+  - evidence: Identify or draw the Big Dipper (the Plough) as a pattern of seven stars
+- Sun, Moon & Stars — ✗ no gloss
+  - evidence: Name the Sun, Moon, and stars as objects in the sky
+- What Astronauts Do — ✗ no gloss
+  - evidence: Define an astronaut as a person who travels to space
+### mid (8 topics)
+- Asteroids, Comets & Dwarf Planets — ✗ no gloss
+  - evidence: Describe asteroids as rocky bodies mostly found in the belt between Mars and Jupiter
+- Earth's Spin & Orbit — ✗ no gloss
+  - evidence: Demonstrate with a globe or ball that Earth's rotation causes day on the Sun-facing side and night on the opposite side
+- How Telescopes Work — ✗ no gloss
+  - evidence: Explain that a telescope magnifies distant objects so we can see them in more detail
+- Planet Features — ✗ no gloss
+  - evidence: State one distinctive feature for at least six of the eight planets
+- Space Robots & Rovers — ✗ no gloss
+  - evidence: Name at least one Mars rover (Curiosity or Perseverance) and state it drives on Mars's surface
+- The Eight Planets — ✗ no gloss
+  - evidence: List all eight planets in order from the Sun
+- The Moon's Orbit — ✗ no gloss
+  - evidence: State that the Moon orbits Earth roughly once every 28-30 days
+- The Sun is a star — ✗ no gloss
+  - evidence: State that the Sun is a star, not a unique type of object
+### upper (8 topics)
+- Changing Ideas About Space — ✗ no gloss
+  - evidence: Describe the geocentric model (Earth at the centre) and name Ptolemy as its main proponent
+- Gravity Pulls Things Down — ✗ no gloss
+  - evidence: Define gravity as a pulling force that attracts objects towards the centre of the Earth
+- Life Cycle of Stars — ✗ no gloss
+  - evidence: Describe that stars form from clouds of gas and dust called nebulae
+- Scale of the Solar System — ✗ no gloss
+  - evidence: Explain that if the Sun were the size of a beach ball, Earth would be a pea about 26 metres away
+- Seasonal Constellations — ✗ no gloss
+  - evidence: Name at least three constellations (e.g. Orion, Ursa Major/Big Dipper, Leo, Cassiopeia)
+- Space Exploration Milestones — ✗ no gloss
+  - evidence: Name Sputnik as the first satellite (1957) and Yuri Gagarin as the first person in space (1961)
+- The Vast Scale of Space — ✗ no gloss
+  - evidence: State that the Milky Way is our galaxy and it contains billions of stars
+- Why the Sun Looks Brightest — ✗ no gloss
+  - evidence: State that the Sun is a medium-sized star that appears brightest because it is the closest star to Earth
+
+## Science|Space Systems & Earth's History
+### early (3 topics)
+- Naming the Planets — ✗ no gloss
+  - evidence: Name the eight planets in order from the Sun without prompting
+- Why seasons change — ✗ no gloss
+  - evidence: Describe the pattern: more daylight hours in summer, fewer in winter
+- Sun, Moon, and stars — ✗ no gloss
+  - evidence: Describe the daily pattern of sunrise and sunset
+### mid (3 topics)
+- Planets moving among stars — ✗ no gloss
+  - evidence: Check a sky chart or astronomy app with an adult to find when Venus or another bright planet is visible, then locate it in the sky
+- Rapid earth changes — ✗ no gloss
+  - evidence: Give at least two examples of rapid Earth events (earthquake, volcanic eruption, landslide, flood)
+- Earth & Space Vocabulary — ✗ no gloss
+  - evidence: Use 'rotation' and 'revolution' correctly to describe Earth's two distinct types of movement and explain what each causes
+### upper (5 topics)
+- Earth's rotation and day/night — ✗ no gloss
+  - evidence: Explain that the Earth rotates (spins) on its axis once every 24 hours
+- How fossils form — ✗ no gloss
+  - evidence: Explain that rock layers (strata) form over time, with the oldest at the bottom
+- The solar system — ✗ no gloss
+  - evidence: State that the sun, Earth, and moon are approximately spherical
+- Shadows — ✗ no gloss
+  - evidence: Measure and record shadow length and direction at different times of day
+- Star Brightness & Distance — ✗ no gloss
+  - evidence: Explain that the sun is a star, and it appears much brighter because it is much closer to Earth
+
+## Science|The Human Body
+### early (8 topics)
+- Basic Body Needs — ✗ no gloss
+  - evidence: List the four basic needs: food (energy), water (hydration), sleep (rest and growth), exercise (strength)
+- Bones & Muscles — ✗ no gloss
+  - evidence: State that bones give the body shape, support, and protection
+- How Breathing Works — ✗ no gloss
+  - evidence: Trace the path of air: nose/mouth → windpipe → lungs
+- The Brain Controls the Body — ✗ no gloss
+  - evidence: State that the brain is inside the skull and controls the whole body
+- The Five Senses — ✗ no gloss
+  - evidence: Name all five senses and match each to the correct body part
+- The Heart & Blood — ✗ no gloss
+  - evidence: Locate their own heartbeat by touch (chest or pulse point)
+- Balanced Diet & Food Groups — ✗ no gloss
+  - evidence: Sort everyday foods into the food groups of the local healthy-eating guide (e.g. the five groups of the Australian Guide to Health
+- Keeping clean and healthy — ✗ no gloss
+  - evidence: Demonstrate washing hands with soap for about 20 seconds and explain when to do it (after the toilet, before eating)
+### mid (9 topics)
+- Cells, Tissues & Organs — ✗ no gloss
+  - evidence: State that cells are the smallest building blocks of the body, too small to see without a microscope
+- How Muscles Move Bones — ✗ no gloss
+  - evidence: Demonstrate or describe how biceps and triceps work as a pair to bend and straighten the arm
+- How the Eye Works — ✗ no gloss
+  - evidence: Name the main parts: pupil (lets light in), lens (focuses light), retina (detects light), optic nerve (sends signals to brain)
+- Naming Major Bones — ✗ no gloss
+  - evidence: Name and locate at least six major bones or bone groups on a diagram or their own body
+- The Digestive Journey — ✗ no gloss
+  - evidence: List the organs in order: mouth, oesophagus, stomach, small intestine, large intestine
+- Types of Teeth — ✗ no gloss
+  - evidence: Name the four tooth types and describe each one's job: incisors cut, canines tear, premolars/molars grind
+- Growing Up & Puberty — ✗ no gloss
+  - evidence: Name and order at least six life stages from birth to old age
+- Healthy Lifestyle Choices — ✗ no gloss
+  - evidence: Explain how regular exercise strengthens the heart, lungs, and muscles
+- Keeping up a healthy routine — ✗ no gloss
+  - evidence: Choose a health or safety routine to build (e.g. sun-safe habits, drinking water, hand-washing or screen-time limits) and plan whe
+### upper (5 topics)
+- Circulation & Breathing Together — ✓ gloss: “Heart & lungs team up”
+  - evidence: Describe the cycle: lungs add oxygen to blood → heart pumps oxygenated blood to body → cells use oxygen → blood returns CO₂ to lun
+- Heart & Blood Circulation — ✗ no gloss
+  - evidence: Name the four heart chambers and describe the double-loop pathway (heart → lungs → heart → body)
+- How the Lungs Work — ✗ no gloss
+  - evidence: Trace the air pathway: nose/mouth → trachea → bronchi → bronchioles → alveoli
+- The Immune System — ✗ no gloss
+  - evidence: Describe the skin as the body's first line of defence against germs
+- The Nervous System — ✗ no gloss
+  - evidence: Name the two parts of the nervous system: central (brain + spinal cord) and peripheral (nerves throughout the body)
+
+## Science|Volcanoes & Earthquakes
+### early (6 topics)
+- Earth Is Made of Rock — ✗ no gloss
+  - evidence: State that the ground beneath us is made of rock
+- Earthquake Safety — ✗ no gloss
+  - evidence: Demonstrate the drop, cover, and hold on procedure
+- Fast & Slow Earth Changes — ✗ no gloss
+  - evidence: Give an example of a quick change to Earth's surface like a volcanic eruption
+- Power of Eruptions — ✗ no gloss
+  - evidence: Describe an eruption as a powerful, dramatic event
+- What Is an Earthquake — ✗ no gloss
+  - evidence: Describe an earthquake as the ground shaking suddenly
+- What Is a Volcano — ✗ no gloss
+  - evidence: Describe a volcano as a place where hot material comes out of the Earth
+### mid (8 topics)
+- Active, Dormant & Extinct — ✗ no gloss
+  - evidence: Define active, dormant, and extinct volcanoes
+- Earth's Layers — ✗ no gloss
+  - evidence: Name Earth's three main layers: crust, mantle, and core
+- Inside a Volcano — ✗ no gloss
+  - evidence: Explain that magma is melted rock underground and lava is the same material above ground
+- Pompeii & Vesuvius — ✗ no gloss
+  - evidence: Retell the key events: Vesuvius erupted, Pompeii was buried under ash
+- Ring of Fire — ✗ no gloss
+  - evidence: Describe the pattern that volcanoes and earthquakes cluster in certain zones
+- Tsunamis — ✗ no gloss
+  - evidence: Explain that a tsunami is caused by an earthquake or eruption under the sea
+- Types of Rock — ✗ no gloss
+  - evidence: Name the three main rock types: igneous, sedimentary, metamorphic
+- Why Earthquakes Happen — ✗ no gloss
+  - evidence: Explain that earthquakes are caused by rocks underground suddenly moving
+### upper (9 topics)
+- Earthquake-Resistant Design — ✗ no gloss
+  - evidence: Describe at least one feature that makes buildings more earthquake-resistant
+- Eruption Types & Volcano Shape — ✗ no gloss
+  - evidence: Contrast effusive eruptions (gentle lava flows) with explosive eruptions (violent blasts of ash and rock)
+- Famous Eruptions & Pangaea — ✗ no gloss
+  - evidence: Describe at least one famous volcanic eruption and its key effects
+- Measuring Earthquake Strength — ✗ no gloss
+  - evidence: Explain that a seismometer is an instrument that detects and records ground shaking
+- Monitoring Volcanoes — ✗ no gloss
+  - evidence: Name at least two warning signs scientists look for before an eruption
+- Natural Disaster Solutions — ✗ no gloss
+  - evidence: Identify at least two natural hazards and their impacts on human life and property
+- Plate Boundaries — ✗ no gloss
+  - evidence: Describe three types of plate boundary movement: convergent, divergent, and transform
+- Tectonic Plates — ✓ gloss: “Earth's giant jigsaw pieces”
+  - evidence: Describe Earth's crust as broken into large plates
+- The Rock Cycle — ✗ no gloss
+  - evidence: Describe the rock cycle as a continuous process with no beginning or end
+
+## Science|Waves, Light & Sound
+### early (5 topics)
+- Communication with Light & Sound — ✗ no gloss
+  - evidence: Design a device that uses light or sound to communicate over a distance (e.g. string telephone, torch signals)
+- Light & Seeing in the Dark — ✗ no gloss
+  - evidence: Explain that we need light to see objects — without any light source, it is completely dark
+- Light & Sound Vocabulary — ✗ no gloss
+  - evidence: Correctly classify a set of materials as transparent, translucent, or opaque and explain each term
+- Transparent, Translucent & Opaque — ✓ gloss: “See-through, dim or blocked?”
+  - evidence: Test at least six materials and classify them as transparent, translucent, or opaque
+- Vibrations & Sound — ✗ no gloss
+  - evidence: Describe that sounds are made when objects vibrate (move back and forth quickly)
+### mid (8 topics)
+- How Shadows Form — ✗ no gloss
+  - evidence: Explain that a shadow forms because an opaque object blocks light from reaching a surface
+- Pitch of Sounds — ✗ no gloss
+  - evidence: Describe the pattern: shorter/thinner/tighter objects produce higher-pitched sounds
+- Protecting Eyes from Sunlight — ✗ no gloss
+  - evidence: State that looking directly at the sun can damage eyes permanently
+- Reflecting Light — ✗ no gloss
+  - evidence: Explain that light bounces off surfaces, which is called reflection
+- Volume & Vibrations — ✗ no gloss
+  - evidence: Describe the pattern: stronger vibrations (larger movements) produce louder sounds
+- Patterns & Codes for Information — ✓ gloss: “Secret codes & patterns”
+  - evidence: Describe at least two systems that use patterns of light or sound to transfer information (e.g. Morse code, semaphore, drum signal
+- Sound Fading with Distance — ✗ no gloss
+  - evidence: State that sound gets quieter as distance from the source increases
+- Sound Travels Through Materials — ✗ no gloss
+  - evidence: Explain that sound vibrations need a material (medium) to travel through — they can't travel in a vacuum
+### upper (4 topics)
+- How We See Objects — ✗ no gloss
+  - evidence: Draw a diagram showing light source → light hits object → reflects into eye
+- Wave Behaviour Vocabulary — ✗ no gloss
+  - evidence: Use 'refraction' correctly to explain why a straw appears bent in a glass of water
+- Waves & How They Move — ✗ no gloss
+  - evidence: Describe a wave using the terms amplitude (height) and wavelength (distance between peaks)
+- Light Travels in Straight Lines — ✗ no gloss
+  - evidence: State and demonstrate that light travels in straight lines (e.g. can't see around corners, laser pointer)
+
+## Science|Weather & Climate
+### early (8 topics)
+- Dressing for the Weather — ✗ no gloss
+  - evidence: Select appropriate clothing for at least three different weather conditions
+- Rain & Puddles — ✗ no gloss
+  - evidence: State that rain falls from clouds
+- Seasons & Weather Patterns — ✗ no gloss
+  - evidence: Name the four seasons and describe typical weather for each
+- Storm Safety — ✗ no gloss
+  - evidence: State at least two safety rules for thunderstorms
+- Temperature & Thermometers — ✗ no gloss
+  - evidence: Explain that temperature describes how hot or cold something is
+- Types of Weather — ✗ no gloss
+  - evidence: Name at least five types of weather
+- Weather Forecasting & Safety — ✗ no gloss
+  - evidence: Explain that weather forecasts help people plan and stay safe
+- What Is Wind? — ✗ no gloss
+  - evidence: Define wind as air that is moving
+### mid (9 topics)
+- Cloud Types — ✗ no gloss
+  - evidence: Name and describe the three main cloud types: cumulus, stratus, cirrus
+- Geography & Local Weather — ✗ no gloss
+  - evidence: Describe typical weather in at least three different climate types
+- The Water Cycle — ✗ no gloss
+  - evidence: Name the three main stages: evaporation, condensation, precipitation
+- Thunder & Lightning — ✗ no gloss
+  - evidence: Describe lightning as a large electrical discharge in clouds
+- Using Weather Instruments — ✗ no gloss
+  - evidence: Name at least three weather instruments and explain what each measures
+- Weather Forecasting — ✗ no gloss
+  - evidence: Define a meteorologist as a scientist who studies and predicts weather
+- Weather vs Climate — ✗ no gloss
+  - evidence: Define weather as short-term atmospheric conditions
+- What Causes Wind — ✗ no gloss
+  - evidence: Explain that the Sun heats Earth's surface unevenly
+- Designing for Weather Hazards — ✗ no gloss
+  - evidence: Identify a specific weather-related hazard and its impacts on people
+### upper (8 topics)
+- Climate Change Basics — ✗ no gloss
+  - evidence: Describe the greenhouse effect: the atmosphere traps heat from the Sun
+- Climate Zones — ✗ no gloss
+  - evidence: Name and describe at least four climate zones
+- Extreme Weather Events — ✗ no gloss
+  - evidence: Describe how at least two types of extreme weather form
+- Natural resources — ✗ no gloss
+  - evidence: Name natural resources used for energy and fuels (coal, oil, gas, wind, sun, water)
+- Reading Weather Maps — ✗ no gloss
+  - evidence: Interpret common weather map symbols for temperature, precipitation, and wind
+- Sun-Driven Weather Systems — ✓ gloss: “The Sun makes weather”
+  - evidence: Explain that the Sun heats land and water at different rates
+- The Atmosphere — ✗ no gloss
+  - evidence: Define the atmosphere as the layer of air surrounding Earth
+- Weather-Resistant Engineering — ✗ no gloss
+  - evidence: Describe at least two engineering solutions designed to protect against extreme weather

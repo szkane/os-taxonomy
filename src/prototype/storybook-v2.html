@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Storybook v2 prototype — Konva + Rough + Lottie</title>
+<!--
+  PROTOTYPE: explores the "Stage-Lit Paper Theatre" upgrade suggested by the
+  project owner. Not linked from the hub. Libraries via CDN for evaluation
+  only — if adopted, all three bundle locally (esbuild → assets/vendor, like
+  three.min.js) to keep the site offline-first. All three are MIT-licensed.
+-->
+<style>
+  :root { --ink: #242722; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Baloo 2", system-ui, sans-serif;
+    background: #f4efe4 radial-gradient(#1111110d 1px, transparent 1px);
+    background-size: 26px 26px;
+    color: var(--ink);
+    display: grid; place-items: center; min-height: 100vh; padding: 20px;
+  }
+  .demo { width: min(96vw, 720px); display: grid; gap: 14px; justify-items: center; }
+  h1 { font-size: 20px; font-weight: 600; }
+  .sub { font-size: 14px; color: #626262; }
+  .book {
+    position: relative;
+    width: 100%;
+    background: #fdf6e3;
+    border: 3px solid var(--ink);
+    border-radius: 18px 18px 10px 10px;
+    padding: 10px;
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+  .stage { position: relative; width: 100%; border-radius: 12px; overflow: hidden; }
+  .stage canvas { display: block; width: 100%; }
+  #actors { position: absolute; inset: 0; cursor: grab; }
+  .lottie-slot {
+    position: absolute; right: 10px; bottom: 10px; width: 64px; height: 64px;
+    pointer-events: none; opacity: .95;
+  }
+  .sentence {
+    margin-top: 10px; font-size: 22px; font-weight: 600; text-align: center;
+    min-height: 60px; text-wrap: balance;
+  }
+  .controls { display: flex; gap: 10px; }
+  button {
+    min-height: 44px; padding: 10px 18px; border: 2px solid var(--ink);
+    border-radius: 18px; background: #fdfcfa; font: 600 16px "Baloo 2", sans-serif;
+    box-shadow: 0 4px 0 var(--ink); cursor: pointer;
+  }
+  button:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+  button.primary { background: #f42324; color: #fff; border-color: #8b0023; box-shadow: 0 4px 0 #8b0023; }
+  .hint { font-size: 13px; color: #626262; }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h1>📖 Storybook v2 — hand-inked scenery (Rough.js) · draggable actors (Konva) · animation slot (Lottie)</h1>
+  <p class="sub">Prototype on CDN. If adopted: bundled locally like three.min.js (all MIT), no CDN at runtime.</p>
+
+  <div class="book">
+    <div class="stage">
+      <canvas id="scenery"></canvas>
+      <div id="actors"></div>
+      <div class="lottie-slot" id="lottie"></div>
+    </div>
+    <p class="sentence" id="sentence"></p>
+  </div>
+
+  <div class="controls">
+    <button id="prev">◀ Back</button>
+    <button id="next" class="primary">Next page ▶</button>
+  </div>
+  <p class="hint">Try it: every character is DRAWN with canvas code (no emoji!) and draggable as a Konva node. Scenery is Rough.js hand-inked. The spinning star is a Lottie animation (the slot for real character animations).</p>
+</div>
+
+<script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
+<script src="https://unpkg.com/konva@9.3.6/konva.min.js"></script>
+<script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  var INK = '#242722';
+
+  var PAGES = [
+    {
+      kind: 'meadow', sky: ['#e8f7ff', '#cfeaff'], ground: '#a8d98a',
+      sentence: 'The first pig built a house of straw. Quick and easy!',
+      items: [
+        { art: 'sun', x: 0.84, y: 0.16, s: 74, fixed: true },
+        { art: 'house', x: 0.30, y: 0.56, s: 150 },
+        { art: 'pig', x: 0.60, y: 0.64, s: 104 },
+        { art: 'tuft', x: 0.88, y: 0.7, s: 60 },
+        { art: 'tuft', x: 0.09, y: 0.68, s: 52 },
+      ],
+    },
+    {
+      kind: 'water', sky: ['#bfe6f7', '#8fd0ee'], ground: '#3f9edb',
+      sentence: 'The eggs hatch into tadpoles. They swim like little fish!',
+      items: [
+        { art: 'lily', x: 0.15, y: 0.3, s: 96 },
+        { art: 'tadpole', x: 0.44, y: 0.62, s: 64 },
+        { art: 'tadpole', x: 0.63, y: 0.72, s: 54 },
+        { art: 'frog', x: 0.86, y: 0.36, s: 92 },
+        { art: 'bubbles', x: 0.72, y: 0.3, s: 56, fixed: true },
+      ],
+    },
+    {
+      kind: 'moon', sky: ['#0a1428', '#101c33'], ground: '#25304f', night: true,
+      sentence: 'Moon dust clung to the astronaut\u2019s boots. It smelled like gunpowder.',
+      items: [
+        { art: 'moon', x: 0.82, y: 0.2, s: 110, fixed: true },
+        { art: 'astronaut', x: 0.36, y: 0.62, s: 120 },
+        { art: 'rock', x: 0.7, y: 0.76, s: 56 },
+        { art: 'rock', x: 0.14, y: 0.72, s: 44 },
+        { art: 'earth', x: 0.1, y: 0.16, s: 64, fixed: true },
+      ],
+    },
+  ];
+
+  /* ---------- canvas-drawn actors (flat cel + ink outline) ---------- */
+  var INKW = 3;
+  function rr(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+  function fillStroke(ctx, fill, lw) {
+    ctx.fillStyle = fill; ctx.fill();
+    ctx.lineWidth = lw || INKW; ctx.strokeStyle = INK; ctx.stroke();
+  }
+  function dot(ctx, x, y, r, fill) {
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fillStyle = fill || INK; ctx.fill();
+  }
+
+  var ACTORS = {
+    sun: function (ctx, u) {
+      ctx.strokeStyle = INK; ctx.lineWidth = 3;
+      for (var i = 0; i < 10; i++) {
+        var a = (i / 10) * Math.PI * 2 + 0.15;
+        ctx.beginPath();
+        ctx.moveTo(Math.cos(a) * u * 0.62, Math.sin(a) * u * 0.62);
+        ctx.lineTo(Math.cos(a) * u * 0.92, Math.sin(a) * u * 0.92);
+        ctx.stroke();
+      }
+      ctx.beginPath(); ctx.arc(0, 0, u * 0.55, 0, Math.PI * 2);
+      fillStroke(ctx, '#ffd75e');
+      // gentle face
+      ctx.lineWidth = 2.6; ctx.strokeStyle = INK;
+      [-1, 1].forEach(function (sd) {
+        ctx.beginPath();
+        ctx.arc(sd * u * 0.2, -u * 0.06, u * 0.09, Math.PI * 1.15, Math.PI * 1.85);
+        ctx.stroke();
+      });
+      ctx.beginPath();
+      ctx.arc(0, u * 0.14, u * 0.2, 0.3, Math.PI - 0.3);
+      ctx.stroke();
+    },
+    pig: function (ctx, u) {
+      // legs
+      [-1, 1].forEach(function (sd) {
+        rr(ctx, sd * u * 0.42 - u * 0.12, u * 0.52, u * 0.24, u * 0.3, u * 0.1);
+        fillStroke(ctx, '#ef9db5', 2.6);
+      });
+      // ears
+      [-1, 1].forEach(function (sd) {
+        ctx.beginPath();
+        ctx.moveTo(sd * u * 0.5, -u * 0.42);
+        ctx.lineTo(sd * u * 0.72, -u * 0.72);
+        ctx.lineTo(sd * u * 0.22, -u * 0.66);
+        ctx.closePath();
+        fillStroke(ctx, '#f28cae', 2.6);
+      });
+      // body
+      ctx.beginPath(); ctx.ellipse(0, u * 0.18, u * 0.8, u * 0.62, 0, 0, Math.PI * 2);
+      fillStroke(ctx, '#f6b3c7');
+      // snout
+      ctx.beginPath(); ctx.ellipse(0, u * 0.1, u * 0.36, u * 0.26, 0, 0, Math.PI * 2);
+      fillStroke(ctx, '#f28cae', 2.6);
+      dot(ctx, -u * 0.13, u * 0.1, u * 0.045);
+      dot(ctx, u * 0.13, u * 0.1, u * 0.045);
+      // eyes
+      [-1, 1].forEach(function (sd) {
+        ctx.beginPath(); ctx.arc(sd * u * 0.34, -u * 0.22, u * 0.11, 0, Math.PI * 2);
+        fillStroke(ctx, '#ffffff', 2.2);
+        dot(ctx, sd * u * 0.34 + u * 0.02, -u * 0.22, u * 0.05);
+      });
+      // smile + blush
+      ctx.lineWidth = 2.4; ctx.strokeStyle = INK;
+      ctx.beginPath(); ctx.arc(0, u * 0.16, u * 0.16, 0.35, Math.PI - 0.35); ctx.stroke();
+      ctx.globalAlpha = 0.4; dot(ctx, -u * 0.56, -u * 0.02, u * 0.09, '#e26a92'); dot(ctx, u * 0.56, -u * 0.02, u * 0.09, '#e26a92');
+      ctx.globalAlpha = 1;
+    },
+    house: function (ctx, u) {
+      // straw roof
+      ctx.beginPath();
+      ctx.moveTo(-u * 0.88, -u * 0.1);
+      ctx.lineTo(0, -u * 0.95);
+      ctx.lineTo(u * 0.88, -u * 0.1);
+      ctx.closePath();
+      fillStroke(ctx, '#c98a4b');
+      // straw overhang
+      ctx.strokeStyle = '#8a5a2f'; ctx.lineWidth = 2.4;
+      for (var i = -3; i <= 3; i++) {
+        var sx = i * u * 0.22;
+        ctx.beginPath();
+        ctx.moveTo(sx, -u * 0.1 - Math.abs(i) * u * 0.02);
+        ctx.lineTo(sx + u * 0.06, u * 0.1);
+        ctx.stroke();
+      }
+      // walls
+      rr(ctx, -u * 0.68, -u * 0.12, u * 1.36, u * 1.02, u * 0.08);
+      fillStroke(ctx, '#e9c46a');
+      // straw hatching
+      ctx.strokeStyle = 'rgba(36,39,34,0.16)'; ctx.lineWidth = 2;
+      for (var hx = -u * 0.5; hx < u * 0.6; hx += u * 0.22) {
+        ctx.beginPath(); ctx.moveTo(hx, u * 0.05); ctx.lineTo(hx + u * 0.16, u * 0.8); ctx.stroke();
+      }
+      // door
+      ctx.beginPath();
+      ctx.moveTo(-u * 0.2, u * 0.9);
+      ctx.lineTo(-u * 0.2, u * 0.35);
+      ctx.arc(0, u * 0.35, u * 0.2, Math.PI, 0);
+      ctx.lineTo(u * 0.2, u * 0.9);
+      ctx.closePath();
+      fillStroke(ctx, '#6b4a2f', 2.6);
+    },
+    tuft: function (ctx, u) {
+      ctx.strokeStyle = '#5c7a44'; ctx.lineWidth = 3;
+      for (var i = -2; i <= 2; i++) {
+        var a = -Math.PI / 2 + i * 0.28;
+        ctx.beginPath();
+        ctx.moveTo(0, u * 0.6);
+        ctx.quadraticCurveTo(i * u * 0.18, u * 0.05, i * u * 0.34, -u * 0.42);
+        ctx.stroke();
+        dot(ctx, i * u * 0.34, -u * 0.44, u * 0.06, '#d9b64f');
+      }
+    },
+    lily: function (ctx, u) {
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.arc(0, 0, u * 0.85, 0.42, Math.PI * 2 - 0.42);
+      ctx.closePath();
+      fillStroke(ctx, '#58b368');
+      ctx.strokeStyle = 'rgba(36,39,34,0.35)'; ctx.lineWidth = 2;
+      for (var i = 1; i <= 3; i++) {
+        var a = 0.42 + (i * (Math.PI * 2 - 0.84)) / 4;
+        ctx.beginPath(); ctx.moveTo(0, 0);
+        ctx.lineTo(Math.cos(a) * u * 0.7, Math.sin(a) * u * 0.7);
+        ctx.stroke();
+      }
+      // blossom
+      for (var p2 = 0; p2 < 5; p2++) {
+        var pa = (p2 / 5) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.ellipse(Math.cos(pa) * u * 0.2, -u * 0.85 + Math.sin(pa) * u * 0.12, u * 0.16, u * 0.09, pa, 0, Math.PI * 2);
+        fillStroke(ctx, '#ff9fb2', 2);
+      }
+      dot(ctx, 0, -u * 0.85, u * 0.07, '#ffd75e');
+    },
+    tadpole: function (ctx, u) {
+      ctx.beginPath();
+      ctx.moveTo(-u * 0.1, 0);
+      ctx.bezierCurveTo(-u * 0.5, -u * 0.35, -u * 0.8, u * 0.35, -u * 0.98, -u * 0.1);
+      ctx.strokeStyle = '#57493e'; ctx.lineWidth = u * 0.16; ctx.lineCap = 'round';
+      ctx.stroke();
+      ctx.beginPath(); ctx.ellipse(u * 0.22, 0, u * 0.42, u * 0.34, 0, 0, Math.PI * 2);
+      fillStroke(ctx, '#57493e', 2.6);
+      ctx.beginPath(); ctx.arc(u * 0.3, -u * 0.08, u * 0.08, 0, Math.PI * 2);
+      fillStroke(ctx, '#ffffff', 1.6);
+      dot(ctx, u * 0.32, -u * 0.08, u * 0.04);
+    },
+    frog: function (ctx, u) {
+      ctx.beginPath(); ctx.ellipse(0, u * 0.25, u * 0.72, u * 0.5, 0, 0, Math.PI * 2);
+      fillStroke(ctx, '#58b368');
+      // belly
+      ctx.beginPath(); ctx.ellipse(0, u * 0.38, u * 0.44, u * 0.28, 0, 0, Math.PI * 2);
+      fillStroke(ctx, '#a8e0b0', 2);
+      // eye bumps
+      [-1, 1].forEach(function (sd) {
+        ctx.beginPath(); ctx.arc(sd * u * 0.34, -u * 0.34, u * 0.2, 0, Math.PI * 2);
+        fillStroke(ctx, '#58b368', 2.6);
+        ctx.beginPath(); ctx.arc(sd * u * 0.34, -u * 0.34, u * 0.12, 0, Math.PI * 2);
+        fillStroke(ctx, '#ffffff', 1.8);
+        dot(ctx, sd * u * 0.34, -u * 0.34, u * 0.055);
+      });
+      // smile
+      ctx.lineWidth = 2.6; ctx.strokeStyle = INK;
+      ctx.beginPath(); ctx.arc(0, u * 0.1, u * 0.34, 0.4, Math.PI - 0.4); ctx.stroke();
+      // feet
+      [-1, 1].forEach(function (sd) {
+        ctx.beginPath(); ctx.ellipse(sd * u * 0.5, u * 0.68, u * 0.2, u * 0.1, sd * 0.4, 0, Math.PI * 2);
+        fillStroke(ctx, '#4a9a58', 2.4);
+      });
+    },
+    bubbles: function (ctx, u) {
+      ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+      for (var i = 0; i < 4; i++) {
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(-u * 0.3 + i * u * 0.22, Math.sin(i * 2.1) * u * 0.3, u * (0.07 + (i % 3) * 0.05), 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    },
+    moon: function (ctx, u) {
+      ctx.beginPath(); ctx.arc(0, 0, u * 0.85, 0, Math.PI * 2);
+      fillStroke(ctx, '#d8dbe2');
+      [[-0.3, -0.25, 0.2], [0.3, 0.05, 0.14], [-0.05, 0.4, 0.11], [0.45, -0.4, 0.09]].forEach(function (cr) {
+        ctx.beginPath();
+        ctx.ellipse(cr[0] * u, cr[1] * u, cr[2] * u, cr[2] * u * 0.8, 0.3, 0, Math.PI * 2);
+        fillStroke(ctx, '#b9bec9', 2.2);
+      });
+    },
+    rock: function (ctx, u) {
+      ctx.beginPath();
+      ctx.moveTo(-u * 0.8, u * 0.5);
+      ctx.lineTo(-u * 0.55, -u * 0.3);
+      ctx.lineTo(-u * 0.05, -u * 0.55);
+      ctx.lineTo(u * 0.55, -u * 0.25);
+      ctx.lineTo(u * 0.75, u * 0.5);
+      ctx.closePath();
+      fillStroke(ctx, '#8d8391');
+      ctx.strokeStyle = 'rgba(36,39,34,0.4)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(-u * 0.1, -u * 0.5); ctx.lineTo(u * 0.05, u * 0.45); ctx.stroke();
+    },
+    earth: function (ctx, u) {
+      ctx.beginPath(); ctx.arc(0, 0, u * 0.85, 0, Math.PI * 2);
+      fillStroke(ctx, '#3f9edb');
+      [[-0.25, -0.2, 0.32], [0.3, 0.1, 0.26], [-0.1, 0.45, 0.2]].forEach(function (lb) {
+        ctx.beginPath();
+        ctx.ellipse(lb[0] * u, lb[1] * u, lb[2] * u, lb[2] * u * 0.7, 0.4, 0, Math.PI * 2);
+        fillStroke(ctx, '#4caf6d', 2);
+      });
+      ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(-u * 0.2, -u * 0.3, u * 0.3, 0.4, 1.6); ctx.stroke();
+    },
+    astronaut: function (ctx, u) {
+      // backpack
+      rr(ctx, -u * 0.55, -u * 0.5, u * 1.1, u * 0.7, u * 0.12);
+      fillStroke(ctx, '#d8d8d2', 2.6);
+      // legs
+      [-1, 1].forEach(function (sd) {
+        rr(ctx, sd * u * 0.34 - u * 0.14, u * 0.35, u * 0.28, u * 0.5, u * 0.1);
+        fillStroke(ctx, '#f4f4f0', 2.6);
+        rr(ctx, sd * u * 0.34 - u * 0.17, u * 0.72, u * 0.34, u * 0.2, u * 0.08);
+        fillStroke(ctx, '#c9c9c2', 2.4);
+      });
+      // torso
+      rr(ctx, -u * 0.5, -u * 0.28, u, u * 0.75, u * 0.16);
+      fillStroke(ctx, '#f4f4f0');
+      dot(ctx, 0, u * 0.08, u * 0.09, '#f42324'); // mission patch
+      // arms
+      [-1, 1].forEach(function (sd) {
+        ctx.save();
+        ctx.translate(sd * u * 0.55, -u * 0.05);
+        ctx.rotate(sd * 0.5);
+        rr(ctx, -u * 0.12, 0, u * 0.24, u * 0.55, u * 0.1);
+        fillStroke(ctx, '#f4f4f0', 2.6);
+        ctx.restore();
+      });
+      // helmet
+      ctx.beginPath(); ctx.arc(0, -u * 0.55, u * 0.42, 0, Math.PI * 2);
+      fillStroke(ctx, '#ffffff');
+      ctx.beginPath(); ctx.arc(0, -u * 0.55, u * 0.32, 0, Math.PI * 2);
+      fillStroke(ctx, '#27405e', 2.2);
+      ctx.strokeStyle = 'rgba(255,255,255,0.75)'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(-u * 0.08, -u * 0.6, u * 0.18, Math.PI * 0.9, Math.PI * 1.5); ctx.stroke();
+    },
+  };
+
+  var scenery = document.getElementById('scenery');
+  var sctx = scenery.getContext('2d');
+  var rc = rough.canvas(scenery);
+  var stageEl = document.getElementById('actors');
+  var sentenceEl = document.getElementById('sentence');
+  var W = 640, H = 372;
+
+  var konva = new Konva.Stage({ container: stageEl, width: W, height: H });
+  var layer = new Konva.Layer();
+  konva.add(layer);
+
+  // Lottie slot: hand-written minimal animation (rotate + pulse star).
+  // This is where real Bodymovin character animations plug in later.
+  var sparkData = {
+    v: '5.7.4', fr: 30, ip: 0, op: 60, w: 120, h: 120, nm: 'sparkle', ddd: 0, assets: [],
+    layers: [{
+      ddd: 0, ind: 1, ty: 4, nm: 'star', sr: 1,
+      ks: {
+        o: { a: 0, k: 100 },
+        r: { a: 1, k: [{ t: 0, s: [0] }, { t: 60, s: [360] }] },
+        p: { a: 0, k: [60, 60, 0] }, a: { a: 0, k: [0, 0, 0] },
+        s: { a: 1, k: [{ t: 0, s: [70, 70, 100] }, { t: 30, s: [115, 115, 100] }, { t: 60, s: [70, 70, 100] }] },
+      },
+      ao: 0,
+      shapes: [
+        { ty: 'sr', sy: 1, pt: { a: 0, k: 5 }, p: { a: 0, k: [0, 0] }, r: { a: 0, k: 0 }, ir: { a: 0, k: 18 }, is: { a: 0, k: 0 }, or: { a: 0, k: 52 }, os: { a: 0, k: 0 }, ix: 1, nm: 'poly' },
+        { ty: 'fl', c: { a: 0, k: [1, 0.82, 0.25, 1] }, o: { a: 0, k: 100 }, nm: 'fill' },
+      ],
+      ip: 0, op: 60, st: 0, bm: 0,
+    }],
+  };
+  lottie.loadAnimation({ container: document.getElementById('lottie'), renderer: 'canvas', loop: true, autoplay: true, animationData: sparkData });
+
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function paintScenery(page, pageIndex) {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    scenery.width = W * dpr; scenery.height = H * dpr;
+    sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var rng = mulberry32(pageIndex * 131 + 7);
+    var night = !!page.night;
+
+    var g = sctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, page.sky[0]); g.addColorStop(1, page.sky[1]);
+    sctx.fillStyle = g; sctx.fillRect(0, 0, W, H);
+
+    if (night) {
+      for (var st = 0; st < 16; st++) {
+        sctx.globalAlpha = 0.4 + rng() * 0.6;
+        sctx.fillStyle = '#e8eefc';
+        sctx.beginPath(); sctx.arc(rng() * W, rng() * H * 0.4, 0.8 + rng() * 1.6, 0, Math.PI * 2); sctx.fill();
+      }
+      sctx.globalAlpha = 1;
+    } else {
+      [[0.3, 0.16], [0.62, 0.1]].forEach(function (cl) {
+        var cx = cl[0] * W, cy = cl[1] * H, cs = 16;
+        sctx.fillStyle = 'rgba(255,255,255,0.85)';
+        [[0, 0, 1], [0.9, 0.15, 0.75], [-0.9, 0.18, 0.7], [0.35, -0.35, 0.6]].forEach(function (b) {
+          sctx.beginPath(); sctx.arc(cx + b[0] * cs, cy + b[1] * cs, cs * b[2], 0, Math.PI * 2); sctx.fill();
+        });
+      });
+    }
+
+    // Hand-inked hills — Rough.js signature wobble + hachure fills
+    var gy = H * 0.74;
+    rc.path(
+      'M0,' + gy + ' C' + W * 0.25 + ',' + (gy - 62) + ' ' + W * 0.55 + ',' + (gy - 14) + ' ' + W * 0.78 + ',' + (gy - 44) +
+      ' C' + W * 0.9 + ',' + (gy - 30) + ' ' + W + ',' + (gy - 34) + ' ' + W + ',' + (gy - 26) +
+      ' L' + W + ',' + H + ' L0,' + H + ' Z',
+      { stroke: INK, strokeWidth: 1.6, roughness: 1.6, fill: night ? '#3c4a6b' : '#cfe8b4', fillStyle: 'hachure', fillWeight: 0.7, hachureGap: 7, hachureAngle: -42 }
+    );
+    rc.path(
+      'M0,' + (gy + 26) + ' C' + W * 0.3 + ',' + (gy - 8) + ' ' + W * 0.62 + ',' + (gy + 22) + ' ' + W + ',' + (gy + 2) +
+      ' L' + W + ',' + H + ' L0,' + H + ' Z',
+      { stroke: INK, strokeWidth: 2.4, roughness: 1.9, fill: page.ground, fillStyle: 'hachure', fillWeight: 0.9, hachureGap: 8, hachureAngle: -38 }
+    );
+
+    if (page.kind === 'water') {
+      for (var rp = 0; rp < 4; rp++) {
+        rc.arc((0.12 + rp * 0.24) * W, H * (0.82 + (rp % 2) * 0.07), 16 + rng() * 8, Math.PI * 1.12, Math.PI * 1.88, false,
+          { stroke: 'rgba(255,255,255,0.75)', strokeWidth: 1.8, roughness: 1.2 });
+      }
+    } else if (page.kind === 'moon') {
+      for (var pb = 0; pb < 8; pb++) {
+        rc.circle(rng() * W, H * (0.83 + rng() * 0.13), 3 + rng() * 5,
+          { stroke: '#8b93a8', strokeWidth: 1.2, roughness: 1.4, fill: '#3a4763', fillStyle: 'hachure', fillWeight: 0.6, hachureGap: 4 });
+      }
+    } else {
+      for (var tx = 10; tx < W; tx += 20 + rng() * 16) {
+        var ty = gy + 34 + Math.sin(tx * 0.02) * 8 + rng() * 22;
+        if (ty > H - 4) continue;
+        rc.line(tx, ty, tx + 2, ty - (6 + rng() * 5), { stroke: tx % 3 === 0 ? INK : '#5c7a44', strokeWidth: 1.5, roughness: 1.1 });
+      }
+    }
+
+    var vg = sctx.createRadialGradient(W / 2, H * 0.45, H * 0.35, W / 2, H * 0.5, H * 0.95);
+    vg.addColorStop(0, 'rgba(0,0,0,0)');
+    vg.addColorStop(1, night ? 'rgba(0,0,10,0.25)' : 'rgba(30,25,10,0.12)');
+    sctx.fillStyle = vg; sctx.fillRect(0, 0, W, H);
+  }
+
+  var idle = new Konva.Animation(function (frame) {
+    layer.getChildren().forEach(function (node) {
+      if (node.getAttr('baseY') == null) return;
+      node.y(node.getAttr('baseY') + Math.sin(frame.time * 0.002 + node.getAttr('seed')) * 4);
+    });
+  }, layer);
+  idle.start();
+
+  function showPage(i) {
+    var page = PAGES[(i + PAGES.length) % PAGES.length];
+    window.__pageIndex = (i + PAGES.length) % PAGES.length;
+    paintScenery(page, window.__pageIndex);
+    sentenceEl.textContent = page.sentence;
+
+    layer.destroyChildren();
+    page.items.forEach(function (it, idx) {
+      var artFn = ACTORS[it.art];
+      var node = new Konva.Shape({
+        sceneFunc: function (ctx) {
+          ctx.save();
+          artFn(ctx, it.s / 2);
+          ctx.restore();
+        },
+        hitFunc: function (ctx) {
+          ctx.beginPath();
+          ctx.rect(-it.s / 2, -it.s / 2, it.s, it.s);
+          ctx.closePath();
+          ctx.fillStrokeShape(this);
+        },
+        x: it.x * W, y: it.y * H,
+        draggable: !it.fixed,
+        shadowColor: 'rgba(20,20,20,0.28)', shadowBlur: 3, shadowOffsetY: it.y > 0.6 ? 8 : 3,
+        opacity: 0, scaleX: 0.5, scaleY: 0.5, rotation: (idx % 2 ? 3 : -3),
+      });
+      node.setAttr('baseY', it.y * H);
+      node.setAttr('art', it.art);
+      node.setAttr('seed', idx * 1.7);
+      node.on('dragstart', function () { konva.container().style.cursor = 'grabbing'; node.to({ shadowOffsetY: 14, scaleX: 1.08, scaleY: 1.08, duration: 0.15 }); });
+      node.on('dragend', function () { konva.container().style.cursor = 'grab'; node.to({ shadowOffsetY: it.y > 0.6 ? 7 : 3, scaleX: 1, scaleY: 1, duration: 0.2 }); });
+      layer.add(node);
+      node.to({ opacity: 1, scaleX: 1, scaleY: 1, duration: 0.5, easing: Konva.Easings.BackEaseOut, delay: idx * 0.09 });
+    });
+    layer.draw();
+  }
+
+  document.getElementById('next').addEventListener('click', function () { showPage(window.__pageIndex + 1); });
+  document.getElementById('prev').addEventListener('click', function () { showPage(window.__pageIndex - 1); });
+
+  // Fit stage to container width
+  function fit() {
+    var box = document.querySelector('.stage');
+    var scale = box.clientWidth / W;
+    konva.scale({ x: scale, y: scale });
+    konva.size({ width: W, height: H });
+    scenery.style.height = (H * scale) + 'px';
+  }
+  window.addEventListener('resize', fit);
+
+  fit();
+  showPage(0);
+})();
+</script>
+</body>
+</html>

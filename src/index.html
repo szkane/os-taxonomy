@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PYP Marble Courses · 317 inquiry courses for ages 5–10</title>
+  <meta name="description" content="All 317 IB PYP courses from the Marble Skill Taxonomy as interactive, explorable web lessons — explore labs, missions, sorting games, 3D space and more." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%220.9em%22%20font-size%3D%2290%22%3E%F0%9F%A7%A9%3C%2Ftext%3E%3C%2Fsvg%3E" />
+  <link rel="stylesheet" href="assets/css/pyp.css" />
+  <link rel="stylesheet" href="assets/css/stage.css" />
+</head>
+<body>
+  <div class="container pyp-chrome">
+    <nav class="nav-bar">
+      <div class="nav-left">
+        <span class="unit-tag unit-tag--theme">🧩 PYP Marble Courses</span>
+      </div>
+
+      <!-- TTS accent control (top right) -->
+      <div class="tts-dropdown-wrap" id="ttsDropdownWrap">
+        <button type="button" class="tts-trigger" id="ttsTrigger" aria-haspopup="menu" aria-expanded="false" title="Select voice accent">
+          <span class="tts-trigger-flag" id="ttsFlag">🇬🇧</span>
+          <span class="tts-trigger-label" id="ttsLabel">Voice</span>
+          <span class="tts-arrow">▾</span>
+        </button>
+        <div class="tts-menu" id="ttsMenu" role="menu">
+          <div class="tts-menu-header">Select voice accent</div>
+          <div class="tts-radio-group" id="ttsRadioList" role="radiogroup"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hub-hero">
+      <h1>Every course. One playground. 🧩</h1>
+      <p>317 IB Primary Years courses from the Marble Skill Taxonomy — each with an explorable marble stage, a mission check, and grown-up notes. Pick a subject, pick an age, and play.</p>
+      <div class="hero-badges">
+        <span class="stat-badge">📚 317 courses</span>
+        <span class="stat-badge">🧒 Ages 5–10 · K–G5</span>
+        <span class="stat-badge">🎮 15 game engines</span>
+        <span class="stat-badge">🔬 Research-backed</span>
+      </div>
+      <div class="hub-deco" aria-hidden="true">🧮🔬📚🪐</div>
+    </section>
+
+    <div class="filter-bar" role="group" aria-label="Filter courses">
+      <button type="button" class="filter-chip" data-filter="subject" data-value="" aria-pressed="true">All subjects</button>
+      <button type="button" class="filter-chip" data-filter="subject" data-value="Computing" aria-pressed="false">Computing</button>
+        <button type="button" class="filter-chip" data-filter="subject" data-value="English" aria-pressed="false">English</button>
+        <button type="button" class="filter-chip" data-filter="subject" data-value="Geography" aria-pressed="false">Geography</button>
+        <button type="button" class="filter-chip" data-filter="subject" data-value="History" aria-pressed="false">History</button>
+        <button type="button" class="filter-chip" data-filter="subject" data-value="Learning to Learn" aria-pressed="false">Learning to Learn</button>
+        <button type="button" class="filter-chip" data-filter="subject" data-value="Life Skills" aria-pressed="false">Life Skills</button>
+        <button type="button" class="filter-chip" data-filter="subject" data-value="Mathematics" aria-pressed="false">Mathematics</button>
+        <button type="button" class="filter-chip" data-filter="subject" data-value="Personal &amp; Social Development" aria-pressed="false">Personal &amp; Social Development</button>
+        <button type="button" class="filter-chip" data-filter="subject" data-value="Science" aria-pressed="false">Science</button>
+    </div>
+    <div class="filter-bar" role="group" aria-label="Filter by grade">
+      <button type="button" class="filter-chip" data-filter="grade" data-value="" aria-pressed="true">All grades</button>
+      <button type="button" class="filter-chip" data-filter="grade" data-value="G1" aria-pressed="false">G1</button>
+        <button type="button" class="filter-chip" data-filter="grade" data-value="G2" aria-pressed="false">G2</button>
+        <button type="button" class="filter-chip" data-filter="grade" data-value="G3" aria-pressed="false">G3</button>
+        <button type="button" class="filter-chip" data-filter="grade" data-value="G4" aria-pressed="false">G4</button>
+        <button type="button" class="filter-chip" data-filter="grade" data-value="G5" aria-pressed="false">G5</button>
+        <button type="button" class="filter-chip" data-filter="grade" data-value="K" aria-pressed="false">K</button>
+        <button type="button" class="filter-chip" data-filter="grade" data-value="Pre-K" aria-pressed="false">Pre-K</button>
+    </div>
+    <div class="filter-bar">
+      <input class="filter-search" id="searchInput" type="search" placeholder="Search courses… (fractions, Egypt, sound)" aria-label="Search courses" />
+    </div>
+
+    <main class="courses-grid" id="coursesGrid" aria-live="polite"></main>
+    <div class="hub-empty" id="hubEmpty" hidden>No courses match those filters — try clearing one. 🙂</div>
+
+      <footer class="site-footer">
+        <div class="footer-credits">
+          <span><strong>Course data</strong> <a href="https://github.com/withmarbleapp/os-taxonomy" rel="noopener">Marble Skill Taxonomy</a> · ODbL-1.0 / CC-BY-SA-4.0</span>
+          <span><strong>Inquiry game patterns</strong> adapted from <a href="https://github.com/szkane/ib-pyp-html5-generator" rel="noopener">ib-pyp-html5-generator</a> and the Marble builder guidelines</span>
+          <span><strong>Type &amp; 3D</strong> <a href="assets/fonts/OFL.txt" rel="noopener">Baloo 2 (SIL OFL)</a> · three.js (MIT)</span>
+        </div>
+        <div class="footer-note">Built for IB PYP inquiry · No accounts, no tracking · Child-facing pages stay offline-first</div>
+      </footer>
+  </div>
+
+  <script src="data/courses.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script>
+    (function () {
+      var COURSES = window.PYP_COURSES || [];
+      var grid = document.getElementById('coursesGrid');
+      var empty = document.getElementById('hubEmpty');
+      var state = { subject: '', grade: '', q: '' };
+
+      function render() {
+        var list = COURSES.filter(function (c) {
+          if (state.subject && c.subject !== state.subject) return false;
+          if (state.grade && c.grade !== state.grade) return false;
+          if (state.q) {
+            var hay = (c.title + ' ' + c.subject + ' ' + c.theme + ' ' + c.question).toLowerCase();
+            if (hay.indexOf(state.q) < 0) return false;
+          }
+          return true;
+        });
+        grid.innerHTML = list.map(card).join('');
+        empty.hidden = list.length > 0;
+        if (list.length && window.PYP && PYP.TTS_MANAGER) PYP.TTS_MANAGER.init();
+      }
+
+      function card(c) {
+        var subjectClass = 'cc-tag--subject-' + c.subject.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-');
+        var draftTag = c.draft ? '<span class="cc-tag cc-tag--draft" title="Auto-derived framing — no curated summary in the taxonomy yet">Draft</span>' : '';
+        return '<a class="course-card" href="courses/' + c.slug + '.html">' +
+          '<div class="cc-top"><span class="cc-emoji" aria-hidden="true">' + c.emoji + '</span>' +
+          '<div class="cc-tags"><span class="cc-tag ' + subjectClass + '">' + esc(c.subject) + '</span>' +
+          '<span class="cc-tag">Age ' + c.age + ' · ' + esc(c.gradeLabel) + '</span>' + draftTag + '</div></div>' +
+          '<h2>' + esc(c.title) + '</h2>' +
+          '<p class="cc-question">' + esc(c.question) + '</p>' +
+          '<div class="cc-modes">' + c.modes.map(function (m) { return '<span class="cc-mode">' + esc(m) + '</span>'; }).join('') + '</div>' +
+          '</a>';
+      }
+
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (ch) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+        });
+      }
+
+      var STORE_KEY = 'pyp_hub_filters';
+      function saveState() {
+        try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
+      }
+
+      document.querySelectorAll('.filter-chip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          var kind = chip.getAttribute('data-filter');
+          var value = chip.getAttribute('data-value');
+          var group = document.querySelectorAll('.filter-chip[data-filter="' + kind + '"]');
+          group.forEach(function (g) { g.setAttribute('aria-pressed', 'false'); });
+          chip.setAttribute('aria-pressed', 'true');
+          state[kind] = value;
+          saveState();
+          render();
+        });
+      });
+      document.getElementById('searchInput').addEventListener('input', function (e) {
+        state.q = e.target.value.trim().toLowerCase();
+        saveState();
+        render();
+      });
+
+      // Restore the visitor's last filters (e.g. after returning from a course).
+      (function restore() {
+        var saved = null;
+        try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || 'null'); } catch (e) {}
+        if (!saved) return;
+        state.subject = saved.subject || '';
+        state.grade = saved.grade || '';
+        state.q = saved.q || '';
+        document.querySelectorAll('.filter-chip').forEach(function (g) {
+          var kind = g.getAttribute('data-filter');
+          var value = g.getAttribute('data-value');
+          g.setAttribute('aria-pressed', (state[kind] || '') === value ? 'true' : 'false');
+        });
+        document.getElementById('searchInput').value = state.q;
+      })();
+
+      render();
+      document.addEventListener('DOMContentLoaded', function () {
+        if (window.PYP && PYP.TTS_MANAGER) PYP.TTS_MANAGER.init();
+      });
+    })();
+  </script>
+</body>
+</html>

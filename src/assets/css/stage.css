@@ -1,0 +1,1187 @@
+/* ==========================================================================
+   PYP Marble Courses — interactive stage (Marble house style)
+   Source: marble-builder references (component-styling.md, visual-design.md)
+   and assets/marble-ui.css. Everything is scoped under .marble-learning so it
+   cannot leak into the IB-PYP shell (pyp.css).
+   Font: Baloo 2 variable font, SIL OFL — see assets/fonts/OFL.txt.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Baloo 2";
+  src: url("../fonts/Baloo2-variable.ttf") format("truetype");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: block;
+}
+
+.marble-learning {
+  --ml-red: #f42324;
+  --ml-red-depth: #8b0023;
+  --ml-ink: #141414;
+  --ml-outline: #242722;
+  --ml-surface: #fdfcfa;
+  --ml-paper: #f4efe4;
+  --ml-muted: #626262;
+  --ml-success: #1fa20d;
+  --ml-attention: #fdae1c;
+  --ml-copy-wash: #fdfcfaed;
+  --ml-copy-clear: #fdfcfa00;
+  --ml-copy-shadow: none;
+  --ml-focus: #774dc7;
+  --ml-selected: #ffda72;
+  position: relative;
+  font-family: "Baloo 2", sans-serif;
+  color: var(--ml-ink);
+  background: var(--ml-paper);
+  border: 3.5px solid var(--ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--ink);
+  overflow: clip;
+  margin-bottom: 16px;
+}
+.marble-learning[data-ml-theme="dark"] {
+  --ml-copy-wash: #07101fe8;
+  --ml-copy-clear: #07101f00;
+  --ml-copy-shadow: 0 2px 10px #030812;
+  color: #fff5df;
+  background: #07101f;
+}
+.marble-learning[data-ml-theme="dark"] .ml-modes {
+  background: #101c33;
+  border-bottom-color: #0b1526;
+}
+.marble-learning *, .marble-learning *::before, .marble-learning *::after { box-sizing: border-box; }
+.marble-learning [hidden] { display: none !important; }
+.marble-learning :focus-visible { outline: 4px solid var(--ml-focus); outline-offset: 5px; }
+
+.marble-learning .ml-stage {
+  position: relative;
+  isolation: isolate;
+  min-height: min(84vh, 760px);
+  display: flex;
+  flex-direction: column;
+}
+@media (orientation: landscape) and (max-height: 820px) {
+  .marble-learning .ml-stage { min-height: 600px; }
+}
+
+/* --- Single instruction slot (replaced, never appended) ---------------------- */
+
+/* Mode tabs form the TOP navigation band (white surface, hard bottom rule);
+   the instruction sits naked on the paper directly above the play area — no
+   background, no rule, slightly smaller type — so the stage stays the loudest
+   thing on screen. Both are in flow, so nothing can cover the stage. */
+.marble-learning .ml-explanation {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px clamp(16px, 3vw, 30px) 2px;
+  pointer-events: none;
+}
+.marble-learning .ml-explanation .ml-instruction { flex: 1 1 auto; }
+/* The explanation is an overlay (pointer-events: none) so the scene stays
+   interactive — but its interactive children must stay reachable: vocab
+   triggers and the read-aloud button re-enable pointer events explicitly. */
+.marble-learning .ml-explanation .vocab,
+.marble-learning .ml-explanation .ml-speak-instruction { pointer-events: auto; }
+.marble-learning .ml-control.ml-speak-instruction {
+  width: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 8px;
+  border-radius: 16px;
+}
+.marble-learning .ml-control.ml-speak-instruction svg { width: 19px; height: 19px; }
+.marble-learning .ml-instruction {
+  margin: 0;
+  font-size: clamp(19px, 1.9vw, 25px);
+  font-weight: 550;
+  letter-spacing: -.4px;
+  line-height: 1.22;
+  text-wrap: pretty;
+}
+/* Follow-along reading: the word the voice is on gets a highlight chip;
+   finished words dim until the utterance ends. Inline spans only — no
+   layout shift, and the yellow chip carries dark ink in both themes. */
+.marble-learning .ml-read-word.is-now {
+  background: var(--ml-selected);
+  color: var(--ml-ink);
+  border-radius: 6px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.marble-learning .ml-read-word.is-done { opacity: .45; }
+.marble-learning .ml-instruction .vocab,
+.marble-learning .ml-cover-question .vocab {
+  text-decoration: underline dashed;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  text-decoration-color: currentColor;
+  cursor: help;
+}
+
+/* --- Marble controls ---------------------------------------------------------- */
+
+.marble-learning .ml-control {
+  --ml-control-depth: var(--ml-outline);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 44px;
+  min-height: 50px;
+  padding: 10px 18px;
+  border: 2px solid var(--ml-outline);
+  border-radius: 22px;
+  background: var(--ml-surface);
+  color: var(--ml-ink);
+  box-shadow: 0 4px 0 var(--ml-control-depth);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: translate 120ms, box-shadow 120ms, background-color 120ms;
+  font: 500 18px "Baloo 2", sans-serif;
+  text-decoration: none;
+}
+.marble-learning .ml-control:hover:not(:disabled) { background: #fff6d4; translate: 0 -2px; }
+.marble-learning .ml-control--primary {
+  --ml-control-depth: var(--ml-red-depth);
+  background: var(--ml-red);
+  border-color: var(--ml-red-depth);
+  color: #fff;
+}
+.marble-learning .ml-control--primary:hover:not(:disabled) { background: #d61922; }
+.marble-learning .ml-control:active:not(:disabled) { translate: 0 3px; box-shadow: 0 1px 0 var(--ml-control-depth); }
+.marble-learning .ml-control[aria-pressed="true"],
+.marble-learning .ml-control[aria-pressed="true"]:hover:not(:disabled) {
+  --ml-control-depth: var(--ml-outline);
+  background: var(--ml-selected);
+  color: var(--ml-ink);
+  border-color: var(--ml-outline);
+  box-shadow: 0 4px 0 var(--ml-control-depth), inset 0 0 0 3px #fff;
+}
+.marble-learning .ml-control[aria-pressed="true"]:active:not(:disabled) {
+  box-shadow: 0 1px 0 var(--ml-control-depth), inset 0 0 0 3px #fff;
+}
+.marble-learning .ml-control.is-correct {
+  --ml-control-depth: var(--ml-success);
+  background: #d8f5cd;
+  border-color: var(--ml-success);
+  color: #143a08;
+}
+.marble-learning .ml-control.is-wrong {
+  --ml-control-depth: var(--ml-red-depth);
+  background: #fde3e0;
+  border-color: var(--ml-red);
+  color: #5d0d14;
+}
+.marble-learning .ml-control:disabled { opacity: .45; cursor: default; translate: none; }
+.marble-learning .ml-control--icon-only { width: 50px; padding: 10px; }
+.marble-learning .ml-control svg {
+  width: 23px;
+  height: 23px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.marble-learning .ml-button-label {
+  display: block;
+  margin: 0;
+  color: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.15;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.marble-learning .ml-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Cover ---------------------------------------------------------------------- */
+
+.marble-learning .ml-cover {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: 14px;
+  padding: 64px clamp(24px, 5vw, 72px) 56px;
+}
+.marble-learning .ml-cover-art {
+  position: relative;
+  height: 100%;
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+}
+.marble-learning .ml-cover-blobs { position: absolute; inset: 0; z-index: -1; }
+/* Painted cover keeps its natural landscape ratio — never stretched. */
+.marble-learning .ml-cover-art--painted {
+  background: #fdf6e3;
+  border: 3px solid var(--ml-outline);
+  border-radius: 18px 18px 10px 10px;
+  padding: 8px;
+  box-shadow: 0 6px 0 var(--ml-outline);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.marble-learning .ml-cover-art--painted canvas {
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 520 / 640;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+.marble-learning .ml-cover-emoji {
+  font-size: clamp(96px, 14.5vw, 176px);
+  line-height: 1.05;
+  text-align: center;
+  filter: drop-shadow(0 8px 0 rgba(20, 20, 20, 0.14));
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+.marble-learning .ml-cover-emoji .ml-cover-emoji-2 {
+  display: block;
+  font-size: 0.52em;
+  margin-top: -0.18em;
+  letter-spacing: 0.14em;
+}
+.marble-learning .ml-cover-copy { display: grid; gap: 26px; justify-items: start; }
+.marble-learning .ml-cover .ml-control--primary { min-height: 56px; padding: 12px 26px; font-size: 20px; }
+.marble-learning .ml-cover-question {
+  margin: 0;
+  font-size: clamp(37px, 4.9vw, 66px);
+  font-weight: 550;
+  line-height: 1.14;
+  letter-spacing: -0.8px;
+  text-wrap: balance;
+}
+.marble-learning .ml-cover-kicker {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ml-muted);
+  letter-spacing: 0.2px;
+}
+.marble-learning[data-ml-theme="dark"] .ml-cover-kicker { color: #c8c4b4; }
+
+/* --- Lesson body (after cover) --------------------------------------------------- */
+
+.marble-learning .ml-lesson {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.marble-learning .ml-playarea {
+  position: relative;
+  flex: 1;
+  min-height: 380px;
+  display: grid;
+  padding: clamp(12px, 2vw, 20px) clamp(14px, 3vw, 34px) clamp(14px, 2.5vw, 24px);
+}
+.marble-learning .ml-playarea > * { min-width: 0; min-height: 0; }
+/* Mode row sits in flow at the very top of the stage — one chrome row above
+   the instruction bar. No absolute positioning: nothing can overlap. */
+.marble-learning .ml-modes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px clamp(14px, 3vw, 30px) 8px;
+  background: var(--ml-surface);
+  border-bottom: 3px solid var(--ml-outline);
+}
+.marble-learning .ml-mode-tools { display: inline-flex; gap: 8px; align-items: center; }
+.marble-learning .ml-mode-tab {
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 18px;
+  font-size: 15.5px;
+  position: relative;
+}
+.marble-learning .ml-mode-tab.is-visited::after {
+  content: "✓";
+  position: absolute;
+  top: -7px;
+  right: -5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ml-success);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ml-surface);
+}
+/* Learning journey: the inquiry phases fill in as the child plays. */
+.marble-learning .ml-journey {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 10px;
+  border: 2px solid var(--ml-outline);
+  border-radius: 14px;
+  background: var(--ml-surface);
+  box-shadow: 0 2px 0 var(--ml-outline);
+  margin-right: 4px;
+  align-self: center;
+}
+.marble-learning .ml-journey-dot {
+  font-size: 15px;
+  line-height: 1;
+  opacity: 0.32;
+  filter: grayscale(0.9);
+  transition: opacity 300ms, filter 300ms, transform 300ms;
+}
+.marble-learning .ml-journey-dot.is-visited {
+  opacity: 1;
+  filter: none;
+  transform: scale(1.12);
+}
+.marble-learning[data-ml-theme="dark"] .ml-journey { background: #16233a; border-color: #0b1526; box-shadow: 0 2px 0 #0b1526; }
+.marble-learning[data-ml-theme="dark"] .ml-mode-tab { background: #16233a; color: #fff5df; border-color: #0b1526; --ml-control-depth: #0b1526; }
+/* Contrast contract: components that paint a LIGHT surface must force dark ink,
+   regardless of the stage theme. Grouped here so new components join the list. */
+.marble-learning[data-ml-theme="dark"] .lab-dial,
+.marble-learning[data-ml-theme="dark"] .lab-readout,
+.marble-learning[data-ml-theme="dark"] .lab-why,
+.marble-learning[data-ml-theme="dark"] .ml-chipstat,
+.marble-learning[data-ml-theme="dark"] .quest-meter,
+.marble-learning[data-ml-theme="dark"] .quest-reflect,
+.marble-learning[data-ml-theme="dark"] .doctor-sentence,
+.marble-learning[data-ml-theme="dark"] .sorter-item,
+.marble-learning[data-ml-theme="dark"] .sorter-bin,
+.marble-learning[data-ml-theme="dark"] .seq-card,
+.marble-learning[data-ml-theme="dark"] .seq-slot,
+.marble-learning[data-ml-theme="dark"] .fc-face,
+.marble-learning[data-ml-theme="dark"] .wb-slot,
+.marble-learning[data-ml-theme="dark"] .wb-tile,
+.marble-learning[data-ml-theme="dark"] .arcade-bubble,
+.marble-learning[data-ml-theme="dark"] .mission-choices .ml-control,
+.marble-learning[data-ml-theme="dark"] .quest-choices .ml-control,
+.marble-learning[data-ml-theme="dark"] .ml-control:not(.ml-mode-tab):not(.ml-replay):not(.ml-mute):not(.ml-control--primary),
+.marble-learning[data-ml-theme="dark"] .ml-vocab-pop,
+.marble-learning[data-ml-theme="dark"] .ml-speak-instruction {
+  color: var(--ml-ink);
+}
+.marble-learning[data-ml-theme="dark"] .mission-choices .ml-control .ml-button-label,
+.marble-learning[data-ml-theme="dark"] .quest-choices .ml-control .ml-button-label { color: var(--ml-ink); }
+.marble-learning[data-ml-theme="dark"] .ml-speak-instruction svg { stroke: var(--ml-ink); }
+.marble-learning .ml-replay {
+  /* lives inside the modes row, in flow */
+}
+.marble-learning[data-ml-theme="dark"] .ml-replay { background: #16233a; color: #fff5df; border-color: #0b1526; --ml-control-depth: #0b1526; }
+.marble-learning .ml-mode-tab[aria-pressed="true"] { background: var(--ml-selected); }
+.marble-learning[data-ml-theme="dark"] .ml-mode-tab[aria-pressed="true"] { color: #141414; }
+
+/* --- Case tabs (one challenge at a time) ------------------------------------------- */
+
+.marble-learning .ml-case-tabs {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  align-content: start;
+}
+.marble-learning .ml-case-tab {
+  min-height: 44px;
+  border-radius: 18px;
+  font-size: 15.5px;
+  padding: 8px 14px;
+}
+.marble-learning .ml-case-tab.is-solved { background: #d8f5cd; border-color: var(--ml-success); --ml-control-depth: var(--ml-success); color: #143a08; }
+
+/* --- Concept lab --------------------------------------------------------------------- */
+
+.marble-learning .lab-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+  gap: 18px;
+  min-height: 0;
+}
+.marble-learning .lab-scene-box {
+  position: relative;
+  border: 2px solid var(--ml-outline);
+  border-radius: 18px;
+  background: #fff;
+  overflow: hidden;
+  min-height: 240px;
+  box-shadow: 0 4px 0 var(--ml-outline);
+}
+.marble-learning .lab-scene-box canvas { display: block; }
+.marble-learning .lab-scene-box .konvajs-content { border-radius: 10px; }
+.marble-learning .lab-burst {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 72px; height: 72px;
+  pointer-events: none;
+}
+.marble-learning .lab-burst:empty { display: none; }
+.marble-learning .lab-readout {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 12px;
+  border: 2px solid var(--ml-outline);
+  border-radius: 16px;
+  background: var(--ml-surface);
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 3px 0 var(--ml-outline);
+  max-width: calc(100% - 24px);
+}
+.marble-learning .lab-panel { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.marble-learning .lab-dials { display: grid; gap: 10px; }
+/* Wide digit-chart scenes (7 place-value steppers) pair up to stay compact. */
+.marble-learning .lab-dials--many { grid-template-columns: 1fr 1fr; gap: 8px; }
+.marble-learning .lab-dials--many .lab-dial { padding: 5px 8px; }
+.marble-learning .lab-dial {
+  border: 2px solid var(--ml-outline);
+  border-radius: 14px;
+  background: var(--ml-surface);
+  padding: 8px 10px;
+  box-shadow: 0 3px 0 var(--ml-outline);
+}
+.marble-learning .lab-dial-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.marble-learning .lab-dial-label { font-size: 15.5px; font-weight: 600; }
+.marble-learning .lab-dial-value { font-size: 15.5px; font-weight: 600; color: var(--ml-muted); white-space: nowrap; }
+.marble-learning .lab-dial input[type="range"] {
+  width: 100%;
+  margin: 8px 0 2px;
+  accent-color: var(--ml-red);
+  min-height: 44px;
+  touch-action: manipulation;
+}
+.marble-learning .lab-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.marble-learning .lab-why {
+  border-left: 3px solid var(--ml-attention);
+  padding: 4px 10px;
+  font-size: 15.5px;
+  line-height: 1.3;
+}
+
+/* --- Mission (independent check) ------------------------------------------------------- */
+
+.marble-learning .mission-wrap { display: flex; flex-direction: column; gap: 14px; max-width: 780px; width: 100%; margin: 0 auto; justify-self: center; justify-content: safe center; min-height: 0; }
+.marble-learning .mission-progress { display: flex; gap: 6px; justify-content: center; }
+.marble-learning .mission-pip {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2.5px solid var(--ml-outline);
+  background: var(--ml-surface);
+}
+.marble-learning .mission-pip.is-open { background: var(--ml-selected); }
+.marble-learning .mission-pip.is-first-try { background: var(--ml-success); border-color: var(--ml-success); }
+.marble-learning .mission-pip.is-retried { background: var(--ml-attention); border-color: var(--ml-attention); }
+.marble-learning .mission-question {
+  font-size: clamp(21px, 2.1vw, 27px);
+  font-weight: 550;
+  line-height: 1.25;
+  text-align: center;
+  padding: 4px 10px;
+}
+.marble-learning .mission-choices { display: grid; gap: 10px; }
+.marble-learning .mission-choices .ml-control { justify-content: flex-start; text-align: left; white-space: normal; font-size: 17px; }
+.marble-learning .mission-choices .ml-control .ml-button-label { white-space: normal; }
+.marble-learning .mission-end { text-align: center; display: grid; gap: 14px; justify-items: center; align-content: center; }
+.marble-learning .mission-end-score { font-size: clamp(30px, 4vw, 44px); font-weight: 550; }
+.marble-learning .mission-end-note { font-size: 18px; line-height: 1.35; max-width: 46ch; }
+
+/* --- Flashcards ------------------------------------------------------------------------- */
+
+.marble-learning .fc-wrap { display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+.marble-learning .fc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  overflow-y: auto;
+  align-content: start;
+  padding: 4px 2px;
+  min-height: 0;
+}
+.marble-learning .fc-card {
+  position: relative;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  min-height: 44px;
+  perspective: 1000px;
+  touch-action: manipulation;
+}
+.marble-learning .fc-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2.4;
+  transition: transform 380ms;
+  transform-style: preserve-3d;
+}
+.marble-learning .fc-card[aria-pressed="true"] .fc-inner { transform: rotateY(180deg); }
+.marble-learning .fc-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  border: 2px solid var(--ml-outline);
+  border-radius: 16px;
+  background: var(--ml-surface);
+  box-shadow: 0 4px 0 var(--ml-outline);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  text-align: center;
+}
+.marble-learning .fc-face--front { font-size: 17px; font-weight: 600; position: relative; }
+.marble-learning .fc-face--front .fc-emoji { font-size: 38px; }
+.marble-learning .fc-flip-hint { position: absolute; right: 8px; bottom: 6px; font-size: 15px; opacity: .55; }
+.marble-learning .fc-face--back {
+  transform: rotateY(180deg);
+  font-size: 14.5px;
+  line-height: 1.28;
+  background: #fff8e4;
+  overflow: hidden;
+}
+.marble-learning .fc-face--back .fc-try { font-size: 13px; color: var(--ml-muted); margin-top: 4px; }
+.marble-learning .fc-recall { display: grid; gap: 10px; max-width: 640px; margin: 0 auto; width: 100%; }
+
+/* --- Flashcards v2: word gallery ---------------------------------------- */
+
+.marble-learning .fc2-wrap { display: flex; flex-direction: column; gap: 12px; min-height: 0; align-items: center; }
+.marble-learning .fc2-top { width: 100%; display: flex; justify-content: center; }
+.marble-learning .fc2-progress { min-height: 40px; }
+.marble-learning .fc2-stage { flex: 1; display: grid; place-items: center; width: 100%; min-height: 0; }
+.marble-learning .fc2-card {
+  width: min(76vw, 430px);
+  height: min(42vh, 280px);
+  cursor: pointer;
+}
+.marble-learning .fc2-inner { width: 100%; height: 100%; aspect-ratio: auto; }
+.marble-learning .fc2-front { gap: 12px; }
+.marble-learning .fc2-emoji { font-size: clamp(48px, 9vw, 76px); line-height: 1; }
+.marble-learning .fc2-name {
+  font-size: clamp(20px, 2.4vw, 27px);
+  font-weight: 550;
+  letter-spacing: -0.3px;
+  line-height: 1.15;
+  text-wrap: balance;
+  padding: 0 14px;
+}
+.marble-learning .fc2-hint {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ml-muted);
+  border: 2px dashed var(--ml-outline);
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin-top: 2px;
+}
+.marble-learning .fc2-back { gap: 10px; background: #fff8e4; padding: 18px 20px; }
+.marble-learning .fc2-back-emoji { font-size: 34px; line-height: 1; }
+.marble-learning .fc2-meaning {
+  font-size: clamp(17px, 1.9vw, 21px);
+  font-weight: 550;
+  line-height: 1.3;
+  text-wrap: pretty;
+  max-width: 40ch;
+}
+.marble-learning .fc2-try { font-size: 14.5px; color: var(--ml-muted); font-weight: 600; }
+.marble-learning .fc2-controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.marble-learning[data-band="early"] .fc2-card { width: min(84vw, 400px); height: min(46vh, 300px); }
+.marble-learning[data-band="early"] .fc2-name { font-size: clamp(22px, 2.8vw, 30px); }
+
+/* --- Storybook: read-along picture books ---------------------------------- */
+
+.marble-learning .sb-wrap { display: flex; flex-direction: column; gap: 12px; min-height: 0; align-items: center; }
+.marble-learning .sb-top { width: 100%; display: flex; justify-content: center; gap: 8px; align-items: center; }
+.marble-learning .sb-title { max-width: 70%; }
+.marble-learning .sb-page {
+  position: relative;
+  width: min(100%, 560px);
+  border: 3px solid var(--ml-outline);
+  border-radius: 16px 16px 8px 8px;
+  overflow: hidden;
+  background: #fdf6e3;
+  padding: 8px 8px 7px;
+  box-shadow: 0 5px 0 var(--ml-outline), inset 0 0 0 2px rgba(36, 39, 34, 0.12);
+}
+.marble-learning .sb-page canvas { display: block; width: 100%; border-radius: 10px; }
+.marble-learning .sb-actors { position: absolute; inset: 8px 8px 7px; border-radius: 10px; overflow: hidden; }
+.marble-learning .sb-actors .konvajs-content { cursor: grab; }
+.marble-learning .sb-dots {
+  position: absolute;
+  left: 0; right: 0; bottom: 8px;
+  display: flex; gap: 5px; justify-content: center;
+}
+.marble-learning .sb-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #ffffff90;
+  border: 1.5px solid #24272255;
+}
+.marble-learning .sb-dot.is-now { background: #f42324; border-color: #242722; transform: scale(1.25); }
+.marble-learning .sb-text {
+  font-size: clamp(20px, 2.1vw, 26px);
+  font-weight: 550;
+  line-height: 1.3;
+  text-align: center;
+  max-width: 52ch;
+  text-wrap: pretty;
+}
+.marble-learning .sb-stop { width: min(100%, 560px); display: grid; gap: 10px; justify-items: center; }
+.marble-learning .sb-owl { font-size: 30px; line-height: 1; }
+.marble-learning .sb-mentor {
+  background: #fff8e4;
+  border: 2px solid var(--ml-outline);
+  border-radius: 14px;
+  box-shadow: 0 3px 0 var(--ml-outline);
+  padding: 10px 14px;
+  font-size: 16.5px;
+  line-height: 1.35;
+  max-width: 52ch;
+}
+.marble-learning .sb-mentor.sb-why { background: #d8f5cd; }
+.marble-learning .sb-question { font-size: 19px; font-weight: 600; text-align: center; }
+.marble-learning .sb-choices { display: grid; gap: 8px; width: 100%; max-width: 480px; }
+.marble-learning .sb-choices .ml-control { justify-content: flex-start; text-align: left; white-space: normal; font-size: 16.5px; }
+.marble-learning[data-ml-theme="dark"] .sb-page { background: #101c33; border-color: #0b1526; box-shadow: 0 5px 0 #0b1526; }
+.marble-learning[data-ml-theme="dark"] .sb-dot { border-color: #ffffff44; }
+
+/* --- Sorter ------------------------------------------------------------------------------ */
+
+.marble-learning .sorter-wrap { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: 16px; min-height: 0; }
+.marble-learning .sorter-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-content: flex-start;
+  border: 2px dashed var(--ml-outline);
+  border-radius: 16px;
+  padding: 10px;
+  background: #ffffff70;
+  overflow-y: auto;
+  min-height: 120px;
+}
+.marble-learning[data-ml-theme="dark"] .sorter-tray { background: #ffffff10; }
+.marble-learning .sorter-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 2px solid var(--ml-outline);
+  border-radius: 16px;
+  background: var(--ml-surface);
+  font: 500 15.5px "Baloo 2", sans-serif;
+  cursor: grab;
+  box-shadow: 0 3px 0 var(--ml-outline);
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.marble-learning .sorter-item.is-dragging { opacity: .55; }
+.marble-learning .sorter-item.is-done { opacity: 0; pointer-events: none; position: absolute; }
+.marble-learning .sorter-item.is-misplaced { background: #fde3e0; border-color: var(--ml-red); animation: mlShake .3s; }
+@keyframes mlShake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+.marble-learning .sorter-bins { display: grid; gap: 10px; align-content: start; }
+.marble-learning .sorter-bin {
+  border: 2px solid var(--ml-outline);
+  border-radius: 14px;
+  padding: 8px 10px;
+  background: var(--ml-surface);
+  box-shadow: 0 3px 0 var(--ml-outline);
+  min-height: 92px;
+  transition: background-color 120ms;
+}
+.marble-learning .sorter-bin.is-target { background: #fff6d4; }
+.marble-learning .sorter-bin-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; }
+.marble-learning .sorter-bin-count {
+  flex: none;
+  min-width: 30px;
+  text-align: center;
+  border: 2px solid var(--ml-outline);
+  border-radius: 10px;
+  background: var(--ml-paper);
+  font-size: 14px;
+  padding: 2px 6px;
+}
+.marble-learning .sorter-bin-drop { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; min-height: 34px; }
+.marble-learning .sorter-bin-drop .sorter-item { min-height: 34px; padding: 2px 10px; font-size: 14px; box-shadow: 0 2px 0 var(--ml-outline); cursor: default; }
+.marble-learning .sorter-item.is-wrong-spot { background: #fde3e0; border-color: var(--ml-red); animation: mlShake .3s; }
+
+/* --- Sequence ------------------------------------------------------------------------------ */
+
+.marble-learning .seq-wrap { display: flex; flex-direction: column; gap: 14px; min-height: 0; justify-content: space-between; }
+.marble-learning .seq-slots { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.marble-learning .seq-slot {
+  flex: 1 1 120px;
+  max-width: 190px;
+  min-height: 118px;
+  border: 2.5px dashed var(--ml-outline);
+  border-radius: 14px;
+  background: #ffffff66;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px;
+  text-align: center;
+  font-size: 14.5px;
+  position: relative;
+  transition: background-color 120ms;
+}
+.marble-learning[data-ml-theme="dark"] .seq-slot { background: #ffffff10; }
+.marble-learning .seq-slot.is-target { background: #fff6d4; }
+.marble-learning .seq-slot-num {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2.5px solid var(--ml-outline);
+  background: var(--ml-surface);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 0 var(--ml-outline);
+}
+.marble-learning .seq-slot .seq-card { all: unset; display: grid; gap: 2px; justify-items: center; cursor: grab; }
+.marble-learning .seq-slot .seq-card .seq-emoji { font-size: 28px; }
+.marble-learning .seq-slot .seq-card .seq-card-label { font-weight: 600; line-height: 1.15; }
+.marble-learning .seq-tray { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 70px; align-content: flex-start; }
+.marble-learning .seq-card {
+  display: inline-grid;
+  gap: 2px;
+  justify-items: center;
+  min-height: 74px;
+  width: 108px;
+  padding: 8px 6px;
+  border: 2px solid var(--ml-outline);
+  border-radius: 14px;
+  background: var(--ml-surface);
+  box-shadow: 0 3px 0 var(--ml-outline);
+  cursor: grab;
+  font: 500 14px "Baloo 2", sans-serif;
+  text-align: center;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.marble-learning .seq-card .seq-emoji { font-size: 26px; }
+.marble-learning .seq-card.is-dragging { opacity: .55; }
+.marble-learning .seq-slot.is-solved-good { border-style: solid; border-color: var(--ml-success); background: #d8f5cd; }
+.marble-learning .seq-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+
+/* --- Arcade ------------------------------------------------------------------------------- */
+
+.marble-learning .arcade-wrap { display: flex; flex-direction: column; gap: 12px; min-height: 0; align-items: center; }
+.marble-learning .arcade-hud { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.marble-learning .ml-chipstat {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid var(--ml-outline);
+  border-radius: 14px;
+  background: var(--ml-surface);
+  color: var(--ml-ink);
+  box-shadow: 0 3px 0 var(--ml-outline);
+  padding: 4px 12px;
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 44px;
+}
+.marble-learning .arcade-board {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 240px;
+  border: 2px solid var(--ml-outline);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #e8f6ff 0%, #ffffff 100%);
+  overflow: hidden;
+  box-shadow: 0 4px 0 var(--ml-outline);
+}
+.marble-learning[data-ml-theme="dark"] .arcade-board { background: linear-gradient(180deg, #10203c 0%, #0a1428 100%); }
+.marble-learning .arcade-bubble {
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  margin: -44px;
+  border-radius: 50%;
+  border: 2.5px solid var(--ml-outline);
+  background: var(--ml-surface);
+  display: grid;
+  place-items: center;
+  font: 600 17px "Baloo 2", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 3px 0 var(--ml-outline);
+  touch-action: manipulation;
+  animation: mlFloat 3.4s ease-in-out infinite alternate;
+}
+.marble-learning .arcade-bubble .ab-emoji { font-size: 24px; line-height: 1; }
+.marble-learning .arcade-bubble .ab-word {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.05;
+  margin-top: 2px;
+  padding: 0 4px;
+  word-break: break-word;
+}
+@keyframes mlFloat { from { transform: translateY(-7px); } to { transform: translateY(7px); } }
+.marble-learning .arcade-bubble.is-popped { animation: mlPop .28s forwards; pointer-events: none; }
+@keyframes mlPop {
+  40% { transform: scale(1.28); }
+  100% { transform: scale(0); opacity: 0; }
+}
+.marble-learning .arcade-start { text-align: center; display: grid; gap: 12px; justify-items: center; align-content: center; flex: 1; }
+.marble-learning .arcade-question { font-size: clamp(20px, 2vw, 26px); font-weight: 550; text-align: center; padding: 0 8px; }
+
+/* --- Doctor (sentence clinic) ---------------------------------------------------------------- */
+
+.marble-learning .doctor-wrap { display: flex; flex-direction: column; gap: 14px; max-width: 760px; width: 100%; margin: 0 auto; }
+.marble-learning .doctor-sentence {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  align-content: center;
+  border: 2px solid var(--ml-outline);
+  border-radius: 16px;
+  background: var(--ml-surface);
+  box-shadow: 0 4px 0 var(--ml-outline);
+  padding: 16px 14px;
+  font-size: clamp(20px, 2.2vw, 27px);
+  line-height: 1.5;
+  min-height: 110px;
+  justify-content: center;
+}
+.marble-learning .doctor-token {
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 2px 6px;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  font-family: inherit;
+  min-height: 44px;
+  touch-action: manipulation;
+  transition: background-color 120ms;
+}
+.marble-learning .doctor-token:hover { background: #fff6d4; }
+/* Injured tokens deliberately look normal — spotting the error IS the task. */
+.marble-learning .doctor-token.is-injured { background: transparent; }
+.marble-learning .doctor-token.hint-pulse { animation: hintPulse 1.3s ease-in-out 2; }
+@keyframes hintPulse {
+  0%, 100% { background: transparent; }
+  50% { background: #ffe1ec; box-shadow: 0 0 0 3px #ff658455; }
+}
+.marble-learning .doctor-token.is-healed { background: #d8f5cd; border-color: var(--ml-success); position: relative; }
+.marble-learning .doctor-token.is-healed::after { content: "🩹"; position: absolute; top: -12px; right: -8px; font-size: 15px; }
+.marble-learning .doctor-token.is-healthy { cursor: default; }
+.marble-learning .doctor-token.is-healthy:hover { background: transparent; }
+.marble-learning .doctor-foot { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+
+/* --- Decision quest ----------------------------------------------------------------------------- */
+
+.marble-learning .quest-wrap { display: flex; flex-direction: column; gap: 14px; max-width: 720px; width: 100%; margin: 0 auto; justify-content: safe center; min-height: 0; }
+.marble-learning .quest-meters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.marble-learning .quest-meter {
+  border: 2px solid var(--ml-outline);
+  border-radius: 12px;
+  background: var(--ml-surface);
+  box-shadow: 0 3px 0 var(--ml-outline);
+  padding: 8px 10px;
+}
+.marble-learning .quest-meter-label { font-size: 14.5px; font-weight: 600; display: flex; justify-content: space-between; }
+.marble-learning .quest-meter-bar { height: 14px; border: 2px solid var(--ml-outline); border-radius: 8px; background: #fff; margin-top: 5px; overflow: hidden; }
+.marble-learning .quest-meter-fill { height: 100%; background: var(--ml-success); border-radius: 5px; transition: width 420ms; }
+.marble-learning .quest-meter-fill.is-low { background: var(--ml-attention); }
+.marble-learning .quest-scene { font-size: clamp(20px, 2vw, 26px); font-weight: 550; line-height: 1.3; text-align: center; padding: 4px 10px; }
+.marble-learning .quest-choices { display: grid; gap: 10px; }
+.marble-learning .quest-choices .ml-control { justify-content: flex-start; text-align: left; white-space: normal; }
+.marble-learning .quest-choices .ml-control .ml-button-label { white-space: normal; }
+.marble-learning .quest-reflect {
+  border: 2px solid var(--ml-outline);
+  border-radius: 14px;
+  background: #fff8e4;
+  box-shadow: 0 3px 0 var(--ml-outline);
+  padding: 10px 14px;
+  font-size: 16px;
+  line-height: 1.35;
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+}
+.marble-learning .quest-reflect .ml-control { justify-self: start; }
+
+/* --- Worksheet (print) ------------------------------------------------------------------------------ */
+
+.marble-learning .ws-wrap { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 16px; align-items: start; }
+.marble-learning .ws-controls { display: grid; gap: 10px; align-content: start; }
+.marble-learning .ws-paper {
+  background: #fff;
+  border: 2px solid var(--ml-outline);
+  border-radius: 6px;
+  box-shadow: 0 4px 0 var(--ml-outline);
+  padding: 18px 20px;
+  min-height: 320px;
+  color: #000;
+  font-size: 15px;
+  overflow: hidden;
+}
+.marble-learning .ws-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+.marble-learning .ws-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+/* English handwriting guide: light top line, dashed midline, solid baseline.
+   (No Tian Zi Ge crosshairs — those are for Chinese character practice.) */
+.marble-learning .ws-cell {
+  aspect-ratio: 1.3;
+  border: 0;
+  border-bottom: 2.5px solid #111;
+  position: relative;
+  display: grid;
+  place-items: end center;
+  font-size: 30px;
+  padding-bottom: 2px;
+  break-inside: avoid;
+}
+.marble-learning .ws-cell::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 30%;
+  border-top: 1.5px dashed #b9c4d6;
+}
+.marble-learning .ws-cell::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 4%;
+  border-top: 1.5px solid #dbe3ee;
+}
+.marble-learning .ws-cell--trace { color: #c9c9c9; }
+.marble-learning .ws-math { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; font-family: "Courier New", monospace; font-size: 16px; }
+.marble-learning .ws-math div { border-bottom: 2px solid #000; padding-bottom: 2px; text-align: right; white-space: pre; }
+/* Dedicated print sheet: worksheet engines render a #print-sheet outside the
+   app shell. When present, printing outputs ONLY that sheet — the screen
+   preview and the printed page can never drift apart. */
+#print-sheet { display: none; color: #000; background: #fff; }
+#print-sheet .ws-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+#print-sheet .ws-math { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; font-family: "Courier New", monospace; font-size: 16px; }
+#print-sheet .ws-math div { border-bottom: 2px solid #000; padding-bottom: 2px; text-align: right; white-space: pre; }
+@media print {
+  body { padding: 0; background: #fff !important; }
+  body.has-print-sheet .pyp-chrome { display: none !important; }
+  body.has-print-sheet #print-sheet { display: block !important; }
+  .nav-bar, .hero-card, .uoi-card, .learn-card, .adult-panel, .grownups, .site-footer,
+  .marble-learning .ml-header, .marble-learning .ml-explanation, .marble-learning .ml-modes,
+  .marble-learning .ml-replay, .marble-learning .ml-case-tabs, .ws-controls, .no-print { display: none !important; }
+  .marble-learning {
+    border: 0; box-shadow: none; border-radius: 0; background: #fff !important; color: #000 !important;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .marble-learning .ml-stage { min-height: 0; }
+  .marble-learning .ml-lesson { display: block; }
+  .marble-learning .ml-playarea { padding: 0 !important; min-height: 0; display: block; }
+  .marble-learning .ws-wrap { display: block; }
+  .marble-learning .ws-paper { border: 0; box-shadow: none; padding: 0; min-height: 0; }
+  .marble-learning .ws-grid, .marble-learning .ws-math { break-inside: avoid; page-break-inside: avoid; }
+}
+@page { size: A4 portrait; margin: 8mm 10mm; }
+
+/* --- Memory (pairs) ------------------------------------------------------------------------ */
+
+.marble-learning .memory-wrap { display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+.marble-learning .memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-content: center;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 4px 2px;
+}
+.marble-learning .memory-card .memory-front { transform: rotateY(180deg); background: #fff8e4; gap: 4px; }
+.marble-learning .memory-card .fc-face { padding: 8px; }
+.marble-learning .memory-card .memory-back-mark::before { content: "❓"; font-size: 34px; opacity: .5; }
+.marble-learning .memory-emoji { font-size: 30px; line-height: 1; }
+.marble-learning .memory-label { font-size: 15.5px; font-weight: 600; line-height: 1.15; }
+.marble-learning .memory-card.is-matched .fc-face { background: #d8f5cd; border-color: var(--ml-success); }
+.marble-learning .memory-card.is-matched { pointer-events: none; }
+
+/* --- Word builder --------------------------------------------------------------------------- */
+
+.marble-learning .wb-wrap { display: flex; flex-direction: column; gap: 14px; max-width: 720px; width: 100%; margin: 0 auto; justify-content: safe center; min-height: 0; }
+.marble-learning .wb-prompt { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.marble-learning .wb-emoji { font-size: 56px; line-height: 1; }
+.marble-learning .wb-slots { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.marble-learning .wb-slot {
+  width: 52px;
+  height: 60px;
+  border: 2.5px dashed var(--ml-outline);
+  border-radius: 12px;
+  background: #ffffff66;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+.marble-learning .wb-slot.is-filled { border-style: solid; background: var(--ml-surface); box-shadow: 0 3px 0 var(--ml-outline); }
+.marble-learning .wb-tray { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.marble-learning .wb-tile {
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--ml-outline);
+  border-radius: 14px;
+  background: var(--ml-surface);
+  box-shadow: 0 4px 0 var(--ml-outline);
+  font: 600 26px "Baloo 2", sans-serif;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: translate 120ms, box-shadow 120ms, background-color 120ms;
+}
+.marble-learning .wb-tile:hover:not(:disabled) { background: #fff6d4; translate: 0 -2px; }
+.marble-learning .wb-tile:active:not(:disabled) { translate: 0 3px; box-shadow: 0 1px 0 var(--ml-outline); }
+.marble-learning .wb-tile.is-used { opacity: .3; pointer-events: none; }
+.marble-learning .wb-tile.is-wrong { background: #fde3e0; border-color: var(--ml-red); }
+.marble-learning .wb-tile.is-hinted { background: var(--ml-selected); box-shadow: 0 4px 0 var(--ml-outline), 0 0 0 4px #fdae1c66; }
+
+/* --- Celebration ----------------------------------------------------------- */
+
+.marble-learning .ml-confetti {
+  position: absolute;
+  z-index: 8;
+  top: -30px;
+  pointer-events: none;
+  animation: confettiFall 1.6s ease-in forwards;
+}
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(78vh) rotate(320deg); opacity: 0; }
+}
+@media (max-width: 800px) {
+}
+
+/* --- Band-differentiated stage (early years get bigger, calmer UI) ---------------------------- */
+
+.marble-learning[data-band="early"] .ml-instruction { font-size: clamp(22px, 2.4vw, 29px); }
+.marble-learning[data-band="early"] .ml-mode-tab { font-size: 17px; min-height: 48px; }
+.marble-learning[data-band="early"] .ml-cover-question { font-size: clamp(40px, 5.4vw, 70px); }
+.marble-learning[data-band="early"] .mission-choices .ml-control { font-size: 19px; }
+.marble-learning[data-band="early"] .fc-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+.marble-learning[data-band="early"] .memory-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.marble-learning[data-band="early"] .ml-cover-emoji { font-size: clamp(108px, 16.5vw, 196px); }
+
+.ml-vocab-pop {
+  position: fixed;
+  z-index: 60;
+  max-width: min(340px, calc(100vw - 40px));
+  border: 2px solid #242722;
+  border-radius: 14px;
+  background: #fdfcfa;
+  color: #141414;
+  box-shadow: 0 4px 0 #242722;
+  padding: 10px 40px 10px 12px;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 15.5px;
+  line-height: 1.3;
+}
+.ml-vocab-pop .ml-vocab-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #242722;
+  background: #fff;
+  box-shadow: 0 2px 0 #242722;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+  font-family: inherit;
+  color: #141414;
+}
+.ml-vocab-pop .ml-vocab-close:hover { background: #ffe9b3; transform: translateY(-1px); }
+.ml-vocab-pop .ml-vocab-close:active { transform: translateY(2px); box-shadow: 0 0 0 #242722; }
+.ml-vocab-word { font-weight: 600; margin-right: 4px; }
+
+/* --- 3D stage ----------------------------------------------------------------------------------------------- */
+
+.marble-learning .spatial-wrap { position: relative; min-height: 320px; display: flex; flex-direction: column; }
+.marble-learning .spatial-canvas-box {
+  position: relative;
+  border: 2px solid var(--ml-outline);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0a1428;
+  box-shadow: 0 4px 0 var(--ml-outline);
+  min-height: 320px;
+  flex: 1;
+}
+.marble-learning .spatial-canvas-box canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.marble-learning .spatial-fallback { padding: 20px; text-align: center; font-size: 17px; }
+
+/* --- Responsive ---------------------------------------------------------------------------------------------- */
+
+@media (max-width: 800px) {
+  .marble-learning .ml-instruction { font-size: clamp(18px, 5vw, 22px); line-height: 1.18; letter-spacing: -.3px; }
+  .marble-learning .ml-control { font-size: 16px; padding: 10px 13px; border-radius: 18px; gap: 6px; }
+  .marble-learning .ml-button-label { font-size: 16px; }
+  .marble-learning .ml-cover { grid-template-columns: 1fr; padding: 64px 20px 30px; gap: 4px; }
+  .marble-learning .ml-cover-art { order: -1; min-height: 150px; }
+  .marble-learning .ml-cover-emoji { font-size: clamp(68px, 18vw, 104px); }
+  .marble-learning .ml-cover-question { font-size: clamp(30px, 7.8vw, 44px); }
+  .marble-learning .lab-wrap, .marble-learning .sorter-wrap, .marble-learning .ws-wrap { grid-template-columns: 1fr; }
+  .marble-learning .ml-mode-tab { min-height: 40px; font-size: 14px; padding: 6px 10px; }
+  .marble-learning .ml-playarea { padding-top: 10px; }
+}
+@media (max-height: 570px) and (min-width: 801px) {
+  .marble-learning .ml-instruction { font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marble-learning *, .marble-learning *::before, .marble-learning *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .marble-learning .fc-card[aria-pressed="true"] .fc-inner { transform: none; }
+  .marble-learning .fc-face--back { display: none; }
+  .marble-learning .fc-card[aria-pressed="true"] .fc-face--back { display: flex; }
+}
+
+/* iPad landscape fit: placed last so it wins over the base min-heights. */
+@media (orientation: landscape) and (max-height: 820px) {
+  .marble-learning .ml-playarea { min-height: 330px; }
+}

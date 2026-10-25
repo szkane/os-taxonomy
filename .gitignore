@@ -5,3 +5,9 @@ node_modules/
 .env.*
 
 .agents/skills/marble-builder/examples/dist/
+
+# ZCode session state
+.zcode/
+
+# Audit screenshots (verification artifacts, not source)
+.audit/shots*/
