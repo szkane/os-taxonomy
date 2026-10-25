@@ -8,6 +8,7 @@
 import { SUBJECTS, DOMAINS, SHARED_VOCAB, CHILD_GLOSS, CHILD_GLOSS_PATTERNS, bandOf } from './mapping.mjs';
 import { LAB_CASES } from './lab-cases.mjs';
 import { BAND_MODES } from './band-modes.mjs';
+import { resolveAgeExploreModes, specializeModeForAge } from './age-curriculum.mjs';
 
 /* Band-specific engine configs (band-modes.mjs). Missing band → undefined;
    callers fall back to the domain's shared mapping config. */
@@ -56,13 +57,15 @@ function trimCardBack(text, max) {
   const within = t.slice(0, max);
   const sentenceEnd = within.match(/^(.+[.!?])(\s|$)/);
   if (sentenceEnd) return sentenceEnd[1];
-  // Unpunctuated single-thought evidence ("…every time)"): show whole when close.
-  if (!/[.!?]/.test(t) && t.length <= max * 1.6) return t;
-  const firstEnd = t.match(/^([^.!?]*[.!?])(\s|$)/);
-  if (firstEnd && firstEnd[1].length <= max * 1.6) return firstEnd[1];
-  const clauseCut = within.match(/^(.+[—;,;])\s/);
+  if (max > 110) {
+    // For mid/upper bands, allow a complete single sentence slightly above max.
+    if (!/[.!?]/.test(t) && t.length <= max * 1.6) return t;
+    const firstEnd = t.match(/^([^.!?]*[.!?])(\s|$)/);
+    if (firstEnd && firstEnd[1].length <= max * 1.6) return firstEnd[1];
+  }
+  const clauseCut = within.match(/^(.+[—;,:])\s/);
   if (clauseCut) return clauseCut[1] + ' …';
-  return within.replace(/\s+\S*$/, '') + ' …';
+  return within.slice(0, Math.max(20, max - 2)).replace(/\s+\S*$/, '') + ' …';
 }
 
 function baseName(name) {
@@ -72,7 +75,7 @@ function baseName(name) {
 /* Some taxonomy topics carry research CITATIONS in evidence[0] ("… research",
    "research (PMC 2020)", "grades 3-5") — teacher provenance, never a child
    task. Legitimate tasks starting with "Research the role…" stay allowed. */
-const CITATION_RE = /(research\s*(\(|$|\s+(grades?|PMC|\d))|et\s+al\.?)/i;
+const CITATION_RE = /(research\s*(\(|$|\s+(grades?|PMC|\d))|et\s+al\.?|grades?\s*\d|PMC\s*\d)/i;
 function isCitation(text) {
   return typeof text === 'string' && CITATION_RE.test(text);
 }
@@ -423,13 +426,13 @@ export function buildCourses(data) {
   const topicsById = new Map();
   for (const t of topics) topicsById.set(t.id, t);
 
-  // Coverage: every primary-age (4–10) combo with topics becomes a course.
+  // Coverage: every primary-school (Ages 5–10 / K–G5) combo with topics becomes a course.
   // Combos that also exist in clusters.json keep their curated summary; the
   // rest are marked draft (auto-derived framing, labeled on page + hub).
   const comboList = [];
   for (const [key, tlist] of topicsByCluster.entries()) {
     const age = Number(key.split('|')[2]);
-    if (age <= 10) comboList.push({ key, topics: tlist, cluster: null });
+    if (age >= 5 && age <= 10) comboList.push({ key, topics: tlist, cluster: null });
   }
   for (const cluster of clusters) {
     const key = `${cluster.subject}|${cluster.domain}|${cluster.ageRangeStart}`;
@@ -437,15 +440,6 @@ export function buildCourses(data) {
     if (existing) existing.cluster = cluster;
   }
   comboList.sort((a, b) => a.key.localeCompare(b.key));
-
-  // Neighbor pool per (subject|domain): topics from adjacent-age clusters.
-  // Used as distractor material for small clusters in the mission bank.
-  const neighborsByDomain = new Map();
-  for (const t of topics) {
-    const k = `${t.subject}|${t.domain}`;
-    if (!neighborsByDomain.has(k)) neighborsByDomain.set(k, []);
-    neighborsByDomain.get(k).push(t);
-  }
 
   for (const entry of comboList) {
     const [subjectRaw, domainRaw, ageRaw] = entry.key.split('|');
@@ -497,189 +491,148 @@ export function buildCourses(data) {
 
     // ---- modes ----
     const modes = [];
-    if (map && map.scene) {
-      const sceneDef = (map.scene.sceneByBand && map.scene.sceneByBand[band]) || map.scene;
-      const spec = bandSpecFor(domain, sceneDef.id, band) || bandSpecFor(domain, map.scene.id, band);
-      modes.push({
-        engine: 'concept-lab',
-        phase: 'explore',
-        label: sceneDef.label || 'Explore the lab',
-        icon: '🔬',
-        config: {
-          scene: sceneDef.id,
-          explorePrompt: (spec && spec.explorePrompt) || sceneDef.explorePrompt || map.scene.explorePrompt,
-          cases: (spec && spec.cases) || sceneDef.cases || map.scene.cases || [],
-          initials: spec && spec.initials,
-          dialOverrides: spec && spec.dialOverrides,
-          range: sceneDef.range || (map.scene.sceneByBand && map.scene.sceneByBand[band] && map.scene.sceneByBand[band].range),
-        },
-      });
-      if (map.scene2 && (!map.scene2.bands || map.scene2.bands.includes(band))) {
-        const spec2 = bandSpecFor(domain, map.scene2.id, band);
-        modes.push({
-          engine: 'concept-lab',
-          phase: 'explore',
-          label: map.scene2.label || 'Second lab',
-          icon: '💡',
-          config: {
-            scene: map.scene2.id,
-            explorePrompt: (spec2 && spec2.explorePrompt) || map.scene2.explorePrompt,
-            cases: (spec2 && spec2.cases) || map.scene2.cases || [],
-            initials: spec2 && spec2.initials,
-            dialOverrides: spec2 && spec2.dialOverrides,
-            range: (spec2 && spec2.range) || map.scene2.range,
-          },
-        });
-      }
-    }
+    const exploreModes = resolveAgeExploreModes({
+      subject,
+      domain,
+      age,
+      band,
+      topics,
+      map,
+      bandSpecFor,
+      bandModeFor,
+      glossFor,
+    });
+    modes.push(...exploreModes);
+
+    const ctxAge = { subject, domain, age, band, topics, researchByTopic, glossFor };
+
     if (map && map.spatial3d) {
       const spatialBand = bandModeFor(subject, domain, 'spatial3d', band);
-      modes.push({
+      modes.push(specializeModeForAge({
         engine: 'spatial3d',
         phase: 'explore',
         label: '3D Earth & Sun',
         icon: '🌍',
         config: { cases: (spatialBand && spatialBand.cases) || map.spatial3d.cases },
-      });
+      }, ctxAge));
     }
     if (map && map.sorter) {
       const sorterConfig = bandModeFor(subject, domain, 'sorter', band) || map.sorter;
-      modes.push({ engine: 'sorter', phase: 'understand', label: 'Sort it out', icon: '🧺', config: sorterConfig });
+      modes.push(specializeModeForAge({ engine: 'sorter', phase: 'understand', label: 'Sort it out', icon: '🧺', config: sorterConfig }, ctxAge));
     }
     if (map && (map.sequence || map.sequenceByBand)) {
       const seqConfig = bandModeFor(subject, domain, 'sequence', band)
         || (map.sequenceByBand && map.sequenceByBand[band])
         || map.sequence;
       if (seqConfig) {
-        modes.push({
+        modes.push(specializeModeForAge({
           engine: 'sequence',
           phase: 'understand',
           label: seqConfig.mode === 'cycle' ? 'Build the cycle' : 'Build the timeline',
           icon: '🧩',
           config: seqConfig,
-        });
+        }, ctxAge));
       }
     }
     if (map && map.storybook) {
       const bandBooks = map.storybook.books[band] || map.storybook.books.mid || map.storybook.books.early;
       if (bandBooks && bandBooks.length) {
-        modes.push({ engine: 'storybook', phase: 'explore', label: 'Story time', icon: '📖', config: { books: bandBooks } });
+        modes.push(specializeModeForAge({ engine: 'storybook', phase: 'explore', label: 'Story time', icon: '📖', config: { books: bandBooks } }, ctxAge));
       }
     }
     if (map && map.decision) {
       const decisionConfig = bandModeFor(subject, domain, 'decision', band) || map.decision;
       if (!decisionConfig.upperOnly || band === 'upper') {
-        modes.push({ engine: 'decision', phase: 'understand', label: 'Choice quest', icon: '🧭', config: decisionConfig });
+        modes.push(specializeModeForAge({ engine: 'decision', phase: 'understand', label: 'Choice quest', icon: '🧭', config: decisionConfig }, ctxAge));
       }
     }
     if (map && map.doctor) {
       const doc = map.doctor[band] || map.doctor.mid || map.doctor.early;
-      if (doc) modes.push({ engine: 'doctor', phase: 'understand', label: 'Sentence clinic', icon: '🩺', config: doc });
+      if (doc) modes.push(specializeModeForAge({ engine: 'doctor', phase: 'understand', label: 'Sentence clinic', icon: '🩺', config: doc }, ctxAge));
     }
     if (map && map.worksheet) {
       const words = map.worksheet.wordsByBand ? map.worksheet.wordsByBand[band] || map.worksheet.wordsByBand.mid : map.worksheet.words;
       if (words) {
-        modes.push({
+        modes.push(specializeModeForAge({
           engine: 'worksheet',
           phase: 'practice',
           label: 'Print & practice',
           icon: '🖨️',
           config: { ...map.worksheet, words, defaultCount: 8 },
-        });
+        }, ctxAge));
       }
     }
     if (map && map.memory) {
       const memoryConfig = bandModeFor(subject, domain, 'memory', band) || map.memory;
-      modes.push({ engine: 'memory', phase: 'practice', label: 'Match the pairs', icon: '🃏', config: memoryConfig });
+      modes.push(specializeModeForAge({ engine: 'memory', phase: 'practice', label: 'Match the pairs', icon: '🃏', config: memoryConfig }, ctxAge));
     }
     if (map && map.wordBuilder) {
       const words = map.wordBuilder.wordsByBand
         ? (map.wordBuilder.wordsByBand[band] || map.wordBuilder.wordsByBand.mid)
         : map.wordBuilder.words;
       if (words) {
-        modes.push({ engine: 'word-builder', phase: 'practice', label: 'Build the word', icon: '🔤', config: { ...map.wordBuilder, words } });
+        modes.push(specializeModeForAge({ engine: 'word-builder', phase: 'practice', label: 'Build the word', icon: '🔤', config: { ...map.wordBuilder, words } }, ctxAge));
       }
     }
     if (map && map.solar3d) {
       const solarBand = bandModeFor(subject, domain, 'solar3d', band);
-      modes.push({
+      modes.push(specializeModeForAge({
         engine: 'solar3d',
         phase: 'explore',
         label: '3D solar tour',
         icon: '🪐',
         config: solarBand ? Object.assign({}, map.solar3d, solarBand) : map.solar3d,
-      });
+      }, ctxAge));
     }
     if (map && map.volcano3d) {
       const volcanoBand = bandModeFor(subject, domain, 'volcano3d', band);
-      modes.push({
+      modes.push(specializeModeForAge({
         engine: 'volcano3d',
         phase: 'explore',
         label: '3D volcano lab',
         icon: '🌋',
         config: volcanoBand ? Object.assign({}, map.volcano3d, volcanoBand) : map.volcano3d,
-      });
+      }, ctxAge));
     }
     if (map && map.arcade) {
       const arcadeBand = bandModeFor(subject, domain, 'arcade', band);
       const items = arcadeBand ? arcadeBand.items : map.arcade.kind === 'bank' ? map.arcade.items : arcadeBank(map.arcade.kind, band);
       if (items && items.length) {
-        modes.push({ engine: 'arcade', phase: 'practice', label: 'Speed sprint', icon: '⚡', config: { items, seconds: band === 'early' ? 60 : 45, emoji: map.emoji } });
+        modes.push(specializeModeForAge({
+          engine: 'arcade',
+          phase: 'practice',
+          label: 'Speed sprint',
+          icon: '⚡',
+          config: { items, seconds: band === 'early' ? 60 : 45, emoji: map.emoji },
+        }, ctxAge));
       }
     }
-    // Universal modes: flashcards + mission (derived from data for every course).
-    // Word gallery: glossed fronts, citation-free backs; when the cluster is
-    // too small for a deck, borrow same-domain topics at or below this age.
-    const deckCap = band === 'early' ? 8 : band === 'mid' ? 10 : 12;
-    let deckTopics = topics.slice(0, deckCap);
-    if (deckTopics.length < 3) {
-      const own = new Set(topics.map((t) => t.id));
-      const borrowed = (neighborsByDomain.get(`${subject}|${domain}`) || [])
-        .filter((t) => !own.has(t.id) && (t.ageRangeStart || 0) <= age)
-        .sort((a, b) => (b.centrality || 0) - (a.centrality || 0));
-      deckTopics = deckTopics.concat(borrowed.slice(0, deckCap - deckTopics.length));
-    }
-    if (deckTopics.length >= 3) {
+
+    // Universal modes: flashcards + mission — derived strictly from THIS exact age's topics & research (zero cross-age borrowing).
+    const deck = buildAgeFlashcardDeck(topics, researchByTopic, age, band);
+    if (deck.length >= 3) {
       modes.push({
         engine: 'flashcards',
         phase: 'cards',
-        label: 'Word cards',
+        label: 'Wonder cards',
         icon: '🗂️',
         config: {
           explorePrompt: band === 'early'
-            ? 'We will meet every word one by one. Tap the card to flip it!'
-            : 'Walk the deck: tap a card to flip it, press Next word to keep going.',
-          deck: deckTopics.map((t, i) => {
-            const g = glossFor(t.name);
-            const safeEvidence = t.evidence && t.evidence[0] && !isCitation(t.evidence[0]) ? t.evidence[0] : '';
-            const plainBack = safeEvidence || t.description || '';
-            // Back priority: gloss → whole description if it fits → evidence
-            // line (short, complete) → trimmed description. Never a mid-thought cut.
-            const desc = cleanDescription(t.description);
-            const descCap = band === 'mid' ? 200 : 300;
-            const backSource = desc && desc.length <= descCap ? desc
-              : safeEvidence && safeEvidence.length <= 160 ? safeEvidence
-              : desc;
-            return {
-              front: (g && g.label) || stripAge(t.name),
-              back: (g && g.back) || (band === 'early'
-                ? trimCardBack(plainBack, 100)
-                : trimCardBack(backSource, descCap)),
-              tryIt: band === 'upper' && safeEvidence ? trimCardBack(safeEvidence, 120) : '',
-              emoji: FCard_EMOJI[i % FCard_EMOJI.length],
-            };
-          }),
+            ? 'We will meet every wonder card one by one. Tap the card to flip it!'
+            : 'Walk the wonder deck: tap a card to flip and discover, then press Next card.',
+          deck,
         },
       });
     }
-    const missionBank = buildMissionBank(
-      topics,
-      researchByTopic,
-      neighborsByDomain.get(`${subject}|${domain}`) || [],
-      band
-    );
+    const missionBank = buildMissionBank(topics, researchByTopic, age, band);
     if (missionBank.length >= 2) {
-      modes.push({ engine: 'mission', phase: 'consolidate', label: 'Show what you know', icon: '🎯', config: { bank: missionBank.slice(0, band === 'early' ? 4 : 5) } });
+      modes.push({
+        engine: 'mission',
+        phase: 'consolidate',
+        label: 'Show what you know',
+        icon: '🎯',
+        config: { bank: missionBank.slice(0, band === 'early' ? 4 : 5) },
+      });
     }
 
     const draft = !cluster;
@@ -693,20 +646,16 @@ export function buildCourses(data) {
     // practice drills → the independent check.
     const PHASE_ORDER = { explore: 0, understand: 1, cards: 2, practice: 3, consolidate: 4 };
     modes.sort((a, b) => PHASE_ORDER[a.phase] - PHASE_ORDER[b.phase]);
-    if (band === 'early' && modes.length > 4) {
-      // Four clear choices for a five-year-old — but a domain with TWO labs
-      // keeps both (the second lab usually carries the top-of-band content,
-      // e.g. the age-6 number line beside the apple boxes) and gives up the
-      // practice drill instead.
-      const keepPriority = ['explore', 'explore', 'cards', 'consolidate', 'practice'];
+    if (band === 'early' && modes.length > 5) {
+      const keepPriority = ['explore', 'understand', 'cards', 'consolidate', 'explore'];
       const kept = new Map();
       for (const ph of keepPriority) {
-        if (kept.size >= 4) break;
+        if (kept.size >= 5) break;
         const m = modes.find((x) => x.phase === ph && !Array.from(kept.values()).includes(x));
         if (m) kept.set(ph + kept.size, m);
       }
       const rest = modes.filter((m) => !Array.from(kept.values()).includes(m));
-      const room = 4 - kept.size;
+      const room = 5 - kept.size;
       modes.length = 0;
       modes.push(...kept.values(), ...rest.slice(0, Math.max(room, 0)));
       modes.sort((a, b) => PHASE_ORDER[a.phase] - PHASE_ORDER[b.phase]);
@@ -767,51 +716,210 @@ export function buildCourses(data) {
   return courses;
 }
 
-/* Mission bank: "Which action belongs to {topic}?" — correct evidence vs
-   sibling evidence (neighboring concepts, deliberately confusable). */
-function buildMissionBank(topics, researchByTopic, neighborPool, band) {
-  // Early band: keep prompts/choices to one short sentence — evidence
-  // statements can arrive much longer than a 5-year-old can hold.
-  const trimFor = (text) => (band === 'early' ? trimSentence(text, 105) : text);
-  const bank = [];
-  const usable = topics.filter((t) => t.evidence && t.evidence.length && !isCitation(t.evidence[0]));
-  if (usable.length < 2) return bank;
-  const neighborUsable = (neighborPool || []).filter(
-    (t) => t.evidence && t.evidence.length && !isCitation(t.evidence[0]) && !usable.some((u) => u.id === t.id)
-  );
-  const nextMoves = new Map();
-  for (const t of usable) {
-    const r = researchByTopic.get(t.id);
-    const ep = r && r.assess && r.assess.errorPatterns && r.assess.errorPatterns.find((e) => e.kind === 'misconception');
-    if (ep) nextMoves.set(t.id, ep.nextMove || '');
-  }
-  for (const t of usable) {
-    const correct = t.evidence[0];
-    const pool = [...usable, ...neighborUsable].filter((s) => s.id !== t.id);
-    const siblings = pool
-      .map((s) => ({ s, dist: jaccard(t.name, s.name) + jaccard(correct, s.evidence[0]) }))
-      .sort((a, b) => a.dist - b.dist)
-      .slice(0, 2)
-      .map((x) => x.s);
-    if (siblings.length < 2) continue;
-    // Drop choices whose evidence text duplicates the correct one.
-    const distractors = siblings
-      .filter((s) => baseName(s.evidence[0]) !== baseName(correct))
-      .slice(0, 2);
-    if (!distractors.length) continue;
-    const gloss = glossFor(t.name);
-    bank.push({
-      concept: (gloss && gloss.label) || stripAge(t.name),
-      prompt: trimFor(correct),
-      choices: [
-        { text: trimFor(correct), correct: true, why: `Yes! That is exactly what “${t.name}” is about.` },
-        ...distractors.map((s) => ({
-          text: trimFor(s.evidence[0]),
-          why: `That one belongs to “${s.name}”. ${(nextMoves.get(t.id) || 'Look for the action that matches ' + t.name + '.').replace(/^(Independent moves — )/, '')}`,
-        })),
-      ],
+/* Build Wonder Cards strictly from THIS exact age's topics & research (zero cross-age borrowing).
+   When a course has < 3 topics, expand using its own evidence[] statements and research activities. */
+function buildAgeFlashcardDeck(topics, researchByTopic, age, band) {
+  const deckCap = band === 'early' ? 8 : band === 'mid' ? 10 : 12;
+  const descCap = band === 'early' ? 100 : band === 'mid' ? 200 : 280;
+  const deck = [];
+
+  for (let i = 0; i < topics.length && deck.length < deckCap; i++) {
+    const t = topics[i];
+    const g = glossFor(t.name);
+    const label = (g && g.label) || stripAge(t.name);
+    const safeEvs = (t.evidence || []).filter((e) => e && !isCitation(e));
+    const safeEvidence = safeEvs[0] || '';
+    const desc = cleanDescription(t.description);
+    const plainBack = safeEvidence || desc || '';
+    const backSource = desc && desc.length <= descCap ? desc
+      : safeEvidence && safeEvidence.length <= 160 ? safeEvidence
+      : desc || plainBack;
+    deck.push({
+      front: label,
+      back: (g && g.back) || (band === 'early' ? trimCardBack(plainBack, 100) : trimCardBack(backSource, descCap)),
+      tryIt: safeEvs[1] ? trimCardBack(safeEvs[1], 110) : (band === 'upper' && safeEvidence ? trimCardBack(safeEvidence, 120) : ''),
+      emoji: FCard_EMOJI[deck.length % FCard_EMOJI.length],
     });
   }
+
+  // If this exact age has fewer than 4 topics, expand strictly from this age's own evidence[] & research activities
+  if (deck.length < 4) {
+    for (let i = 0; i < topics.length && deck.length < 4; i++) {
+      const t = topics[i];
+      const g = glossFor(t.name);
+      const baseLabel = (g && g.label) || stripAge(t.name);
+      const safeEvs = (t.evidence || []).filter((e) => e && !isCitation(e));
+      for (let k = 1; k < safeEvs.length && deck.length < 4; k++) {
+        deck.push({
+          front: `${baseLabel} · Clue ${k}`,
+          back: trimCardBack(safeEvs[k], descCap),
+          tryIt: safeEvs[0] ? trimCardBack(safeEvs[0], 100) : '',
+          emoji: FCard_EMOJI[deck.length % FCard_EMOJI.length],
+        });
+      }
+      const r = researchByTopic.get(t.id);
+      const acts = (r && r.learn && r.learn.activities) || [];
+      for (let aIdx = 0; aIdx < acts.length && deck.length < 4; aIdx++) {
+        const act = acts[aIdx];
+        const actSummary = cleanDescription(act.summary || act.title || '');
+        if (!actSummary || isCitation(actSummary)) continue;
+        deck.push({
+          front: `${baseLabel} · Try ${aIdx + 1}`,
+          back: trimCardBack(actSummary, descCap),
+          tryIt: act.title ? trimCardBack(act.title, 95) : '',
+          emoji: FCard_EMOJI[deck.length % FCard_EMOJI.length],
+        });
+      }
+    }
+  }
+
+  // Fallback if still < 3 cards (e.g. a 1-topic cluster with only 1 evidence item): add an inquiry reflection card for that topic
+  while (deck.length < 3 && topics.length > 0) {
+    const t = topics[0];
+    const g = glossFor(t.name);
+    const baseLabel = (g && g.label) || stripAge(t.name);
+    const n = deck.length;
+    deck.push({
+      front: `${baseLabel} · Step ${n}`,
+      back: trimCardBack(cleanDescription(t.description) || `Explore how ${baseLabel.toLowerCase()} works in real life at Age ${age}.`, descCap),
+      tryIt: `Spot an example of ${baseLabel.toLowerCase()} today!`,
+      emoji: FCard_EMOJI[deck.length % FCard_EMOJI.length],
+    });
+  }
+
+  return deck;
+}
+
+/* Mission bank: IB POE / Inquiry diagnostic check built strictly from THIS exact age's
+   topics and teaching-research.json errorPatterns (zero cross-age borrowing, zero self-matching prompt). */
+function buildMissionBank(topics, researchByTopic, age, band) {
+  const trimFor = (text) => (band === 'early' ? trimSentence(text, 102) : trimSentence(text, 175));
+  const bank = [];
+  const usable = topics.filter((t) => (t.evidence && t.evidence.some((e) => !isCitation(e))) || t.description);
+  if (!usable.length) return bank;
+
+  const inquiryPrompts = (label, variant, isEarly) => {
+    if (isEarly) {
+      const templates = [
+        `How can we show “${label}” in action?`,
+        `Which clue proves you know “${label}”?`,
+        `What is true when we explore “${label}”?`,
+        `Which step matches “${label}”?`,
+      ];
+      const p = templates[variant % templates.length];
+      return p.length <= 105 ? p : trimSentence(`Which choice shows “${label}”?`, 102);
+    }
+    const templates = [
+      `Predict and explain: which evidence best shows “${label}” in action at Age ${age}?`,
+      `Investigation check: which observation proves how “${label}” works?`,
+      `Think like an inquirer: which step demonstrates “${label}” accurately?`,
+      `Spot the pattern: which statement is true when testing “${label}”?`,
+    ];
+    return trimSentence(templates[variant % templates.length], 175);
+  };
+
+  for (let tIdx = 0; tIdx < usable.length; tIdx++) {
+    const t = usable[tIdx];
+    const gloss = glossFor(t.name);
+    const conceptLabel = (gloss && gloss.label) || stripAge(t.name);
+    const safeEvs = (t.evidence || []).filter((e) => e && !isCitation(e));
+    if (!safeEvs.length && t.description && !isCitation(t.description)) {
+      safeEvs.push(cleanDescription(t.description));
+    }
+    const r = researchByTopic.get(t.id);
+    const eps = ((r && r.assess && r.assess.errorPatterns) || []).filter(
+      (ep) => (ep.distractor || ep.pattern) && !isCitation(ep.distractor || '') && !isCitation(ep.pattern || '')
+    );
+
+    // Determine how many questions to generate for this topic so small clusters still get >= 3 questions
+    const qCountForTopic = usable.length === 1 ? Math.min(4, Math.max(3, safeEvs.length))
+      : usable.length === 2 ? Math.min(2, Math.max(2, safeEvs.length))
+      : 1;
+
+    for (let qIdx = 0; qIdx < qCountForTopic; qIdx++) {
+      const correctRaw = safeEvs[qIdx % safeEvs.length] || `I can explore and explain ${conceptLabel.toLowerCase()}.`;
+      const correctText = trimFor(correctRaw);
+      const promptText = inquiryPrompts(conceptLabel, tIdx + qIdx, band === 'early');
+
+      // Build 2 age-matched distractors (same-age siblings + misconception patterns + contrast moves)
+      const distractorChoices = [];
+      const usedTexts = new Set([correctText.trim().toLowerCase(), promptText.trim().toLowerCase()]);
+
+      // 1. Same-age sibling topic evidence
+      const sameAgeSiblings = usable.filter((s) => s.id !== t.id);
+      for (const sib of sameAgeSiblings) {
+        if (distractorChoices.length >= 2) break;
+        const sibEvs = (sib.evidence || []).filter((e) => e && !isCitation(e));
+        const cand = trimFor(sibEvs[qIdx % Math.max(1, sibEvs.length)] || '');
+        if (cand && !usedTexts.has(cand.trim().toLowerCase())) {
+          usedTexts.add(cand.trim().toLowerCase());
+          const sibGloss = glossFor(sib.name);
+          const sibLabel = (sibGloss && sibGloss.label) || stripAge(sib.name);
+          distractorChoices.push({
+            text: cand,
+            why: `That evidence belongs to “${sibLabel}”. Look for the clue that specifically shows “${conceptLabel}”.`,
+          });
+        }
+      }
+
+      // 2. Researched misconception distractors for this topic
+      for (const ep of eps) {
+        if (distractorChoices.length >= 2) break;
+        const rawDist = ep.distractor
+          ? `Thinking that ${String(ep.distractor).replace(/\.$/, '')}.`
+          : ep.pattern;
+        if (!rawDist || isCitation(rawDist)) continue;
+        const cand = trimFor(rawDist);
+        if (cand && !usedTexts.has(cand.trim().toLowerCase())) {
+          usedTexts.add(cand.trim().toLowerCase());
+          const move = (ep.nextMove || `Test the idea step by step to see how ${conceptLabel} works.`).replace(/^(Independent moves — )/, '');
+          distractorChoices.push({
+            text: cand,
+            why: `Watch out for that common trap! ${trimSentence(move, 140)}`,
+          });
+        }
+      }
+
+      // 3. Fallback inquiry misconception contrasts (strictly about this topic, zero cross-age borrowing)
+      const fallbackPool = [
+        {
+          text: trimFor(`Guessing about ${conceptLabel.toLowerCase()} without checking the evidence or testing first.`),
+          why: `Inquirers don’t just guess — test and observe the evidence for “${conceptLabel}” first!`,
+        },
+        {
+          text: trimFor(`Looking at only one part of ${conceptLabel.toLowerCase()} and skipping the rest of the pattern.`),
+          why: `Check the whole pattern! Understanding “${conceptLabel}” means connecting all the clues.`,
+        },
+        {
+          text: trimFor(`Changing every part at once instead of checking ${conceptLabel.toLowerCase()} step by step.`),
+          why: `Take it step by step so you can see exactly how “${conceptLabel}” works.`,
+        },
+      ];
+      for (const fb of fallbackPool) {
+        if (distractorChoices.length >= 2) break;
+        if (!usedTexts.has(fb.text.trim().toLowerCase())) {
+          usedTexts.add(fb.text.trim().toLowerCase());
+          distractorChoices.push(fb);
+        }
+      }
+
+      if (distractorChoices.length >= 2) {
+        bank.push({
+          concept: conceptLabel,
+          prompt: promptText,
+          choices: [
+            {
+              text: correctText,
+              correct: true,
+              why: `Yes! That is strong Age ${age} evidence for “${conceptLabel}”.`,
+            },
+            ...distractorChoices.slice(0, 2),
+          ],
+        });
+      }
+    }
+  }
+
   return bank;
 }
 

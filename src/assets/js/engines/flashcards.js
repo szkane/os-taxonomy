@@ -1,10 +1,9 @@
 /* ==========================================================================
-   Engine: flashcards v2 — "Word gallery"
-   One big card at a time, walked through with explicit controls so a child
-   always knows what to do: tap the card (or the flip button) to reveal a
-   SHORT meaning, then Next. Progress is visible ("Word 3 of 10"); the deck
-   ends with a friendly completion panel. No assessment lives here — the
-   mission engine carries the independent check.
+   Engine: flashcards v2 — Inquiry Wonder Cards ("Wonder → Discover → Try")
+   One big inquiry card at a time:
+   - Front poses an Inquiry Wonder prompt + visual emoji
+   - Flip reveals the Discovery explanation + a hands-on "Try noticing" prompt
+   No assessment lives here — the mission engine carries the independent check.
    ========================================================================== */
 (function () {
   'use strict';
@@ -48,14 +47,14 @@
     var controls = PYP.el('div', 'fc2-controls');
     var back = PYP.el('button', 'ml-control ml-control--icon-only');
     back.type = 'button';
-    back.setAttribute('aria-label', 'Previous word');
+    back.setAttribute('aria-label', 'Previous card');
     back.innerHTML = PYP.icon('back');
     back.addEventListener('click', function () { self.step(-1); });
     controls.appendChild(back);
 
     var speak = PYP.el('button', 'ml-control ml-control--icon-only fc2-speak');
     speak.type = 'button';
-    speak.setAttribute('aria-label', 'Read this word aloud');
+    speak.setAttribute('aria-label', 'Read this card aloud');
     speak.innerHTML = PYP.icon('sound');
     speak.addEventListener('click', function () {
       var card = self.deck[self.index] || {};
@@ -65,13 +64,13 @@
 
     var flipBtn = PYP.el('button', 'ml-control');
     flipBtn.type = 'button';
-    flipBtn.innerHTML = '<span aria-hidden="true">🔄</span><span class="ml-button-label">Flip</span>';
+    flipBtn.innerHTML = '<span aria-hidden="true">🔄</span><span class="ml-button-label">Flip card</span>';
     flipBtn.addEventListener('click', function () { self.flip(); });
     controls.appendChild(flipBtn);
 
     this.nextBtn = PYP.el('button', 'ml-control ml-control--primary');
     this.nextBtn.type = 'button';
-    this.nextBtn.innerHTML = PYP.icon('next') + '<span class="ml-button-label">Next word</span>';
+    this.nextBtn.innerHTML = PYP.icon('next') + '<span class="ml-button-label">Next card</span>';
     this.nextBtn.addEventListener('click', function () { self.step(1); });
     controls.appendChild(this.nextBtn);
 
@@ -86,7 +85,7 @@
     this.index = index;
     this.flipped = false;
     var card = this.deck[index];
-    this.progress.textContent = 'Word ' + (index + 1) + ' of ' + total;
+    this.progress.textContent = '🤔 Wonder card ' + (index + 1) + ' of ' + total;
 
     this.card.setAttribute('aria-pressed', 'false');
     this.front.innerHTML = '';
@@ -96,7 +95,7 @@
     var name = PYP.el('div', 'fc2-name', card.front);
     var hint = PYP.el('div', 'fc2-hint');
     hint.setAttribute('aria-hidden', 'true');
-    hint.textContent = '👆 Tap to flip';
+    hint.textContent = '👆 Tap to flip & discover';
     this.front.appendChild(em);
     this.front.appendChild(name);
     this.front.appendChild(hint);
@@ -104,17 +103,17 @@
     this.back.innerHTML = '';
     var backEm = PYP.el('div', 'fc2-back-emoji');
     backEm.setAttribute('aria-hidden', 'true');
-    backEm.textContent = card.emoji || '💡';
+    backEm.textContent = '💡 ' + (card.emoji || '✨');
     var meaning = PYP.el('div', 'fc2-meaning', card.back);
     this.back.appendChild(backEm);
     this.back.appendChild(meaning);
     if (card.tryIt) {
-      var tryIt = PYP.el('div', 'fc2-try', 'Try it: ' + card.tryIt);
+      var tryIt = PYP.el('div', 'fc2-try', '🔬 Try noticing: ' + card.tryIt);
       this.back.appendChild(tryIt);
     }
 
-    this.ctx.instruct('Word ' + (index + 1) + ' of ' + total + ': "' + card.front + '". Tap the card to flip it and find out what it means!');
-    this.nextBtn.querySelector('.ml-button-label').textContent = index + 1 === total - 1 ? 'Last word' : 'Next word';
+    this.ctx.instruct('Wonder ' + (index + 1) + ' of ' + total + ': “' + card.front + '”. What do you think it means? Tap the card to flip and discover!');
+    this.nextBtn.querySelector('.ml-button-label').textContent = index + 1 === total ? 'Finish cards' : 'Next card';
   };
 
   Flashcards.prototype.flip = function () {
@@ -123,14 +122,12 @@
     this.ctx.sfx.playClick();
     var card = this.deck[this.index] || {};
     if (this.flipped) {
-      this.ctx.instruct(card.front + ' means: ' + card.back, { isFeedback: true });
-      // Read-aloud is ON by default at the reveal moment — the child hears
-      // the word while reading it. The 🔇 stage toggle still silences it.
+      this.ctx.instruct('💡 Discovery — ' + card.front + ': ' + card.back, { isFeedback: true });
       if (!(window.PYP && PYP.ttsIsMuted && PYP.ttsIsMuted())) {
         this.ctx.tts.speak((card.front || '') + '. ' + (card.back || ''));
       }
     } else {
-      this.ctx.instruct('Tap "Next word" when you are ready, or flip back to look again.', { isFeedback: true });
+      this.ctx.instruct('Tap “Next card” when you are ready, or flip back to look again.', { isFeedback: true });
     }
   };
 
@@ -145,13 +142,13 @@
     var self = this;
     this.root.innerHTML = '';
     var wrap = PYP.el('div', 'mission-end');
-    wrap.appendChild(PYP.el('div', 'mission-end-score', '🎉 You met all ' + this.deck.length + ' words!'));
+    wrap.appendChild(PYP.el('div', 'mission-end-score', '🎉 You explored all ' + this.deck.length + ' wonder cards!'));
     var note = PYP.el('p', 'mission-end-note');
-    note.textContent = 'Flip through them again any time — or take the Mission check to see what stuck.';
+    note.textContent = 'Flip through them again any time — or take the Mission check to test your inquiry skills.';
     wrap.appendChild(note);
     var again = PYP.el('button', 'ml-control ml-control--primary');
     again.type = 'button';
-    again.innerHTML = PYP.icon('replay') + '<span class="ml-button-label">Meet them again</span>';
+    again.innerHTML = PYP.icon('replay') + '<span class="ml-button-label">Explore them again</span>';
     again.addEventListener('click', function () {
       self.ctx.sfx.playClick();
       self.build();
@@ -159,7 +156,7 @@
     });
     wrap.appendChild(again);
     this.root.appendChild(wrap);
-    this.ctx.instruct('Gallery complete! You can walk the deck again or try the mission.', { speak: false });
+    this.ctx.instruct('Wonder cards complete! You can review the deck or try the mission.', { speak: false });
     this.ctx.sfx.playFanfare();
     if (window.PYP) PYP.celebrate();
   };

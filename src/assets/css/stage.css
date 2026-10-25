@@ -371,6 +371,8 @@
 .marble-learning[data-ml-theme="dark"] .ml-chipstat,
 .marble-learning[data-ml-theme="dark"] .quest-meter,
 .marble-learning[data-ml-theme="dark"] .quest-reflect,
+.marble-learning[data-ml-theme="dark"] .explore-spotlight,
+.marble-learning[data-ml-theme="dark"] .mission-concept-badge,
 .marble-learning[data-ml-theme="dark"] .doctor-sentence,
 .marble-learning[data-ml-theme="dark"] .sorter-item,
 .marble-learning[data-ml-theme="dark"] .sorter-bin,
@@ -510,7 +512,79 @@
 .marble-learning .mission-choices .ml-control .ml-button-label { white-space: normal; }
 .marble-learning .mission-end { text-align: center; display: grid; gap: 14px; justify-items: center; align-content: center; }
 .marble-learning .mission-end-score { font-size: clamp(30px, 4vw, 44px); font-weight: 550; }
-.marble-learning .mission-end-note { font-size: 18px; line-height: 1.35; max-width: 46ch; }
+.marble-learning .mission-end-note { font-size: 18px; line-height: 1.35; max-width: 46ch; margin: 0; }
+.marble-learning .mission-concept-badge {
+  align-self: center;
+  border: 2px solid var(--ml-outline);
+  border-radius: 999px;
+  background: #fff8e4;
+  color: var(--ml-ink);
+  box-shadow: 0 3px 0 var(--ml-outline);
+  padding: 5px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+.marble-learning .mission-reflect-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+  width: 100%;
+  max-width: 680px;
+}
+.marble-learning .mission-reflect-chip {
+  min-height: 44px;
+  padding: 8px 12px;
+  font-size: 15px;
+}
+.marble-learning .mission-reflect-chip .ml-button-label {
+  font-size: 15px;
+  white-space: normal;
+  text-align: left;
+}
+.marble-learning .explore-spotlight {
+  border: 2px solid var(--ml-outline);
+  border-radius: 16px;
+  background: #fff8e4;
+  color: var(--ml-ink);
+  box-shadow: 0 4px 0 var(--ml-outline);
+  padding: 16px 18px;
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  align-content: start;
+}
+.marble-learning .explore-spotlight-badge {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--ml-muted);
+}
+.marble-learning .explore-spotlight-head {
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.marble-learning .explore-spotlight-body {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.38;
+}
+.marble-learning .explore-spotlight-meta {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ml-muted);
+}
+.marble-learning .memory-pair-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+}
+.marble-learning .memory-pair-chip .ml-button-label {
+  white-space: normal;
+  font-size: 16px;
+}
 
 /* --- Flashcards ------------------------------------------------------------------------- */
 

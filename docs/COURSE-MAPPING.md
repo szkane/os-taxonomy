@@ -1,106 +1,85 @@
 # COURSE-MAPPING — how every course got its gameplay
 
-The taxonomy has 41 unique (subject, domain) pairs across 176 clusters. Each pair maps to one **primary** gameplay matched to the domain's cognitive demand, plus up to two **universal** modes derived from data for every course. Authoring lives in `tools/lib/mapping.mjs`; this document explains the decisions.
+The taxonomy spans **66 unique (subject, domain) pairs across 304 primary-school courses (Ages 5–10 / Kindergarten to Grade 5)**. Every single course opens with an **Explore-First visual simulation** (`concept-lab` Canvas/Konva 2D lab and/or a Three.js 3D world), followed by domain-matched interactive **Understand** and **Practice** modes, **Inquiry Wonder Cards** (`flashcards`), and an independent **POE Inquiry Mission** (`mission`). Authoring lives in `tools/lib/mapping.mjs`, `tools/lib/lab-cases.mjs`, `tools/lib/band-modes.mjs`, and `tools/lib/age-curriculum.mjs`.
 
-## 1. Domain → gameplay map
+## 1. Domain → gameplay map (all 66 domains)
 
-| Domain | Primary mode(s) | Rationale |
+| Domain | Explore opener(s) (2D Lab + 3D World) | Understand / Practice modes |
 | --- | --- | --- |
-| **Mathematics** | | |
-| Addition & Subtraction | concept-lab `counters` + arcade | Continuous composition of two groups; arrays of apples make the sum visible |
-| Multiplication & Division | concept-lab `array` + arcade | Rows × columns is the canonical multiplication representation |
-| Fractions | concept-lab `fractions` + arcade | Pizza partitioner shows equal-parts requirement; arcade drills comparison |
-| Number Representation & Place Value | concept-lab `placevalue` + arcade | Base-10 blocks expose digit worth |
-| Counting & Cardinality | concept-lab `counting` + arcade | Filling a jar counts one-by-one; last-number rule |
-| Geometry | concept-lab `shape` + arcade | Sides/corners grow together; naming facts |
-| Measurement | concept-lab `measure` + arcade | Ruler alignment from zero |
-| Data & Statistics | concept-lab `databar` + arcade | Four editable bars; winner/difference questions |
-| Algebra | concept-lab `pattern` + arcade | Start+jump bead machine = rule finding |
-| Ratio & Proportion | concept-lab `fractions` (ratio framing) + arcade | Ratios as fair shares of a whole |
-| Mathematical Thinking | concept-lab `pattern` + arcade | Odd-one-out / pattern-rule banks |
-| **Science** | | |
-| Waves, Light & Sound | concept-lab `sound` (all ages) + `light` (8+) + decision | Drum force vs skin tightness isolates volume from pitch (a documented misconception); torch distance → shadow length |
-| Forces & Motion | concept-lab `forces` | Ramp height vs surface roughness = gravity vs friction |
-| Energy | concept-lab `circuit` + decision | Batteries/bulbs power-sharing; electrical safety dilemmas |
-| Matter & Materials | concept-lab `states` + sorter | Temperature dial crosses 0°C/100°C; material property bins |
-| Earth's Systems | sorter | Land/water/air systems sorting (incl. tricky glacier case) |
-| Weather & Climate | sequence (water cycle) + sorter | Cycle ordering is the core model; weather clothing bins |
-| Ecosystems & Habitats | sorter | Habitat bins with adaptation clues |
-| Animals of the World | sorter | Mammal/bird/fish/reptile classification |
-| Ocean Life | sorter | Shallows/open/deep ocean layers |
-| Organisms & Life Processes | sequence (butterfly, cycle) + sorter | Life-cycle stages; living vs never-alive |
-| The Human Body | sorter | Organ system "teams" |
-| Dinosaurs & Paleontology | sequence (fossilization, linear) | 100-million-year process, step by step |
-| Space Systems & Earth's History | **spatial3d** + mission | Spin-the-Earth day/night construction task (genuinely 3D: rotation, terminator, viewpoint) |
-| Space Exploration | solar3d (3D solar tour) + mission | Tap planets on cel-shaded orbits, read facts, answer by selecting and committing |
-| Scientific Inquiry | decision | Fair-test dilemmas (change one variable) |
-| Volcanoes & Earthquakes | volcano3d (3D pressure lab) + decision (safety) + universal | Raise magma pressure, watch glow/tremble/eruption; safety dilemmas |
-| **English** | | |
-| Grammar & Punctuation | doctor (band-specific patients) | Spot-and-heal capitals/periods/commas/tense — injuries look normal; the diagnosis is the task |
-| Handwriting & Transcription | worksheet (print) | A4 trace cells; screen cannot replace pencil practice |
-| Phonics & Word Reading | arcade (phonics bank) | Digraph/blending pops |
-| Reading Comprehension | sequence (story retell) | 5-part structure ordering (Three Little Pigs) |
-| Speaking & Listening | sequence (conversation) | Turn-taking structure |
-| Spelling & Word Study | word-builder + doctor | Constructing the word from scrambled letters; healing misspellings |
-| Vocabulary | memory (word ↔ meaning pairs) + flashcards | Pair-matching builds word–meaning links without quiz pressure |
-| Writing Composition | sequence (story structure) | Hook→problem→attempts→turn→ending |
-| **Personal & Social Development** | | |
-| Emotional Literacy | decision + sorter | Feelings scenarios with mood meters; comfortable/uncomfortable sort |
-| Empathy & Social Awareness | decision | Perspective-taking dilemmas |
-| Friendship & Cooperation | decision + sorter | Trade-off choices; builds/wears-down sort |
-| Responsible Decision-Making | decision | Integrity/safety dilemmas |
-| Self-Regulation & Resilience | decision | Calm-down strategy choices |
-| **History** | | |
-| Ancient Egypt | sequence (timeline) + sorter (then/now) | Chronology is the core skill; then/now classification |
+| **Mathematics (12 domains)** | | |
+| Addition & Subtraction | Age 5: `counters` + `tenframe` · Age 6: `tenframe` + `numberline` (to 100) · Ages 7–8: `numberline` (to 1,000) + `placevalue` · Ages 9–10: `numberline` (to 10,000) + `placevalue2` | `arcade` (band-calibrated mental fluency) |
+| Multiplication & Division | `array` + `numberline` (skip-counting hops; scaled to 1,000 in mid) | `arcade` |
+| Fractions | `fractions` (pizza area model) + `fractionline` (bar ↔ 0–1 line ↔ decimal ↔ %) | `arcade` |
+| Number Representation & Place Value | Early: `placevalue` (H/T/O) · Mid: `placevalue2` (Th/H/T/O) · Upper: `pvchart` (7-digit chart to 9,999,999) + `numberlineXL` | `arcade` |
+| Counting & Cardinality | Age 5: `counting` + `numberline` (to 20) · Age 6: `placevalue` (to 100) + `numberlineXL` (to 100) · Mid: `numberlineXL` (to 1,000) + `numberline` | `arcade` |
+| Geometry | Early/Mid: `shape` · Upper: `coordgrid` (`(x, y)` coordinates & `0°–360°` angles) + **`geometry3d`** (Three.js 3D polyhedra inspector) | `sorter` + `arcade` |
+| Measurement | Early: `measure` + `balance` · Mid: `clock` (analog + 24h elapsed time) + `capacity` (ml/L jugs + `cm³`) · Upper: `capacity` + `measure` (metric conversions) | `arcade` |
+| Data & Statistics | `databar` (editable 4-bar chart) | `arcade` |
+| Algebra | `pattern` (function-rule bead machine) | `arcade` |
+| Ratio & Proportion | `fractions` (ratio & proportional share framing) | `arcade` |
+| Mathematical Thinking | `pattern` (multi-solution affine reasoning) | `arcade` |
+| Probability | `spinner` (unequal sectors → % likelihood) | `arcade` |
+| **Science (19 domains)** | | |
+| Waves, Light & Sound | `sound` (force vs tension) + `light` (shadow length) + **`optics3d`** (Three.js 3D light, shadow & material optics studio) | `decision` |
+| Forces & Motion | `forces` (ramp height × surface friction) | — |
+| Energy | `circuit` (batteries × bulbs) | `decision` |
+| Matter & Materials | `states` (−20 °C to 120 °C particle simulator) | `sorter` |
+| Earth's Systems | `watercycle` + **`diorama3d`** (`earth` crust→core 3D cutaway) | `sorter` |
+| Weather & Climate | `watercycle` (evaporation, cooling, rain & runoff) | `sequence` + `sorter` |
+| Ecosystems & Habitats | `ecosystem` (sunlight → producers → consumers) + **`diorama3d`** (`biome`) | `sorter` |
+| Animals of the World | `ecosystem` + **`diorama3d`** (`biome`) | `sorter` |
+| Insects & Minibeasts | `ecosystem` (pollinator garden lab) | `sorter` |
+| Ocean Life | `ecosystem` + **`diorama3d`** (`ocean` sunlit→midnight zones) | `sorter` |
+| Polar Regions | `states` (sea-ice freezing/melting lab) + **`diorama3d`** (`biome`) | `sorter` |
+| Rainforests | `ecosystem` (canopy biodiversity lab) + **`diorama3d`** (`biome`) | `sorter` |
+| Organisms & Life Processes | `ecosystem` (energy & life processes lab) | `sequence` + `sorter` |
+| The Human Body | `humanbody` (heart rate, lung depth & oxygen flow) | `sorter` |
+| Dinosaurs & Paleontology | `timemachine` (deep-time fossil finder) + **`diorama3d`** (`fossil` strata) | `sequence` |
+| Space Systems & Earth's History | **`spatial3d`** (Three.js cel-shaded Earth/Sun/Moon day & night) | — |
+| Space Exploration | **`solar3d`** (Three.js 3D Solar System orbital tour) | — |
+| Scientific Inquiry | `fairtest` (two-pot controlled variable bench) | `decision` |
+| Volcanoes & Earthquakes | **`volcano3d`** (Three.js 3D magma pressure & tectonic plates) | `decision` |
+| Design & Technology | `forces` (prototype test ramp) | `sequence` |
+| **English (9 domains)** | | |
+| English Thinking | `storybook` (Stage-Lit Paper Theatre retellings with owl think-alouds) + `wordwave` | `decision` |
+| Grammar & Punctuation | `wordwave` (sentence cadence & endings) | `doctor` |
+| Handwriting & Transcription | `wordwave` (word spacing & chunks) | `worksheet` |
+| Phonics & Word Reading | `wordwave` (syllable & sound wave studio) | `word-builder` + `arcade` |
+| Reading Comprehension | `wordwave` | `sequence` |
+| Speaking & Listening | `wordwave` | `sequence` |
+| Spelling & Word Study | `wordwave` (morpheme chunker) | `word-builder` + `doctor` |
+| Vocabulary | `wordwave` (root + affix lab) | `memory` |
+| Writing Composition | `wordwave` | `sequence` |
+| **Computing (6 domains)** | | |
+| Algorithms & Programming | `codeturtle` (grid robot turtle with step & repeat loops) | `sequence` |
+| Data Representation | `binarylab` (4-bit `8-4-2-1` binary switches & decoder) | `memory` |
+| Artificial Intelligence | `binarylab` (feature encoder) | `decision` |
+| Digital Systems | `circuit` (hardware power & I/O lab) | `sorter` |
+| Creating Digital Solutions | `codeturtle` (prototype path tester) | `sequence` |
+| Digital Tools & Collaboration | `binarylab` (signal packet lab) | `decision` |
+| **Geography (2 domains) & History (6 domains)** | | |
+| Maps & Spatial Skills | `coordgrid` (map grid coordinates & compass bearings) + **`diorama3d`** (`landform`) | `sorter` |
+| Places & Environments | `watercycle` (climate & landscape lab) + **`diorama3d`** (`landform`) | `sorter` |
+| Ancient Egypt | `timemachine` + **`diorama3d`** (`civilization`) | `sequence` + `sorter` |
+| Ancient Greece & Rome | `timemachine` + **`diorama3d`** (`civilization`) | `sequence` + `sorter` |
+| Medieval Times | `timemachine` + **`diorama3d`** (`civilization`) | `sequence` + `sorter` |
+| Family & Community History | `timemachine` (generations time dial) | `sequence` |
+| Modern History | `timemachine` + **`diorama3d`** (`civilization`) | `sequence` |
+| Historical Thinking | `timemachine` (primary source & artifact dial) | `sequence` |
+| **Life Skills (3 domains), PSD (6 domains) & Learning to Learn (1 domain)** | | |
+| Money & Finance | `marketlab` (earn, save & spend budget scale) | `decision` |
+| Entrepreneurship | `marketlab` (venture revenue & reinvestment lab) | `decision` |
+| Food & Cooking | `balance` (kitchen portion & nutrition scale) | `sequence` |
+| Emotional Literacy | `mindgarden` (breathing pacemaker & calm studio) | `decision` + `sorter` |
+| Empathy & Social Awareness | `mindgarden` | `decision` |
+| Friendship & Cooperation | `balance` (fairness & sharing scale) | `decision` + `sorter` |
+| Responsible Decision-Making | `mindgarden` | `decision` |
+| Self-Regulation & Resilience | `mindgarden` | `decision` |
+| Self-Awareness | `mindgarden` | `decision` |
+| Learning to Learn | `mindgarden` (brain growth & deliberate practice lab) | `decision` |
 
-Distribution after generation: every course has ≥2 modes; most have 3–4, several have 5. The engine fleet spans 14 mechanics (concept-lab, mission, flashcards, sorter, sequence, arcade, decision, doctor, worksheet, spatial3d Earth, solar3d, volcano3d, memory, word-builder). Arcade sprints are restricted to genuine fluency domains (math facts, phonics) so no single mechanic dominates. The mission check (independent assessment) is present on 169/176 courses — the exceptions are single-topic clusters whose primary mode carries its own committed assessment instead (3D commits, lab commits).
+## 2. Per-age spiral isolation (Ages 5–10 / K–G5)
 
-## 2. PYP metadata derivation (honest "suggested framing")
-
-The taxonomy contains no IB metadata, so the site derives it and **labels it "suggested"** on every page:
-
-- **Transdisciplinary theme** by subject: Science & Mathematics → *How the world works*; English → *How we express ourselves*; History → *Where we are in place and time*; PSD → *Who we are*.
-- **Central idea**: hand-authored per domain (see `mapping.mjs`), phrased as an enduring understanding.
-- **Lines of inquiry**: template-derived from the domain and the two most central topics.
-- **Key concepts / Learner profile / ATL**: subject-level defaults (e.g. Science → Causation/Function/Change; Inquirers, Thinkers; Thinking + Research skills). Decision-mode courses reinforce profile attributes in their feedback ("Caring move!", "Principled choice!").
-
-Schools should align these with their programme of inquiry — the page states this explicitly under the UOI card.
-
-## 3. Assessment model (marble interaction-design)
-
-- **concept-lab**: predict → commit → reveal. The child sets dials to match a described scenario and commits; wrong commits describe the missing relationship (after two misses, the support hint appears — scaffold fading). Rules are a serializable DSL (`sum`, `product`, `allEqual`, `whole`, `lt`, `atLeast`, `between`, `digits`, `diff`, `affine`).
-- **mission**: fresh discrimination items; first-try results are tracked separately from assisted retries; the end screen reports *session evidence*, never a grade.
-- **spatial3d**: construction assessment — the child rotates Earth to place a city in day/night; truth is computed live from the scene's sun vector.
-- **sorter / sequence / doctor**: check actions with targeted misconception-based feedback ("That belongs to…").
-- **decision**: formative only — every choice moves meters and explains the trade-off.
-
-## 4. Vocabulary popover lexicons
-
-Each domain contributes 2–8 age-appropriate definitions (merged with a shared lexicon of 9 general terms). The runtime marks known terms with dashed underlines in *non-interactive* text only; buttons never carry triggers (enforced by only enriching the instruction slot and cover question).
-
-## 4b. Child-first presentation (age-differentiated)
-
-- The course page shows the child ONLY the stage; UOI framing, learning goals and research notes live behind the "👩‍🏫 Grown-ups" toggle (hidden by default, stripped from print).
-- `data-band` on the stage changes densities: early (5–6) gets larger type, bigger tabs, ≤8 flashcards, ≤4 mission questions, 3-column memory grid and throttled auto read-aloud; upper gets full decks and longer prompts.
-- TTS auto-speak is early-band only, throttled centrally in core.js; mid/upper bands use the 🔊 button next to the instruction; a 🔇 toggle mutes everything (persisted).
-
-## 5. Language calibration
-
-- All child-facing copy is English, sentence case (Baloo 2 house style on the stage).
-- Early band (5–6): instructions auto-speak via TTS; prompts ≤10 words where possible; emoji-supported nouns.
-- Mid band (7–8): 8–14 word prompts, concrete cause-effect ("Big vibrations are loud; tight skins are high").
-- Upper band (9–10): multi-step cases and precise vocabulary introduced in context.
-- Case prompts are authored once in accessible language that stays within band limits; the early band additionally gets auto-read-aloud.
-
-## 6. Coverage of the taxonomy (measured, not assumed)
-
-Measured against `data/topics.json` (1,838 topics) and `data/clusters.json` (176 clusters):
-
-| Population | Count | Status on the site |
-| --- | --- | --- |
-| Curated course clusters (subject × domain × age with a parent summary) | 176 | **100% shipped** — every cluster is a course page |
-| Topics inside those clusters | 1,099 (60%) | All appear as course learning goals, flashcards and mission material |
-| Topics outside clusters — ages 11–13 (beyond PYP G5) | 308 | Not shipped: middle-school extension (Science/Math/History) |
-| Topics outside clusters — ages 4–10, primary-age | 431 | Not shipped, see below |
-
-The 431 primary-age unclustered topics include four entire subjects with no clusters at all (Computing 51, Life Skills 43, Geography 22, Learning to Learn 18) and popular domains such as Polar Regions, Rainforests, Insects, Ancient Greece & Rome, Medieval Times, Money & Finance and AI. They live in (subject, domain, age) combos that the taxonomy authors did not curate with a parent summary, so the site cannot yet offer them the same course experience. Expanding the site to those combos would mean auto-deriving course framing without the curated summary — a deliberate product decision recorded here rather than silently degrading quality.
+1. **Primary school scope**: Only Ages `5, 6, 7, 8, 9, 10` (`K` to `G5`) are generated (**304 courses**). Pre-K (`Age 4`) and middle school (`Ages 11–13`) are excluded.
+2. **Strict same-age topic isolation**: Each course pulls topics, evidence statements, misconceptions, Wonder Cards, and POE Mission items exclusively from `t.ageRangeStart === course.age`. Zero cross-age borrowing occurs anywhere in `tools/lib/derive.mjs`.
+3. **Six-age interactive differentiation**: `tools/lib/age-curriculum.mjs` specializes every explore lab, 3D world, sorter, sequence, decision quest, sentence clinic, memory grid, word-builder, worksheet, storybook, and arcade sprint by exact age (`5..10`), verified at build time by `tools/validate-content.mjs` and `tools/audit/age-fit.mjs`.

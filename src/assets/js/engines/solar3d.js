@@ -43,21 +43,33 @@
         'This 3D world needs its local three.js file, which could not load. The other games below still work.'));
       return;
     }
+    this.commitBtn = commit;
+    this.activeCase = -1;
     this.renderTabs();
     try { this.init3D(); } catch (e) {
       box.innerHTML = '';
       box.appendChild(PYP.el('div', 'spatial-fallback', '3D could not start on this device (WebGL unavailable). Try the other games instead.'));
       return;
     }
-    this.setCase(0);
+    this.setCase(-1);
   }
 
   Solar3D.prototype.renderTabs = function () {
     var self = this;
     this.caseTabs.innerHTML = '';
+    var exp = PYP.el('button', 'ml-control ml-case-tab');
+    exp.type = 'button';
+    exp.setAttribute('aria-pressed', this.activeCase < 0 ? 'true' : 'false');
+    exp.innerHTML = '<span aria-hidden="true">🔭</span><span class="ml-button-label">Explore</span>';
+    exp.addEventListener('click', function () {
+      self.ctx.sfx.playClick();
+      self.setCase(-1);
+    });
+    this.caseTabs.appendChild(exp);
     (this.config.cases || []).forEach(function (c, i) {
       var tab = PYP.el('button', 'ml-control ml-case-tab');
       tab.type = 'button';
+      tab.setAttribute('aria-pressed', self.activeCase === i ? 'true' : 'false');
       tab.innerHTML = '<span aria-hidden="true">' + (self.solved[i] ? '✅' : '🪐') + '</span><span class="ml-button-label">Case ' + (i + 1) + '</span>';
       if (self.solved[i]) tab.classList.add('is-solved');
       tab.addEventListener('click', function () {
@@ -72,8 +84,13 @@
     this.activeCase = i;
     this.select(null);
     this.renderTabs();
-    var c = (this.config.cases || [])[i];
-    this.ctx.instruct(c ? c.prompt : 'Tap a planet to inspect it.');
+    if (this.commitBtn) this.commitBtn.hidden = i < 0;
+    if (i < 0) {
+      this.ctx.instruct(this.config.explorePrompt || 'Orbit the solar system and tap any planet to discover its secrets — then try a Case!');
+    } else {
+      var c = (this.config.cases || [])[i];
+      this.ctx.instruct(c ? c.prompt : 'Tap a planet to inspect it.');
+    }
   };
 
   Solar3D.prototype.select = function (planet) {

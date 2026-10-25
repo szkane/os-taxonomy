@@ -106,6 +106,9 @@ function checkMission(course, mode) {
     }
     const correct = (q.choices || []).filter((c) => c.correct);
     if (correct.length !== 1) err(course.slug, `mission item ${i} (${q.concept}): needs exactly 1 correct choice`);
+    if (correct[0] && q.prompt && q.prompt.trim().toLowerCase() === correct[0].text.trim().toLowerCase()) {
+      err(course.slug, `mission item ${i} (${q.concept}): prompt is identical to the correct choice text (literal self-matching forbidden)`);
+    }
     const texts = (q.choices || []).map((c) => c.text.trim().toLowerCase());
     if (new Set(texts).size !== texts.length) err(course.slug, `mission item ${i} (${q.concept}): duplicate choices`);
     (q.choices || []).forEach((c) => { if (!c.why) err(course.slug, `mission item ${i}: choice missing why-feedback`); });
@@ -187,6 +190,8 @@ function ruleReachable(c, eff) {
         return true;
       }
       case 'affine': return rule.cStart * num('start') + rule.cStep * num('step') === rule.value;
+      case 'binary': return num('b8') * 8 + num('b4') * 4 + num('b2') * 2 + num('b1') === rule.value;
+      case 'pv4': return num('thousands') * 1000 + num('hundreds') * 100 + num('tens') * 10 + num('ones') === rule.value;
       default: return true;
     }
   };
@@ -251,7 +256,7 @@ function checkLab(course, mode) {
         }
       }
     }
-    if (caseSatisfiedByInitials(c, scene, course.domain, mode.config.scene, course.band)) {
+    if (caseSatisfiedByInitials(c, scene, course.domain, mode.config.scene, course.band, mode.config.initials)) {
       err(course.slug, `lab case ${i + 1} is pre-solved by the ${course.band} initial dials — change the case or the initial`);
     }
   });
@@ -292,12 +297,13 @@ const PYP_SCENES = globalThis.PYP.scenes;
 
 /* True when the case is ALREADY satisfied by the scene's initial dials —
    a pre-solved case commits as correct before the child does anything. */
-function caseSatisfiedByInitials(c, scene, domain, sceneId, band) {
+function caseSatisfiedByInitials(c, scene, domain, sceneId, band, configInitials) {
   var vals = {};
   var bandInitials = (LAB_CASES[domain + '|' + sceneId] || {})[band];
   scene.dials.forEach(function (d) {
     var v2 = d.initial;
     if (bandInitials && bandInitials.initials && bandInitials.initials[d.id] != null) v2 = bandInitials.initials[d.id];
+    if (configInitials && configInitials[d.id] != null) v2 = configInitials[d.id];
     vals[d.id] = v2;
   });
   var targets = c.targets || {};
@@ -448,6 +454,24 @@ function checkStorybook(course, mode) {
   });
 }
 
+function checkThreeCases(course, mode) {
+  const cases = mode.config.cases || [];
+  if (!cases.length) err(course.slug, `${mode.engine}: needs ≥1 case`);
+  cases.forEach((c, i) => {
+    if (!c.prompt) err(course.slug, `${mode.engine} case ${i}: missing prompt`);
+    if (!c.why) err(course.slug, `${mode.engine} case ${i}: missing why`);
+    if (course.band === 'early' && c.prompt && c.prompt.length > 110) {
+      err(course.slug, `${mode.engine} case ${i}: early-band prompt too long (${c.prompt.length})`);
+    }
+  });
+}
+
+function checkWorksheet(course, mode) {
+  if (mode.config.kind === 'handwriting' && (!mode.config.words || !mode.config.words.length)) {
+    err(course.slug, 'worksheet: handwriting sheet needs words');
+  }
+}
+
 const CHECKERS = {
   storybook: checkStorybook,
   flashcards: checkFlashcards,
@@ -460,17 +484,24 @@ const CHECKERS = {
   memory: checkMemory,
   'word-builder': checkWordBuilder,
   decision: checkDecision,
+  worksheet: checkWorksheet,
+  spatial3d: checkThreeCases,
+  solar3d: checkThreeCases,
+  volcano3d: checkThreeCases,
+  geometry3d: checkThreeCases,
+  optics3d: checkThreeCases,
+  diorama3d: checkThreeCases,
 };
 
-/* Band-distinctness (spiral curriculum contract): for each subject|domain ×
-   engine, the child-visible content of every band must be unique — a
-   fingerprint appearing in two bands means a band is playing another band's
-   content. Derived modes (flashcards/mission) differ naturally because decks
-   are built from each age's own topics. ENGINES_SCOPE grows per batch. */
-const BAND_DISTINCT_ENGINES = new Set(['sorter', 'sequence', 'decision', 'memory', 'arcade', 'concept-lab', 'spatial3d', 'solar3d', 'volcano3d']);
-/* Domains whose band sets land in a later batch — shrink to empty; the rule
-   is then global and no exception remains. */
-const BAND_DISTINCT_PENDING = new Set();
+/* Per-age and per-band distinctness (spiral curriculum contract):
+   For each subject|domain × engine, every age (5, 6, 7, 8, 9, 10) must have
+   distinct child-visible content — zero shared fingerprints between any two
+   ages or bands in the same domain. */
+const DISTINCT_ENGINES = new Set([
+  'sorter', 'sequence', 'decision', 'memory', 'arcade', 'concept-lab',
+  'doctor', 'worksheet', 'word-builder', 'storybook', 'flashcards', 'mission',
+  'spatial3d', 'solar3d', 'volcano3d', 'geometry3d', 'optics3d', 'diorama3d',
+]);
 
 function modeFingerprint(mode) {
   const c = mode.config || {};
@@ -493,7 +524,7 @@ function modeFingerprint(mode) {
     case 'worksheet':
       return pick(c, ['prompt']) + '##' + (c.words || []).join(',');
     case 'word-builder':
-      return (c.words || []).map((w) => w.word).join(',');
+      return pick(c, ['prompt']) + '##' + (c.words || []).map((w) => w.word).join(',');
     case 'storybook':
       return (c.books || []).map((b) => b.title).join(',');
     case 'flashcards':
@@ -502,41 +533,37 @@ function modeFingerprint(mode) {
       return (c.bank || []).map((b) => `${b.concept}#${b.prompt.slice(0, 40)}`).join('¶');
     case 'spatial3d':
     case 'solar3d':
-      return (c.cases || []).map((x) => `${x.prompt}#${x.why || ''}`).join('¶');
     case 'volcano3d':
+    case 'geometry3d':
+    case 'optics3d':
+    case 'diorama3d':
       return (c.cases || []).map((x) => `${x.prompt}#${x.why || ''}`).join('¶');
     default:
       return null;
   }
 }
 
-function checkBandDistinctness(courses) {
+function checkAgeAndBandDistinctness(courses) {
   const groups = new Map();
   for (const course of courses) {
     for (const mode of course.modes) {
-      if (!BAND_DISTINCT_ENGINES.has(mode.engine)) continue;
+      if (!DISTINCT_ENGINES.has(mode.engine)) continue;
       const fp = modeFingerprint(mode);
       if (!fp) continue;
-      const key = `${course.subject}|${course.domain}|${mode.engine}`;
+      const key = `${course.subject}|${course.domain}|${mode.engine}|${mode.label}`;
       if (!groups.has(key)) groups.set(key, new Map());
-      const byBand = groups.get(key);
-      if (!byBand.has(course.band)) byBand.set(course.band, new Map());
-      const fps = byBand.get(course.band);
-      fps.set(fp, (fps.get(fp) || 0) + 1);
+      const byAge = groups.get(key);
+      byAge.set(course.age, fp);
     }
   }
-  for (const [key, byBand] of groups.entries()) {
-    if (byBand.size < 2) continue;
-    const domainKey = key.slice(0, key.lastIndexOf('|'));
-    if (BAND_DISTINCT_PENDING.has(domainKey)) continue;
+  for (const [key, byAge] of groups.entries()) {
+    if (byAge.size < 2) continue;
     const seen = new Map();
-    for (const [band, fps] of byBand.entries()) {
-      for (const fp of fps.keys()) {
-        if (seen.has(fp)) {
-          err('band-distinct', `${key}: ${seen.get(fp)} and ${band} bands share identical content — spiral rule violated`);
-        } else {
-          seen.set(fp, band);
-        }
+    for (const [age, fp] of byAge.entries()) {
+      if (seen.has(fp)) {
+        err('age-distinct', `${key}: Age ${seen.get(fp)} and Age ${age} share identical content — per-age spiral rule violated`);
+      } else {
+        seen.set(fp, age);
       }
     }
   }
@@ -555,6 +582,12 @@ async function main() {
   }
   const courses = buildCourses(data);
   for (const course of courses) {
+    if (course.age < 5 || course.age > 10) {
+      err(course.slug, `course age ${course.age} outside primary school scope (Ages 5–10 / K–G5)`);
+    }
+    if (!course.modes.length || course.modes[0].phase !== 'explore') {
+      err(course.slug, `course must open with an explore simulation mode (first mode is ${course.modes[0] ? course.modes[0].engine : 'none'})`);
+    }
     for (const mode of course.modes) {
       const checker = CHECKERS[mode.engine];
       if (checker) checker(course, mode);
@@ -568,7 +601,7 @@ async function main() {
       err(course.slug, 'no playable mode (labs/sorters/quests/etc.) — cards+quiz alone are not a course');
     }
   }
-  checkBandDistinctness(courses);
+  checkAgeAndBandDistinctness(courses);
 
   if (warn.length) {
     console.log(`content warnings (${warn.length}):`);

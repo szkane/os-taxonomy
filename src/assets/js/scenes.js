@@ -864,6 +864,615 @@
     }
   };
 
+  /* ---------- 18. tenframe: 10-frame / 20-frame bridge ---------- */
+  SCENES.tenframe = {
+    dials: [
+      { id: 'a', label: 'Red counters', min: 0, max: 10, step: 1, initial: 6 },
+      { id: 'b', label: 'Yellow counters', min: 0, max: 10, step: 1, initial: 5 }
+    ],
+    readout: function (v) {
+      var a = v.a | 0, b = v.b | 0, sum = a + b;
+      var tens = Math.floor(sum / 10), ones = sum % 10;
+      return a + ' + ' + b + ' = ' + sum + (sum >= 10 ? ' (' + tens + ' ten + ' + ones + ' ones)' : '');
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#ffffff', 7, 0.7);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#eef7ff', '#d6ecff');
+      ground(ctx, w, h, h * 0.84, '#b8e0d2');
+      var a = Math.max(0, v.a | 0), b = Math.max(0, v.b | 0);
+      var total = a + b;
+      var cell = Math.min(w * 0.072, h * 0.14, 44);
+      var fw = cell * 5, fh = cell * 2, gap = w * 0.05;
+      var x0 = (w - fw * 2 - gap) / 2, y0 = h * 0.34;
+      for (var f = 0; f < 2; f++) {
+        var fx = x0 + f * (fw + gap);
+        rr(ctx, fx - 4, y0 - 4, fw + 8, fh + 8, 10);
+        fillStroke(ctx, '#ffffff', 3.5);
+        for (var idx = 0; idx < 10; idx++) {
+          var c = idx % 5, r = Math.floor(idx / 5);
+          var cx = fx + c * cell, cy = y0 + r * cell;
+          ctx.strokeStyle = INK; ctx.lineWidth = 2;
+          ctx.strokeRect(cx, cy, cell, cell);
+          var slotIdx = f * 10 + idx;
+          if (slotIdx < total) {
+            var isRed = slotIdx < a;
+            ctx.beginPath();
+            ctx.arc(cx + cell / 2, cy + cell / 2, cell * 0.34, 0, Math.PI * 2);
+            fillStroke(ctx, isRed ? '#f42324' : '#ffe156', 2.5);
+          }
+        }
+        label(ctx, f === 0 ? 'First 10-frame' : 'Second 10-frame', fx + fw / 2, y0 + fh + 24, 14, '#4a5560');
+      }
+      label(ctx, a + ' + ' + b + ' = ' + total, w / 2, h * 0.2, 26, INK);
+    }
+  };
+
+  /* ---------- 19. fractionline: fraction bar + number line + decimal/% ---------- */
+  SCENES.fractionline = {
+    dials: [
+      { id: 'parts', label: 'Equal parts (denominator)', min: 2, max: 100, step: 1, initial: 10 },
+      { id: 'shaded', label: 'Parts taken (numerator)', min: 0, max: 100, step: 1, initial: 3 }
+    ],
+    readout: function (v) {
+      var p = Math.max(2, v.parts | 0), s = Math.max(0, v.shaded | 0);
+      var dec = (s / p).toFixed(2).replace(/\.?0+$/, '');
+      var pct = Math.round((s / p) * 100);
+      return s + '/' + p + ' = ' + dec + ' (' + pct + '%)';
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#ffe156', 7, 0.6);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#fff9ec', '#fce8c5');
+      ground(ctx, w, h, h * 0.85, '#e8c99b');
+      var p = Math.max(2, v.parts | 0), s = Math.max(0, v.shaded | 0);
+      var ratio = Math.min(2, s / p);
+      var maxSpan = ratio > 1 ? 2 : 1;
+      var x0 = w * 0.08, x1 = w * 0.92, span = x1 - x0;
+      var barY = h * 0.24, barH = 44;
+      // Fraction tape bar
+      rr(ctx, x0, barY, span, barH, 10); fillStroke(ctx, '#ffffff', 3.5);
+      var fillW = Math.min(span, (ratio / maxSpan) * span);
+      if (fillW > 2) {
+        rr(ctx, x0, barY, fillW, barH, 10);
+        fillStroke(ctx, '#4ECDC4', 3);
+      }
+      var drawTicks = Math.min(p * maxSpan, 25);
+      for (var i = 1; i < drawTicks; i++) {
+        var tx = x0 + (i / drawTicks) * span;
+        ctx.beginPath(); ctx.moveTo(tx, barY); ctx.lineTo(tx, barY + barH);
+        ctx.lineWidth = (maxSpan === 2 && i === drawTicks / 2) ? 3.5 : 1.5;
+        ctx.strokeStyle = INK; ctx.stroke();
+      }
+      // Number line below
+      var lineY = h * 0.62;
+      ctx.beginPath(); ctx.moveTo(x0, lineY); ctx.lineTo(x1, lineY);
+      ctx.lineWidth = 4; ctx.strokeStyle = INK; ctx.stroke();
+      var stops = maxSpan === 2 ? [0, 0.5, 1, 1.5, 2] : [0, 0.25, 0.5, 0.75, 1];
+      stops.forEach(function (st) {
+        var sx = x0 + (st / maxSpan) * span;
+        ctx.beginPath(); ctx.moveTo(sx, lineY - 9); ctx.lineTo(sx, lineY + 9);
+        ctx.lineWidth = 3; ctx.strokeStyle = INK; ctx.stroke();
+        label(ctx, String(st), sx, lineY + 24, 14, INK);
+      });
+      var dotX = x0 + Math.min(1, ratio / maxSpan) * span;
+      var bob = Math.sin((v.__t || 0) * 3) * 3;
+      ctx.beginPath(); ctx.arc(dotX, lineY, 10, 0, Math.PI * 2);
+      fillStroke(ctx, '#f42324', 3);
+      rr(ctx, dotX - 48, lineY - 52 + bob, 96, 30, 8);
+      fillStroke(ctx, '#ffe156', 2.5);
+      label(ctx, s + '/' + p + ' (' + Math.round((s / p) * 100) + '%)', dotX, lineY - 37 + bob, 14, INK);
+    }
+  };
+
+  /* ---------- 20. clock: analog & digital clock + elapsed time ---------- */
+  SCENES.clock = {
+    dials: [
+      { id: 'hour', label: 'Start hour (0–23)', min: 0, max: 23, step: 1, initial: 3 },
+      { id: 'min', label: 'Start minute', min: 0, max: 55, step: 5, initial: 15 },
+      { id: 'jump', label: 'Elapsed minutes (+)', min: 0, max: 180, step: 5, initial: 30 }
+    ],
+    readout: function (v) {
+      var h0 = v.hour | 0, m0 = v.min | 0, j = v.jump | 0;
+      var tot = (h0 * 60 + m0 + j) % 1440;
+      var h1 = Math.floor(tot / 60), m1 = tot % 60;
+      var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+      return pad(h0) + ':' + pad(m0) + ' + ' + j + ' min → ' + pad(h1) + ':' + pad(m1);
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#ffffff', 6, 0.5);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#eef6ff', '#d5e8ff');
+      ground(ctx, w, h, h * 0.85, '#c4dbf5');
+      var h0 = v.hour | 0, m0 = v.min | 0, j = v.jump | 0;
+      var tot = (h0 * 60 + m0 + j) % 1440;
+      var h1 = Math.floor(tot / 60), m1 = tot % 60;
+      var cx = w * 0.36, cy = h * 0.45, R = Math.min(w, h) * 0.31;
+      shadow(ctx, cx, cy + R + 8, R * 0.9);
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      fillStroke(ctx, '#ffffff', 4);
+      // Elapsed wedge on minute ring
+      if (j > 0) {
+        var aStart = (m0 / 60) * Math.PI * 2 - Math.PI / 2;
+        var aEnd = aStart + (Math.min(j, 60) / 60) * Math.PI * 2;
+        ctx.save();
+        ctx.beginPath(); ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, R * 0.82, aStart, aEnd);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(78, 205, 196, 0.32)'; ctx.fill();
+        ctx.restore();
+      }
+      for (var n = 1; n <= 12; n++) {
+        var ang = (n / 12) * Math.PI * 2 - Math.PI / 2;
+        var nx = cx + Math.cos(ang) * (R * 0.76), ny = cy + Math.sin(ang) * (R * 0.76);
+        label(ctx, String(n), nx, ny, 14, INK);
+      }
+      var hAng = (((h1 % 12) + m1 / 60) / 12) * Math.PI * 2 - Math.PI / 2;
+      var mAng = (m1 / 60) * Math.PI * 2 - Math.PI / 2;
+      ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(hAng) * R * 0.5, cy + Math.sin(hAng) * R * 0.5);
+      ctx.lineWidth = 6; ctx.strokeStyle = INK; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(mAng) * R * 0.72, cy + Math.sin(mAng) * R * 0.72);
+      ctx.lineWidth = 4; ctx.strokeStyle = '#f42324'; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx, cy, 6, 0, Math.PI * 2); fillStroke(ctx, '#ffe156', 2.5);
+      // Digital board on right
+      var pad = function (x) { return (x < 10 ? '0' : '') + x; };
+      var bx = w * 0.64, by = h * 0.25, bw = w * 0.28, bh = h * 0.42;
+      rr(ctx, bx, by, bw, bh, 14); fillStroke(ctx, '#ffffff', 3.5);
+      label(ctx, 'Start: ' + pad(h0) + ':' + pad(m0), bx + bw / 2, by + bh * 0.26, 16, '#4a5560');
+      label(ctx, '+ ' + j + ' min', bx + bw / 2, by + bh * 0.5, 16, '#0d9488');
+      label(ctx, 'End: ' + pad(h1) + ':' + pad(m1), bx + bw / 2, by + bh * 0.76, 20, '#f42324');
+    }
+  };
+
+  /* ---------- 21. capacity: pouring cylinder + cubic volume ---------- */
+  SCENES.capacity = {
+    dials: [
+      { id: 'jugA', label: 'Jug A (ml)', min: 0, max: 1000, step: 50, unit: 'ml', initial: 300 },
+      { id: 'jugB', label: 'Jug B (ml)', min: 0, max: 1000, step: 50, unit: 'ml', initial: 250 },
+      { id: 'edge', label: 'Cube edge (cm)', min: 1, max: 6, step: 1, unit: 'cm', initial: 2 }
+    ],
+    readout: function (v) {
+      var a = v.jugA | 0, b = v.jugB | 0, e = v.edge | 0;
+      var tot = a + b, vol = e * e * e;
+      return tot + ' ml (' + (tot / 1000).toFixed(2) + ' L) · Cube volume: ' + vol + ' cm³';
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#8ecdf5', 6, 0.7);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#eef9ff', '#d6f0ff');
+      ground(ctx, w, h, h * 0.85, '#bde3f2');
+      var a = v.jugA | 0, b = v.jugB | 0, tot = a + b, e = Math.max(1, v.edge | 0);
+      // Left: graduated 2,000 ml cylinder
+      var jx = w * 0.14, jy = h * 0.2, jw = w * 0.26, jh = h * 0.58;
+      rr(ctx, jx, jy, jw, jh, 12); fillStroke(ctx, '#ffffff', 3.5);
+      var fillRatio = Math.min(1, tot / 2000);
+      var fh = jh * fillRatio;
+      if (fh > 2) {
+        rr(ctx, jx + 4, jy + jh - fh, jw - 8, fh, 8);
+        fillStroke(ctx, '#38B6FF', 2);
+      }
+      for (var m = 500; m <= 2000; m += 500) {
+        var my = jy + jh - (m / 2000) * jh;
+        ctx.beginPath(); ctx.moveTo(jx, my); ctx.lineTo(jx + 18, my);
+        ctx.lineWidth = 2.5; ctx.strokeStyle = INK; ctx.stroke();
+        label(ctx, m + ' ml', jx + 44, my, 12, INK);
+      }
+      label(ctx, a + ' + ' + b + ' = ' + tot + ' ml', jx + jw / 2, jy + jh + 22, 15, INK);
+      // Right: isometric cube of edge e
+      var cx = w * 0.68, cy = h * 0.7, cs = Math.min(28, 120 / e) * e;
+      bigCube(ctx, cx - cs / 2, cy, cs, '#ffe156');
+      label(ctx, e + '×' + e + '×' + e + ' = ' + (e * e * e) + ' cm³', cx, jy + jh + 22, 15, INK);
+    }
+  };
+
+  /* ---------- 22. coordgrid: coordinate grid (x,y) + angle turn ---------- */
+  SCENES.coordgrid = {
+    dials: [
+      { id: 'x', label: 'Across (x)', min: 0, max: 10, step: 1, initial: 3 },
+      { id: 'y', label: 'Up (y)', min: 0, max: 10, step: 1, initial: 4 },
+      { id: 'angle', label: 'Turn angle (°)', min: 0, max: 360, step: 15, unit: '°', initial: 90 }
+    ],
+    readout: function (v) {
+      var x = v.x | 0, y = v.y | 0, a = v.angle | 0;
+      var kind = a === 90 ? 'right angle' : a < 90 ? 'acute' : a === 180 ? 'straight line' : a < 180 ? 'obtuse' : 'reflex';
+      return 'Point (' + x + ', ' + y + ') · Angle ' + a + '° (' + kind + ')';
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#ffffff', 6, 0.5);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#f6f9ff', '#e3edff');
+      ground(ctx, w, h, h * 0.86, '#cdddf7');
+      // Left: 10x10 coordinate grid
+      var gx = w * 0.08, gy = h * 0.16, gs = Math.min(w * 0.42, h * 0.62);
+      rr(ctx, gx, gy, gs, gs, 8); fillStroke(ctx, '#ffffff', 3);
+      var step = gs / 10;
+      ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(36,39,34,0.22)';
+      for (var i = 1; i < 10; i++) {
+        ctx.beginPath(); ctx.moveTo(gx + i * step, gy); ctx.lineTo(gx + i * step, gy + gs); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(gx, gy + i * step); ctx.lineTo(gx + gs, gy + i * step); ctx.stroke();
+      }
+      var px = gx + (v.x | 0) * step, py = gy + gs - (v.y | 0) * step;
+      ctx.beginPath(); ctx.arc(px, py, 8, 0, Math.PI * 2); fillStroke(ctx, '#f42324', 2.5);
+      label(ctx, '(' + (v.x | 0) + ',' + (v.y | 0) + ')', px, py - 16, 14, '#f42324');
+      // Right: angle protractor
+      var ax = w * 0.74, ay = h * 0.56, ar = gs * 0.42, ang = (v.angle | 0) * Math.PI / 180;
+      ctx.beginPath(); ctx.arc(ax, ay, ar, 0, Math.PI * 2); fillStroke(ctx, '#ffffff', 3);
+      ctx.beginPath(); ctx.moveTo(ax, ay); ctx.arc(ax, ay, ar * 0.45, -ang, 0); ctx.closePath();
+      ctx.fillStyle = 'rgba(255,225,86,0.65)'; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(ax + ar, ay);
+      ctx.moveTo(ax, ay); ctx.lineTo(ax + Math.cos(-ang) * ar, ay + Math.sin(-ang) * ar);
+      ctx.lineWidth = 4; ctx.strokeStyle = INK; ctx.stroke();
+      label(ctx, (v.angle | 0) + '°', ax, ay + ar + 22, 16, INK);
+    }
+  };
+
+  /* ---------- 23. humanbody: heart, lungs, muscles & fuel simulator ---------- */
+  SCENES.humanbody = {
+    dials: [
+      { id: 'activity', label: 'Movement level', min: 1, max: 5, step: 1, initial: 2 },
+      { id: 'breath', label: 'Deep breaths', min: 1, max: 5, step: 1, initial: 3 }
+    ],
+    readout: function (v) {
+      var a = v.activity | 0, b = v.breath | 0;
+      var bpm = 60 + a * 20;
+      return 'Heart: ' + bpm + ' beats/min · Oxygen delivery: ' + (a + b >= 7 ? 'high' : 'steady');
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#ff8fa0', 8, (v.activity | 0) * 0.5);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#fff3f5', '#ffdce2');
+      ground(ctx, w, h, h * 0.85, '#f5c2cb');
+      var act = v.activity | 0, br = v.breath | 0, t = v.__t || 0;
+      var pulse = 1 + Math.sin(t * (2 + act * 1.8)) * 0.08;
+      var lungScale = 1 + Math.sin(t * (1.2 + br * 0.4)) * (0.04 + br * 0.02);
+      var cx = w / 2, cy = h * 0.46;
+      // Torso outline card
+      rr(ctx, cx - 140, h * 0.14, 280, h * 0.64, 28); fillStroke(ctx, '#ffffff', 3.5);
+      // Lungs
+      ctx.save(); ctx.translate(cx, cy - 10); ctx.scale(lungScale, lungScale);
+      ctx.beginPath(); ctx.ellipse(-48, 0, 34, 52, 0.1, 0, Math.PI * 2); fillStroke(ctx, '#8ecdf5', 3);
+      ctx.beginPath(); ctx.ellipse(48, 0, 34, 52, -0.1, 0, Math.PI * 2); fillStroke(ctx, '#8ecdf5', 3);
+      ctx.restore();
+      // Heart
+      ctx.save(); ctx.translate(cx, cy); ctx.scale(pulse, pulse);
+      ctx.beginPath(); ctx.arc(0, 0, 26, 0, Math.PI * 2); fillStroke(ctx, '#f42324', 3.5);
+      emoji(ctx, '❤️', 0, 0, 28);
+      ctx.restore();
+      label(ctx, '🧠 Brain ↔ 🫁 Lungs ↔ ❤️ Heart (' + (60 + act * 20) + ' BPM) ↔ 💪 Muscles', cx, h * 0.81, 15, INK);
+    }
+  };
+
+  /* ---------- 24. watercycle: sun heat, wind & cloud cooling ---------- */
+  SCENES.watercycle = {
+    dials: [
+      { id: 'sun', label: 'Sun heat (evaporation)', min: 1, max: 5, step: 1, initial: 2 },
+      { id: 'cool', label: 'Cloud cooling (rain/snow)', min: 1, max: 5, step: 1, initial: 2 }
+    ],
+    readout: function (v) {
+      var s = v.sun | 0, c = v.cool | 0;
+      var precip = c >= 4 && s >= 3 ? 'Heavy rain & runoff 🌧️' : c >= 5 ? 'Snow on peaks ❄️' : s >= 4 ? 'Fast evaporation ♨️' : 'Gentle water cycle 🌤️';
+      return precip + ' (Sun ' + s + ', Cooling ' + c + ')';
+    },
+    air: function (ctx, w, h, v, t) {
+      var s = v.sun | 0, c = v.cool | 0;
+      ctx.save();
+      for (var i = 0; i < s * 2; i++) {
+        var rx = w * 0.18 + (i * 29) % (w * 0.28);
+        var ry = h * 0.68 - ((t * 28 + i * 19) % (h * 0.36));
+        emoji(ctx, '♨️', rx, ry, 14);
+      }
+      if (c >= 3) {
+        for (var j = 0; j < c * 2; j++) {
+          var px = w * 0.56 + (j * 27) % (w * 0.28);
+          var py = h * 0.32 + ((t * 42 + j * 23) % (h * 0.42));
+          emoji(ctx, c >= 5 ? '❄️' : '💧', px, py, 14);
+        }
+      }
+      ctx.restore();
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#dff3ff', '#bce4ff');
+      var gy = h * 0.78;
+      ground(ctx, w, h, gy, '#9fd48a');
+      // Ocean on left
+      rr(ctx, w * 0.06, gy - 18, w * 0.42, h - gy + 18, 8); fillStroke(ctx, '#38B6FF', 3);
+      // Mountain on right
+      ctx.beginPath(); ctx.moveTo(w * 0.52, gy); ctx.lineTo(w * 0.74, h * 0.34); ctx.lineTo(w * 0.94, gy);
+      ctx.closePath(); fillStroke(ctx, '#8d99ae', 3.5);
+      // Sun
+      var s = v.sun | 0, c = v.cool | 0;
+      ctx.beginPath(); ctx.arc(w * 0.18, h * 0.22, 22 + s * 4, 0, Math.PI * 2);
+      fillStroke(ctx, '#ffe156', 3.5);
+      // Cloud
+      rr(ctx, w * 0.54, h * 0.16, 120 + c * 14, 44, 22);
+      fillStroke(ctx, c >= 4 ? '#94a3b8' : '#ffffff', 3);
+      label(ctx, 'Evaporation → Condensation → Precipitation → Collection', w / 2, h * 0.9, 14, INK);
+    }
+  };
+
+  /* ---------- 25. ecosystem: sunlight, water & living food web ---------- */
+  SCENES.ecosystem = {
+    dials: [
+      { id: 'sunlight', label: 'Sunlight & plants', min: 1, max: 5, step: 1, initial: 3 },
+      { id: 'animals', label: 'Herbivores & pollinators', min: 1, max: 5, step: 1, initial: 2 }
+    ],
+    readout: function (v) {
+      var s = v.sunlight | 0, a = v.animals | 0;
+      var status = s >= a ? 'Thriving balanced habitat 🌱🐝🦊' : 'Too few plants for the animals!';
+      return status + ' (Plants ' + s + ' · Animals ' + a + ')';
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#ffe156', 8, 0.8);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#e8f9e9', '#c8f0ce');
+      var gy = h * 0.78;
+      ground(ctx, w, h, gy, '#86efac');
+      var s = v.sunlight | 0, a = v.animals | 0;
+      emoji(ctx, '☀️', w * 0.14, h * 0.2, 28 + s * 4);
+      for (var i = 0; i < s; i++) {
+        emoji(ctx, i % 2 === 0 ? '🌻' : '🌳', w * 0.18 + i * (w * 0.14), gy - 26, 36);
+      }
+      for (var j = 0; j < a; j++) {
+        emoji(ctx, j % 2 === 0 ? '🐝' : '🐇', w * 0.24 + j * (w * 0.14), gy - 68, 30);
+      }
+      label(ctx, 'Sun ☀️ → Producers (Plants 🌱) → Consumers (Animals 🐝🐇)', w / 2, h * 0.89, 14, INK);
+    }
+  };
+
+  /* ---------- 26. fairtest: scientific inquiry & design testing bench ---------- */
+  SCENES.fairtest = {
+    dials: [
+      { id: 'water', label: 'Pot B water (spoons/day)', min: 1, max: 5, step: 1, initial: 2 },
+      { id: 'light', label: 'Same sunlight (1=unfair, 2=fair)', min: 1, max: 2, step: 1, initial: 2 }
+    ],
+    readout: function (v) {
+      var w2 = v.water | 0, fair = (v.light | 0) === 2;
+      return (fair ? 'Fair test ✅ (only water changed)' : 'Unfair test ⚠️ (two variables changed!)') + ' · Growth: ' + (w2 * 4) + ' cm';
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#ffffff', 6, 0.6);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#f0fdf4', '#dcfce7');
+      var gy = h * 0.78;
+      ground(ctx, w, h, gy, '#bbf7d0');
+      var w2 = v.water | 0, fair = (v.light | 0) === 2;
+      // Pot A (baseline 2 spoons) vs Pot B (w2 spoons)
+      var pots = [{ x: w * 0.3, water: 2, sun: true, name: 'Pot A (2💧)' }, { x: w * 0.7, water: w2, sun: fair, name: 'Pot B (' + w2 + '💧)' }];
+      pots.forEach(function (p) {
+        rr(ctx, p.x - 36, gy - 48, 72, 48, 8); fillStroke(ctx, '#d97706', 3);
+        var stemH = 24 + p.water * 22;
+        ctx.beginPath(); ctx.moveTo(p.x, gy - 48); ctx.lineTo(p.x, gy - 48 - stemH);
+        ctx.lineWidth = 5; ctx.strokeStyle = '#15803d'; ctx.stroke();
+        emoji(ctx, '🌱', p.x, gy - 56 - stemH, 26);
+        emoji(ctx, p.sun ? '☀️' : '🌑', p.x, h * 0.2, 28);
+        label(ctx, p.name, p.x, gy + 22, 15, INK);
+      });
+    }
+  };
+
+  /* ---------- 27. codeturtle: algorithm stepper & loop robot grid ---------- */
+  SCENES.codeturtle = {
+    dials: [
+      { id: 'steps', label: 'Forward steps', min: 1, max: 6, step: 1, initial: 2 },
+      { id: 'repeats', label: 'Repeat loop (×)', min: 1, max: 4, step: 1, initial: 2 }
+    ],
+    readout: function (v) {
+      var s = v.steps | 0, r = v.repeats | 0;
+      return 'Repeat ' + r + '× [Move ' + s + '] → Total distance: ' + (s * r) + ' squares';
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#38B6FF', 6, 0.8);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#eff6ff', '#dbeafe');
+      ground(ctx, w, h, h * 0.85, '#bfdbfe');
+      var s = v.steps | 0, r = v.repeats | 0, total = Math.min(24, s * r);
+      var cols = 12, cw = Math.min((w * 0.84) / cols, 42);
+      var x0 = (w - cols * cw) / 2, y0 = h * 0.36;
+      for (var i = 0; i < cols; i++) {
+        rr(ctx, x0 + i * cw, y0, cw - 3, cw, 6);
+        fillStroke(ctx, i <= total && i > 0 ? '#86efac' : '#ffffff', 2.5);
+        label(ctx, String(i), x0 + i * cw + cw / 2, y0 + cw + 16, 11, INK);
+      }
+      var rx = x0 + Math.min(cols - 1, total) * cw + cw / 2;
+      emoji(ctx, '🤖', rx, y0 + cw / 2, 28);
+      label(ctx, 'Algorithm: repeat ' + r + ' times { move ' + s + ' } = ' + (s * r), w / 2, h * 0.22, 18, INK);
+    }
+  };
+
+  /* ---------- 28. binarylab: binary switches, data & AI threshold ---------- */
+  SCENES.binarylab = {
+    dials: [
+      { id: 'b3', label: '8s bit (0 or 1)', min: 0, max: 1, step: 1, initial: 0 },
+      { id: 'b2', label: '4s bit (0 or 1)', min: 0, max: 1, step: 1, initial: 1 },
+      { id: 'b1', label: '2s bit (0 or 1)', min: 0, max: 1, step: 1, initial: 0 },
+      { id: 'b0', label: '1s bit (0 or 1)', min: 0, max: 1, step: 1, initial: 1 }
+    ],
+    readout: function (v) {
+      var b3 = v.b3 | 0, b2 = v.b2 | 0, b1 = v.b1 | 0, b0 = v.b0 | 0;
+      var val = b3 * 8 + b2 * 4 + b1 * 2 + b0;
+      return 'Binary ' + b3 + '' + b2 + '' + b1 + '' + b0 + ' = Decimal ' + val;
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#a855f7', 7, 0.9);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#f5f3ff', '#ede9fe');
+      ground(ctx, w, h, h * 0.85, '#ddd6fe');
+      var bits = [
+        { bit: v.b3 | 0, w: 8 },
+        { bit: v.b2 | 0, w: 4 },
+        { bit: v.b1 | 0, w: 2 },
+        { bit: v.b0 | 0, w: 1 }
+      ];
+      var val = bits[0].bit * 8 + bits[1].bit * 4 + bits[2].bit * 2 + bits[3].bit;
+      var cardW = 84, gap = 20, x0 = (w - (cardW * 4 + gap * 3)) / 2, y0 = h * 0.28;
+      bits.forEach(function (b, i) {
+        var x = x0 + i * (cardW + gap);
+        rr(ctx, x, y0, cardW, 96, 12);
+        fillStroke(ctx, b.bit ? '#ffe156' : '#ffffff', 3.5);
+        label(ctx, String(b.bit), x + cardW / 2, y0 + 44, 34, INK);
+        label(ctx, 'worth ' + b.w, x + cardW / 2, y0 + 78, 13, '#4a5560');
+      });
+      label(ctx, 'Decoded value: ' + val, w / 2, h * 0.72, 26, INK);
+    }
+  };
+
+  /* ---------- 29. wordwave: phonics sound-wave, syllables & word builder ---------- */
+  SCENES.wordwave = {
+    dials: [
+      { id: 'beats', label: 'Syllable beats', min: 1, max: 4, step: 1, initial: 2 },
+      { id: 'parts', label: 'Word parts (prefix + root + suffix)', min: 1, max: 3, step: 1, initial: 2 }
+    ],
+    readout: function (v) {
+      var b = v.beats | 0, p = v.parts | 0;
+      var ex = ['', 'play', 'play·ful', 'un·play·able'][p] || 'word';
+      return b + ' syllable beat' + (b > 1 ? 's' : '') + ' · ' + p + ' morpheme part' + (p > 1 ? 's' : '') + ' (' + ex + ')';
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#ff6584', 6, 0.7);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#fff5f7', '#ffe4e9');
+      ground(ctx, w, h, h * 0.85, '#fbcfe8');
+      var b = v.beats | 0, p = v.parts | 0;
+      var bw = 96, gap = 16, x0 = (w - (b * bw + (b - 1) * gap)) / 2;
+      for (var i = 0; i < b; i++) {
+        var x = x0 + i * (bw + gap);
+        rr(ctx, x, h * 0.24, bw, 56, 12);
+        fillStroke(ctx, '#4ECDC4', 3);
+        label(ctx, '👏 Beat ' + (i + 1), x + bw / 2, h * 0.24 + 28, 15, INK);
+      }
+      var morphs = p === 1 ? ['root: play'] : p === 2 ? ['root: play', 'suffix: -ful'] : ['prefix: un-', 'root: help', 'suffix: -ful'];
+      var mw = 130, mx0 = (w - (morphs.length * mw + (morphs.length - 1) * 14)) / 2;
+      morphs.forEach(function (m, j) {
+        var mx = mx0 + j * (mw + 14);
+        rr(ctx, mx, h * 0.54, mw, 52, 10);
+        fillStroke(ctx, ['#ffe156', '#86efac', '#b388ff'][j % 3], 3);
+        label(ctx, m, mx + mw / 2, h * 0.54 + 26, 15, INK);
+      });
+    }
+  };
+
+  /* ---------- 30. timemachine: historical era & geographic change dial ---------- */
+  SCENES.timemachine = {
+    dials: [
+      { id: 'era', label: 'Time era (1=Ancient → 5=Today)', min: 1, max: 5, step: 1, initial: 2 },
+      { id: 'clue', label: 'Lens (1=Homes, 2=Travel, 3=Records)', min: 1, max: 3, step: 1, initial: 1 }
+    ],
+    readout: function (v) {
+      var eras = ['', 'Ancient river valleys (3000 BCE)', 'Classical Greece & Rome (500 BCE)', 'Medieval castles & trade (1200 CE)', 'Steam & inventions (1900 CE)', 'Connected digital world (Today)'];
+      var lenses = ['', 'Homes & settlements', 'Transport & maps', 'Primary source records'];
+      return eras[v.era | 0] + ' · ' + lenses[v.clue | 0];
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#fdae1c', 7, 0.6);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#fef9ef', '#fae8c8');
+      var gy = h * 0.78;
+      ground(ctx, w, h, gy, '#df9f' && '#dfb98c');
+      var e = v.era | 0, c = v.clue | 0;
+      var icons = [
+        [],
+        ['🏺', '⛵', '🪨'],
+        ['🏛️', '🛞', '📜'],
+        ['🏰', '🐎', '✒️'],
+        ['🏭', '🚂', '📷'],
+        ['🏙️', '🚄', '💻']
+      ];
+      rr(ctx, w * 0.14, h * 0.2, w * 0.72, h * 0.5, 18);
+      fillStroke(ctx, '#ffffff', 3.5);
+      for (var i = 1; i <= 5; i++) {
+        var tx = w * 0.2 + (i - 1) * (w * 0.15);
+        ctx.beginPath(); ctx.arc(tx, h * 0.3, i === e ? 18 : 10, 0, Math.PI * 2);
+        fillStroke(ctx, i === e ? '#ffe156' : '#e2e8f0', 2.5);
+        label(ctx, String(i), tx, h * 0.3, 13, INK);
+      }
+      emoji(ctx, (icons[e] && icons[e][c - 1]) || '🏛️', w / 2, h * 0.52, 54);
+    }
+  };
+
+  /* ---------- 31. marketlab: coins, budget jar & kitchen ratio mixer ---------- */
+  SCENES.marketlab = {
+    dials: [
+      { id: 'earn', label: 'Coins earned / Cups of flour', min: 1, max: 10, step: 1, initial: 4 },
+      { id: 'save', label: 'Coins saved / Cups of water', min: 0, max: 10, step: 1, initial: 2 }
+    ],
+    readout: function (v) {
+      var e = v.earn | 0, s = Math.min(e, v.save | 0), spend = Math.max(0, e - s);
+      return 'Total: ' + e + ' · Saved: ' + s + ' · Spend/Share: ' + spend;
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#ffe156', 6, 0.6);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#fffbeb', '#fef3c7');
+      ground(ctx, w, h, h * 0.84, '#fde68a');
+      var e = v.earn | 0, s = v.save | 0;
+      var boxes = [
+        { x: w * 0.28, n: e, title: 'Earned / Batch A (' + e + ')', em: '🪙', col: '#ffe156' },
+        { x: w * 0.72, n: s, title: 'Saved / Batch B (' + s + ')', em: '🏺', col: '#86efac' }
+      ];
+      boxes.forEach(function (b) {
+        rr(ctx, b.x - 110, h * 0.22, 220, h * 0.5, 16);
+        fillStroke(ctx, '#ffffff', 3.5);
+        for (var i = 0; i < b.n; i++) {
+          emoji(ctx, '🪙', b.x - 72 + (i % 5) * 36, h * 0.38 + Math.floor(i / 5) * 42, 26);
+        }
+        label(ctx, b.title, b.x, h * 0.78, 15, INK);
+      });
+    }
+  };
+
+  /* ---------- 32. mindgarden: emotion calm breath & brain-pathway growth ---------- */
+  SCENES.mindgarden = {
+    dials: [
+      { id: 'breath', label: 'Slow calm breaths', min: 1, max: 5, step: 1, initial: 2 },
+      { id: 'practice', label: 'Kind & focused choices', min: 1, max: 5, step: 1, initial: 2 }
+    ],
+    readout: function (v) {
+      var b = v.breath | 0, p = v.practice | 0;
+      var state = b + p >= 8 ? 'Calm, balanced & growing strong 🌱✨' : b + p >= 5 ? 'Steady and learning 🌿' : 'Warming up — take a slow breath 🫧';
+      return state + ' (Breath ' + b + ' · Practice ' + p + ')';
+    },
+    air: function (ctx, w, h, v, t) {
+      driftDots(ctx, w, h, t, '#a7f3d0', 8, 0.5);
+    },
+    render: function (ctx, w, h, v) {
+      sky(ctx, w, h, '#f0fdf4', '#d1fae5');
+      var gy = h * 0.82;
+      ground(ctx, w, h, gy, '#6ee7b7');
+      var b = v.breath | 0, p = v.practice | 0, t = v.__t || 0;
+      var r = 28 + b * 10 + Math.sin(t * 1.6) * 8;
+      ctx.beginPath(); ctx.arc(w * 0.3, h * 0.46, r, 0, Math.PI * 2);
+      fillStroke(ctx, '#8ecdf5', 3.5);
+      label(ctx, '🫁 Breathe', w * 0.3, h * 0.46, 16, INK);
+      // Neural / garden tree on right growing branches with practice
+      var tx = w * 0.7, ty = gy;
+      ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(tx, ty - 40 - p * 18);
+      ctx.lineWidth = 8; ctx.strokeStyle = '#78350f'; ctx.stroke();
+      for (var i = 0; i < p; i++) {
+        var ang = -Math.PI / 2 + (i - (p - 1) / 2) * 0.45;
+        var bx = tx + Math.cos(ang) * (36 + p * 8), by = ty - 50 - p * 14 + Math.sin(ang) * 28;
+        ctx.beginPath(); ctx.arc(bx, by, 22, 0, Math.PI * 2);
+        fillStroke(ctx, '#86efac', 3);
+        emoji(ctx, '🌟', bx, by, 18);
+      }
+    }
+  };
+
   /* ---------- shared ambient helpers (drawn over scenes) ---------- */
   function driftDots(ctx, w, h, t, color, n, speed) {
     ctx.save();
@@ -892,6 +1501,10 @@
     emoji(ctx, hen, w * 0.88, h * 0.16 + Math.sin(t * 2) * 3, 30);
   };
   SCENES.placevalue.air = function (ctx, w, h, v, t) { driftDots(ctx, w, h, t, '#ffe156', 7, 0.6); };
+  SCENES.placevalue2.air = SCENES.placevalue.air;
+  SCENES.placevalue.maxRepresented = 999;
+  SCENES.placevalue2.maxRepresented = 10000;
+  SCENES.pvchart.maxRepresented = 10000000;
   SCENES.counting.air = function (ctx, w, h, v, t) { driftDots(ctx, w, h, t, '#ffffff', 9, 0.9); };
   SCENES.shape.air = function (ctx, w, h, v, t) { driftDots(ctx, w, h, t, '#ffffff', 6, 0.7); };
   SCENES.measure.air = function (ctx, w, h, v, t) { driftDots(ctx, w, h, t, '#ffffff', 6, 0.5); };

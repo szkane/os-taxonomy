@@ -46,9 +46,12 @@ const ENGINE_FILES = {
   'word-builder': 'word-builder.js',
   'solar3d': 'solar3d.js',
   'volcano3d': 'volcano3d.js',
+  'geometry3d': 'geometry3d.js',
+  'optics3d': 'optics3d.js',
+  'diorama3d': 'diorama3d.js',
   'storybook': 'storybook.js',
 };
-const THREE_ENGINES = ['spatial3d', 'solar3d', 'volcano3d'];
+const THREE_ENGINES = ['spatial3d', 'solar3d', 'volcano3d', 'geometry3d', 'optics3d', 'diorama3d'];
 
 function subjectSlug(subject) {
   return subject.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-');
@@ -224,7 +227,8 @@ ${scriptTags.join('\n')}
 
 export function hubPage(courses) {
   const subjects = [...new Set(courses.map((c) => c.subject))].sort();
-  const grades = [...new Set(courses.map((c) => c.grade))].sort();
+  const GRADE_ORDER = ['K', 'G1', 'G2', 'G3', 'G4', 'G5'];
+  const grades = [...new Set(courses.map((c) => c.grade))].sort((a, b) => GRADE_ORDER.indexOf(a) - GRADE_ORDER.indexOf(b));
   const indexData = courses.map((c) => ({
     slug: c.slug,
     title: c.title,

@@ -1,8 +1,9 @@
 /* ==========================================================================
-   Engine: memory — match-the-pairs
-   A calm pairing game: flip two cards; matched pairs stay open with their
-   connection spoken/shown. Used for vocabulary (word ↔ meaning), animal
-   features, symbol ↔ name. Few pairs, big cards, no timer — thinking space.
+   Engine: memory — match-the-pairs (IB Two-Step Meet Pairs → Match Game)
+   Step 1 (🔭 Meet the pairs): explore the connected pairs face-up so children
+   can tap and hear/read why each pair belongs together before flipping cards.
+   Step 2 (🃏 Match game): flip two cards; matched pairs stay open with their
+   connection spoken/shown. Few pairs, big cards, no timer — thinking space.
    ========================================================================== */
 (function () {
   'use strict';
@@ -17,15 +18,28 @@
     this.lock = false;
     this.moves = 0;
     this.matched = 0;
+    this.stepMode = 'explore';
 
     var wrap = PYP.el('div', 'memory-wrap');
+    this.stepTabs = PYP.el('div', 'ml-case-tabs');
+    this.stepTabs.setAttribute('role', 'tablist');
+    this.stepTabs.setAttribute('aria-label', 'Memory steps');
+    wrap.appendChild(this.stepTabs);
+
     var hud = PYP.el('div', 'fc2-top');
     this.hudChip = PYP.el('span', 'ml-chipstat', 'Pairs 0 of ' + (config.pairs || []).length);
     hud.appendChild(this.hudChip);
+    this.hud = hud;
     wrap.appendChild(hud);
+
+    this.exploreEl = PYP.el('div', 'memory-explore');
+    wrap.appendChild(this.exploreEl);
+
     this.grid = PYP.el('div', 'memory-grid');
     wrap.appendChild(this.grid);
+
     var foot = PYP.el('div', 'seq-actions');
+    this.foot = foot;
     this.resetBtn = PYP.el('button', 'ml-control');
     this.resetBtn.type = 'button';
     this.resetBtn.innerHTML = PYP.icon('replay') + '<span class="ml-button-label">Shuffle again</span>';
@@ -33,9 +47,87 @@
     foot.appendChild(this.resetBtn);
     wrap.appendChild(foot);
     root.appendChild(wrap);
-    this.build();
-    ctx.instruct(config.explorePrompt || 'Flip two cards. Find the pairs that belong together!');
+    this.wrap = wrap;
+    this.setStepMode('explore');
   }
+
+  Memory.prototype.renderStepTabs = function () {
+    var self = this;
+    this.stepTabs.innerHTML = '';
+    var expBtn = PYP.el('button', 'ml-control ml-case-tab');
+    expBtn.type = 'button';
+    expBtn.setAttribute('role', 'tab');
+    expBtn.setAttribute('aria-pressed', this.stepMode === 'explore' ? 'true' : 'false');
+    expBtn.innerHTML = '<span aria-hidden="true">🔭</span><span class="ml-button-label">Meet the pairs</span>';
+    expBtn.addEventListener('click', function () {
+      self.ctx.sfx.playClick();
+      self.setStepMode('explore');
+    });
+    this.stepTabs.appendChild(expBtn);
+
+    var chalBtn = PYP.el('button', 'ml-control ml-case-tab');
+    chalBtn.type = 'button';
+    chalBtn.setAttribute('role', 'tab');
+    chalBtn.setAttribute('aria-pressed', this.stepMode === 'challenge' ? 'true' : 'false');
+    chalBtn.innerHTML = '<span aria-hidden="true">🃏</span><span class="ml-button-label">Match game</span>';
+    chalBtn.addEventListener('click', function () {
+      self.ctx.sfx.playClick();
+      self.setStepMode('challenge');
+    });
+    this.stepTabs.appendChild(chalBtn);
+  };
+
+  Memory.prototype.setStepMode = function (mode) {
+    var self = this;
+    this.stepMode = mode;
+    this.renderStepTabs();
+    if (mode === 'explore') {
+      this.hud.hidden = true;
+      this.grid.hidden = true;
+      this.resetBtn.hidden = true;
+      this.exploreEl.hidden = false;
+      this.renderExplore();
+      this.ctx.instruct('🔭 Explore first: tap any connected pair below to hear how they belong together!');
+    } else {
+      this.exploreEl.hidden = true;
+      this.hud.hidden = false;
+      this.grid.hidden = false;
+      this.resetBtn.hidden = false;
+      this.build();
+      this.ctx.instruct(this.config.explorePrompt || 'Flip two cards. Find the pairs that belong together!');
+    }
+  };
+
+  Memory.prototype.renderExplore = function () {
+    var self = this;
+    this.exploreEl.innerHTML = '';
+    var list = PYP.el('div', 'memory-pair-list');
+    (this.config.pairs || []).forEach(function (pair) {
+      var row = PYP.el('button', 'ml-control memory-pair-chip');
+      row.type = 'button';
+      var aText = (pair.a.emoji ? pair.a.emoji + ' ' : '') + pair.a.label;
+      var bText = (pair.b.emoji ? pair.b.emoji + ' ' : '') + pair.b.label;
+      row.innerHTML = '<span class="ml-button-label">' + PYP.esc(aText) + '  ↔  ' + PYP.esc(bText) + '</span>';
+      row.addEventListener('click', function () {
+        self.ctx.sfx.playClick();
+        var why = pair.b.why || pair.a.why || (pair.a.label + ' connects with ' + pair.b.label + '.');
+        self.ctx.instruct(why);
+      });
+      list.appendChild(row);
+    });
+    this.exploreEl.appendChild(list);
+    var goBtn = PYP.el('button', 'ml-control ml-control--primary');
+    goBtn.type = 'button';
+    goBtn.innerHTML = '<span aria-hidden="true">🃏</span><span class="ml-button-label">Flip cards &amp; play match game</span>';
+    goBtn.addEventListener('click', function () {
+      self.ctx.sfx.playClick();
+      self.setStepMode('challenge');
+    });
+    var act = PYP.el('div', 'seq-actions');
+    act.style.marginTop = '12px';
+    act.appendChild(goBtn);
+    this.exploreEl.appendChild(act);
+  };
 
   Memory.prototype.build = function () {
     var self = this;
@@ -86,7 +178,6 @@
     this.moves += 1;
     var a = this.first;
     this.first = null;
-    var total = (this.config.pairs || []).length;
     if (a.card.key === card.key && a.btn !== btn) {
       a.btn.classList.add('is-matched');
       btn.classList.add('is-matched');
@@ -124,8 +215,9 @@
     again.innerHTML = PYP.icon('replay') + '<span class="ml-button-label">Shuffle &amp; play again</span>';
     again.addEventListener('click', function () {
       self.ctx.sfx.playClick();
-      self.build();
-      self.ctx.instruct(self.config.explorePrompt || 'Flip two cards. Find the pairs that belong together!');
+      self.root.innerHTML = '';
+      var Ctor = PYP.engines['memory'];
+      new Ctor(self.root, self.config, self.ctx);
     });
     wrap.appendChild(again);
     this.root.appendChild(wrap);

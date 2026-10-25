@@ -185,6 +185,7 @@
     var explore = PYP.el('button', 'ml-control ml-case-tab');
     explore.type = 'button';
     explore.setAttribute('role', 'tab');
+    explore.setAttribute('aria-pressed', this.activeCase === -1 ? 'true' : 'false');
     explore.innerHTML = '<span aria-hidden="true">🔭</span><span class="ml-button-label">Explore</span>';
     explore.addEventListener('click', function () {
       self.ctx.sfx.playClick();
@@ -195,6 +196,7 @@
       var tab = PYP.el('button', 'ml-control ml-case-tab');
       tab.type = 'button';
       tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-pressed', self.activeCase === i ? 'true' : 'false');
       tab.innerHTML = '<span aria-hidden="true">' + (self.solved[i] ? '✅' : '🧩') + '</span><span class="ml-button-label">Case ' + (i + 1) + '</span>';
       if (self.solved[i]) tab.classList.add('is-solved');
       tab.addEventListener('click', function () {
@@ -291,8 +293,22 @@
         return true;
       }
       case 'affine': return rule.cStart * num('start') + rule.cStep * num('step') === rule.value;
+      case 'binary': return (num('b3') || num('b8')) * 8 + (num('b2') || num('b4')) * 4 + (num('b1') || num('b2')) * 2 + (num('b0') || num('b1')) === rule.value;
+      case 'pv4': return (num('th') || num('thousands')) * 1000 + (num('h') || num('hundreds')) * 100 + (num('t') || num('tens')) * 10 + (num('o') || num('ones')) === rule.value;
       default: return true;
     }
+  };
+
+  ConceptLab.prototype.drawFallback = function () {
+    if (!this.canvas || !this.scene || !this.scene.render) return;
+    this.canvas.width = 640;
+    this.canvas.height = 372;
+    var ctx = this.canvas.getContext('2d');
+    if (!ctx) return;
+    ctx.save();
+    this.scene.render(ctx, 640, 372, this.vals);
+    if (this.scene.air) this.scene.air(ctx, 640, 372, this.vals, 0);
+    ctx.restore();
   };
 
   ConceptLab.prototype.commit = function () {

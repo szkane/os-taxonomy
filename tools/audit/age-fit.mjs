@@ -1,22 +1,30 @@
 /* ==========================================================================
-   age-fit.mjs — full-course age-appropriateness audit
-   Builds the real course payloads (buildCourses), then answers per domain:
-     1. What does each band (early 4-6 / mid 7-8 / upper 9-10) actually get?
-        (lab scene + effective dial ranges + case prompts, every other engine's
-        resolved content, band fallbacks)
-     2. What does the taxonomy say that band should learn (topic names)?
-     3. Automated mismatch flags (banding gaps, outgrown representations,
-        same-content-all-bands, fallback leaks).
+   age-fit.mjs — full-course age-appropriateness & spiral progression audit
+   Builds the real course payloads (buildCourses) for primary school (Ages 5–10,
+   Kindergarten to Grade 5), then answers per domain:
+     1. What does each band (early 5-6 / mid 7-8 / upper 9-10) and each age
+        actually get? (lab scene + effective dial ranges + case prompts, 3D
+        worlds, every other engine's resolved content)
+     2. What does the taxonomy say that band/age should learn (topic names)?
+     3. Automated mismatch flags:
+        - F1: lab cases/dials identical between bands
+        - F2: numeric ceiling beyond the band's lab representations
+        - F3: static engine content identical across bands
+        - F4: doctor content identical across bands
+        - F5: worksheet / word-builder words identical across bands
+        - F6: storybook books identical across bands
+        - F8: domain has a secondary lab in some bands but missing in another
+        - F9: two ages within the same domain share identical mode content
    Output: .audit/age-fit-report.md (human review) + .audit/age-fit.json (raw).
    ==========================================================================
    This is a READ-ONLY audit tool: it never edits content, only reports.
    ========================================================================== */
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const { DOMAINS, bandOf } = await import('../lib/mapping.mjs');
+const { DOMAINS } = await import('../lib/mapping.mjs');
 const { buildCourses, loadData } = await import('../lib/derive.mjs');
 
 /* Load the scene registry (browser IIFE) with a window shim. */
@@ -52,17 +60,21 @@ function effectiveDials(courseMode) {
     };
   });
 }
-function caseNumbers(mode) {
-  const out = [];
-  for (const c of mode.config.cases || []) {
-    const t = c.targets || {};
-    for (const v of Object.values(t)) out.push(v);
-    if (c.rule && typeof c.rule.value === 'number') out.push(c.rule.value);
+
+function effectiveSceneMax(sceneId, dials) {
+  const scene = SCENES[sceneId];
+  if (sceneId === 'placevalue') {
+    const h = (dials.find((d) => d.id === 'h') || { max: 9 }).max;
+    const t = (dials.find((d) => d.id === 't') || { max: 9 }).max;
+    const o = (dials.find((d) => d.id === 'o') || { max: 9 }).max;
+    return h * 100 + t * 10 + o;
   }
-  return out.filter((n) => typeof n === 'number' && isFinite(n));
+  if (scene && scene.maxRepresented) return scene.maxRepresented;
+  return Math.max(0, ...dials.map((d) => d.max), ...dials.map((d) => Math.abs(d.min)));
 }
+
 function modeFingerprint(mode) {
-  const c = mode.config;
+  const c = mode.config || {};
   switch (mode.engine) {
     case 'concept-lab': {
       const dials = effectiveDials(mode).map((d) => `${d.id}:${d.min}..${d.max}@${d.initial}`).join(',');
@@ -70,34 +82,34 @@ function modeFingerprint(mode) {
       return `lab ${c.scene} [${dials}] :: ${cases}`;
     }
     case 'arcade':
-      return `arcade ${(c.items || []).slice(0, 2).map((i) => i.prompt).join(' / ')} (${(c.items || []).length})`;
+      return `arcade ${(c.items || []).slice(0, 3).map((i) => i.prompt).join(' / ')} (${(c.items || []).length})`;
     case 'sorter':
-      return `sorter ${(c.items || []).slice(0, 3).map((i) => i.text || i.label).join(' / ')} (${(c.items || []).length})`;
+      return `sorter ${c.explorePrompt || ''} :: ${(c.items || []).map((i) => i.text || i.label).join(' / ')} (${(c.items || []).length})`;
     case 'sequence':
-      return `sequence ${(c.cards || []).slice(0, 3).map((i) => i.label || i.text).join(' / ')} (${(c.cards || []).length})`;
+      return `sequence ${c.explorePrompt || ''} :: ${(c.cards || []).map((i) => `${i.label || i.text}:${i.why || ''}`).join(' / ')}`;
     case 'memory':
-      return `memory ${(c.pairs || []).slice(0, 3).map((p) => p[0]).join(' / ')} (${(c.pairs || []).length})`;
+      return `memory ${(c.pairs || []).map((p) => (p.a ? `${p.a.label}=${p.b.label}` : p[0])).join(' / ')} (${(c.pairs || []).length})`;
     case 'doctor':
-      return `doctor ${(c.sentences || []).slice(0, 1).map((s) => s.broken || s.hurt).join('')} (${(c.sentences || []).length})`;
+      return `doctor ${(c.patients || []).map((p) => (p.variants || []).map((v) => v.map((t) => t.text).join(' ')).join('|')).join(' / ')}`;
     case 'decision':
-      return `decision ${(c.scenes || []).slice(0, 2).map((s) => (s.text || '').slice(0, 60)).join(' / ')} (${(c.scenes || []).length} scenes)`;
+      return `decision ${(c.scenes || []).map((s) => (s.text || '').slice(0, 60)).join(' / ')} (${(c.scenes || []).length} scenes)`;
     case 'worksheet':
-      return `worksheet ${(c.words || []).slice(0, 4).join(',')} (${(c.words || []).length})`;
+      return `worksheet ${c.prompt || ''} :: ${(c.words || []).join(',')} (${(c.words || []).length})`;
     case 'word-builder':
-      return `word-builder ${(c.words || []).slice(0, 4).join(',')} (${(c.words || []).length})`;
-    case 'memorys':
+      return `word-builder ${c.prompt || ''} :: ${(c.words || []).map((w) => w.word || w).join(',')} (${(c.words || []).length})`;
     case 'flashcards':
-      return `${mode.engine} ${(c.deck || []).length} cards`;
+      return `flashcards ${(c.deck || []).map((d) => d.front).join(' / ')} (${(c.deck || []).length} cards)`;
     case 'mission':
-      return `mission ${c.bank.length} cases`;
+      return `mission ${(c.bank || []).map((q) => `${q.concept}:${q.prompt.slice(0, 36)}`).join(' / ')} (${(c.bank || []).length} cases)`;
     case 'storybook':
       return `storybook ${(c.books || []).map((b) => b.title).join(' / ')}`;
     case 'spatial3d':
-      return `spatial3d ${(c.cases || []).length} cases`;
     case 'solar3d':
-      return `solar3d ${(c.cases || c.stops || []).length}`;
     case 'volcano3d':
-      return 'volcano3d';
+    case 'geometry3d':
+    case 'optics3d':
+    case 'diorama3d':
+      return `${mode.engine} ${(c.cases || []).map((x) => x.prompt).join(' / ')} (${(c.cases || []).length} cases)`;
     default:
       return `${mode.engine}?`;
   }
@@ -150,14 +162,18 @@ for (const [key, list] of byDomain.entries()) {
       topicCount: topicNames.length,
       topics: topicNames,
       topicCeiling: ceil,
-      labs: labModes.map((m) => ({
-        label: m.label,
-        scene: m.config.scene,
-        dials: effectiveDials(m),
-        explorePrompt: m.config.explorePrompt,
-        cases: (m.config.cases || []).map((c) => ({ prompt: c.prompt, targets: c.targets || null, rule: c.rule || null })),
-      })),
-      otherModes: staticModes.map((m) => ({ engine: m.engine, fp: modeFingerprint(m) })),
+      labs: labModes.map((m) => {
+        const dials = effectiveDials(m);
+        return {
+          label: m.label,
+          scene: m.config.scene,
+          dials,
+          maxRep: effectiveSceneMax(m.config.scene, dials),
+          explorePrompt: m.config.explorePrompt,
+          cases: (m.config.cases || []).map((c) => ({ prompt: c.prompt, targets: c.targets || null, rule: c.rule || null })),
+        };
+      }),
+      otherModes: staticModes.map((m) => ({ engine: m.engine, label: m.label, fp: modeFingerprint(m) })),
       missionCount: (rep.modes.find((m) => m.engine === 'mission') || { config: { bank: [] } }).config.bank.length,
       flashcardCount: (rep.modes.find((m) => m.engine === 'flashcards') || { config: { deck: [] } }).config.deck.length,
     };
@@ -165,30 +181,33 @@ for (const [key, list] of byDomain.entries()) {
 
     domLines.push(`### band ${band} (ages ${ages.join(',')}) — ${topicNames.length} topics, ceiling num ${ceil.max} (seen: ${ceil.found.join(', ') || 'none'})`);
     for (const lb of bandInfo.labs) {
-      domLines.push(`- LAB ${lb.label} → scene=${lb.scene} dials=${lb.dials.map((d) => `${d.id}:${d.min}..${d.max}@${d.initial}`).join(' ') || '(none)'}`);
+      domLines.push(`- LAB ${lb.label} → scene=${lb.scene} (maxRep=${lb.maxRep}) dials=${lb.dials.map((d) => `${d.id}:${d.min}..${d.max}@${d.initial}`).join(' ') || '(none)'}`);
       for (const c of lb.cases) domLines.push(`    · ${c.prompt}`);
     }
     for (const om of bandInfo.otherModes) domLines.push(`- ${om.fp}`);
     domLines.push(`- mission ${bandInfo.missionCount} · flashcards ${bandInfo.flashcardCount}`);
 
     /* ---- automated flags ---- */
-    // F1: lab identical across bands (same scene, same dial span, same case prompts)
-    // F2: numeric ceiling beyond every dial max (representation likely outgrown)
-    for (const lb of bandInfo.labs) {
-      const nums = [];
-      for (const c of lb.cases) {
-        for (const v of Object.values(c.targets || {})) nums.push(v);
-        if (c.rule && typeof c.rule.value === 'number') nums.push(c.rule.value);
+    // F2: numeric ceiling beyond every lab in the band (for Mathematics number representations)
+    if (key.startsWith('Mathematics|') && bandInfo.labs.length && ceil.max >= 20) {
+      let maxDialAcrossLabs = 0;
+      let maxCaseAcrossLabs = 0;
+      for (const lb of bandInfo.labs) {
+        const nums = [];
+        for (const c of lb.cases) {
+          for (const v of Object.values(c.targets || {})) nums.push(v);
+          if (c.rule && typeof c.rule.value === 'number') nums.push(c.rule.value);
+        }
+        maxDialAcrossLabs = Math.max(maxDialAcrossLabs, lb.maxRep);
+        maxCaseAcrossLabs = Math.max(maxCaseAcrossLabs, ...nums.map(Math.abs));
       }
-      const dialMax = Math.max(0, ...lb.dials.map((d) => d.max), ...lb.dials.map((d) => Math.abs(d.min)));
-      const caseMax = Math.max(0, ...nums.map(Math.abs));
-      if (ceil.max >= 20 && dialMax > 0 && ceil.max > dialMax * 2 && caseMax * 2 < ceil.max) {
-        dom.flags.push(`F2[${band}] scene ${lb.scene}: band topics reach ${ceil.max} but dials cap at ${dialMax} and cases at ${caseMax} — representation may be outgrown`);
+      if (maxDialAcrossLabs > 0 && ceil.max > maxDialAcrossLabs * 2 && maxCaseAcrossLabs * 2 < ceil.max) {
+        dom.flags.push(`F2[${band}] band topics reach ${ceil.max} but labs cap at ${maxDialAcrossLabs} and cases at ${maxCaseAcrossLabs} — representation may be outgrown`);
       }
     }
   }
 
-  /* F1 cross-band lab identity (only when the domain actually has labs) */
+  /* F1 cross-band lab identity */
   const labFPs = {};
   for (const band of BANDS) {
     if (!dom.bands[band]) continue;
@@ -207,48 +226,58 @@ for (const [key, list] of byDomain.entries()) {
     }
   }
 
-  /* F3: static engine content identical across bands (same domain map objects) */
-  if (map) {
-    const staticKeys = ['sorter', 'sequence', 'memory', 'decision', 'spatial3d', 'solar3d', 'volcano3d'];
-    for (const sk of staticKeys) {
-      if (!map[sk]) continue;
-      dom.flags.push(`F3 static ${sk} shown to all bands of this domain (content: ${modeFingerprint({ engine: sk, config: map[sk] })})`);
-    }
-    if (map.arcade && map.arcade.kind === 'bank') {
-      dom.flags.push(`F3 static arcade bank for all bands (${(map.arcade.items || []).length} items)`);
-    }
-    /* F4: doctor band fallback */
-    if (map.doctor) {
-      const have = Object.keys(map.doctor).filter((k) => BANDS.includes(k));
-      for (const band of BANDS) {
-        if (!dom.bands[band]) continue;
-        const resolved = map.doctor[band] ? band : (map.doctor.mid ? 'mid' : 'early');
-        if (resolved !== band) dom.flags.push(`F4 doctor: ${band} band falls back to ${resolved} content`);
+  /* F3, F4, F5, F6: check resolved modes across bands */
+  const presentBands = BANDS.filter((b) => dom.bands[b]);
+  if (presentBands.length >= 2) {
+    const enginesInDomain = new Set(presentBands.flatMap((b) => dom.bands[b].otherModes.map((m) => m.engine)));
+    for (const eng of enginesInDomain) {
+      const fpByBand = new Map();
+      for (const b of presentBands) {
+        const m = dom.bands[b].otherModes.find((x) => x.engine === eng);
+        if (m) fpByBand.set(b, m.fp);
       }
-      if (have.length < 3) dom.flags.push(`F4 doctor authored bands: ${have.join(',') || 'none'}`);
-    }
-    /* F5: worksheet / wordBuilder without band words */
-    for (const wk of ['worksheet', 'wordBuilder']) {
-      if (map[wk] && !map[wk].wordsByBand) {
-        dom.flags.push(`F5 ${wk} same words for all bands: ${(map[wk].words || []).slice(0, 8).join(', ')}`);
+      if (fpByBand.size >= 2) {
+        const seen = new Map();
+        for (const [b, fp] of fpByBand.entries()) {
+          if (seen.has(fp)) {
+            const flagCode = eng === 'doctor' ? 'F4'
+              : (eng === 'worksheet' || eng === 'word-builder') ? 'F5'
+              : eng === 'storybook' ? 'F6'
+              : 'F3';
+            dom.flags.push(`${flagCode} ${eng} identical between ${seen.get(fp)} and ${b}`);
+          } else {
+            seen.set(fp, b);
+          }
+        }
       }
     }
-    /* F6: storybook band coverage */
-    if (map.storybook) {
-      const have = Object.keys(map.storybook.books).filter((k) => BANDS.includes(k));
-      for (const band of BANDS) {
-        if (!dom.bands[band]) continue;
-        const resolved = map.storybook.books[band] ? band : (map.storybook.books.mid ? 'mid' : 'early');
-        if (resolved !== band) dom.flags.push(`F6 storybook: ${band} band falls back to ${resolved} books`);
+  }
+
+  /* F8: secondary lab hidden for a band when other bands have 2 labs */
+  if (map && map.scene2) {
+    for (const b of presentBands) {
+      if (dom.bands[b].labs.length < 2) {
+        dom.flags.push(`F8 scene2 missing for ${b}`);
       }
-      if (have.length < 3) dom.flags.push(`F6 storybook authored bands: ${have.join(',') || 'none'}`);
     }
-    /* F8: scene2 band filter vs lab bands */
-    if (map.scene2 && map.scene2.bands) {
-      for (const band of BANDS) {
-        if (!dom.bands[band]) continue;
-        const hasScene2 = bandCoursesHasScene2(map, band);
-        if (!hasScene2) dom.flags.push(`F8 scene2 hidden for ${band} (bands: ${map.scene2.bands.join(',')})`);
+  }
+
+  /* F9: per-age distinctness within this domain */
+  const ageEngineFPs = new Map();
+  for (const c of list) {
+    for (const m of c.modes) {
+      const k = `${m.engine}|${m.label}`;
+      if (!ageEngineFPs.has(k)) ageEngineFPs.set(k, new Map());
+      ageEngineFPs.get(k).set(c.age, modeFingerprint(m));
+    }
+  }
+  for (const [ek, byAge] of ageEngineFPs.entries()) {
+    const seen = new Map();
+    for (const [age, fp] of byAge.entries()) {
+      if (seen.has(fp)) {
+        dom.flags.push(`F9 ${ek} identical between age ${seen.get(fp)} and age ${age}`);
+      } else {
+        seen.set(fp, age);
       }
     }
   }
@@ -259,10 +288,6 @@ for (const [key, list] of byDomain.entries()) {
   }
   raw.domains.push(dom);
   report.push(domLines.join('\n'));
-}
-
-function bandCoursesHasScene2(map, band) {
-  return (map.scene2.bands || []).includes(band);
 }
 
 const flagCounts = {};
@@ -285,6 +310,7 @@ const header = [
   '- F5 worksheet/word-builder words not band-split',
   '- F6 storybook band fallback',
   '- F8 scene2 hidden for a band (by design via bands filter — listed for review)',
+  '- F9 two ages within the same domain share identical mode content',
   '',
 ].join('\n');
 
